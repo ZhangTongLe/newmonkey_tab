@@ -1,0 +1,28 @@
+extends site_header
+
+block content
+    h1 NewMonkey 执行路径统计
+
+    #errMsg
+        if errMsg
+            pre= errMsg
+
+    div
+        table.table
+            thead
+                colgroup
+                    col.col-xs-9
+                    col.col-xs-1
+                    col.col-xs-1
+                    col.col-xs-1
+                tr
+                    th event
+                    th event-info
+                    th app
+                    th device
+            each record in records
+                tr
+                    td= record.get('event')
+                    td= record.get('eventinfo')
+                    td= record.get('application')
+                    td= record.get('phone')

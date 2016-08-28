@@ -1,9 +1,9 @@
 var AV = require('leanengine');
 
 AV.init({
-  appId: process.env.LEANCLOUD_APP_ID,
-  appKey: process.env.LEANCLOUD_APP_KEY,
-  masterKey: process.env.LEANCLOUD_APP_MASTER_KEY
+    appId: process.env.LEANCLOUD_APP_ID,
+    appKey: process.env.LEANCLOUD_APP_KEY,
+    masterKey: process.env.LEANCLOUD_APP_MASTER_KEY
 });
 
 var app = require('./app');
@@ -12,5 +12,5 @@ var app = require('./app');
 // LeanEngine 运行时会分配端口并赋值到该变量。
 var PORT = parseInt(process.env.LEANCLOUD_APP_PORT || 3000);
 var server = app.listen(PORT, function () {
-  console.log('Node app is running, port:', PORT);
+    console.log('Node app is running, port:', PORT);
 });
