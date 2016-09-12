@@ -74,3 +74,9 @@ function sync_status_map() {
 AV.Cloud.define('sync_status_map', function(request, response) {
     sync_status_map()
 });
+
+var StatusMap = {
+    'sync_status_map': sync_status_map
+};
+
+module.exports = StatusMap;
