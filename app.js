@@ -7,6 +7,7 @@ var AV = require('leanengine');
 var users = require('./routes/users');
 var todos = require('./routes/todos');
 var stat = require('./routes/stat');
+var status_map = require('./monkey/status-map');
 
 var app = express();
 
