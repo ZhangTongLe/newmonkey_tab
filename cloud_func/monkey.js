@@ -11,3 +11,4 @@ AV.Cloud.define('sync_event_history', function(request, response) {
 });
 
 StatusMap.sync_event_history();
+

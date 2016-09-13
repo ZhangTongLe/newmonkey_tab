@@ -5,6 +5,7 @@
 var AV = require('../lib/tab-login');
 var G = require('../config/global');
 var HttpUtil = require('../lib/http-util');
+var TabUtil = require('../lib/tab-util');
 
 
 function sync_status_map(event_records) {
@@ -38,7 +39,7 @@ function sync_status_map(event_records) {
                         console.log(error.message);
                     else if (error.message.indexOf('Too many requests.') > 0){
                         setTimeout(function () {
-                            status_map.save();
+                            TabUtil.save(status_map);
                         }, Math.random() * 3000 + 100);
                     }
                     else

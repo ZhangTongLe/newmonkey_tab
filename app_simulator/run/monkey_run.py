@@ -12,6 +12,7 @@ class MonkeyRunner(object):
     def __init__(self, app):
         self.task_id = str(datetime.datetime.now()).replace(' ', '_')
         self.app = app
+        self.device = 'Nexus5'
         self.reporter = TabReporter()
 
     def start(self):
@@ -41,6 +42,7 @@ class MonkeyRunner(object):
         event_info['product'] = self.app.identify
         event_info['version'] = self.app.version
         event_info['task_id'] = self.task_id
+        event_info['device'] = self.device
         return event_info
 
 

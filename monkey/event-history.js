@@ -4,8 +4,10 @@
 
 var AV = require('../lib/tab-login');
 var G = require('../config/global');
-var StatusMap = require('./status-map');
 var HttpUtil = require('../lib/http-util');
+
+var StatusMap = require('./status-map');
+var EnumMeta = require('./enum-meta');
 
 var APP_DATA_EVENT_SYNC_TIME = 'event_history_sync_time';
 var AppDate = AV.Object.extend('AppData');
@@ -24,6 +26,8 @@ function sync_event_history() {
         query.limit(G.TAB_LIMIT);
         query.find().then(function (event_records) {
             StatusMap.sync_status_map(event_records);
+            EnumMeta.sync_enum_meta(event_records);
+
             // save sync time.
             var kv_query = new AV.Query('AppData');
             var sync_time = event_records[0].createdAt;
