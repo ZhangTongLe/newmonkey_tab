@@ -62,8 +62,6 @@ function reply_to_status_map_page(req, res, next) {
     }
     var product_list = [];
     var version_list = [];
-    var device_list = [];
-    var query = new AV.Query('StatusMap');
 
     // query product
     var product_query = new AV.Query('EnumMeta').equalTo('key_first', 'product').equalTo('key_second', null);
@@ -79,30 +77,21 @@ function reply_to_status_map_page(req, res, next) {
                 version_list.push(r.get('value_str'));
             });
 
-            // query device
-            var device_query = new AV.Query('EnumMeta').equalTo('key_first', 'device');
-            TabUtil.find(device_query, function (records) {
-                records.forEach(function (r) {
-                    device_list.push(r.get('value_str'));
-                });
-
-                // finish query ...
-                when_meta_info_ok();
-            });
+            // finish query ...
+            when_meta_info_ok();
         });
     });
 
     function when_meta_info_ok() {
-        query.equalTo('event', 'MonkeyUiEvent');
+        var query = new AV.Query('StatusMap');
         query.limit(G.TAB_LIMIT);
         query.find({sessionToken: req.sessionToken}).then(function (results) {
             res.render('monkey/status-map', {
-                title: 'NewMonkey 执行路径统计',
+                title: 'Status Map',
                 user: req.currentUser,
                 records: results,
                 product_list: product_list,
                 version_list: version_list,
-                device_list: device_list,
                 status: status,
                 errMsg: errMsg
             });
@@ -117,7 +106,6 @@ function status_map_do_filter(req, res, next) {
     if (req.body) {
         product = req.body['product'];
         version = req.body['version'];
-        device = req.body['device'];
     }
     var query = new AV.Query('StatusMap');
     query.limit(G.TAB_LIMIT);
@@ -125,8 +113,6 @@ function status_map_do_filter(req, res, next) {
         query.equalTo('product', product);
     if (version)
         query.equalTo('version', version);
-    if (device)
-        query.equalTo('device', device);
     query.find({sessionToken: req.sessionToken}).then(function (records) {
         var resp = {
             status: 'ok',

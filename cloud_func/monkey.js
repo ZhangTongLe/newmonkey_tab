@@ -9,6 +9,3 @@ var StatusMap = require('../monkey/event-history');
 AV.Cloud.define('sync_event_history', function(request, response) {
     StatusMap.sync_event_history()
 });
-
-StatusMap.sync_event_history();
-

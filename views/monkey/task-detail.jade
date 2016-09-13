@@ -1,0 +1,26 @@
+extends ../site-header
+
+block append head
+    script(src='/static/monkey/js/task-detail.js')
+
+block content
+    div.container
+        h1 Task Detail
+        hr
+
+        #errMsg
+            if errMsg
+                pre= errMsg
+
+
+        div
+            div(style="padding: 0;")
+                dl.dl-horizontal(style="margin-bottom: 5px")
+                    dt(style="text-align: left")= 'Task ID'
+                    dd#task_id= task_id
+
+            div(style="padding: 0;")
+                dl.dl-horizontal(style="margin-bottom: 5px")
+                    dt(style="text-align: left")= 'Activity 覆盖率'
+                    dd#task_acr= '...'
+

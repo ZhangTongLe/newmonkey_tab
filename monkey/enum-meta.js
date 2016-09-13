@@ -8,14 +8,16 @@ var TabUtil = require('../lib/tab-util');
 
 
 function sync_enum_meta(event_records) {
-    console.log(1);
     if (event_records.length == 0)
         return;
-    console.log(2);
-    chain_call(sync_one_event_record, event_records);
+    for (var i in event_records){
+        setTimeout(function () {
+            sync_one_event_record(event_records[i]);
+        }, i * 30);
+    }
 }
 
-function sync_one_event_record(r, callback, i) {
+function sync_one_event_record(r) {
     /**
      * product, product_version, device
      * */
@@ -69,37 +71,7 @@ function sync_one_event_record(r, callback, i) {
     }, function (error) {
         console.error(error)
     });
-
-    if (callback)
-        callback(i);
 }
-
-function chain_call(func, args_list) {
-    // func must have a callback.
-    // func(args, callback, i);
-    var stack_list = [];
-    var stack = {
-        args: undefined,
-        func: undefined,
-        callback: undefined
-    };
-    for (var i = 0; i < args_list.length; i ++){
-        var new_stack = JSON.parse(JSON.stringify(stack));
-        new_stack.args = args_list[i];
-        new_stack.callback = function (i) {
-            i += 1;
-            if (i >= stack_list.length)
-                return;
-            var this_stack = stack_list[i];
-            this_stack.func(this_stack.args, this_stack.callback, i);
-        };
-        new_stack.func = func;
-        stack_list.push(new_stack);
-    }
-    stack = stack_list[0];
-    stack.func(stack.args, stack.callback, 0);
-}
-
 
 var EnumMeta = {
     sync_enum_meta: sync_enum_meta
@@ -107,9 +79,3 @@ var EnumMeta = {
 
 
 module.exports = EnumMeta;
-
-chain_call(function (x, callback, i) {
-    console.log(x);
-    if (callback)
-        callback(i);
-}, [1, 2, 3, 4, 5]);

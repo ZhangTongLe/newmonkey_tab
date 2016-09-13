@@ -66,6 +66,14 @@ function stat_acr_with_events(product, version, event_records, callback) {
     })
 }
 
-stat_acr('2016-09-13_22:56:18.795301', function (res) {
-    console.log(res);
-});
+var Stat = {
+    stat_acr: stat_acr
+};
+
+module.exports = Stat;
+
+
+//
+// stat_acr('2016-09-13_22:56:18.795301', function (res) {
+//     console.log(res);
+// });

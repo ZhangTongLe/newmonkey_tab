@@ -1,17 +1,24 @@
 /**
  * Created by kangtian on 16/9/13.
+ *
+ * Note:
+ *     Task Detail: /monkey/taskDetail?task_id=xyz
  */
 
 
-var url_do_filter = '/monkey/statusMapFilter/';
-var table_name = 'sm-table';
+var url_do_filter = '/monkey/eventHistoryFilter/';
+var url_task_detail = '/monkey/taskDetail?task_id=';
+var table_name = 'event-history-table';
 
 function init_table(){
     var $table = $('#'+table_name);
     $table.bootstrapTable('destroy');
     var columns = [
+        {field: 'task_id', title: '任务ID'},
         {field: 'product', title: '产品'},
         {field: 'version', title: 'App版本', sortable: true},
+        {field: 'device', title: '设备'},
+        {field: 'seq_no', title: '序号'},
         {field: 'event_name', title: '事件'},
         {field: 'pre_activity', title: 'Pre Activity'},
         {field: 'next_activity', title: 'Next Activity'}
@@ -30,6 +37,10 @@ function init_table(){
 
 
 function table_load($table, records) {
+    for(var i = 0; i < records.length; i ++){
+        var r = records[i];
+        r.task_id = '<a target="_blank" href="'+ url_task_detail+r.task_id +'">'+ r.task_id +'</a>';
+    }
     $table.bootstrapTable('load', records);
 }
 
@@ -47,7 +58,8 @@ function do_filter() {
         dataType: 'json',
         data: {
             product: get_selector_val($('#product')),
-            version: get_selector_val($('#version'))
+            version: get_selector_val($('#version')),
+            device: get_selector_val($('#device'))
         },
         success: function (resp) {
             console.log(resp);
@@ -75,6 +87,7 @@ function init_select2() {
 function bind_events() {
     $('#product').on('change', do_filter);
     $('#version').on('change', do_filter);
+    $('#device').on('change', do_filter);
 }
 
 

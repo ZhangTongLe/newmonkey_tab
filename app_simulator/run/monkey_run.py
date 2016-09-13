@@ -12,7 +12,9 @@ class MonkeyRunner(object):
     def __init__(self, app):
         self.task_id = str(datetime.datetime.now()).replace(' ', '_')
         self.app = app
-        self.device = 'Nexus5'
+        self.app.version = random.choice(['1.0.2', '6.5.8', '6.5.5', '1.0.3'])
+        self.device = random.choice(['Nexus5', 'MX4Pro', 'R819T', 'SM-G7106', 'GT-I9300'])
+        self.device = 'MX4Pro'
         self.reporter = TabReporter()
 
     def start(self):

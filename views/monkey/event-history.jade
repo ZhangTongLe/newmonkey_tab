@@ -1,11 +1,11 @@
 extends ../site-header
 
 block append head
-    script(src='/static/monkey/js/status-map.js')
+    script(src='/static/monkey/js/event-history.js')
 
 block content
     div.container
-        h1 Status Map
+        h1 Event History
         hr
 
         #errMsg
@@ -16,6 +16,7 @@ block content
             div.col-sm-4
                 label(for="product", style="text-align: left; min-width: 60px; padding: 0")= '产品'
                 select#product.select2(style="min-width: 150px")
+                    option='-- 所有产品 --'
                     each product, i in product_list
                         option=product
 
@@ -26,6 +27,14 @@ block content
                     each version, i in version_list
                         option=version
 
+            div.col-sm-4
+                label(for="device", style="text-align: left; min-width: 60px; padding: 0")= '设备'
+                select#device.select2(style="min-width: 150px")
+                    option='-- 所有设备 --'
+                    each device, i in device_list
+                        option=device
+
+
         div
             hr(style="margin: 10px 0 10px 0")
 
@@ -35,5 +44,5 @@ block content
 
 
         div#div-table
-            table#sm-table
+            table#event-history-table
 
