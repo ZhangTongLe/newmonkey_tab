@@ -41,6 +41,6 @@ class MonkeyRunner(object):
 
 
 if __name__ == '__main__':
-    app = AppRandomBuilder().gen_app()
+    app = AppRandomBuilder().gen_app(seed=8001)
     monkey = MonkeyRunner(app)
     monkey.start()

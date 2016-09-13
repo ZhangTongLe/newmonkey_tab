@@ -1,0 +1,38 @@
+doctype html
+html
+    block head
+        title= title
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+
+        script(src='/static/third-party/jquery/jquery-2.2.2.min.js')
+
+        script(src='/static/third-party/bootstrap/bootstrap-dist/js/bootstrap.min.js')
+        link(rel='stylesheet', href='/static/third-party/bootstrap/bootstrap-dist/css/bootstrap.min.css')
+
+        script(src='/static/third-party/bootstrap/bootstrap-table-dist/bootstrap-table.min.js')
+        link(rel='stylesheet', href='/static/third-party/bootstrap/bootstrap-table-dist/bootstrap-table.min.css')
+
+
+        link(rel='stylesheet', href='/static/third-party/select2/dist/css/select2.min.css')
+        link(rel='stylesheet', href='/static/third-party/select2/dist/css/select2-bootstrap.min.css')
+        script(src='/static/third-party/select2/dist/js/select2.min.js')
+
+        script(src='/static/public-js/tiny_util.js')
+        link(rel='stylesheet', href='/static/public-css/style.css')
+    body
+        nav.navbar.navbar-default.navbar-static-top(role='navigation')
+            .container
+                .navbar-header
+                    a.navbar-brand(href='/stat') Hi-Monkey
+                #bs-example-navbar-collapse-1(class='collapse navbar-collapse')
+                    ul(class='nav navbar-nav')
+                        li: a(href="/stat") 统计
+                    ul.nav.navbar-nav.navbar-right
+                        if user
+                            li: a(href="#") #{user.get('username')}
+                            li: a(href="/users/logout") 登出
+                        else
+                            li: a(href="/users/login") 登录
+                            li: a(href="/users/register") 注册
+        .container
+            block content

@@ -1,13 +1,17 @@
+/**
+ * Created by kangtian on 16/9/12.
+ */
+
 var express = require('express');
 var path = require('path');
 var bodyParser = require('body-parser');
-var methodOverride = require('method-override')
+var methodOverride = require('method-override');
 var AV = require('leanengine');
 
+require('./cloud_func/aio');    // cloud function.
+
 var users = require('./routes/users');
-var todos = require('./routes/todos');
-var stat = require('./routes/stat');
-var status_map = require('./monkey/status-map');
+var stat = require('./routes/monkey');
 
 var app = express();
 
@@ -15,7 +19,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use('/static', express.static('public'));
+app.use('/static', express.static('static'));
 
 // 加载云代码方法
 require('./cloud');
@@ -28,14 +32,13 @@ app.use(AV.Cloud.CookieSession({secret: '05XgTktKPMkU', maxAge: 3600000, fetchUs
 app.enable('trust proxy');
 app.use(AV.Cloud.HttpsRedirect());
 
-app.use(methodOverride('_method'))
+app.use(methodOverride('_method'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 // 可以将一类的路由单独保存在一个文件中
-app.use('/todos', todos);
 app.use('/users', users);
-app.use('/stat', stat);
+app.use('/monkey', stat);
 
 app.get('/', function (req, res) {
     res.redirect('/stat');

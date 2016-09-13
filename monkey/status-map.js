@@ -3,6 +3,8 @@
  */
 
 var AV = require('../lib/tab-login');
+var http_util = require('../lib/http-util');
+
 var APP_DATA_SM_SYNC_TIME = 'sm_sync_time';
 
 var AppDate = AV.Object.extend('AppData');
@@ -70,13 +72,77 @@ function sync_status_map() {
 
 }
 
+function reply_to_status_map_page(req, res, next) {
+    var status = 0;
+    var errMsg = null;
+    if (req.query) {
+        status = req.query.status || 0;
+        errMsg = req.query.errMsg;
+    }
+    var query = new AV.Query('StatusMap');
+    var product_list = ['RandomApp_8001', '手机QQ(Android)', 'Random App'];
+    var version_list = ['1.0.0', '1.0.1', '6.5.8'];
+    query.equalTo('event', 'MonkeyUiEvent');
+    query.limit(50);
+    query.find({sessionToken: req.sessionToken}).then(function (results) {
+        res.render('stat/status-map', {
+            title: 'NewMonkey 执行路径统计',
+            user: req.currentUser,
+            records: results,
+            product_list: product_list,
+            version_list: version_list,
+            status: status,
+            errMsg: errMsg
+        });
+    }, function (err) {
+        if (err.code === 101) {
+            // 该错误的信息为：{ code: 101, message: 'Class or object doesn\'t exists.' }，说明 Todo 数据表还未创建，所以返回空的 Todo 列表。
+            // 具体的错误代码详见：https://leancloud.cn/docs/error_code.html
+            res.render('stat', {
+                title: 'NewMonkey 执行路径统计',
+                user: req.currentUser,
+                records: [],
+                status: status,
+                errMsg: errMsg
+            });
+        } else {
+            throw err;
+        }
+    }).catch(next);
+}
 
-AV.Cloud.define('sync_status_map', function(request, response) {
-    sync_status_map()
-});
+function status_map_do_filter(req, res, next) {
+    var product = null, version = null, task_id = null;
+    if (req.body) {
+        product = req.body['product'];
+        version = req.body['version'];
+        task_id = req.body['task_id'];
+    }
+    var query = new AV.Query('StatusMap');
+    if (product)
+        query.equalTo('product', product);
+    if (version)
+        query.equalTo('version', version);
+    if (task_id)
+        query.equalTo('task_id', task_id);
+    query.limit(50);
+    query.find({sessionToken: req.sessionToken}).then(function (records) {
+        var resp = {
+            status: 'ok',
+            data: records
+        };
+        http_util.resp_json(res, resp);
+    }, function (error) {
+        throw error;
+    }).catch(next);
+}
+
 
 var StatusMap = {
-    'sync_status_map': sync_status_map
+    sync_status_map: sync_status_map,
+    reply_to_status_map_page: reply_to_status_map_page,
+    status_map_do_filter: status_map_do_filter
 };
+
 
 module.exports = StatusMap;
