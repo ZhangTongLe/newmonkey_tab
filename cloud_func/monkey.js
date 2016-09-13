@@ -3,12 +3,11 @@
  */
 
 var AV = require('../lib/tab-login');
-var StatusMap = require('../monkey/status-map');
+var StatusMap = require('../monkey/event-history');
 
 
-AV.Cloud.define('sync_status_map', function(request, response) {
-    StatusMap.sync_status_map()
+AV.Cloud.define('sync_event_history', function(request, response) {
+    StatusMap.sync_event_history()
 });
 
-StatusMap.sync_status_map();
-
+StatusMap.sync_event_history();

@@ -11,7 +11,7 @@ var AV = require('leanengine');
 require('./cloud_func/aio');    // cloud function.
 
 var users = require('./routes/users');
-var stat = require('./routes/monkey');
+var monkey = require('./routes/monkey');
 
 var app = express();
 
@@ -38,7 +38,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 
 // 可以将一类的路由单独保存在一个文件中
 app.use('/users', users);
-app.use('/monkey', stat);
+app.use('/monkey', monkey);
 
 app.get('/', function (req, res) {
     res.redirect('/stat');

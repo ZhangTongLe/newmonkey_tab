@@ -8,6 +8,8 @@
 
 var AV = require('../lib/tab-login');
 var G = require('../config/global');
+var HttpUtil = require('../lib/http-util');
+
 
 function stat_acr(task_id, callback){
     var event_query = new AV.Query('EventHistory');
@@ -64,6 +66,6 @@ function stat_acr_with_events(product, version, event_records, callback) {
     })
 }
 
-stat_acr('2016-09-13_20:27:04.456518', function (res) {
+stat_acr('2016-09-13_22:56:18.795301', function (res) {
     console.log(res);
 });
