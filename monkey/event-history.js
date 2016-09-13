@@ -129,6 +129,8 @@ function event_history_do_filter(req, res, next) {
         query.equalTo('product', product);
     if (version)
         query.equalTo('version', version);
+    if (device)
+        query.equalTo('device', device);
     query.find({sessionToken: req.sessionToken}).then(function (records) {
         var resp = {
             status: 'ok',
