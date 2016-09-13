@@ -9,3 +9,5 @@ var StatusMap = require('../monkey/status-map');
 AV.Cloud.define('sync_status_map', function(request, response) {
     StatusMap.sync_status_map()
 });
+
+StatusMap.sync_status_map();

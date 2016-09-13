@@ -15,11 +15,13 @@ function sync_status_map() {
     var kv_query = new AV.Query('AppData');
     kv_query.equalTo('key', APP_DATA_SM_SYNC_TIME).find().then(function (l) {
         var last_time = l.length > 0 ? l[0].get('value_str') : undefined;
+        console.log('sync_status_map: last_time is '+last_time);
         do_sync(last_time);
     });
 
     function do_sync(last_time) {
         last_time = last_time == undefined ? new Date(0): new Date(last_time);
+        console.log('sync_status_map: do_sync.last_time is '+last_time);
         query.greaterThan('createdAt', last_time).addDescending('createdAt');
         query.find().then(function (event_records) {
             if (event_records.length == 0)
@@ -32,7 +34,21 @@ function sync_status_map() {
                 status_map.set('event_name', r.get('event_name'));
                 status_map.set('event_data', r.get('event_data'));
                 status_map.set('pre_activity', r.get('pre_activity'));
-                status_map.set('next_activity', r.get('next_activity'));
+                if (r.get('next_activity'))
+                    status_map.set('next_activity', r.get('next_activity'));
+                else{
+                    var query_next = new AV.Query('EventHistory')
+                        .equalTo('task_id', r.get('task_id'))
+                        .equalTo('seq_no', r.get('seq_no') + 1);
+                    query_next.find().then(function (records) {
+                        if (records.length > 0)
+                            status_map.set('next_activity', records[0].get('pre_activity'));
+                        else
+                            status_map.set('next_activity', 'END_ACTIVITY');
+                    }, function (error) {
+                        console.error(error)
+                    })
+                }
                 status_map.save().then(function () {
                     console.log('save success.');
                 }, function (error) {
@@ -46,17 +62,14 @@ function sync_status_map() {
             // save sync time.
             var kv_query = new AV.Query('AppData');
             var sync_time = event_records[0].createdAt;
-            console.log('in');
             kv_query.equalTo('key', APP_DATA_SM_SYNC_TIME).find().then(function (records) {
                 if (records.length > 0){
-                    console.log('> 0');
                     var r = records[0];
                     r.set('value_str', sync_time.toISOString());
                     r.save().then(null, function (error) {
                         console.error(error);
                     });
                 }else{
-                    console.log('= 0');
                     var kv = new AppDate();
                     kv.set('key', APP_DATA_SM_SYNC_TIME);
                     kv.set('value_str', sync_time.toISOString());

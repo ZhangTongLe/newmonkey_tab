@@ -39,23 +39,20 @@ function stat_acr_with_events(product, version, event_records, callback) {
 
         event_records.forEach(function (e) {
             e_activity_set.add(e.get('pre_activity'));
-            e_activity_set.add(e.get('next_activity'));
+            if (e.get('next_activity'))
+                e_activity_set.add(e.get('next_activity'));
         });
 
         e_activity_set.forEach(function (activity) {
-            console.log(activity);
             if (sm_activity_set.has(activity)){
                 cover_num += 1;
             }
         });
 
-        console.log(cover_num);
-
-        var total_num = sm_activity_set.size();
-        console.log(total_num);
         if (callback != undefined){
-            var res = {coverage_rate: float(cover_num) / total_num, total_num: total_num, cover_num: cover_num};
-            console.log(res.coverage_rate);
+            var total_num = sm_activity_set.size;
+            var coverage_rate = total_num == 0 ? 0.0 : cover_num / parseFloat(total_num);
+            var res = {coverage_rate: coverage_rate, total_num: total_num, cover_num: cover_num};
             callback(res);
         }
     }, function (error) {
@@ -63,6 +60,6 @@ function stat_acr_with_events(product, version, event_records, callback) {
     })
 }
 
-stat_acr('2016-09-13_09:51:57.731581', function (res) {
+stat_acr('2016-09-13_20:27:04.456518', function (res) {
     console.log(res);
 });

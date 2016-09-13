@@ -37,7 +37,6 @@ class AppRandomBuilder(object):
 
     def gen_app(self, seed=8888, activity_num=None, event_num=None):
         activity_num = activity_num or random.randint(4, 20)
-        # fake.seed(seed)
         app = Application(identify='RandomApp_%s' % seed)
         for i in range(activity_num):
             app.add(self.gen_activity())
