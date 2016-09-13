@@ -60,24 +60,56 @@ function reply_to_status_map_page(req, res, next) {
         status = req.query.status || 0;
         errMsg = req.query.errMsg;
     }
+    var product_list = [];
+    var version_list = [];
+    var device_list = [];
     var query = new AV.Query('StatusMap');
-    var product_list = ['RandomApp_8001', '手机QQ(Android)', 'Random App'];
-    var version_list = ['1.0.0', '1.0.1', '6.5.8'];
-    query.equalTo('event', 'MonkeyUiEvent');
-    query.limit(G.TAB_LIMIT);
-    query.find({sessionToken: req.sessionToken}).then(function (results) {
-        res.render('stat/status-map', {
-            title: 'NewMonkey 执行路径统计',
-            user: req.currentUser,
-            records: results,
-            product_list: product_list,
-            version_list: version_list,
-            status: status,
-            errMsg: errMsg
+
+    // query product
+    var product_query = new AV.Query('EnumMeta').equalTo('key_first', 'product').equalTo('key_second', null);
+    TabUtil.find(product_query, function (records) {
+        records.forEach(function (r) {
+            product_list.push(r.get('value_str'));
         });
-    }, function (error) {
-        console.error(error);
-    }).catch(next);
+
+        // query version
+        var product_version_query = new AV.Query('EnumMeta').equalTo('key_first', 'product').equalTo('key_second', 'version');
+        TabUtil.find(product_version_query, function (records) {
+            records.forEach(function (r) {
+                version_list.push(r.get('value_str'));
+            });
+
+            // query device
+            var device_query = new AV.Query('EnumMeta').equalTo('key_first', 'device');
+            TabUtil.find(device_query, function (records) {
+                records.forEach(function (r) {
+                    device_list.push(r.get('value_str'));
+                });
+
+                // finish query ...
+                when_meta_info_ok();
+            });
+        });
+    });
+
+    function when_meta_info_ok() {
+        query.equalTo('event', 'MonkeyUiEvent');
+        query.limit(G.TAB_LIMIT);
+        query.find({sessionToken: req.sessionToken}).then(function (results) {
+            res.render('monkey/status-map', {
+                title: 'NewMonkey 执行路径统计',
+                user: req.currentUser,
+                records: results,
+                product_list: product_list,
+                version_list: version_list,
+                device_list: device_list,
+                status: status,
+                errMsg: errMsg
+            });
+        }, function (error) {
+            console.error(error);
+        }).catch(next);
+    }
 }
 
 function status_map_do_filter(req, res, next) {
@@ -85,7 +117,7 @@ function status_map_do_filter(req, res, next) {
     if (req.body) {
         product = req.body['product'];
         version = req.body['version'];
-        task_id = req.body['task_id'];
+        device = req.body['device'];
     }
     var query = new AV.Query('StatusMap');
     query.limit(G.TAB_LIMIT);
@@ -93,8 +125,8 @@ function status_map_do_filter(req, res, next) {
         query.equalTo('product', product);
     if (version)
         query.equalTo('version', version);
-    if (task_id)
-        query.equalTo('task_id', task_id);
+    if (device)
+        query.equalTo('device', device);
     query.find({sessionToken: req.sessionToken}).then(function (records) {
         var resp = {
             status: 'ok',

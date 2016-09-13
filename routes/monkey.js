@@ -9,7 +9,7 @@ var StatusMap = require('../monkey/status-map');
 var EventHistory = require('../monkey/event-history');
 
 router.get('/', function (req, res, next) {
-    res.redirect('/stat/statusMap');
+    res.redirect('/monkey/statusMap');
 });
 
 router.get('/syncEventHistory/', function (req, res, next) {

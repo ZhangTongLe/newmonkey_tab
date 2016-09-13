@@ -3,7 +3,7 @@
  */
 
 
-var url_do_filter = '/stat/statusMapFilter/';
+var url_do_filter = '/monkey/statusMapFilter/';
 var table_name = 'sm-table';
 
 function init_table(){
@@ -33,6 +33,11 @@ function table_load($table, records) {
     $table.bootstrapTable('load', records);
 }
 
+function get_selector_val($select) {
+    var val = $select.val();
+    return val.indexOf('--') == 0 ? null : val;
+}
+
 
 function do_filter() {
     var $table = $('#'+table_name);
@@ -41,8 +46,9 @@ function do_filter() {
         type: "POST",
         dataType: 'json',
         data: {
-            product: $('#product').val(),
-            version: $('#version').val()
+            product: get_selector_val($('#product')),
+            version: get_selector_val($('#version')),
+            device: get_selector_val($('#device'))
         },
         success: function (resp) {
             console.log(resp);
@@ -59,7 +65,11 @@ function do_filter() {
 
 function init_select2() {
     $('.select2').select2({
-        minimumResultsForSearch: 7
+        minimumResultsForSearch: 7,
+        placeholder: {
+            id: "1",
+            placeholder: "Select an option"
+        }
     })
 }
 
@@ -68,10 +78,11 @@ function bind_events() {
     $('#version').on('change', do_filter);
 }
 
-$(function () {
-    init_select2();
+
+$(document).ready(function(){
     init_table();
     do_filter();
+    init_select2();
     bind_events();
 });
 

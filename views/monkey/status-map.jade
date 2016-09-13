@@ -1,7 +1,7 @@
 extends ../site-header
 
 block append head
-    script(src='/static/monkey/js/event-history.js')
+    script(src='/static/monkey/js/status-map.js')
 
 block content
     div.container
@@ -20,11 +20,18 @@ block content
                         option=product
 
             div.col-sm-4
-                label(for="product", style="text-align: left; min-width: 60px; padding: 0")= '版本'
+                label(for="version", style="text-align: left; min-width: 60px; padding: 0")= '版本'
                 select#version.select2(style="min-width: 150px")
+                    option='-- 所有版本 --'
                     each version, i in version_list
                         option=version
 
+            div.col-sm-4
+                label(for="device", style="text-align: left; min-width: 60px; padding: 0")= '设备'
+                select#device.select2(style="min-width: 150px")
+                    option='-- 所有设备 --'
+                    each device, i in device_list
+                        option=device
         div
             hr(style="margin: 10px 0 10px 0")
 

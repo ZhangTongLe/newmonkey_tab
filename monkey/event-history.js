@@ -21,6 +21,7 @@ function sync_event_history() {
         var last_time = l.length > 0 ? l[0].get('value_str') : undefined;
         console.log('sync_status_map: last_time is '+last_time);
         last_time = last_time == undefined ? new Date(0): new Date(last_time);
+        last_time = new Date(0);
         console.log('sync_status_map: do_sync.last_time is '+last_time);
         query.greaterThan('createdAt', last_time).addDescending('createdAt');
         query.limit(G.TAB_LIMIT);
