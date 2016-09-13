@@ -51,15 +51,18 @@ function stat_acr_with_events(product, version, event_records, callback) {
 
         console.log(cover_num);
 
-        var total_num = sm_activity_set.length;
-        if (callback){
-            callback({coverage_rate: float(cover_num) / total_num, total_num: total_num, cover_num: cover_num});
+        var total_num = sm_activity_set.size();
+        console.log(total_num);
+        if (callback != undefined){
+            var res = {coverage_rate: float(cover_num) / total_num, total_num: total_num, cover_num: cover_num};
+            console.log(res.coverage_rate);
+            callback(res);
         }
     }, function (error) {
         throw error
     })
 }
 
-stat_acr('2016-09-13_09:51:57.731581', function (info) {
-    console.log(info);
+stat_acr('2016-09-13_09:51:57.731581', function (res) {
+    console.log(res);
 });
