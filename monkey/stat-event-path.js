@@ -1,10 +1,13 @@
 /**
  * Created by kangtian on 16/9/13.
+ *
+ * Note:
+ *     arc: activity coverage rate.
+ *
  */
 
 var AV = require('../lib/tab-login');
-
-// acr = activity coverage rate
+var G = require('../config/global');
 
 function stat_acr(task_id, callback){
     var event_query = new AV.Query('EventHistory');
@@ -24,9 +27,10 @@ function stat_acr(task_id, callback){
 
 
 function stat_acr_with_events(product, version, event_records, callback) {
-    var event_query = new AV.Query('StatusMap');
-    event_query.equalTo('product', product);
-    event_query.equalTo('version', version);
+    var event_query = new AV.Query('StatusMap')
+        .equalTo('product', product)
+        .equalTo('version', version);
+    event_query.limit(G.TAB_LIMIT);
     event_query.find().then(function (stats_records) {
         var sm_activity_set = new Set();
         var e_activity_set = new Set();
