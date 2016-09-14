@@ -11,45 +11,53 @@ var TabUtil = require('../lib/tab-util');
 function sync_status_map(event_records) {
     if (event_records.length == 0)
         return;
-    event_records.forEach(function (r, a, i) {
-        var StatusMap = AV.Object.extend('StatusMap');
-        var status_map = new StatusMap();
-        status_map.set('product', r.get('product'));
-        status_map.set('version', r.get('version'));
-        status_map.set('event_name', r.get('event_name'));
-        status_map.set('event_data', r.get('event_data'));
-        status_map.set('pre_activity', r.get('pre_activity'));
-        if (r.get('next_activity')){
-            status_map.set('next_activity', r.get('next_activity'));
-        }
-        else{
-            var query_next = new AV.Query('EventHistory')
-                .equalTo('task_id', r.get('task_id'))
-                .equalTo('seq_no', r.get('seq_no') + 1);
-            query_next.find().then(function (records) {
-                if (records.length > 0)
-                    status_map.set('next_activity', records[0].get('pre_activity'));
-                else
-                    status_map.set('next_activity', 'END_ACTIVITY');
-                // save.
-                status_map.save().then(function () {
-                    console.log('save success.');
-                }, function (error) {
-                    if (error.message.indexOf('A unique field was given a value that is already taken.') > 0)
-                        console.log(error.message);
-                    else if (error.message.indexOf('Too many requests.') > 0){
-                        setTimeout(function () {
-                            TabUtil.save(status_map);
-                        }, Math.random() * 3000 + 100);
-                    }
-                    else
-                        throw (error);
-                })
+    for (var i = 0; i < event_records.length; i ++){
+        var r = event_records[i];
+        setTimeout(function () {
+            sync_one_status_map_record(r);
+        }, i * 30);
+    }
+}
+
+
+function sync_one_status_map_record(r) {
+    var StatusMap = AV.Object.extend('StatusMap');
+    var status_map = new StatusMap();
+    status_map.set('product', r.get('product'));
+    status_map.set('version', r.get('version'));
+    status_map.set('event_name', r.get('event_name'));
+    status_map.set('event_data', r.get('event_data'));
+    status_map.set('pre_activity', r.get('pre_activity'));
+    if (r.get('next_activity')){
+        status_map.set('next_activity', r.get('next_activity'));
+    }
+    else{
+        var query_next = new AV.Query('EventHistory')
+            .equalTo('task_id', r.get('task_id'))
+            .equalTo('seq_no', r.get('seq_no') + 1);
+        query_next.find().then(function (records) {
+            if (records.length > 0)
+                status_map.set('next_activity', records[0].get('pre_activity'));
+            else
+                status_map.set('next_activity', 'END_ACTIVITY');
+            // save.
+            status_map.save().then(function () {
+                console.log('save success.');
             }, function (error) {
-                console.error(error)
+                if (error.message.indexOf('A unique field was given a value that is already taken.') > 0)
+                    console.log(error.message);
+                else if (error.message.indexOf('Too many requests.') > 0){
+                    setTimeout(function () {
+                        TabUtil.save(status_map);
+                    }, Math.random() * 3000 + 100);
+                }
+                else
+                    throw (error);
             })
-        }
-    });
+        }, function (error) {
+            console.error(error)
+        })
+    }
 }
 
 

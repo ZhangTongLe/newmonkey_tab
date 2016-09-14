@@ -10,9 +10,10 @@ var TabUtil = require('../lib/tab-util');
 function sync_enum_meta(event_records) {
     if (event_records.length == 0)
         return;
-    for (var i in event_records){
+    for (var i = 0; i < event_records.length; i ++){
+        var r = event_records[i];
         setTimeout(function () {
-            sync_one_event_record(event_records[i]);
+            sync_one_event_record(r);
         }, i * 30);
     }
 }
