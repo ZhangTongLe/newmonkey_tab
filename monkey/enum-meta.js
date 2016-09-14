@@ -40,15 +40,15 @@ function sync_one_event_record(r) {
     });
 
     var product_version_query = new AV.Query('EnumMeta')
-        .equalTo('key_first', 'product')
-        .equalTo('key_second', 'version')
+        .equalTo('key_first', 'product_version')
+        .equalTo('key_second', r.get('product'))
         .equalTo('value_str', r.get('version'));
 
     TabUtil.find_delay(product_version_query, function (records) {
         if (records.length == 0){
             var product_version_meta = new EnumMeta();
-            product_version_meta.set('key_first', 'product');
-            product_version_meta.set('key_second', 'version');
+            product_version_meta.set('key_first', 'product_version');
+            product_version_meta.set('key_second', r.get('product'));
             product_version_meta.set('value_str', r.get('version'));
             product_version_meta.set('stage', 'EventHistory');
             TabUtil.save(product_version_meta);

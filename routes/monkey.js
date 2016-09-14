@@ -10,7 +10,7 @@ var EventHistory = require('../monkey/event-history');
 var TaskDetail = require('../monkey/task_detail');
 
 router.get('/', function (req, res, next) {
-    res.redirect('/monkey/statusMap');
+    res.redirect('/monkey/eventHistory');
 });
 
 router.get('/syncEventHistory/', function (req, res, next) {

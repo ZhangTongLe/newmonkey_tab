@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e0ac790-8425-4a9b-b228-7cf9d5bf4db1" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monkey/event-history.js" afterPath="$PROJECT_DIR$/monkey/event-history.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/site-header.jade" afterPath="$PROJECT_DIR$/views/site-header.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_simulator/.idea/workspace.xml" afterPath="$PROJECT_DIR$/app_simulator/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monkey/enum-meta.js" afterPath="$PROJECT_DIR$/monkey/enum-meta.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/monkey.js" afterPath="$PROJECT_DIR$/routes/monkey.js" />
     </list>
     <ignored path="newmonkey_tab.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,7 +27,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="event-history.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="event-history.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/monkey/event-history.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="545">
@@ -38,95 +39,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stat-event-path.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/monkey/stat-event-path.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="423">
-              <caret line="69" column="4" selection-start-line="69" selection-start-column="4" selection-end-line="69" selection-end-column="4" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="status-map.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/monkey/status-map.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="84" column="34" selection-start-line="84" selection-start-column="34" selection-end-line="84" selection-end-column="34" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="status-map.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/monkey/js/status-map.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="728">
-              <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#42#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="task-detail.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/monkey/js/task-detail.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#42#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="task_detail.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/monkey/task_detail.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="39" column="19" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="event-history.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/monkey/js/event-history.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="site-header.jade" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/site-header.jade">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="task-detail.jade" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/monkey/task-detail.jade">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="11" column="21" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="monkey.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/monkey.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
+            <state relative-caret-position="210">
+              <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="enum-meta.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/monkey/enum-meta.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="485">
+              <caret line="54" column="9" selection-start-line="54" selection-start-column="9" selection-end-line="54" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -163,7 +90,6 @@
         <option value="$PROJECT_DIR$/lib/http-util.js" />
         <option value="$PROJECT_DIR$/lib/tab-util.js" />
         <option value="$PROJECT_DIR$/lib/func_tool.js" />
-        <option value="$PROJECT_DIR$/monkey/enum-meta.js" />
         <option value="$PROJECT_DIR$/cloud_func/monkey.js" />
         <option value="$PROJECT_DIR$/views/monkey/status-map.jade" />
         <option value="$PROJECT_DIR$/static/monkey/js/status-map.js" />
@@ -173,12 +99,13 @@
         <option value="$PROJECT_DIR$/views/monkey/task_detail.jade" />
         <option value="$PROJECT_DIR$/monkey/stat-event-path.js" />
         <option value="$PROJECT_DIR$/views/monkey/task-detail.jade" />
-        <option value="$PROJECT_DIR$/routes/monkey.js" />
         <option value="$PROJECT_DIR$/monkey/task_detail.js" />
         <option value="$PROJECT_DIR$/static/monkey/js/task-detail.js" />
         <option value="$PROJECT_DIR$/static/monkey/js/event-history.js" />
         <option value="$PROJECT_DIR$/views/site-header.jade" />
         <option value="$PROJECT_DIR$/monkey/event-history.js" />
+        <option value="$PROJECT_DIR$/routes/monkey.js" />
+        <option value="$PROJECT_DIR$/monkey/enum-meta.js" />
       </list>
     </option>
   </component>
@@ -191,7 +118,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="719" />
+    <option name="x" value="316" />
     <option name="y" value="137" />
     <option name="width" value="1732" />
     <option name="height" value="1100" />
@@ -308,6 +235,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="monkey" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="newmonkey_tab" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="newmonkey_tab" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="lib" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -438,15 +379,15 @@
       <workItem from="1473598093670" duration="3305000" />
       <workItem from="1473649640235" duration="24888000" />
       <workItem from="1473766132903" duration="7665000" />
-      <workItem from="1473778383050" duration="21366000" />
+      <workItem from="1473778383050" duration="21731000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59589000" />
+    <option name="totallyTimeSpent" value="59954000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="719" y="137" width="1732" height="1100" extended-state="0" />
+    <frame x="316" y="137" width="1732" height="1100" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20046756" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -716,16 +657,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-279">
-          <caret line="23" column="10" selection-start-line="23" selection-start-column="10" selection-end-line="23" selection-end-column="10" />
-          <folding>
-            <element signature="e#0#42#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/cloud_func/monkey.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -733,14 +664,6 @@
           <folding>
             <element signature="e#0#42#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/monkey/enum-meta.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -770,36 +693,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monkey/status-map.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="84" column="34" selection-start-line="84" selection-start-column="34" selection-end-line="84" selection-end-column="34" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/monkey/status-map.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="300">
           <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/static/monkey/js/status-map.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="728">
-          <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#42#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/monkey.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
           <folding />
         </state>
       </provider>
@@ -840,9 +737,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/site-header.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="13" column="0" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
+        <state relative-caret-position="405">
+          <caret line="27" column="46" selection-start-line="27" selection-start-column="46" selection-end-line="27" selection-end-column="46" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="43" column="25" selection-start-line="43" selection-start-column="19" selection-end-line="43" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monkey/status-map.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="83" column="0" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/monkey/js/status-map.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="728">
+          <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -853,6 +778,22 @@
           <folding>
             <element signature="e#0#42#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/monkey.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="0" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/monkey/enum-meta.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="485">
+          <caret line="54" column="9" selection-start-line="54" selection-start-column="9" selection-end-line="54" selection-end-column="9" />
+          <folding />
         </state>
       </provider>
     </entry>
