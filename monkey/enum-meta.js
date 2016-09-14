@@ -12,9 +12,9 @@ function sync_enum_meta(event_records) {
         return;
     for (var i = 0; i < event_records.length; i ++){
         var r = event_records[i];
-        setTimeout(function () {
+        setTimeout(function (r) {
             sync_one_event_record(r);
-        }, i * 30);
+        }, i * 10, r);
     }
 }
 

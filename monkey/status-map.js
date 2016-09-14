@@ -13,9 +13,9 @@ function sync_status_map(event_records) {
         return;
     for (var i = 0; i < event_records.length; i ++){
         var r = event_records[i];
-        setTimeout(function () {
+        setTimeout(function (r) {
             sync_one_status_map_record(r);
-        }, i * 30);
+        }, i * 10, r);
     }
 }
 
@@ -35,27 +35,14 @@ function sync_one_status_map_record(r) {
         var query_next = new AV.Query('EventHistory')
             .equalTo('task_id', r.get('task_id'))
             .equalTo('seq_no', r.get('seq_no') + 1);
-        query_next.find().then(function (records) {
+        TabUtil.find(query_next, function (records) {
             if (records.length > 0)
                 status_map.set('next_activity', records[0].get('pre_activity'));
             else
                 status_map.set('next_activity', 'END_ACTIVITY');
+
             // save.
-            status_map.save().then(function () {
-                console.log('save success.');
-            }, function (error) {
-                if (error.message.indexOf('A unique field was given a value that is already taken.') > 0)
-                    console.log(error.message);
-                else if (error.message.indexOf('Too many requests.') > 0){
-                    setTimeout(function () {
-                        TabUtil.save(status_map);
-                    }, Math.random() * 3000 + 100);
-                }
-                else
-                    throw (error);
-            })
-        }, function (error) {
-            console.error(error)
+            TabUtil.save(status_map);
         })
     }
 }
