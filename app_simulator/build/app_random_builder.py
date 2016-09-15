@@ -3,7 +3,7 @@
 import random
 from faker import Faker
 from models.app import Application, Activity, Widget, Position
-from models.event import BasicEventHandler
+from models.event import BasicEventHandler, EventType
 
 fake = Faker()
 
@@ -33,7 +33,7 @@ class AppRandomBuilder(object):
         src_activity = random.choice(app.sub_list)
         src_widget = random.choice(src_activity.sub_list)
         dst_activity = random.choice(app.sub_list)
-        src_widget.bind('click', BasicEventHandler.gen_push_activity(app, dst_activity))
+        src_widget.bind(EventType.CLICK, BasicEventHandler.gen_push_activity(app, dst_activity))
 
     def gen_app(self, seed=8888, activity_num=None, event_num=None):
         activity_num = activity_num or random.randint(4, 20)

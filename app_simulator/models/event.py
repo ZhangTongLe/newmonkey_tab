@@ -1,6 +1,10 @@
 # -*- coding: UTF-8 -*-
 
 
+class EventType(object):
+    CLICK = 'click'
+
+
 class EventHandler(object):
     def __init__(self, func, callback=None, *args, **kwargs):
         self.func = func

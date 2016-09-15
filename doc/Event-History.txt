@@ -1,0 +1,33 @@
+Monkey 点击事件上报:
+
+Example
+-------------------
+eg:
+    {
+      "product": "RandomApp_8001",
+      "event_data": {
+        "event_name": "click",
+        "event_entity": {
+          "position": {
+            "data": [
+              100,
+              242,
+              176,
+              322
+            ],
+            "type": "rect"
+          },
+          "identify": "button_Kanisha_Barton",
+          "len": 0,
+          "type": "button"
+        }
+      },
+      "task_id": "2016-09-15_10:17:28.541907",
+      "next_activity": "",
+      "device": "MX4Pro",
+      "event_time": "2016-09-15 10:17:31.205088",
+      "seq_no": 9,
+      "version": "1.0.2",
+      "pre_activity": "activity_Santos_Wiza_II",
+      "event_name": "click",
+    }

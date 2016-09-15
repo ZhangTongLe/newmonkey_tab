@@ -6,6 +6,7 @@ var AV = require('../lib/tab-login');
 var G = require('../config/global');
 var HttpUtil = require('../lib/http-util');
 var TabUtil = require('../lib/tab-util');
+var MonkeyEvent = require('./monkey-event');
 
 
 function sync_status_map(event_records) {
@@ -27,19 +28,21 @@ function sync_one_event_record(r) {
     status_map.set('version', r.get('version'));
     status_map.set('event_name', r.get('event_name'));
     status_map.set('event_data', r.get('event_data'));
-    status_map.set('pre_activity', r.get('pre_activity'));
+    status_map.set('event_entity', MonkeyEvent.get_event_entity(r));
+    status_map.set('event_identify', MonkeyEvent.get_event_identify(r));
+    status_map.set('event_entity_identify', MonkeyEvent.get_event_entity_identify(r));
+    status_map.set('next_activity', r.get('pre_activity'));    // 使用 afterSave 调用方式, 需要 seq_no 向前搜索
     if (r.get('next_activity')){
         status_map.set('next_activity', r.get('next_activity'));
+        TabUtil.save(status_map);
     }
     else{
-        var query_next = new AV.Query('EventHistory')
+        var query_pre = new AV.Query('EventHistory')
             .equalTo('task_id', r.get('task_id'))
             .equalTo('seq_no', r.get('seq_no') + 1);
-        TabUtil.find(query_next, function (records) {
+        TabUtil.find(query_pre, function (records) {
             if (records.length > 0)
-                status_map.set('next_activity', records[0].get('pre_activity'));
-            else
-                status_map.set('next_activity', 'END_ACTIVITY');
+                status_map.set('pre_activity', records[0].get('pre_activity'));
 
             // save.
             TabUtil.save(status_map);
