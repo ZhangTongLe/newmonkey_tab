@@ -2,15 +2,17 @@
  * Created by kangtian on 16/9/15.
  */
 
+var G = require('../config/global');
 
 var EventType = {
     CLICK: 'click'
 };
 
 function get_event_identify(event_record) {
+    var SP = G.SPLITTER;
     var identify;
     var event_data = event_record.get('event_data');
-    identify = event_record.get('event_name') + '__' + get_event_entity_identify(event_record) + '__' + event_record.get('pre_activity') + '__' + event_record.get('next_activity');
+    identify = event_record.get('event_name') + SP + get_event_entity_identify(event_record) + SP + event_record.get('pre_activity') + SP + event_record.get('next_activity');
     return identify;
 }
 

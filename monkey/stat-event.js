@@ -55,11 +55,25 @@ function stat_acr_with_events(product, version, event_records, callback) {
             }
         });
 
+        var cover_activity_list = [];
+        e_activity_set.forEach(function (e) {
+            cover_activity_list.push(e)
+        });
+
+        var sm_activity_list = [];
+        sm_activity_set.forEach(function (e) {
+            sm_activity_list.push(e)
+        });
+
         if (callback != undefined){
             var total_num = sm_activity_set.size;
             var coverage_rate = total_num == 0 ? 0.0 : cover_num / parseFloat(total_num);
-            var res = {coverage_rate: coverage_rate, total_num: total_num, cover_num: cover_num};
-            callback(res);
+            var acr_res = {
+                coverage_rate: coverage_rate, total_num: total_num, cover_num: cover_num,
+                cover_activity_list: cover_activity_list,
+                sm_activity_list: sm_activity_list
+            };
+            callback(acr_res);
         }
     }, function (error) {
         throw error

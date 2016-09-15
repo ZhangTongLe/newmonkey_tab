@@ -4,7 +4,7 @@
 
 var HttpUtil = require('../lib/http-util');
 
-var Stat = require('./stat-event-path');
+var Stat = require('./stat-event');
 
 
 function reply_to_task_detail_page(req, res, next) {

@@ -3,7 +3,9 @@
  */
 
 var GlobalObj = {
-    TAB_LIMIT: 1000
+    TAB_LIMIT: 1000,
+    SPLITTER: '^_^'
 };
+
 
 module.exports = GlobalObj;

@@ -3,7 +3,6 @@
  */
 
 var url_do_update = '/monkey/taskDetailUpdate/';
-var task_acr_id = 'task_acr';
 
 
 function do_update() {
@@ -20,7 +19,9 @@ function do_update() {
             if (resp.status == 'ok') {
                 var acr = resp.data.acr_res;
                 var acr_text = (acr['coverage_rate']*100).toFixed(1) + ' % ('+ acr['cover_num'] + '/' + acr['total_num'] +')';
-                $('#'+task_acr_id).text(acr_text);
+                $('#task_acr').text(acr_text);
+                $('#cover_activity_list').text(acr['cover_activity_list'].join('\n'));
+                $('#sm_activity_list').text(acr['sm_activity_list'].join('\n'));
             } else {
                 alert(resp.data);
             }

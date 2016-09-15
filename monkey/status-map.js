@@ -39,7 +39,7 @@ function sync_one_event_record(r) {
     else{
         var query_pre = new AV.Query('EventHistory')
             .equalTo('task_id', r.get('task_id'))
-            .equalTo('seq_no', r.get('seq_no') + 1);
+            .equalTo('seq_no', r.get('seq_no') - 1);
         TabUtil.find(query_pre, function (records) {
             if (records.length > 0)
                 status_map.set('pre_activity', records[0].get('pre_activity'));
