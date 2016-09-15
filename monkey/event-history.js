@@ -60,6 +60,13 @@ function sync_event_history(use_last_time) {
 }
 
 
+function sync_one_event_record(r) {
+    StatusMap.sync_one_event_record(r);
+    EnumMeta.sync_one_event_record(r);
+}
+
+
+
 function reply_to_event_history_page(req, res, next) {
     var status = 0;
     var errMsg = null;
@@ -79,7 +86,7 @@ function reply_to_event_history_page(req, res, next) {
         });
 
         // query version
-        var product_version_query = new AV.Query('EnumMeta').equalTo('key_first', 'product').equalTo('key_second', 'version');
+        var product_version_query = new AV.Query('EnumMeta').equalTo('key_first', 'product_version');
         TabUtil.find(product_version_query, function (records) {
             records.forEach(function (r) {
                 version_list.push(r.get('value_str'));
@@ -155,6 +162,7 @@ function reply_to_sync_event_history(req, res, next) {
 
 var EventHistory = {
     sync_event_history: sync_event_history,
+    sync_one_event_record: sync_one_event_record,
     event_history_do_filter: event_history_do_filter,
     reply_to_event_history_page: reply_to_event_history_page,
     reply_to_sync_event_history: reply_to_sync_event_history

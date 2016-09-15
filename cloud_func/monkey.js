@@ -3,9 +3,15 @@
  */
 
 var AV = require('../lib/tab-login');
-var StatusMap = require('../monkey/event-history');
+var EventHistory = require('../monkey/event-history');
 
 
 AV.Cloud.define('sync_event_history', function(request, response) {
-    StatusMap.sync_event_history()
+    EventHistory.sync_event_history()
+});
+
+
+AV.Cloud.afterSave('EventHistory', function(request) {
+    EventHistory.sync_one_event_record(request.object);
+    console.log('Called by EventHistory.afterSave');
 });

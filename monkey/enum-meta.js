@@ -75,7 +75,8 @@ function sync_one_event_record(r) {
 }
 
 var EnumMeta = {
-    sync_enum_meta: sync_enum_meta
+    sync_enum_meta: sync_enum_meta,
+    sync_one_event_record: sync_one_event_record
 };
 
 

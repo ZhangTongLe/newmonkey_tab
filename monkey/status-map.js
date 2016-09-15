@@ -14,13 +14,13 @@ function sync_status_map(event_records) {
     for (var i = 0; i < event_records.length; i ++){
         var r = event_records[i];
         setTimeout(function (r) {
-            sync_one_status_map_record(r);
+            sync_one_event_record(r);
         }, i * 10, r);
     }
 }
 
 
-function sync_one_status_map_record(r) {
+function sync_one_event_record(r) {
     var StatusMap = AV.Object.extend('StatusMap');
     var status_map = new StatusMap();
     status_map.set('product', r.get('product'));
@@ -66,7 +66,7 @@ function reply_to_status_map_page(req, res, next) {
         });
 
         // query version
-        var product_version_query = new AV.Query('EnumMeta').equalTo('key_first', 'product').equalTo('key_second', 'version');
+        var product_version_query = new AV.Query('EnumMeta').equalTo('key_first', 'product_version');
         TabUtil.find(product_version_query, function (records) {
             records.forEach(function (r) {
                 version_list.push(r.get('value_str'));
@@ -122,6 +122,7 @@ function status_map_do_filter(req, res, next) {
 
 var StatusMap = {
     sync_status_map: sync_status_map,
+    sync_one_event_record: sync_one_event_record,
     reply_to_status_map_page: reply_to_status_map_page,
     status_map_do_filter: status_map_do_filter
 };
