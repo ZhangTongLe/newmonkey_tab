@@ -13,7 +13,7 @@ var NetGraph = require('../monkey/net-graph');
 
 
 router.get('/', function (req, res, next) {
-    res.redirect('/monkey/eventHistory');
+    res.redirect('/monkey/taskList');
 });
 
 router.get('/syncEventHistory/', function (req, res, next) {

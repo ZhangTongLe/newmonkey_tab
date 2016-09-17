@@ -2,41 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e0ac790-8425-4a9b-b228-7cf9d5bf4db1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monkey/net-graph.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monkey/task-list.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/monkey/js/activity-network.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/monkey/js/task-list.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/base/site-footer.jade" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/base/site-full-screen.jade" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/base/site-layout.jade" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/base/site-nav.jade" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/monkey/activity-network-full-screen.jade" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/monkey/activity-network.jade" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/monkey/task-list.jade" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/views/error.jade" afterPath="$PROJECT_DIR$/views/base/error.jade" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/views/site-header.jade" afterPath="$PROJECT_DIR$/views/base/site-include.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/public-img/logo/monkey-logo.gif" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/public-img/logo/monkey-logo.psd" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/static/public-img/loading.gif" afterPath="$PROJECT_DIR$/static/public-img/loading/loading.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/static/public-img/loading_octopus.gif" afterPath="$PROJECT_DIR$/static/public-img/loading/loading_octopus.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/static/public-img/loading_tiny.gif" afterPath="$PROJECT_DIR$/static/public-img/loading/loading_tiny.gif" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app.js" afterPath="$PROJECT_DIR$/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_simulator/.idea/workspace.xml" afterPath="$PROJECT_DIR$/app_simulator/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_simulator/run/monkey_run.py" afterPath="$PROJECT_DIR$/app_simulator/run/monkey_run.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/cloud.js" afterPath="$PROJECT_DIR$/cloud.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/config/global.js" afterPath="$PROJECT_DIR$/config/global.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/tab-util.js" afterPath="$PROJECT_DIR$/lib/tab-util.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monkey/event-history.js" afterPath="$PROJECT_DIR$/monkey/event-history.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monkey/monkey-event.js" afterPath="$PROJECT_DIR$/monkey/monkey-event.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monkey/stat-event.js" afterPath="$PROJECT_DIR$/monkey/stat-event.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monkey/status-map.js" afterPath="$PROJECT_DIR$/monkey/status-map.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monkey/task_detail.js" afterPath="$PROJECT_DIR$/monkey/task_detail.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/monkey.js" afterPath="$PROJECT_DIR$/routes/monkey.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/monkey/js/event-history.js" afterPath="$PROJECT_DIR$/static/monkey/js/event-history.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/monkey/js/task-detail.js" afterPath="$PROJECT_DIR$/static/monkey/js/task-detail.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/public-js/tiny_util.js" afterPath="$PROJECT_DIR$/static/public-js/tiny_util.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/base/site-include.jade" afterPath="$PROJECT_DIR$/views/base/site-include.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/base/site-layout.jade" afterPath="$PROJECT_DIR$/views/base/site-layout.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/base/site-nav.jade" afterPath="$PROJECT_DIR$/views/base/site-nav.jade" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/monkey/event-history.jade" afterPath="$PROJECT_DIR$/views/monkey/event-history.jade" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/monkey/status-map.jade" afterPath="$PROJECT_DIR$/views/monkey/status-map.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/monkey/task-detail.jade" afterPath="$PROJECT_DIR$/views/monkey/task-detail.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/users/login.jade" afterPath="$PROJECT_DIR$/views/users/login.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/users/register.jade" afterPath="$PROJECT_DIR$/views/users/register.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/monkey/task-list.jade" afterPath="$PROJECT_DIR$/views/monkey/task-list.jade" />
     </list>
     <ignored path="newmonkey_tab.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,97 +37,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="activity-network.jade" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/monkey/activity-network.jade">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="345">
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="event-history.jade" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/monkey/event-history.jade">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="615">
+              <caret line="41" column="21" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="59" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="status-map.jade" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/monkey/status-map.jade">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="75">
+              <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="task-detail.jade" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/monkey/task-detail.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="67" column="45" selection-start-line="67" selection-start-column="31" selection-end-line="67" selection-end-column="45" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="monkey.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tests/monkey.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="6" column="31" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="31" />
-              <folding>
-                <element signature="e#0#42#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="task-list.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/monkey/js/task-list.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="58" column="25" selection-start-line="58" selection-start-column="12" selection-end-line="58" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="task-detail.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/monkey/js/task-detail.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="48">
-              <caret line="19" column="30" selection-start-line="19" selection-start-column="30" selection-end-line="19" selection-end-column="30" />
-              <folding>
-                <element signature="e#0#42#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="task-list.jade" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/monkey/task-list.jade">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="36" column="0" selection-start-line="36" selection-start-column="0" selection-end-line="36" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="event-history.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/monkey/event-history.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1803">
-              <caret line="140" column="19" selection-start-line="140" selection-start-column="19" selection-end-line="140" selection-end-column="19" />
-              <folding>
-                <element signature="e#0#42#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="task-list.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/monkey/task-list.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="723">
-              <caret line="57" column="33" selection-start-line="57" selection-start-column="33" selection-end-line="57" selection-end-column="33" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="tiny_util.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/static/public-js/tiny_util.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="23" selection-start-line="8" selection-start-column="9" selection-end-line="8" selection-end-column="23" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="monkey.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/routes/monkey.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="420">
-              <caret line="34" column="36" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="36" />
+            <state relative-caret-position="30">
+              <caret line="2" column="2" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -158,12 +80,59 @@
       <file leaf-file-name="site-layout.jade" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/base/site-layout.jade">
           <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="105">
+              <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="site-nav.jade" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/base/site-nav.jade">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="225">
+              <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity-network-full-screen.jade" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/monkey/activity-network-full-screen.jade">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="site-include.jade" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/base/site-include.jade">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="site-full-screen.jade" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/base/site-full-screen.jade">
+          <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="120">
               <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-              <folding>
-                <marker date="1474094187000" expanded="true" signature="198:233" ph="..." />
-                <marker date="1474094187000" expanded="true" signature="332:373" ph="..." />
-              </folding>
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="monkey.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/routes/monkey.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -211,9 +180,6 @@
         <option value="$PROJECT_DIR$/cloud.js" />
         <option value="$PROJECT_DIR$/lib/tab-util.js" />
         <option value="$PROJECT_DIR$/monkey/network-diagram.js" />
-        <option value="$PROJECT_DIR$/views/monkey/event-history.jade" />
-        <option value="$PROJECT_DIR$/views/monkey/status-map.jade" />
-        <option value="$PROJECT_DIR$/views/base/site-include.jade" />
         <option value="$PROJECT_DIR$/views/base/site-header.jade" />
         <option value="$PROJECT_DIR$/views/base/site-full-screen.jade" />
         <option value="$PROJECT_DIR$/views/monkey/activity-network-full-screen.jade" />
@@ -224,16 +190,19 @@
         <option value="$PROJECT_DIR$/static/monkey/js/activity-network.js" />
         <option value="$PROJECT_DIR$/monkey/task_detail.js" />
         <option value="$PROJECT_DIR$/views/monkey/activity-network.jade" />
-        <option value="$PROJECT_DIR$/views/base/site-nav.jade" />
         <option value="$PROJECT_DIR$/views/base/site-footer.jade" />
-        <option value="$PROJECT_DIR$/views/base/site-layout.jade" />
         <option value="$PROJECT_DIR$/static/public-js/tiny_util.js" />
         <option value="$PROJECT_DIR$/static/monkey/js/task-detail.js" />
         <option value="$PROJECT_DIR$/views/monkey/task-list.jade" />
         <option value="$PROJECT_DIR$/static/monkey/js/task-list.js" />
         <option value="$PROJECT_DIR$/monkey/event-history.js" />
-        <option value="$PROJECT_DIR$/routes/monkey.js" />
         <option value="$PROJECT_DIR$/monkey/task-list.js" />
+        <option value="$PROJECT_DIR$/views/base/site-nav.jade" />
+        <option value="$PROJECT_DIR$/views/monkey/event-history.jade" />
+        <option value="$PROJECT_DIR$/views/monkey/status-map.jade" />
+        <option value="$PROJECT_DIR$/views/base/site-include.jade" />
+        <option value="$PROJECT_DIR$/views/base/site-layout.jade" />
+        <option value="$PROJECT_DIR$/routes/monkey.js" />
       </list>
     </option>
   </component>
@@ -246,8 +215,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="425" />
-    <option name="y" value="54" />
+    <option name="x" value="429" />
+    <option name="y" value="129" />
     <option name="width" value="1732" />
     <option name="height" value="1100" />
   </component>
@@ -405,11 +374,47 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="monkey" />
+              <option name="myItemId" value="public-img" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="js" />
+              <option name="myItemId" value="logo" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="newmonkey_tab" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="newmonkey_tab" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public-img" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="newmonkey_tab" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="newmonkey_tab" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="static" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="monkey" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -437,34 +442,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="monkey" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="newmonkey_tab" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="newmonkey_tab" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="newmonkey_tab" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="newmonkey_tab" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -476,7 +453,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/third-party/vis/dist/vis.min.js" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/static/public-img/logo" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
@@ -486,13 +463,15 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/public-img" />
       <recent name="$PROJECT_DIR$/monkey" />
       <recent name="$PROJECT_DIR$/static/monkey/js" />
       <recent name="$PROJECT_DIR$/views/monkey" />
       <recent name="$PROJECT_DIR$/views/base" />
-      <recent name="$PROJECT_DIR$/lib" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/static/public-img/logo" />
+      <recent name="$PROJECT_DIR$/static/public-img/loading" />
       <recent name="$PROJECT_DIR$/views/base" />
       <recent name="$PROJECT_DIR$/views" />
     </key>
@@ -604,15 +583,15 @@
       <workItem from="1473778383050" duration="28907000" />
       <workItem from="1473907177259" duration="13034000" />
       <workItem from="1474005101795" duration="1341000" />
-      <workItem from="1474006500252" duration="21749000" />
+      <workItem from="1474006500252" duration="22914000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103254000" />
+    <option name="totallyTimeSpent" value="104419000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="425" y="54" width="1732" height="1100" extended-state="0" />
+    <frame x="429" y="129" width="1732" height="1100" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20046756" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -623,7 +602,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2936508" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32936507" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32936507" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3995749" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -652,13 +631,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/routes/users.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-42">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/public-js/global-var.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -846,14 +818,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/monkey/event-history.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -890,14 +854,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/monkey/status-map.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="13" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/monkey/js/activity-network.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1140">
@@ -916,70 +872,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/base/site-nav.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="52" selection-start-line="14" selection-start-column="52" selection-end-line="14" selection-end-column="52" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/monkey/activity-network.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="19" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/base/site-full-screen.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/base/site-include.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="0" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/monkey/activity-network-full-screen.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/views/base/site-footer.jade">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="120">
           <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/monkey/task-detail.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="67" column="45" selection-start-line="67" selection-start-column="31" selection-end-line="67" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/views/base/site-layout.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-          <folding>
-            <marker date="1474094187000" expanded="true" signature="198:233" ph="..." />
-            <marker date="1474094187000" expanded="true" signature="332:373" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1037,18 +934,95 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/monkey.js">
+    <entry file="file://$PROJECT_DIR$/monkey/task-list.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="34" column="36" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="36" />
+        <state relative-caret-position="93">
+          <caret line="15" column="20" selection-start-line="15" selection-start-column="20" selection-end-line="15" selection-end-column="20" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/monkey/task-list.js">
+    <entry file="file://$PROJECT_DIR$/views/base/site-full-screen.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="723">
-          <caret line="57" column="33" selection-start-line="57" selection-start-column="33" selection-end-line="57" selection-end-column="33" />
+        <state relative-caret-position="120">
+          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/base/site-nav.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="21" selection-start-line="15" selection-start-column="21" selection-end-line="15" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/monkey/activity-network-full-screen.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="17" selection-start-line="10" selection-start-column="17" selection-end-line="10" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/monkey/activity-network.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/monkey/task-detail.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="2" selection-start-line="2" selection-start-column="1" selection-end-line="2" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/monkey/event-history.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="41" column="21" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/static/public-img/logo/monkey-logo.gif">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/monkey/status-map.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/base/site-include.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/base/site-layout.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="13" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/monkey.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="18" column="39" selection-start-line="18" selection-start-column="39" selection-end-line="18" selection-end-column="39" />
           <folding />
         </state>
       </provider>
