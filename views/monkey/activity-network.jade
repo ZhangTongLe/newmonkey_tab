@@ -1,0 +1,26 @@
+script(type='text/javascript' src='/static/third-party/vis/dist/vis.min.js')
+link(rel='stylesheet', href='/static/third-party/vis/dist/vis.min.css')
+script(type='text/javascript' src='/static/monkey/js/activity-network.js')
+
+
+div#div_activity_network
+    hr
+    h4
+        | Activity-Event 拓补图
+        a#activity-net-full-screen(target="_blank")
+            span(style="margin-left: 15px; font-size: smaller")
+                | 全屏 &nbsp;
+                span.glyphicon.glyphicon-fullscreen(style="font-size: smaller")
+    hr(align='left' width='20%')
+    div#activity_network(style="width: 100%;")
+
+block append script
+    script.
+        var url_activity_net_full = '/monkey/NetGraphActivityFullScreen/?task_id=';
+        var para = {
+            is_click_to_use: true,
+            task_id: $('#task_id').text()
+        };
+
+        $('#activity-net-full-screen').attr('href', url_activity_net_full + para.task_id);
+        $('#activity_network').css('height', document.documentElement.clientHeight * 0.8);

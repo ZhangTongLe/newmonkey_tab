@@ -1,0 +1,14 @@
+doctype html
+html(style="min-height: 100%;")
+    block head
+        title= title
+        meta(name='viewport', content='width=device-width, initial-scale=1')
+        include ./site-include
+
+    body(style="min-height: 100%; position: relative;")
+        block css
+        .container
+            block content
+        block content_without_container
+        block footer
+        block script

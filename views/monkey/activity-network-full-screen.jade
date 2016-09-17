@@ -1,0 +1,27 @@
+extends ../base/site-full-screen
+
+block append css
+    style.
+        html, body {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+        }
+
+block append head
+    script(type='text/javascript' src='/static/third-party/vis/dist/vis.min.js')
+    link(rel='stylesheet', href='/static/third-party/vis/dist/vis.min.css')
+    script(type='text/javascript' src='/static/monkey/js/activity-network.js')
+
+
+block append content_without_container
+    div#div_activity_network(style="width: 80%; height: 100%; margin-left: 10%")
+        div#title(style="height: 50px")
+            h4 Activity-Event 拓补图
+            hr(align='left' width='20%')
+        div#activity_network(style="width: 80%; height: 100%; position: fixed; bottom: 0")
+
+block append script
+    span#para(style="display: none") #{JSON.stringify(para)}
+    script.
+        var para = JSON.parse($('#para').text());

@@ -8,7 +8,7 @@
 
 var url_do_filter = '/monkey/eventHistoryFilter/';
 var url_task_detail = '/monkey/taskDetail?task_id=';
-var table_name = 'event-history-table';
+var table_name = 'task-list-table';
 
 function init_table(){
     var $table = $('#'+table_name);
@@ -17,11 +17,7 @@ function init_table(){
         {field: 'task_id', title: '任务ID'},
         {field: 'product', title: '产品'},
         {field: 'version', title: 'App版本', sortable: true},
-        {field: 'device', title: '设备'},
-        {field: 'seq_no', title: '序号'},
-        {field: 'event_name', title: '事件'},
-        {field: 'pre_activity', title: 'Pre Activity'},
-        {field: 'next_activity', title: 'Next Activity'}
+        {field: 'device', title: '设备'}
     ];
 
     $table.bootstrapTable({
@@ -59,7 +55,8 @@ function do_filter() {
         data: {
             product: get_selector_val($('#product')),
             version: get_selector_val($('#version')),
-            device: get_selector_val($('#device'))
+            device: get_selector_val($('#device')),
+            distinct_task: true
         },
         success: function (resp) {
             console.log(resp);

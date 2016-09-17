@@ -38,7 +38,8 @@ function get_event_entity_identify(event_record) {
 var MonkeyEvent = {
     get_event_identify: get_event_identify,
     get_event_entity: get_event_entity,
-    get_event_entity_identify: get_event_entity_identify
+    get_event_entity_identify: get_event_entity_identify,
+    EventType: EventType
 };
 
 

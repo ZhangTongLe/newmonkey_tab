@@ -2,7 +2,9 @@
  * Created by kangtian on 16/9/12.
  */
 
+var G = require('./config/global');
 var express = require('express');
+var logger = require('morgan');
 var path = require('path');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
@@ -21,8 +23,12 @@ app.set('view engine', 'jade');
 
 app.use('/static', express.static('static'));
 
-// 加载云代码方法
-require('./cloud');
+// debug, show access. after static to not show static.
+console.log('IS_DEV: ' + G.is_dev());
+if (G.is_dev()) {
+    app.use(logger('dev'));
+}
+
 app.use(AV.express());
 
 // 加载 cookieSession 以支持 AV.User 的会话状态
@@ -52,13 +58,13 @@ app.use(function (req, res, next) {
     next(err);
 });
 
-// error handlers
 
+// error handlers
 // 如果是开发环境，则将异常堆栈输出到页面，方便开发调试
 if (app.get('env') === 'development') {
     app.use(function (err, req, res, next) {
         res.status(err.status || 500);
-        res.render('error', {
+        res.render('base/error', {
             message: err.message || err,
             error: err
         });
@@ -68,7 +74,7 @@ if (app.get('env') === 'development') {
 // 如果是非开发环境，则页面只输出简单的错误信息
 app.use(function (err, req, res, next) {
     res.status(err.status || 500);
-    res.render('error', {
+    res.render('base/error', {
         message: err.message || err,
         error: {}
     });

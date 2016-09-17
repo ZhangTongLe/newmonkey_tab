@@ -7,6 +7,8 @@ function hide_loading(elem_id){
 }
 
 function scroll_to_elem(elem_id, ms){
+    if (ms = undefined)
+        ms = 1000;
     $("html,body").animate({
         scrollTop: $("#"+elem_id).offset().top
     }, ms);

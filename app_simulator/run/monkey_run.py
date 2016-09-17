@@ -14,12 +14,13 @@ class MonkeyRunner(object):
         self.task_id = str(datetime.datetime.now()).replace(' ', '_')
         self.app = app
         self.app.version = random.choice(['1.0.2', '6.5.8', '6.5.5', '1.0.3'])
+        self.app.version = '1.0.2'
         self.device = random.choice(['Nexus5', 'MX4Pro', 'R819T', 'SM-G7106', 'GT-I9300'])
         self.device = 'MX4Pro'
         self.reporter = TabReporter()
 
     def start(self):
-        for seq_no in range(10):
+        for seq_no in range(200):
             event_object = self.random_event()
             event_object['seq_no'] = seq_no
             self.reporter.upload_event_history(event_object=event_object)

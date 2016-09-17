@@ -1,11 +1,11 @@
 extends ../base/site-layout
 
 block append head
-    script(src='/static/monkey/js/event-history.js')
+    script(src='/static/monkey/js/task-list.js')
 
 block content
     div.container
-        h1 Event History
+        h1 Task List
         hr
 
         #errMsg
@@ -44,5 +44,5 @@ block content
 
 
         div#div-table
-            table#event-history-table
+            table#task-list-table
 

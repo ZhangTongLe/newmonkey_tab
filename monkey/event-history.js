@@ -108,7 +108,7 @@ function reply_to_event_history_page(req, res, next) {
     function when_meta_info_ok() {
         var query = new AV.Query('EventHistory');
         query.limit(G.TAB_LIMIT);
-        query.find({sessionToken: req.sessionToken}).then(function (results) {
+        TabUtil.find(query, function (results) {
             res.render('monkey/event-history', {
                 title: 'Event History',
                 user: req.currentUser,
@@ -119,36 +119,46 @@ function reply_to_event_history_page(req, res, next) {
                 status: status,
                 errMsg: errMsg
             });
-        }, function (error) {
-            console.error(error);
         }).catch(next);
     }
 }
 
 function event_history_do_filter(req, res, next) {
-    var product = null, version = null, task_id = null;
-    if (req.body) {
-        product = req.body['product'];
-        version = req.body['version'];
-        device = req.body['device'];
+    try{
+        var product = null, version = null, task_id = null, distinct_task = null;
+        if (req.body) {
+            product = req.body['product'];
+            version = req.body['version'];
+            device = req.body['device'];
+            task_id = req.body['task_id'];
+            distinct_task = req.body['distinct_task'];
+        }
+        var query = new AV.Query('EventHistory');
+        if (product)
+            query.equalTo('product', product);
+        if (version)
+            query.equalTo('version', version);
+        if (device)
+            query.equalTo('device', device);
+        if (task_id)
+            query.equalTo('task_id', task_id);
+        if (distinct_task)
+            query.equalTo('seq_no', 0);
+
+        query.find({sessionToken: req.sessionToken});
+        TabUtil.find(query, function (records) {
+            var resp = {
+                status: 'ok',
+                data: records
+            };
+            HttpUtil.resp_json(res, resp);
+        }, function (error) {
+            throw error;
+        }).catch(next);
+    } catch (e){
+        console.log(e);
     }
-    var query = new AV.Query('EventHistory');
-    query.limit(G.TAB_LIMIT);
-    if (product)
-        query.equalTo('product', product);
-    if (version)
-        query.equalTo('version', version);
-    if (device)
-        query.equalTo('device', device);
-    query.find({sessionToken: req.sessionToken}).then(function (records) {
-        var resp = {
-            status: 'ok',
-            data: records
-        };
-        HttpUtil.resp_json(res, resp);
-    }, function (error) {
-        throw error;
-    }).catch(next);
+
 }
 
 
