@@ -11,18 +11,44 @@ function update_activity_network_with_records(records, para) {
 
     var node_map = {};
     var edge_index = 0;
+    var edge_map = {};
 
     for (var i = 0; i < records.length; i ++){
         var r = records[i];
+
         if (node_map[r['pre_activity']] == undefined){
-            nodes.add({id: i, title: r['pre_activity'], label: r['pre_activity']});
-            console.log(r['pre_activity']);
-            node_map[r['pre_activity']] = i;
-        } else {
-            ;
+            node_map[r['pre_activity']] = {id: i, title: r['pre_activity'], label: r['pre_activity'], value: 1};
         }
-        edges.add({id: edge_index ++, title: r['event_entity_identify'], from: node_map[r['pre_activity']], to: node_map[r['next_activity']], arrows: 'to'});
+        if (node_map[r['next_activity']] == undefined){
+            node_map[r['next_activity']] = {id: i, title: r['next_activity'], label: r['next_activity'], value: 1};
+        }
+
+        if (edge_map[r['event_entity_identify']] == undefined){
+            edge_map[r['event_entity_identify']] = {
+                id: edge_index ++, title: r['event_entity_identify'], value: 1,
+                from: node_map[r['pre_activity']].id, to: node_map[r['next_activity']].id, arrows: 'to',
+                seq_no: r['seq_no']
+            };
+        } else {
+            edge_map[r['event_entity_identify']].value += 1;
+        }
+
+        node_map[r['pre_activity']].value += 1;
+        node_map[r['next_activity']].value += 1;
     }
+
+    for (var key_node in node_map){
+        nodes.add(node_map[key_node]);
+    }
+
+    for (var key_edge in edge_map){
+        edges.add(edge_map[key_edge]);
+    }
+
+    console.log('edge_map + node_map');
+    console.log(edge_map);
+    console.log(node_map);
+
 
     var data = {
         nodes: nodes,
@@ -30,6 +56,8 @@ function update_activity_network_with_records(records, para) {
     };
 
     var options = {
+        height: '100%',
+        width: '100%',
         clickToUse: para.is_click_to_use == undefined ? false : para.is_click_to_use,
         nodes: {
             shape: 'dot',
@@ -44,7 +72,17 @@ function update_activity_network_with_records(records, para) {
             }
         },
         edges: {
+            arrows: {
+                to: {
+                    enabled: true,
+                    scaleFactor: 0.4
+                }
+            },
             font: {align: 'middle', size: 8},
+            scaling: {
+                min: 1,
+                max: 5
+            },
             color:{inherit:true},
             width: 0.15,
             smooth: {
