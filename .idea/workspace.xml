@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e0ac790-8425-4a9b-b228-7cf9d5bf4db1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monkey/monkey-util.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_simulator/.idea/workspace.xml" afterPath="$PROJECT_DIR$/app_simulator/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monkey/event-history.js" afterPath="$PROJECT_DIR$/monkey/event-history.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monkey/status-map.js" afterPath="$PROJECT_DIR$/monkey/status-map.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="newmonkey_tab.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -59,14 +55,24 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="event-history.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="event-history.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/monkey/event-history.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="89" column="40" selection-start-line="89" selection-start-column="40" selection-end-line="89" selection-end-column="40" />
+            <state relative-caret-position="360">
+              <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -86,7 +92,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/static/public-js/global-var.js" />
         <option value="$PROJECT_DIR$/routes/stat.js" />
         <option value="$PROJECT_DIR$/views/stat/status-map.jade" />
         <option value="$PROJECT_DIR$/cloud_func/aio.js" />
@@ -137,6 +142,7 @@
         <option value="$PROJECT_DIR$/monkey/monkey-util.js" />
         <option value="$PROJECT_DIR$/monkey/status-map.js" />
         <option value="$PROJECT_DIR$/monkey/event-history.js" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -223,20 +229,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="views" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="monkey" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="newmonkey_tab" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="newmonkey_tab" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -381,12 +373,12 @@
       <workItem from="1473778383050" duration="28907000" />
       <workItem from="1473907177259" duration="13034000" />
       <workItem from="1474005101795" duration="1341000" />
-      <workItem from="1474006500252" duration="36773000" />
+      <workItem from="1474006500252" duration="36934000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="118278000" />
+    <option name="totallyTimeSpent" value="118439000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="757" y="174" width="1732" height="1100" extended-state="0" />
@@ -429,13 +421,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/static/third-party/select2/dist/js/i18n/ar.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/third-party/sprintf/src/sprintf.js" />
     <entry file="file://$PROJECT_DIR$/cloud_func/aio.js">
       <provider selected="true" editor-type-id="text-editor">
@@ -824,11 +809,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/monkey/event-history.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="89" column="40" selection-start-line="89" selection-start-column="40" selection-end-line="89" selection-end-column="40" />
+        <state relative-caret-position="360">
+          <caret line="92" column="0" selection-start-line="92" selection-start-column="0" selection-end-line="92" selection-end-column="0" />
           <folding>
             <element signature="e#0#42#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
