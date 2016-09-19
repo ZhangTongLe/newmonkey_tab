@@ -7,7 +7,7 @@ var G = require('../config/global');
 var HttpUtil = require('../lib/http-util');
 var TabUtil = require('../lib/tab-util');
 var MonkeyEvent = require('./monkey-event');
-var EventHistory = require('./event-history');
+var MonkeyUtil = require('./monkey-util');
 
 
 function sync_status_map(event_records) {
@@ -39,7 +39,7 @@ function sync_one_event_record(r) {
         TabUtil.save(status_map);
     }
     else{
-        EventHistory.get_query_event_pre(r.get('task_id'), r.get('seq_no'), function (event_pre) {
+        MonkeyUtil.get_query_event_pre(r.get('task_id'), r.get('seq_no'), function (event_pre) {
             if (event_pre) {
                 status_map.set('pre_activity', event_pre.get('pre_activity'));
                 TabUtil.save(status_map);    // save.

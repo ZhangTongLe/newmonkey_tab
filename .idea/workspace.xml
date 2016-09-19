@@ -2,17 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e0ac790-8425-4a9b-b228-7cf9d5bf4db1" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monkey/monkey-util.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_simulator/.idea/workspace.xml" afterPath="$PROJECT_DIR$/app_simulator/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_simulator/run/monkey_run.py" afterPath="$PROJECT_DIR$/app_simulator/run/monkey_run.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monkey/event-history.js" afterPath="$PROJECT_DIR$/monkey/event-history.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monkey/net-graph.js" afterPath="$PROJECT_DIR$/monkey/net-graph.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monkey/stat-event.js" afterPath="$PROJECT_DIR$/monkey/stat-event.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monkey/status-map.js" afterPath="$PROJECT_DIR$/monkey/status-map.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/monkey/js/activity-network.js" afterPath="$PROJECT_DIR$/static/monkey/js/activity-network.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/monkey/event-history.jade" afterPath="$PROJECT_DIR$/views/monkey/event-history.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/monkey/status-map.jade" afterPath="$PROJECT_DIR$/views/monkey/status-map.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/monkey/task-list.jade" afterPath="$PROJECT_DIR$/views/monkey/task-list.jade" />
     </list>
     <ignored path="newmonkey_tab.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -48,8 +42,18 @@
       <file leaf-file-name="status-map.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/monkey/status-map.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+            <state relative-caret-position="0">
+              <caret line="24" column="30" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="30" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="monkey-util.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/monkey/monkey-util.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="360">
+              <caret line="24" column="14" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -58,8 +62,8 @@
       <file leaf-file-name="event-history.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/monkey/event-history.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="372">
-              <caret line="84" column="23" selection-start-line="84" selection-start-column="23" selection-end-line="84" selection-end-column="23" />
+            <state relative-caret-position="315">
+              <caret line="89" column="40" selection-start-line="89" selection-start-column="40" selection-end-line="89" selection-end-column="40" />
               <folding>
                 <element signature="e#0#42#0" expanded="false" />
               </folding>
@@ -82,8 +86,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/views/stat.jade" />
-        <option value="$PROJECT_DIR$/views/site_header.jade" />
         <option value="$PROJECT_DIR$/static/public-js/global-var.js" />
         <option value="$PROJECT_DIR$/routes/stat.js" />
         <option value="$PROJECT_DIR$/views/stat/status-map.jade" />
@@ -131,6 +133,8 @@
         <option value="$PROJECT_DIR$/views/monkey/status-map.jade" />
         <option value="$PROJECT_DIR$/monkey/monkey-event.js" />
         <option value="$PROJECT_DIR$/monkey/net-graph.js" />
+        <option value="$PROJECT_DIR$/monkey/utils.js" />
+        <option value="$PROJECT_DIR$/monkey/monkey-util.js" />
         <option value="$PROJECT_DIR$/monkey/status-map.js" />
         <option value="$PROJECT_DIR$/monkey/event-history.js" />
       </list>
@@ -145,8 +149,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="530" />
-    <option name="y" value="129" />
+    <option name="x" value="757" />
+    <option name="y" value="174" />
     <option name="width" value="1732" />
     <option name="height" value="1100" />
   </component>
@@ -257,8 +261,8 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/static/public-img" />
       <recent name="$PROJECT_DIR$/monkey" />
+      <recent name="$PROJECT_DIR$/static/public-img" />
       <recent name="$PROJECT_DIR$/static/monkey/js" />
       <recent name="$PROJECT_DIR$/views/monkey" />
       <recent name="$PROJECT_DIR$/views/base" />
@@ -377,15 +381,15 @@
       <workItem from="1473778383050" duration="28907000" />
       <workItem from="1473907177259" duration="13034000" />
       <workItem from="1474005101795" duration="1341000" />
-      <workItem from="1474006500252" duration="34738000" />
+      <workItem from="1474006500252" duration="36773000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="116243000" />
+    <option name="totallyTimeSpent" value="118278000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="530" y="129" width="1732" height="1100" extended-state="0" />
+    <frame x="757" y="174" width="1732" height="1100" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20046756" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -425,13 +429,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/views/base/error.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="22" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/static/third-party/select2/dist/js/i18n/ar.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="15">
@@ -809,18 +806,26 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/monkey/monkey-util.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="24" column="14" selection-start-line="24" selection-start-column="4" selection-end-line="24" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/monkey/status-map.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="39" column="5" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+        <state relative-caret-position="0">
+          <caret line="24" column="30" selection-start-line="24" selection-start-column="9" selection-end-line="24" selection-end-column="30" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/monkey/event-history.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="84" column="23" selection-start-line="84" selection-start-column="23" selection-end-line="84" selection-end-column="23" />
+        <state relative-caret-position="315">
+          <caret line="89" column="40" selection-start-line="89" selection-start-column="40" selection-end-line="89" selection-end-column="40" />
           <folding>
             <element signature="e#0#42#0" expanded="false" />
           </folding>

@@ -77,16 +77,17 @@ function get_query_event_pre(task_id, seq_no, callback) {
 
 
 function sync_one_event_record(r) {
-    var task_id = r.get('task_id');
-    get_query_event_pre(r.get('task_id'), r.get('seq_no'), function (pre) {
-        if (pre){
-            pre.disableAfterHook();
-            pre.set('next_activity', r.get('pre_activity'));
-            pre.save();
-        }
-        StatusMap.sync_one_event_record(r);
-        EnumMeta.sync_one_event_record(r);
-    });
+    setTimeout(function (r) {
+        get_query_event_pre(r.get('task_id'), r.get('seq_no'), function (pre) {
+            if (pre){
+                pre.disableAfterHook();
+                pre.set('next_activity', r.get('pre_activity'));
+                pre.save();
+            }
+            StatusMap.sync_one_event_record(r);
+            EnumMeta.sync_one_event_record(r);
+        });
+    }, 3000, r);    // 延后 3 秒调用, 防止并发乱序.
 }
 
 
