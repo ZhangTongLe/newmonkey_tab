@@ -60,11 +60,34 @@ function sync_event_history(use_last_time) {
 }
 
 
-function sync_one_event_record(r) {
-    StatusMap.sync_one_event_record(r);
-    EnumMeta.sync_one_event_record(r);
+function get_query_event_pre(task_id, seq_no, callback) {
+    var query_pre = new AV.Query('EventHistory')
+        .equalTo('task_id', task_id)
+        .lessThan('seq_no', seq_no)
+        .descending('seq_no');
+    query_pre.limit(1);
+    TabUtil.find(query_pre, function (records) {
+        if (records.length > 0){
+            callback(records[0]);
+        } else {
+            callback(null);
+        }
+    }, callback(null));
 }
 
+
+function sync_one_event_record(r) {
+    var task_id = r.get('task_id');
+    get_query_event_pre(r.get('task_id'), r.get('seq_no'), function (pre) {
+        if (pre){
+            pre.disableAfterHook();
+            pre.set('next_activity', r.get('pre_activity'));
+            pre.save();
+        }
+        StatusMap.sync_one_event_record(r);
+        EnumMeta.sync_one_event_record(r);
+    });
+}
 
 
 function reply_to_event_history_page(req, res, next) {
@@ -144,6 +167,7 @@ function event_history_do_filter(req, res, next) {
             query.equalTo('task_id', task_id);
         if (distinct_task)
             query.equalTo('seq_no', 0);
+        query.descending('createdAt');
 
         query.find({sessionToken: req.sessionToken});
         TabUtil.find(query, function (records) {
@@ -172,6 +196,7 @@ function reply_to_sync_event_history(req, res, next) {
 
 var EventHistory = {
     sync_event_history: sync_event_history,
+    get_query_event_pre: get_query_event_pre,
     sync_one_event_record: sync_one_event_record,
     event_history_do_filter: event_history_do_filter,
     reply_to_event_history_page: reply_to_event_history_page,
@@ -180,3 +205,4 @@ var EventHistory = {
 
 
 module.exports = EventHistory;
+

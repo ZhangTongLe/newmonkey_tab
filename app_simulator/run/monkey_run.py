@@ -47,6 +47,7 @@ class MonkeyRunner(object):
             next_activity='',
         ))
         event_object['event_time'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
+        # event_object['event_time'] = datetime.datetime.now()
         event_object['product'] = self.app.identify
         event_object['version'] = self.app.version
         event_object['task_id'] = self.task_id

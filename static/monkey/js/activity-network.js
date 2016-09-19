@@ -10,17 +10,18 @@ function update_activity_network_with_records(records, para) {
     var edges = new vis.DataSet({});
 
     var node_map = {};
-    var edge_index = 0;
+    var node_index = 0;
     var edge_map = {};
+    var edge_index = 0;
 
     for (var i = 0; i < records.length; i ++){
         var r = records[i];
 
         if (node_map[r['pre_activity']] == undefined){
-            node_map[r['pre_activity']] = {id: i, title: r['pre_activity'], label: r['pre_activity'], value: 1};
+            node_map[r['pre_activity']] = {id: node_index ++, title: r['pre_activity'], label: r['pre_activity'], value: 1};
         }
         if (node_map[r['next_activity']] == undefined){
-            node_map[r['next_activity']] = {id: i, title: r['next_activity'], label: r['next_activity'], value: 1};
+            node_map[r['next_activity']] = {id: node_index ++, title: r['next_activity'], label: r['next_activity'], value: 1};
         }
 
         if (edge_map[r['event_entity_identify']] == undefined){
@@ -48,7 +49,6 @@ function update_activity_network_with_records(records, para) {
     console.log('edge_map + node_map');
     console.log(edge_map);
     console.log(node_map);
-
 
     var data = {
         nodes: nodes,

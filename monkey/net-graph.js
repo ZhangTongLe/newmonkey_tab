@@ -26,8 +26,6 @@ function event_history_do_filter(req, res, next) {
     if (task_id)
         query.equalTo('task_id', task_id);
 
-    console.log(task_id);
-
     query.find({sessionToken: req.sessionToken});
     TabUtil.find(query, function (records) {
         records.forEach(function (r, index, records) {

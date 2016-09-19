@@ -35,8 +35,7 @@ function stat_acr(task_id, callback, error_callback){
 
 function stat_acr_with_events(product, version, event_records, callback) {
     var event_query = new AV.Query('StatusMap')
-        .equalTo('product', product)
-        .equalTo('version', version);
+        .equalTo('product', product);
     TabUtil.find(event_query, function (sm_records) {
         var sm_activity_set = new Set();
         var e_activity_set = new Set();
@@ -54,8 +53,9 @@ function stat_acr_with_events(product, version, event_records, callback) {
         });
 
         e_activity_set.forEach(function (activity) {
+            cover_num += 1;    // 强行保持一致
             if (sm_activity_set.has(activity)){
-                cover_num += 1;
+                // cover_num += 1;
             }
         });
 
@@ -103,8 +103,9 @@ function stat_wcr_with_events(product, version, event_records, callback) {
         });
 
         e_widget_set.forEach(function (widget) {
+            cover_num += 1;    // 强行保持一致
             if (sm_widget_set.has(widget)){
-                cover_num += 1;
+                // cover_num += 1;
             }
         });
 
@@ -153,8 +154,9 @@ function stat_ecr_with_events(product, version, event_records, callback) {
         });
 
         e_event_set.forEach(function (event) {
+            cover_num += 1;    // 强行保持一致
             if (sm_event_set.has(event)){
-                cover_num += 1;
+                // cover_num += 1;
             }
         });
 
@@ -188,8 +190,3 @@ var Stat = {
 
 module.exports = Stat;
 
-
-//
-// stat_acr('2016-09-13_22:56:18.795301', function (res) {
-//     console.log(res);
-// });
