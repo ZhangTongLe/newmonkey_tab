@@ -1,0 +1,82 @@
+extends ../base/site-layout
+
+block append head
+    script(src='/static/monkey/js/stat-coverage.js')
+
+block content
+    h3#title Version Detail
+    hr
+
+    #errMsg
+        if errMsg
+            pre= errMsg
+
+    div
+        div(style="padding: 0;")
+            dl.dl-horizontal(style="margin-bottom: 5px")
+                dt(style="text-align: left")= '产品'
+                dd#product= product
+
+        div(style="padding: 0;")
+            dl.dl-horizontal(style="margin-bottom: 5px")
+                dt(style="text-align: left")= '版本'
+                dd#version= version
+
+        div(style="padding: 0;")
+            dl.dl-horizontal(style="margin-bottom: 5px")
+                dt(style="text-align: left")= 'Activity 覆盖率'
+                dd#task_acr= 'Loading ...'
+
+        div(style="padding: 0;")
+            dl.dl-horizontal(style="margin-bottom: 5px")
+                dt(style="text-align: left")= '控件 覆盖率'
+                dd#task_wcr= 'Loading ...'
+
+            div(style="padding: 0;")
+                dl.dl-horizontal(style="margin-bottom: 5px")
+                    dt(style="text-align: left")= '事件 覆盖率'
+                    dd#task_ecr= 'Loading ...'
+
+        hr
+        div#div_task_activity
+            div
+                button#btn_task_activity(type=button style="width: 200px; text-align: left" class='btn btn-info', data-toggle="collapse", data-target="#div_task_activity_list")
+                    span.glyphicon.glyphicon-list
+                    | &nbsp;&nbsp; 查看 Activity 详情
+                div#div_task_activity_list(style="padding: 0;", class='collapse out')
+                    h5 已覆盖 Activity
+                    pre#cover_activity_list(style="margin-left: 30px")
+                    div#div_sm_activity_list(style="padding: 0; margin: 0")
+                        hr
+                        h5 所有 Activity
+                        pre#sm_activity_list(style="margin-left: 30px")
+
+            hr(align='left' width='20%')
+            div
+                button#btn_task_widget(type=button style="width: 200px; text-align: left" class='btn btn-info', data-toggle="collapse", data-target="#div_task_widget_list")
+                    span.glyphicon.glyphicon-list
+                    | &nbsp;&nbsp; 查看 Widget 详情
+                div#div_task_widget_list(style="padding: 0;", class='collapse out')
+                    h5 已覆盖 Widget
+                    pre#cover_widget_list(style="margin-left: 30px")
+                    div#div_sm_widget_list(style="padding: 0; margin: 0")
+                        hr
+                        h5 所有 Widget
+                        pre#sm_widget_list(style="margin-left: 30px")
+
+                hr(align='left' width='20%')
+                div
+                    button#btn_task_event(type=button style="width: 200px; text-align: left" class='btn btn-info', data-toggle="collapse", data-target="#div_task_event_list")
+                        span.glyphicon.glyphicon-list
+                        | &nbsp;&nbsp; 查看 Event 详情
+                    div#div_task_event_list(style="padding: 0;", class='collapse out')
+                        h5 已覆盖 Event
+                        pre#cover_event_list(style="margin-left: 30px")
+                        div#div_sm_event_list(style="padding: 0; margin: 0")
+                            hr
+                            h5 所有 Event
+                            pre#sm_event_list(style="margin-left: 30px")
+
+block append script
+    script.
+        var page_name = "version_detail";

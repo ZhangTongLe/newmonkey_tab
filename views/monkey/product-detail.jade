@@ -1,0 +1,16 @@
+extends ../base/site-layout
+
+block append head
+    script(src='/static/monkey/js/stat-coverage.js')
+
+block content
+    div.container
+        h1 Product Detail
+        hr
+
+        #errMsg
+            if errMsg
+                pre= errMsg
+
+
+        div

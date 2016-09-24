@@ -40,6 +40,7 @@ function get_selector_val($select) {
 
 
 function do_filter() {
+    show_loading('div_loading');
     var $table = $('#'+table_name);
     $.ajax({
         url: url_do_filter,
@@ -64,11 +65,7 @@ function do_filter() {
 
 function init_select2() {
     $('.select2').select2({
-        minimumResultsForSearch: 7,
-        placeholder: {
-            id: "1",
-            placeholder: "Select an option"
-        }
+        minimumResultsForSearch: 7
     })
 }
 

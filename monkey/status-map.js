@@ -8,7 +8,7 @@ var HttpUtil = require('../lib/http-util');
 var TabUtil = require('../lib/tab-util');
 var MonkeyEvent = require('./monkey-event');
 var MonkeyUtil = require('./monkey-util');
-
+var DsUtil = require('../lib/ds_util');
 
 function sync_status_map(event_records) {
     if (event_records.length == 0)
@@ -27,24 +27,28 @@ function sync_one_event_record(r) {
     var status_map = new StatusMap();
     status_map.set('product', r.get('product'));
     status_map.set('version', r.get('version'));
-    status_map.set('event_name', r.get('event_name'));
-    status_map.set('event_data', r.get('event_data'));
-    status_map.set('event_identify', MonkeyEvent.get_event_identify(r));
-    status_map.set('event_entity', MonkeyEvent.get_event_entity(r));
-    status_map.set('event_entity_identify', MonkeyEvent.get_event_entity_identify(r));
-    status_map.set('next_activity', r.get('pre_activity'));    // 使用 afterSave 调用方式, 需要 seq_no 向前搜索
-    if (r.get('next_activity')){
+    if (r.get('next_activity')) {
+        status_map.set('event_name', r.get('event_name'));
+        status_map.set('event_data', r.get('event_data'));
+        status_map.set('event_identify', MonkeyEvent.get_event_identify(r));
+        status_map.set('event_entity', MonkeyEvent.get_event_entity(r));
+        status_map.set('event_entity_identify', MonkeyEvent.get_event_entity_identify(r));
+        status_map.set('pre_activity', r.get('pre_activity'));
         status_map.set('next_activity', r.get('next_activity'));
         status_map.set('event_entity', MonkeyEvent.get_event_entity(r));
         TabUtil.save(status_map);
     }
-    else{
+    else {
+        status_map.set('next_activity', r.get('pre_activity'));    // 使用 afterSave 调用方式, 需要 seq_no 向前搜索
         MonkeyUtil.get_query_event_pre(r.get('task_id'), r.get('seq_no'), function (event_pre) {
             if (event_pre) {
+                status_map.set('event_name', event_pre.get('event_name'));
+                status_map.set('event_data', event_pre.get('event_data'));
+                status_map.set('event_identify', MonkeyEvent.get_event_identify(event_pre));
+                status_map.set('event_entity', MonkeyEvent.get_event_entity(event_pre));
+                status_map.set('event_entity_identify', MonkeyEvent.get_event_entity_identify(event_pre));
                 status_map.set('pre_activity', event_pre.get('pre_activity'));
                 TabUtil.save(status_map);    // save.
-            } else {
-                ;    // seq_no = 0 不需要保存.
             }
         });
     }
@@ -61,29 +65,42 @@ function reply_to_status_map_page(req, res, next) {
     var product_list = [];
     var version_list = [];
 
-    // query product
-    var product_query = new AV.Query('EnumMeta').equalTo('key_first', 'product').equalTo('key_second', null);
-    TabUtil.find(product_query, function (records) {
+    var query_tm = new AV.Query('TaskMeta');
+    query_tm.select('product', 'version', 'device');
+    query_tm.descending('createdAt');
+    TabUtil.find(query_tm, function (records) {
         records.forEach(function (r) {
-            product_list.push(r.get('value_str'));
+            product_list.push(r.get('product'));
+            version_list.push(r.get('version'));
         });
-
-        // query version
-        var product_version_query = new AV.Query('EnumMeta').equalTo('key_first', 'product_version');
-        TabUtil.find(product_version_query, function (records) {
-            records.forEach(function (r) {
-                version_list.push(r.get('value_str'));
-            });
-
-            // finish query ...
-            when_meta_info_ok();
-        });
+        product_list = DsUtil.list_distinct(product_list);
+        version_list = DsUtil.list_distinct(version_list);
+        when_meta_info_ok();
     });
 
+    // Disable EnumMeta, 耗费请求数过多
+    // // query product
+    // var product_query = new AV.Query('EnumMeta').equalTo('key_first', 'product').equalTo('key_second', null);
+    // TabUtil.find(product_query, function (records) {
+    //     records.forEach(function (r) {
+    //         product_list.push(r.get('value_str'));
+    //     });
+    //
+    //     // query version
+    //     var product_version_query = new AV.Query('EnumMeta').equalTo('key_first', 'product_version');
+    //     TabUtil.find(product_version_query, function (records) {
+    //         records.forEach(function (r) {
+    //             version_list.push(r.get('value_str'));
+    //         });
+    //
+    //         // finish query ...
+    //         when_meta_info_ok();
+    //     });
+    // });
+
     function when_meta_info_ok() {
-        var query = new AV.Query('StatusMap');
-        query.limit(G.TAB_LIMIT);
-        query.find({sessionToken: req.sessionToken}).then(function (results) {
+        var query_sm = new AV.Query('StatusMap');
+        TabUtil.find(query_sm, function (results) {
             res.render('monkey/status-map', {
                 title: 'Status Map',
                 user: req.currentUser,
@@ -93,9 +110,7 @@ function reply_to_status_map_page(req, res, next) {
                 status: status,
                 errMsg: errMsg
             });
-        }, function (error) {
-            console.error(error);
-        }).catch(next);
+        });
     }
 }
 
@@ -111,15 +126,13 @@ function status_map_do_filter(req, res, next) {
         query.equalTo('product', product);
     if (version)
         query.equalTo('version', version);
-    query.find({sessionToken: req.sessionToken}).then(function (records) {
+    TabUtil.find(query, function (records) {
         var resp = {
             status: 'ok',
             data: records
         };
         HttpUtil.resp_json(res, resp);
-    }, function (error) {
-        throw error;
-    }).catch(next);
+    });
 }
 
 

@@ -2,48 +2,24 @@
  * Created by kangtian on 16/9/16.
  */
 
-var url_get_task_records = '/monkey/NetGraphFilterEvent/';
+var url_get_task_records = '/monkey/NetGraphAENodeEdge/';
 
 
-function update_activity_network_with_records(records, para) {
+function update_activity_network_with_records(node_edge) {
     var nodes = new vis.DataSet({});
     var edges = new vis.DataSet({});
 
-    var node_map = {};
-    var node_index = 0;
-    var edge_map = {};
-    var edge_index = 0;
-
-    for (var i = 0; i < records.length; i ++){
-        var r = records[i];
-
-        if (node_map[r['pre_activity']] == undefined){
-            node_map[r['pre_activity']] = {id: node_index ++, title: r['pre_activity'], label: r['pre_activity'], value: 1};
-        }
-        if (node_map[r['next_activity']] == undefined){
-            node_map[r['next_activity']] = {id: node_index ++, title: r['next_activity'], label: r['next_activity'], value: 1};
-        }
-
-        if (edge_map[r['event_entity_identify']] == undefined){
-            edge_map[r['event_entity_identify']] = {
-                id: edge_index ++, title: r['event_entity_identify'], value: 1,
-                from: node_map[r['pre_activity']].id, to: node_map[r['next_activity']].id, arrows: 'to',
-                seq_no: r['seq_no']
-            };
-        } else {
-            edge_map[r['event_entity_identify']].value += 1;
-        }
-
-        node_map[r['pre_activity']].value += 1;
-        node_map[r['next_activity']].value += 1;
-    }
+    var node_map = node_edge.node_map;
+    var edge_map = node_edge.edge_map;
 
     for (var key_node in node_map){
-        nodes.add(node_map[key_node]);
+        if (node_map.hasOwnProperty(key_node))
+            nodes.add(node_map[key_node]);
     }
 
     for (var key_edge in edge_map){
-        edges.add(edge_map[key_edge]);
+        if (edge_map.hasOwnProperty(key_edge))
+            edges.add(edge_map[key_edge]);
     }
 
     console.log('edge_map + node_map');
@@ -114,6 +90,7 @@ function update_activity_network_with_records(records, para) {
 function update_activity_network(para) {
     if (para.task_id == undefined)
         para.task_id = $('#task_id').val();
+    show_loading('div_loading');
     $.ajax({
         url: url_get_task_records,
         type: "POST",
@@ -122,9 +99,10 @@ function update_activity_network(para) {
             task_id: para.task_id
         },
         success: function (resp) {
+            hide_loading('div_loading');
             console.log(resp);
             if (resp.status == 'ok') {
-                update_activity_network_with_records(resp.data, para);
+                update_activity_network_with_records(resp.data);
             } else {
                 alert(resp.data);
             }

@@ -3,13 +3,14 @@
  */
 
 var AV = require('../lib/tab-login');
+var TabUtil = require('../lib/tab-util');
 
 
-var TestObject = AV.Object.extend('TestObject');
-var testObject = new TestObject();
-testObject.save({
-    words: 'Hello World!'
-}).then(function(object) {
-    console.log('LeanCloud Rocks!');
+var query = new AV.Query('EventHistory');
+query.lessThan('createdAt', new Date());
+TabUtil.find_all(query, function (records) {
+    console.log(records.length);
+}, function () {
+    console.log('failed');
 });
 

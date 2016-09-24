@@ -5,15 +5,12 @@
 var G = require('./config/global');
 var express = require('express');
 var logger = require('morgan');
+
 var path = require('path');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var AV = require('leanengine');
 
-require('./cloud_func/aio');    // cloud function.
-
-var users = require('./routes/users');
-var monkey = require('./routes/monkey');
 
 var app = express();
 
@@ -42,9 +39,15 @@ app.use(methodOverride('_method'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-// 可以将一类的路由单独保存在一个文件中
+// Routes, 可以将一类的路由单独保存在一个文件中
+var users = require('./routes/users');
+var monkey = require('./routes/monkey');
+var site = require('./routes/site');
+
 app.use('/users', users);
 app.use('/monkey', monkey);
+app.use('/site', site);
+
 
 app.get('/', function (req, res) {
     res.redirect('/monkey');

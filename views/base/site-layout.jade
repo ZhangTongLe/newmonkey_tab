@@ -8,8 +8,9 @@ html
     block css
     body
         block nav
-            include ./site-nav
-        .container(style="padding: 0;")
+            include ./site-nav-materialize
+        include ./site-loading
+        .container.wide-container(style="padding: 0;")
             block content
         block content_without_container
         block footer

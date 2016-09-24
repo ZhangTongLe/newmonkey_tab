@@ -1,0 +1,29 @@
+.icon-block {
+    padding: 0 15px;
+}
+
+.icon-block .material-icons {
+    font-size: inherit;
+}
+
+.wide-container {
+    width: 85% !important;
+}
+
+@media only screen and (min-width: 1600px) {
+    .hide-on-large-only {
+        display: none !important;
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    .show-on-huge-only {
+        display: block !important;
+    }
+}
+
+@media only screen and (max-width: 1600px) {
+    .show-on-huge-only {
+        display: none !important;
+    }
+}

@@ -14,11 +14,11 @@ function init_table(){
     var $table = $('#'+table_name);
     $table.bootstrapTable('destroy');
     var columns = [
-        {field: 'task_id', title: '任务ID'},
+        {field: 'task_id', title: '任务ID', sortable: true},
         {field: 'product', title: '产品'},
         {field: 'version', title: 'App版本', sortable: true},
         {field: 'device', title: '设备'},
-        {field: 'seq_no', title: '序号'},
+        {field: 'seq_no', title: '序号', sortable: true},
         {field: 'event_name', title: '事件'},
         {field: 'pre_activity', title: 'Pre Activity'},
         {field: 'next_activity', title: 'Next Activity'}
@@ -51,6 +51,7 @@ function get_selector_val($select) {
 
 
 function do_filter() {
+    show_loading('div_loading');
     var $table = $('#'+table_name);
     $.ajax({
         url: url_do_filter,
@@ -76,11 +77,7 @@ function do_filter() {
 
 function init_select2() {
     $('.select2').select2({
-        minimumResultsForSearch: 7,
-        placeholder: {
-            id: "1",
-            placeholder: "Select an option"
-        }
+        minimumResultsForSearch: 7
     })
 }
 

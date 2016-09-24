@@ -9,6 +9,8 @@ var TabUtil = require('../lib/tab-util');
 
 var StatusMap = require('./status-map');
 var EnumMeta = require('./enum-meta');
+var TaskMeta = require('./task-meta');
+var DsUtil = require('../lib/ds_util');
 
 var APP_DATA_EVENT_SYNC_TIME = 'event_history_sync_time';
 var AppDate = AV.Object.extend('AppData');
@@ -77,17 +79,20 @@ function get_query_event_pre(task_id, seq_no, callback) {
 
 
 function sync_one_event_record(r) {
+    // 延后 3 秒调用, 防止并发乱序.
     setTimeout(function (r) {
         get_query_event_pre(r.get('task_id'), r.get('seq_no'), function (pre) {
             if (pre){
                 pre.disableAfterHook();
                 pre.set('next_activity', r.get('pre_activity'));
-                pre.save();
+                pre.save().then(function () {
+                    StatusMap.sync_one_event_record(pre);
+                    TaskMeta.sync_one_event_record(pre);
+                    // EnumMeta.sync_one_event_record(pre);    // Disable EnumMeta, 耗费请求数过多
+                });
             }
-            StatusMap.sync_one_event_record(r);
-            EnumMeta.sync_one_event_record(r);
         });
-    }, 3000, r);    // 延后 3 秒调用, 防止并发乱序.
+    }, 3000, r);
 }
 
 
@@ -102,32 +107,48 @@ function reply_to_event_history_page(req, res, next) {
     var version_list = [];
     var device_list = [];
 
-    // query product
-    var product_query = new AV.Query('EnumMeta').equalTo('key_first', 'product').equalTo('key_second', null);
-    TabUtil.find(product_query, function (records) {
+    var query = new AV.Query('TaskMeta');
+    query.select('product', 'version', 'device');
+    query.descending('createdAt');
+    TabUtil.find(query, function (records) {
         records.forEach(function (r) {
-            product_list.push(r.get('value_str'));
+            product_list.push(r.get('product'));
+            version_list.push(r.get('version'));
+            device_list.push(r.get('device'));
         });
-
-        // query version
-        var product_version_query = new AV.Query('EnumMeta').equalTo('key_first', 'product_version');
-        TabUtil.find(product_version_query, function (records) {
-            records.forEach(function (r) {
-                version_list.push(r.get('value_str'));
-            });
-
-            // query device
-            var device_query = new AV.Query('EnumMeta').equalTo('key_first', 'device');
-            TabUtil.find(device_query, function (records) {
-                records.forEach(function (r) {
-                    device_list.push(r.get('value_str'));
-                });
-
-                // finish query ...
-                when_meta_info_ok();
-            });
-        });
+        product_list = DsUtil.list_distinct(product_list);
+        version_list = DsUtil.list_distinct(version_list);
+        device_list = DsUtil.list_distinct(device_list);
+        when_meta_info_ok();
     });
+
+    // Disable EnumMeta, 耗费请求数过多
+    // // query product
+    // var product_query = new AV.Query('EnumMeta').equalTo('key_first', 'product').equalTo('key_second', null);
+    // TabUtil.find(product_query, function (records) {
+    //     records.forEach(function (r) {
+    //         product_list.push(r.get('value_str'));
+    //     });
+    //
+    //     // query version
+    //     var product_version_query = new AV.Query('EnumMeta').equalTo('key_first', 'product_version');
+    //     TabUtil.find(product_version_query, function (records) {
+    //         records.forEach(function (r) {
+    //             version_list.push(r.get('value_str'));
+    //         });
+    //
+    //         // query device
+    //         var device_query = new AV.Query('EnumMeta').equalTo('key_first', 'device');
+    //         TabUtil.find(device_query, function (records) {
+    //             records.forEach(function (r) {
+    //                 device_list.push(r.get('value_str'));
+    //             });
+    //
+    //             // finish query ...
+    //             when_meta_info_ok();
+    //         });
+    //     });
+    // });
 
     function when_meta_info_ok() {
         var query = new AV.Query('EventHistory');

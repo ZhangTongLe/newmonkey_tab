@@ -8,6 +8,7 @@
 
 var url_do_filter = '/monkey/eventHistoryFilter/';
 var url_task_detail = '/monkey/taskDetail?task_id=';
+var url_product_ver_detail = '/monkey/ProductVerDetail?product=';
 var table_name = 'task-list-table';
 
 function init_table(){
@@ -29,6 +30,7 @@ function init_table(){
         sortName: 'task_id',
         sortOrder: 'desc'
     });
+
 }
 
 
@@ -36,6 +38,7 @@ function table_load($table, records) {
     for(var i = 0; i < records.length; i ++){
         var r = records[i];
         r.task_id = '<a target="_blank" href="'+ url_task_detail+r.task_id +'">'+ r.task_id +'</a>';
+        r.version = '<a target="_blank" href="'+ url_product_ver_detail+r.product+'&version='+r.version +'">'+ r.version +'</a>';
     }
     $table.bootstrapTable('load', records);
 }
@@ -47,6 +50,7 @@ function get_selector_val($select) {
 
 
 function do_filter() {
+    show_loading('div_loading');
     var $table = $('#'+table_name);
     $.ajax({
         url: url_do_filter,
@@ -73,11 +77,7 @@ function do_filter() {
 
 function init_select2() {
     $('.select2').select2({
-        minimumResultsForSearch: 7,
-        placeholder: {
-            id: "1",
-            placeholder: "Select an option"
-        }
+        minimumResultsForSearch: 7
     })
 }
 

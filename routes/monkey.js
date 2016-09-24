@@ -8,7 +8,8 @@ var router = express.Router();
 var StatusMap = require('../monkey/status-map');
 var EventHistory = require('../monkey/event-history');
 var TaskList = require('../monkey/task-list');
-var TaskDetail = require('../monkey/task_detail');
+var TaskDetail = require('../monkey/task-detail');
+var ProductInfo = require('../monkey/product-info');
 var NetGraph = require('../monkey/net-graph');
 
 
@@ -49,9 +50,6 @@ router.post('/statusMapFilter/', function (req, res, next) {
 router.get('/taskDetail/', function (req, res, next) {
     TaskDetail.reply_to_task_detail_page(req, res, next);
 });
-router.post('/taskDetailUpdate/', function (req, res, next) {
-    TaskDetail.task_detail_do_update(req, res, next);
-});
 
 
 // taskStat part
@@ -64,13 +62,27 @@ router.post('/taskStatWCR/', function (req, res, next) {
 router.post('/taskStatECR/', function (req, res, next) {
     TaskDetail.task_stat_erc(req, res, next);
 });
+router.post('/taskStatAllInOne/', function (req, res, next) {
+    TaskDetail.task_stat_all_in_one(req, res, next);
+});
+
+
+// versionDetail part
+router.get('/ProductVerDetail/', function (req, res, next) {
+    ProductInfo.reply_to_product_ver_detail_page(req, res, next);
+});
+router.post('/ProductVerStatAllInOne/', function (req, res, next) {
+    ProductInfo.version_stat_all_in_one(req, res, next);
+});
 
 
 // *-network part
 router.post('/NetGraphFilterEvent/', function (req, res, next) {
     NetGraph.event_history_do_filter(req, res, next);
 });
-// *-network part
+router.post('/NetGraphAENodeEdge/', function (req, res, next) {
+    NetGraph.activity_event_node_edge(req, res, next);
+});
 router.get('/NetGraphActivityFullScreen/', function (req, res, next) {
     NetGraph.net_graph_activity_full_screen(req, res, next);
 });

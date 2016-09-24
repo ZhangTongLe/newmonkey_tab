@@ -1,0 +1,16 @@
+link(rel='stylesheet', href= "https://fonts.googleapis.com/icon?family=Material+Icons")
+link(rel='stylesheet', type="text/css", href= "/static/third-party/materialize/css/materialize.min.css")
+
+
+script(src='/static/third-party/materialize/js/materialize.min.js')
+
+script.
+    function fix_bootstrap_search_when_use_materialize() {
+        window.setTimeout(function () {
+            var $table_search = $('.fixed-table-toolbar .search').find('input');
+            $table_search.attr('placeholder', '输入任意内容搜索');
+            $table_search.css('margin', '0');
+        }, 1);
+    }
+
+    $(fix_bootstrap_search_when_use_materialize);

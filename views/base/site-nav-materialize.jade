@@ -1,0 +1,67 @@
+div
+    nav.white(role= 'navigation')
+        div.nav-wrapper(style="margin-left: 15px;")
+            a#logo-container.brand-logo.show-on-huge-only(href= '/monkey/taskList/' style="padding: 0")
+                img(src='/static/public-img/logo/hi-monkey.png' style="max-height: 40px")
+            div#div_nav.container.wide-container(style="padding-left: 0")
+                ul(style="margin-left: -7.5px")
+                    li
+                        a(href='/monkey/taskList/' style="color: black; text-align: left; padding: 0")
+                            span(style="font-weight: 800")
+                                i.material-icons.left(style="margin-right: 5px") toc
+                                | 任务列表
+                    li(style='margin-left: 20px')
+                        a(href='/monkey/eventHistory/' style="color: black; text-align: left;padding: 0")
+                            span(style="font-weight: 800")
+                                i.material-icons.left(style="margin-right: 5px") speaker_phone
+                                | 事件上报
+                    li(style='margin-left: 20px')
+                        a(href='/monkey/statusMap/' style="color: black; text-align: left;padding: 0")
+                            span(style="font-weight: 800")
+                                i.material-icons.left(style="margin-right: 5px") call_split
+                                | 状态转移
+
+                    //li(style="min-width: 100px; text-align: center")
+                    //    a.dropdown-button(href='#!' data-activates="dropdown_config" style="color: black; text-align: left")
+                    //        span(style="font-weight: 800")
+                    //            i.material-icons.left(style="margin-right: 5px") settings
+                    //            | 统计
+
+
+//
+//html.
+//    <div>
+//        <nav class="white" role="navigation">
+//            <div class="nav-wrapper" style="margin-left: 15px;">
+//                <a id="logo-container" href="{{ HOST_URL }}homepage/" style="padding: 0" class="brand-logo show-on-huge-only"><img src="{{ STATIC_URL }}public-img/monkey-logo.png" style="max-height: 40px"></a>
+//                <div id="div_nav" class="container" style="padding-left: 0">
+//                    <ul class="hide-on-med-and-down" style="margin-left: -15px">
+//                        <li><a href="{{ HOST_URL }}monkey/taskStatusPage/" style="color: black; text-align: left;"><span style="font-weight: 800">
+//                            <i class="material-icons left" style="margin-right: 5px">query_builder</i>任务状态</span></a></li>
+//                        <li style="min-width: 100px; text-align: center"><a class="dropdown-button"  href="#!" data-activates="dropdown_config" style="color: black; text-align: left">
+//                            <i class="material-icons left" style="margin-right: 5px">settings</i>配置</a></li>
+//                    </ul>
+//
+//                    <ul class="right hide-on-med-and-down">
+//                        <li style="min-width: 100px; text-align: right"><a class="dropdown-button"  href="#!" data-activates="dropdown_explore" style="color: black; text-align: right">
+//                            下一站<i class="material-icons right" style="margin-left: 5px">arrow_drop_down</i></a></li>
+//                    </ul>
+//                </div>
+//
+//                <ul id="dropdown_explore" class="dropdown-content" style="min-width: 200px">
+//                    <li><a href="{{ HOST_URL }}base/building/"><i class="material-icons left" style="margin-right: 5px">av_timer</i>控件覆盖率</a></li>
+//                    <li><a href="{{ HOST_URL }}base/building/"><i class="material-icons left" style="margin-right: 5px">perm_device_information</i>Activity 覆盖率</a></li>
+//                </ul>
+//
+//                <ul id="dropdown_config" class="dropdown-content" style="min-width: 200px">
+//                    <li><a href="{{ HOST_URL }}monkey/taskConfigPage/"><i class="material-icons left" style="margin-right: 5px">library_add</i>添加任务配置</a></li>
+//                    <li><a href="{{ HOST_URL }}monkey/taskConfigManage/"><i class="material-icons left" style="margin-right: 5px">settings_applications</i>任务配置管理</a></li>
+//                    <li><a href="{{ HOST_URL }}mobile/addProduct/"><i class="material-icons left" style="margin-right: 5px">playlist_add</i>添加产品</a></li>
+//                </ul>
+//            </div>
+//        </nav>
+//    </div>
+//
+//    <script>
+//        $(".dropdown-button").dropdown();
+//    </script>

@@ -6,7 +6,7 @@ var AV = require('leanengine');
 router.get('/login', function (req, res, next) {
     var errMsg = req.query.errMsg;
     res.render('users/login', {title: '用户登录', errMsg: errMsg});
-})
+});
 
 router.post('/login', function (req, res, next) {
     var username = req.body.username;
@@ -46,6 +46,6 @@ router.get('/logout', function (req, res, next) {
     req.currentUser.logOut();
     res.clearCurrentUser();
     return res.redirect('/users/login');
-})
+});
 
 module.exports = router;
