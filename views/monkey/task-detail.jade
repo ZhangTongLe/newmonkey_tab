@@ -21,7 +21,7 @@ block content
         div(style="padding: 0;")
             dl.dl-horizontal(style="margin-bottom: 5px")
                 dt(style="text-align: left")= '时长'
-                dd#task_duration= task_info.duration
+                dd#task_duration= 'Loading ...'
 
         div(style="padding: 0;")
             dl.dl-horizontal(style="margin-bottom: 5px")
@@ -83,3 +83,10 @@ block content
 block append script
     script.
         var page_name = "task_detail";
+        var d = #{task_info.duration}
+        if (d < 0)
+            $('#task_duration').text('Sorry, I can not tell you the task duration.');
+        else {
+            $('#task_duration').text(Math.floor(d / 3600) + ' 小时 ' + Math.floor((d % 3600) / 60) + ' 分钟 ' + d % 60 + ' 秒');
+        }
+

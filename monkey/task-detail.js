@@ -18,7 +18,7 @@ function reply_to_task_detail_page(req, res, next) {
         task_info.task_id = req.query.task_id;
     }
 
-    task_info.duration = 'Sorry, I can not tell you the task duration.';
+    task_info.duration = -1;
     if (task_info.task_id) {
         var TaskMeta = AV.Object.extend('TaskMeta');
         var task_meta_query = new AV.Query('TaskMeta')
