@@ -46,15 +46,16 @@ function sync_one_event_record(r) {
             task_meta.addUnique('event_list', MonkeyEvent.get_event_identify(r));
             TabUtil.save(task_meta);
         }
+        console.log('Called by EventHistory.afterSave - finish TaskMeta');
     }, function (error) {
         console.error(error)
     });
 }
 
-var EnumMeta = {
+var TaskMeta = {
     sync_task_meta: sync_task_meta,
     sync_one_event_record: sync_one_event_record
 };
 
 
-module.exports = EnumMeta;
+module.exports = TaskMeta;

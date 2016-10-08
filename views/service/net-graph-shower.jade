@@ -9,15 +9,15 @@ block append css
         }
 
 block append head
-    script(type='text/javascript' src='/static/monkey/js/activity-network.js')
+    script(type='text/javascript' src='/static/service/js/net-graph-shower.js')
 
 
 block append content_without_container
-    div#div_activity_network(style="width: 80%; height: 100%; margin-left: 10%")
+    div#div_net_graph(style="width: 80%; height: 100%; margin-left: 10%")
         div#title(style="height: 50px")
-            h4 Activity-Event 拓补图
+            h4 Network Graph
             hr(align='left' width='20%')
-        div#activity_network(style="width: 80%; height: 100%; position: fixed; bottom: 0")
+        div#net_graph(style="width: 80%; height: 100%; position: fixed; bottom: 0")
 
 block append script
     span#para(style="display: none") #{JSON.stringify(para)}

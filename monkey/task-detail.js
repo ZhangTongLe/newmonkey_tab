@@ -26,7 +26,7 @@ function reply_to_task_detail_page(req, res, next) {
         TabUtil.find(task_meta_query, function (records) {
             if (records.length > 0){
                 if (records[0].get('last_time') && records[0].get('start_time'))
-                    task_info.duration = records[0].get('last_time') - records[0].get('start_time');
+                    task_info.duration = (records[0].get('last_time') - records[0].get('start_time')) / 1000;
             }
             do_render();
         });

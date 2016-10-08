@@ -2,6 +2,7 @@
 
 import traceback
 import json
+import random
 
 from collections import defaultdict
 
@@ -13,11 +14,20 @@ class ViewBase(object):
         self.sub_list = []
 
     def bind(self, event_name, event_handler):
-        self.event_pool['event_name'].append(event_handler)
+        self.event_pool[event_name].append(event_handler)
 
-    def trigger(self, event_name):
-        event_handler_list = self.event_pool['event_name']
+    def trigger(self, event_name, single_mode=False):
+        """
+        :param event_name:
+        :param single_mode: when true, only one event will be response.
+        :return:
+        """
+        event_handler_list = self.event_pool[event_name]
+        if single_mode and event_handler_list:    # random choice one.
+            event_handler_list = [random.choice(event_handler_list)]
         for e in event_handler_list:
+            if len(event_handler_list) > 1:
+                print 'len(event_handler_list): %s' % len(event_handler_list)
             try:
                 if e.callback:
                     e.callback(e.func(*e.args, **e.kwargs))
@@ -25,6 +35,7 @@ class ViewBase(object):
                     e.func(*e.args, **e.kwargs)
             except:
                 print 'trigger: \n%s' % traceback.format_exc()
+        return len(event_handler_list)
 
     def add(self, sub_node):
         self.sub_list.append(sub_node)
@@ -58,6 +69,13 @@ class Activity(ViewBase):
         desc = super(Activity, self).description
         desc.update(dict(height=self.height, width=self.width))
         return desc
+
+    def gen_widget_position(self, n_th):
+        x_th = n_th % 3
+        y_th = n_th / 3
+        width = self.width / 3
+        height = width / 3
+        return Position(Position.RECT, x_th*width, y_th*height, x_th*(width+1)-15, y_th*(height+1)-15)
 
 
 class Widget(ViewBase):
@@ -94,7 +112,7 @@ class Application(ViewBase):
         rel_activity = self.get_activity(activity)
         if rel_activity is None:
             raise Exception('can not find activity: %s' % activity)
-        self.activity_stack.append(activity)
+        self.activity_stack.append(rel_activity)
 
     def replace_activity(self, activity):
         rel_activity = self.get_activity(activity)

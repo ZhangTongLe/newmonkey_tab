@@ -34,6 +34,7 @@ function is_dev() {
 }
 
 var Global = {
+    HOST: 'http://localhost:3000',
     TAB_LIMIT: 1000,
     is_dev: is_dev,
     SPLITTER: '^_^'

@@ -13,5 +13,4 @@ AV.Cloud.define('sync_event_history', function(request, response) {
 
 AV.Cloud.afterSave('EventHistory', function(request) {
     EventHistory.sync_one_event_record(request.object);
-    console.log('Called by EventHistory.afterSave');
 });

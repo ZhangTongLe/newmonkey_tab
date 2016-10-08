@@ -87,6 +87,6 @@ block append script
         if (d < 0)
             $('#task_duration').text('Sorry, I can not tell you the task duration.');
         else {
-            $('#task_duration').text(Math.floor(d / 3600) + ' 小时 ' + Math.floor((d % 3600) / 60) + ' 分钟 ' + d % 60 + ' 秒');
+            $('#task_duration').text(Math.floor(d / 3600) + ' 小时 ' + Math.floor((d % 3600) / 60) + ' 分钟 ' + Math.ceil(d % 60) + ' 秒');
         }
 

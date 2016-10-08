@@ -26,6 +26,7 @@ if (G.is_dev()) {
     app.use(logger('dev'));
 }
 
+require('./cloud_func/aio');
 app.use(AV.express());
 
 // 加载 cookieSession 以支持 AV.User 的会话状态
@@ -36,17 +37,19 @@ app.enable('trust proxy');
 app.use(AV.Cloud.HttpsRedirect());
 
 app.use(methodOverride('_method'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json({limit: '50mb'}));
+app.use(bodyParser.urlencoded({limit: '50mb', extended: false}));
 
 // Routes, 可以将一类的路由单独保存在一个文件中
 var users = require('./routes/users');
 var monkey = require('./routes/monkey');
 var site = require('./routes/site');
+var service = require('./routes/service');
 
 app.use('/users', users);
 app.use('/monkey', monkey);
 app.use('/site', site);
+app.use('/service', service);
 
 
 app.get('/', function (req, res) {
