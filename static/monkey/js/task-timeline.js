@@ -2,18 +2,29 @@
  * Created by kangtian on 16/9/14.
  */
 
-var url_timeline_do_update = '/monkey/taskStatByStep/';
-
+var url_task_timeline_do_update = '/monkey/taskStatByStep/';
+var url_version_timeline_do_update = '/monkey/ProductVerStatByStep/';
 
 function load_timeline(stat_list) {
     var acr_list = [], wcr_list = [], ecr_list = [], label_list = [];
     var acr_total = stat_list[0]['stat']['acr']['total_num'], wcr_total = stat_list[0]['stat']['wcr']['total_num'], ecr_total = stat_list[0]['stat']['ecr']['total_num'];
     for (var i = 0; i < stat_list.length; i ++) {
-        acr_list.push(stat_list[i]['stat']['acr']['coverage_rate'].toFixed(3) * 100);
-        wcr_list.push(stat_list[i]['stat']['wcr']['coverage_rate'].toFixed(3) * 100);
-        ecr_list.push(stat_list[i]['stat']['ecr']['coverage_rate'].toFixed(3) * 100);
+        var d = {
+            acr: stat_list[i]['stat']['acr']['coverage_rate'] * 100.0,
+            wcr: stat_list[i]['stat']['wcr']['coverage_rate'] * 100.0,
+            ecr: stat_list[i]['stat']['ecr']['coverage_rate'] * 100.0
+        };
+        acr_list.push(parseInt(d['acr']));
+        wcr_list.push(parseInt(d['wcr']));
+        ecr_list.push(parseInt(d['ecr']));
+
         var time = stat_list[i]['step_start_time'];
-        label_list.push(moment(time).format('HH:mm:ss'));
+        var time_format;
+        if (page_name == 'task_timeline')
+            time_format = 'HH:mm:ss';
+        else
+            time_format = 'MM-DD HH:mm';
+        label_list.push(moment(time).format(time_format));
     }
     $('#acr_timeline').highcharts({
         title: {
@@ -90,11 +101,11 @@ $(document).ready(function(){
 
     if (page_name == 'task_timeline'){
         para_dict.task_id = $('#task_id').text();
-        update_url = url_timeline_do_update;
+        update_url = url_task_timeline_do_update;
     } else if (page_name == 'version_timeline') {
         para_dict.product = $('#product').text();
         para_dict.version = $('#version').text();
-        update_url = url_timeline_do_update;
+        update_url = url_version_timeline_do_update;
     }
 
     do_update_timeline(update_url, para_dict);

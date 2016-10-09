@@ -43,3 +43,25 @@ class MonkeyTab(object):
                 save_to_file(record_list)
         return record_list
 
+    def upload_activity_list(self, product, version, activity_list):
+        query = leancloud.Query('ProductMeta')
+        query.equal_to('product', product)
+        query.equal_to('version', version)
+        record_list = TAB_UTIL.find_all(query)
+        if len(record_list) < 0:
+            raise Exception("can't find record for product: %s, version: %s" % (product, version))
+        r = record_list[0]
+        r.set('activity_list', activity_list)
+        r.save()
+
+    def upload_activity_list_with_file(self, product, version, file_path):
+        with open(file_path, 'rb') as fp:
+            lines = fp.readlines()
+            activity_list = filter(lambda x: x.startswith('com.'), lines)
+            activity_list = map(lambda x: x.strip(), activity_list)
+            self.upload_activity_list(product, version, activity_list)
+
+
+if __name__ == '__main__':
+    m = MonkeyTab()
+    m.upload_activity_list_with_file(product='com.tencent.mobileqq', version='6.5.8', file_path='/Users/kangtian/Downloads/allactivity.txt')

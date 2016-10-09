@@ -9,7 +9,7 @@ var StatusMap = require('../monkey/status-map');
 var EventHistory = require('../monkey/event-history');
 var TaskList = require('../monkey/task-list');
 var TaskDetail = require('../monkey/task-detail');
-var TaskTimeLine = require('../monkey/task-timeline');
+var coverageTimeline = require('../monkey/coverage-timeline');
 var ProductInfo = require('../monkey/product-info');
 var NetGraph = require('../monkey/net-graph');
 
@@ -72,8 +72,8 @@ router.post('/taskStatByStep/', function (req, res, next) {
 
 
 // timeline part
-router.get('/taskTimeline/', function (req, res, next) {
-    TaskTimeLine.reply_to_task_timeline_page(req, res, next);
+router.get('/coverageTimeline/', function (req, res, next) {
+    coverageTimeline.reply_to_coverage_timeline_page(req, res, next);
 });
 
 
@@ -83,6 +83,9 @@ router.get('/ProductVerDetail/', function (req, res, next) {
 });
 router.post('/ProductVerStatAllInOne/', function (req, res, next) {
     ProductInfo.version_stat_all_in_one(req, res, next);
+});
+router.post('/ProductVerStatByStep/', function (req, res, next) {
+    ProductInfo.version_stat_by_step(req, res, next);
 });
 
 

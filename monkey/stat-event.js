@@ -51,11 +51,14 @@ function stat_all_in_one(task_id, callback, error_callback){
 
 function stat_task_use_task_meta(task_id, callback, callback_fail, extra_para){
     new AV.Query('TaskMeta').equalTo('task_id', task_id).first().then(function (task) {
-        var product = task.get('product');
+        var product = task.get('product'), version = task.get('version');
         get_sm_records(product, function (sm_records) {
-            stat_all_with_task_meta(sm_records, {
-                task_id: task_id
-            }, callback, callback_fail, extra_para)
+            var filter_dict = {
+                task_id: task_id,
+                task_product: product,    // filter_dict 会用于表的 select 用, 不能使用 product 或者 version 作为键, 但同时需要传递产品和版本信息, 所以加了 task 前缀.
+                task_version: version
+            };
+            stat_all_with_task_meta(sm_records, filter_dict, callback, callback_fail, extra_para)
         }, callback_fail)
     });
 }
@@ -63,10 +66,22 @@ function stat_task_use_task_meta(task_id, callback, callback_fail, extra_para){
 
 function stat_product_ver_use_task_meta(product, version, callback, callback_fail, extra_para){
     get_sm_records(product, function (sm_records) {
-        stat_all_with_task_meta(sm_records, {
+        var filter_dict = {
             product: product,
             version: version
-        }, callback, callback_fail, extra_para)
+        };
+        stat_all_with_task_meta(sm_records, filter_dict, callback, callback_fail, extra_para)
+    }, callback_fail)
+}
+
+
+function stat_product_ver_use_status_map(product, version, callback, callback_fail, extra_para){
+    get_sm_records(product, function (sm_records) {
+        var filter_dict = {
+            product: product,
+            version: version
+        };
+        stat_all_with_status_map(sm_records, filter_dict, callback, callback_fail, extra_para)
     }, callback_fail)
 }
 
@@ -277,31 +292,34 @@ function stat_all_with_eh_and_sm(tm_records, sm_records, sm_activity_set, when_o
 }
 
 
+function find_activity_list(filter_dict, all_activity_set, when_ok, when_fail) {
+    var product = filter_dict.product || filter_dict.task_product;
+    var version = filter_dict.version || filter_dict.task_version;
+
+    if (product) {
+        var product_query = new AV.Query('ProductMeta');
+        product_query.equalTo('product', product);
+        product_query.descending('version');
+        TabUtil.find(product_query, function (versions) {
+            if (versions.length > 0) {
+                var l = versions[0].get('activity_list');
+                if (typeof l == 'object' && l.length > 0) {
+                    l.forEach(function (r) {
+                        all_activity_set.add(r);
+                    })
+                }
+            }
+            when_ok()
+        }, when_fail);
+    } else {
+        when_ok();
+    }
+}
+
+
 function stat_all_with_task_meta(sm_records, filter_dict, callback, callback_fail, extra_para) {
     var sm_activity_set = new Set();
-
     extra_para = extra_para == undefined ? {} : extra_para;
-
-    function find_activity_list(product, when_ok, when_fail) {
-        if (product) {
-            var product_query = new AV.Query('ProductMeta');
-            product_query.equalTo('product', product);
-            product_query.descending('version');
-            TabUtil.find(product_query, function (versions) {
-                if (versions.length > 0) {
-                    var l = versions[0].get('activity_list');
-                    if (typeof l == 'object' && l.length > 0) {
-                        l.forEach(function (r) {
-                            sm_activity_set.add(r);
-                        })
-                    }
-                }
-                when_ok()
-            }, when_fail);
-        } else {
-            when_ok();
-        }
-    }
 
     function do_stat() {
         if (extra_para['stat_by_step']) {
@@ -318,10 +336,6 @@ function stat_all_with_task_meta(sm_records, filter_dict, callback, callback_fai
                 try {
                     var stat_list = [];
                     var sample_num = extra_para['sample_num'] ? extra_para['sample_num'] : 15;    // default 15.
-                    var step = records.length / sample_num;
-                    step = step >= 1 ? step : 1;
-                    var step_start_time = null;
-                    var end;
 
                     function gather_result(stat) {
                         ['acr', 'wcr', 'ecr'].forEach(function (stat_type) {
@@ -334,27 +348,39 @@ function stat_all_with_task_meta(sm_records, filter_dict, callback, callback_fai
                             stat: stat
                         })
                     }
-                    for (var pos = step; pos < records.length + step - 1; pos += step) {
-                        step_start_time = records[pos].createdAt;
-                        end = parseInt(pos);
-                        end = end > records.length ? records.length : end;
-                        var step_records = records.slice(0, end);
-                        var step_meta = {activity_list: [], widget_list: [], event_list: [],
-                            get: function (key) {
-                                return this[key];
-                            }
-                        };
-                        step_records.forEach(function (r) {
-                            step_meta.activity_list.push(r.get('pre_activity'));
-                            step_meta.widget_list.push(MonkeyEvent.get_event_entity_identify(r));
-                            step_meta.event_list.push(MonkeyEvent.get_event_identify(r));
-                        });
-                        try {
-                            stat_all_with_eh_and_sm([step_meta], sm_records, sm_activity_set, gather_result, callback_fail);
-                        } catch (e) {
-                            console.error(e);
-                        }
 
+                    records.sort(function (a, b) {
+                        return a.createdAt - b.createdAt;
+                    });
+
+                    var start_time = records[0].createdAt, end_time = records[records.length - 1].createdAt;
+                    var time_step = (end_time - start_time) / sample_num;
+                    var time_pos = start_time.getTime();
+                    var step_start_time = null;
+
+                    for (var i = 0; i < records.length; i += 1) {
+                        step_start_time = records[i].createdAt;
+                        if (step_start_time >= new Date(time_pos)) {
+                            var step_records = records.slice(0, i);
+                            var step_meta = {activity_list: [], widget_list: [], event_list: [],
+                                get: function (key) {
+                                    return this[key];
+                                }
+                            };
+                            step_records.forEach(function (r) {
+                                step_meta.activity_list.push(r.get('pre_activity'));
+                                step_meta.widget_list.push(MonkeyEvent.get_event_entity_identify(r));
+                                step_meta.event_list.push(MonkeyEvent.get_event_identify(r));
+                            });
+                            try {
+                                stat_all_with_eh_and_sm([step_meta], sm_records, sm_activity_set, gather_result, callback_fail);
+                            } catch (e) {
+                                console.error(e);
+                            }
+                            time_pos += time_step;
+                        } else {
+                            ;
+                        }
                     }
                     callback(stat_list);
                 } catch (e) {
@@ -378,16 +404,99 @@ function stat_all_with_task_meta(sm_records, filter_dict, callback, callback_fai
 
     }
 
-    find_activity_list(filter_dict.product, do_stat, callback_fail);
+    find_activity_list(filter_dict, sm_activity_set, do_stat, callback_fail);
 }
 
+
+function stat_all_with_status_map(sm_records, filter_dict, callback, callback_fail, extra_para) {
+    var sm_activity_set = new Set();
+    extra_para = extra_para == undefined ? {} : extra_para;
+
+    find_activity_list(filter_dict, sm_activity_set, do_stat, callback_fail);
+
+    function do_stat() {
+        try {
+            if (extra_para['stat_by_step']) {
+                var stat_list = [];
+                var sample_num = extra_para['sample_num'] ? extra_para['sample_num'] : 15;    // default 15.
+
+                function gather_result(stat) {
+                    ['acr', 'wcr', 'ecr'].forEach(function (stat_type) {
+                        delete stat[stat_type]['cover_list'];
+                        delete stat[stat_type]['total_list'];
+                    });
+
+                    stat_list.push({
+                        step_start_time: step_start_time,
+                        stat: stat
+                    })
+                }
+
+                var records = sm_records;
+                records.sort(function (a, b) {
+                    return a.createdAt - b.createdAt;
+                });
+
+                var start_time = records[0].createdAt, end_time = records[records.length - 1].createdAt;
+                var time_step = (end_time - start_time) / sample_num;
+                var time_pos = start_time.getTime();
+                var step_start_time = null;
+
+                for (var i = 0; i < records.length; i += 1) {
+                    step_start_time = records[i].createdAt;
+                    // console.log(step_start_time);
+                    if (step_start_time >= new Date(time_pos)) {
+                        var step_records = records.slice(0, i);
+                        var step_meta = {activity_list: [], widget_list: [], event_list: [],
+                            get: function (key) {
+                                return this[key];
+                            }
+                        };
+                        step_records.forEach(function (r) {
+                            step_meta.activity_list.push(r.get('pre_activity'));
+                            step_meta.widget_list.push(r.get('event_entity_identify'));
+                            step_meta.event_list.push(r.get('event_identify'));
+                        });
+                        try {
+                            stat_all_with_eh_and_sm([step_meta], sm_records, sm_activity_set, gather_result, callback_fail);
+                        } catch (e) {
+                            console.error(e);
+                        }
+                        time_pos += time_step;
+                    } else {
+                        ;
+                    }
+                }
+                callback(stat_list);
+            } else {
+                var meta_query = new AV.Query('TaskMeta');
+
+                if (filter_dict.task_id)
+                    meta_query.equalTo('task_id', filter_dict.task_id);
+                if (filter_dict.product)
+                    meta_query.contains('product', filter_dict.product);
+                if (filter_dict.version)
+                    meta_query.contains('version', filter_dict.version);
+
+                TabUtil.find_all(meta_query, function (meta_records) {
+                    stat_all_with_eh_and_sm(meta_records, sm_records, sm_activity_set, callback, callback_fail);
+                });
+            }
+        } catch (e) {
+            console.error(e);
+        }
+    }
+}
+
+
 var Stat = {
-    stat_acr: stat_acr,
-    stat_wcr: stat_wcr,
-    stat_ecr: stat_ecr,
-    stat_all_in_one: stat_all_in_one,
+    stat_acr: stat_acr,    // deprecated
+    stat_wcr: stat_wcr,    // deprecated
+    stat_ecr: stat_ecr,    // deprecated
+    stat_all_in_one: stat_all_in_one,    // deprecated
     stat_task_use_task_meta: stat_task_use_task_meta,
-    stat_product_ver_use_task_meta: stat_product_ver_use_task_meta
+    stat_product_ver_use_task_meta: stat_product_ver_use_task_meta,
+    stat_product_ver_use_status_map: stat_product_ver_use_status_map
 };
 
 module.exports = Stat;

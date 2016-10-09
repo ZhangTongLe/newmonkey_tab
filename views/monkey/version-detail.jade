@@ -15,12 +15,12 @@ block content
         div(style="padding: 0;")
             dl.dl-horizontal(style="margin-bottom: 5px")
                 dt(style="text-align: left")= '产品'
-                dd#product= product
+                dd#product= info.product
 
         div(style="padding: 0;")
             dl.dl-horizontal(style="margin-bottom: 5px")
                 dt(style="text-align: left")= '版本'
-                dd#version= version
+                dd#version= info.version
 
         div(style="padding: 0;")
             dl.dl-horizontal(style="margin-bottom: 5px")
@@ -36,6 +36,12 @@ block content
             dl.dl-horizontal(style="margin-bottom: 5px")
                 dt(style="text-align: left")= '事件 覆盖率'
                 dd#task_ecr= 'Loading ...'
+
+        div(style="padding: 0;")
+            dl.dl-horizontal(style="margin-bottom: 5px")
+                dt(style="text-align: left")= '覆盖率趋势图'
+                dd#timeline
+                    a(href='/monkey/coverageTimeline?product=#{info.product}&version=#{info.version}' target='_black') 点击链接查看
 
         hr
         div#div_task_activity

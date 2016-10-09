@@ -31,7 +31,7 @@ class TabUtil(object):
             query.less_than('createdAt', created_less_than)
             query.descending('createdAt')
             record_list = self.find(query)
-            print len(record_list)
+            print 'tab find_all: get %s.' % len(record_list)
             all_record_list += record_list
             if len(record_list) >= self.TAB_LIMIT:
                 created_less_than = record_list[-1].created_at

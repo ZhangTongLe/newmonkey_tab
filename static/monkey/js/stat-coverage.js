@@ -7,6 +7,7 @@ var url_product_ver_do_update = '/monkey/ProductVerStatAllInOne/';
 
 
 function do_update_stat(url_do_update, para_dict) {
+    show_loading('div_loading');
     $.ajax({
         url: url_do_update,
         type: "POST",

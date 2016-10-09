@@ -8,7 +8,7 @@ var TabUtil = require('../lib/tab-util');
 var Stat = require('./stat-event');
 
 
-function reply_to_task_timeline_page(req, res, next) {
+function reply_to_coverage_timeline_page(req, res, next) {
     var status = 0;
     var errMsg = null;
     var task_info = {};
@@ -16,6 +16,8 @@ function reply_to_task_timeline_page(req, res, next) {
         status = req.query.status || 0;
         errMsg = req.query.errMsg;
         task_info.task_id = req.query.task_id;
+        task_info.product = req.query.product;
+        task_info.version = req.query.version;
     }
 
     task_info.duration = -1;
@@ -29,27 +31,26 @@ function reply_to_task_timeline_page(req, res, next) {
                     task_info.duration = (records[0].get('last_time') - records[0].get('start_time')) / 1000;
             }
             do_render();
-        });
+        }, next);
     } else {
         do_render();
     }
 
     function do_render() {
-        res.render('monkey/task-timeline', {
-            title: 'Task TimeLine',
+        res.render('monkey/coverage-timeline', {
+            title: 'Coverage TimeLine',
             user: req.currentUser,
             task_info: task_info,
             status: status,
             errMsg: errMsg
         });
     }
-
 }
 
 
-var TaskTimeLine = {
-    reply_to_task_timeline_page: reply_to_task_timeline_page
+var coverageTimeline = {
+    reply_to_coverage_timeline_page: reply_to_coverage_timeline_page
 };
 
 
-module.exports = TaskTimeLine;
+module.exports = coverageTimeline;
