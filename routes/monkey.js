@@ -9,6 +9,7 @@ var StatusMap = require('../monkey/status-map');
 var EventHistory = require('../monkey/event-history');
 var TaskList = require('../monkey/task-list');
 var TaskDetail = require('../monkey/task-detail');
+var TaskTimeLine = require('../monkey/task-timeline');
 var ProductInfo = require('../monkey/product-info');
 var NetGraph = require('../monkey/net-graph');
 
@@ -64,6 +65,15 @@ router.post('/taskStatECR/', function (req, res, next) {
 });
 router.post('/taskStatAllInOne/', function (req, res, next) {
     TaskDetail.task_stat_all_in_one(req, res, next);
+});
+router.post('/taskStatByStep/', function (req, res, next) {
+    TaskDetail.task_stat_by_step(req, res, next);
+});
+
+
+// timeline part
+router.get('/taskTimeline/', function (req, res, next) {
+    TaskTimeLine.reply_to_task_timeline_page(req, res, next);
 });
 
 

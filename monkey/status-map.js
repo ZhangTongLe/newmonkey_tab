@@ -36,6 +36,7 @@ function sync_one_event_record(r) {
         status_map.set('pre_activity', r.get('pre_activity'));
         status_map.set('next_activity', r.get('next_activity'));
         status_map.set('event_entity', MonkeyEvent.get_event_entity(r));
+        status_map.set('is_activity_changed', status_map.get('next_activity') == status_map.get('pre_activity'));
         TabUtil.save(status_map);
     }
     else {
@@ -48,6 +49,7 @@ function sync_one_event_record(r) {
                 status_map.set('event_entity', MonkeyEvent.get_event_entity(event_pre));
                 status_map.set('event_entity_identify', MonkeyEvent.get_event_entity_identify(event_pre));
                 status_map.set('pre_activity', event_pre.get('pre_activity'));
+                status_map.set('is_activity_changed', status_map.get('next_activity') == status_map.get('pre_activity'));
                 TabUtil.save(status_map);    // save.
             }
         });

@@ -49,24 +49,24 @@ function stat_all_in_one(task_id, callback, error_callback){
 }
 
 
-function stat_task_use_task_meta(task_id, callback, callback_fail){
+function stat_task_use_task_meta(task_id, callback, callback_fail, extra_para){
     new AV.Query('TaskMeta').equalTo('task_id', task_id).first().then(function (task) {
         var product = task.get('product');
         get_sm_records(product, function (sm_records) {
             stat_all_with_task_meta(sm_records, {
                 task_id: task_id
-            }, callback, callback_fail)
+            }, callback, callback_fail, extra_para)
         }, callback_fail)
     });
 }
 
 
-function stat_product_ver_use_task_meta(product, version, callback, callback_fail){
+function stat_product_ver_use_task_meta(product, version, callback, callback_fail, extra_para){
     get_sm_records(product, function (sm_records) {
         stat_all_with_task_meta(sm_records, {
             product: product,
             version: version
-        }, callback, callback_fail)
+        }, callback, callback_fail, extra_para)
     }, callback_fail)
 }
 
@@ -229,20 +229,58 @@ function stat_ecr_with_events(sm_records, event_records, callback) {
 }
 
 
-function stat_all_with_task_meta(sm_records, filter_dict, callback, callback_fail) {
-    var task_query = new AV.Query('TaskMeta');
-    var sm_activity_set = new Set();
+function stat_all_with_eh_and_sm(tm_records, sm_records, sm_activity_set, when_ok, when_fail) {
+    var activity_list = [], widget_list = [], event_list = [];
     var sm_widget_set = new Set();
     var sm_event_set = new Set();
 
-    var activity_list = [], widget_list = [], event_list = [];
+    if (tm_records.length > 0){
+        sm_records.forEach(function (s) {
+            sm_activity_set.add(s.get('pre_activity'));
+            sm_activity_set.add(s.get('next_activity'));
+            sm_widget_set.add(s.get('event_entity_identify'));
+            sm_event_set.add(s.get('event_identify'));
+        });
 
-    if (filter_dict.task_id)
-        task_query.equalTo('task_id', filter_dict.task_id);
-    if (filter_dict.product)
-        task_query.contains('product', filter_dict.product);
-    if (filter_dict.version)
-        task_query.contains('version', filter_dict.version);
+        tm_records.forEach(function (task_meta) {
+            activity_list = activity_list.concat(task_meta.get('activity_list'));
+            widget_list = widget_list.concat(task_meta.get('widget_list'));
+            event_list = event_list.concat(task_meta.get('event_list'));
+        });
+
+        activity_list = DsUtil.list_distinct(activity_list);
+        widget_list = DsUtil.list_distinct(widget_list);
+        event_list = DsUtil.list_distinct(event_list);
+
+        var func_stat = function (cover_num, all_num, cover_list, total_list) {
+            all_num = all_num > cover_num ? all_num : cover_num;
+            return {
+                coverage_rate: all_num == 0 ? 0.0 : cover_num / parseFloat(all_num),
+                total_num: all_num, cover_num: cover_num,
+                cover_list: cover_list,
+                total_list: total_list
+            };
+        };
+
+        var stat = {
+            acr: func_stat(activity_list.length, sm_activity_set.size, activity_list, DsUtil.set2list(sm_activity_set)),
+            wcr: func_stat(widget_list.length, sm_widget_set.size, widget_list, DsUtil.set2list(sm_widget_set)),
+            ecr: func_stat(event_list.length, sm_event_set.size, event_list, DsUtil.set2list(sm_event_set))
+        };
+
+        when_ok(stat);
+    } else {
+        var e = new Error('error at stat_all_with_eh_and_sm, task-mata not ready');
+        console.error(e);
+        when_fail(e);
+    }
+}
+
+
+function stat_all_with_task_meta(sm_records, filter_dict, callback, callback_fail, extra_para) {
+    var sm_activity_set = new Set();
+
+    extra_para = extra_para == undefined ? {} : extra_para;
 
     function find_activity_list(product, when_ok, when_fail) {
         if (product) {
@@ -266,44 +304,75 @@ function stat_all_with_task_meta(sm_records, filter_dict, callback, callback_fai
     }
 
     function do_stat() {
-        TabUtil.find(task_query, function (records) {
-            if (records.length > 0){
-                sm_records.forEach(function (s) {
-                    sm_activity_set.add(s.get('pre_activity'));
-                    sm_activity_set.add(s.get('next_activity'));
-                    sm_widget_set.add(s.get('event_entity_identify'));
-                    sm_event_set.add(s.get('event_identify'));
-                });
+        if (extra_para['stat_by_step']) {
+            var eh_query = new AV.Query('EventHistory');
 
-                records.forEach(function (task_meta) {
-                    activity_list = activity_list.concat(task_meta.get('activity_list'));
-                    widget_list = widget_list.concat(task_meta.get('widget_list'));
-                    event_list = event_list.concat(task_meta.get('event_list'));
-                });
+            if (filter_dict.task_id)
+                eh_query.equalTo('task_id', filter_dict.task_id);
+            if (filter_dict.product)
+                eh_query.contains('product', filter_dict.product);
+            if (filter_dict.version)
+                eh_query.contains('version', filter_dict.version);
 
-                var func_stat = function (cover_num, all_num, cover_list, total_list) {
-                    all_num = all_num > cover_num ? all_num : cover_num;
-                    return {
-                        coverage_rate: all_num == 0 ? 0.0 : cover_num / parseFloat(all_num),
-                        total_num: all_num, cover_num: cover_num,
-                        cover_list: cover_list,
-                        total_list: total_list
+            TabUtil.find_all(eh_query, function (records) {
+                var stat_list = [];
+                var sample_num = extra_para['sample_num'] ? extra_para['sample_num'] : 15;    // default 15.
+                var step = records.length / sample_num;
+                step = step >= 1 ? step : 1;
+                var step_start_time = null;
+                var end;
+
+                function gather_result(stat) {
+                    ['acr', 'wcr', 'ecr'].forEach(function (stat_type) {
+                        delete stat[stat_type]['cover_list'];
+                        delete stat[stat_type]['total_list'];
+                    });
+
+                    stat_list.push({
+                        step_start_time: step_start_time,
+                        stat: stat
+                    })
+                }
+
+                for (var pos = step; pos < records.length + step - 1; pos += step) {
+                    step_start_time = records[0].createdAt;
+                    end = parseInt(pos);
+                    end = end > records.length ? records.length : end;
+                    var step_records = records.slice(0, end);
+                    var step_meta = {activity_list: [], widget_list: [], event_list: [],
+                        get: function (key) {
+                            return this[key];
+                        }
                     };
-                };
+                    step_records.forEach(function (r) {
+                        step_meta.activity_list.push(r.get('pre_activity'));
+                        step_meta.widget_list.push(MonkeyEvent.get_event_entity_identify(r));
+                        step_meta.event_list.push(MonkeyEvent.get_event_identify(r));
+                    });
+                    try {
+                        stat_all_with_eh_and_sm([step_meta], sm_records, sm_activity_set, gather_result, callback_fail);
+                    } catch (e) {
+                        console.error(e);
+                    }
 
-                var stat = {
-                    acr: func_stat(activity_list.length, sm_activity_set.size, activity_list, DsUtil.set2list(sm_activity_set)),
-                    wcr: func_stat(widget_list.length, sm_widget_set.size, widget_list, DsUtil.set2list(sm_widget_set)),
-                    ecr: func_stat(event_list.length, sm_event_set.size, event_list, DsUtil.set2list(sm_event_set))
-                };
+                }
+                callback(stat_list);
+            });
+        } else {
+            var meta_query = new AV.Query('TaskMeta');
 
-                callback(stat);
-            } else {
-                var e = new Error('not found record with task_id: ' + filter_dict.task_id + 'or product: %s' + filter_dict.product);
-                console.error(e);
-                callback_fail(e);
-            }
-        });
+            if (filter_dict.task_id)
+                meta_query.equalTo('task_id', filter_dict.task_id);
+            if (filter_dict.product)
+                meta_query.contains('product', filter_dict.product);
+            if (filter_dict.version)
+                meta_query.contains('version', filter_dict.version);
+
+            TabUtil.find_all(meta_query, function (meta_records) {
+                stat_all_with_eh_and_sm(meta_records, sm_records, sm_activity_set, callback, callback_fail);
+            });
+        }
+
     }
 
     find_activity_list(filter_dict.product, do_stat, callback_fail);

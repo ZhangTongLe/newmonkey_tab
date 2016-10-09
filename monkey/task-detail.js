@@ -107,13 +107,32 @@ function task_stat_all_in_one(req, res, next) {
     }, next);
 }
 
+function task_stat_by_step(req, res, next) {
+    var req_obj = HttpUtil.get_request_body(req);
+    var extra_para = {    // for function: stat_all_with_task_meta()
+        stat_by_step: true,
+        sample_num: 15
+    };
+
+    var task_id = req_obj['task_id'];
+
+    Stat.stat_task_use_task_meta(task_id, function (stat_list) {
+        var resp = {
+            status: 'ok',
+            data: stat_list
+        };
+        HttpUtil.resp_json(res, resp);
+    }, next, extra_para);
+}
+
 
 var TaskDetail = {
     reply_to_task_detail_page: reply_to_task_detail_page,
     task_stat_arc: task_stat_arc,
     task_stat_wrc: task_stat_wrc,
     task_stat_erc: task_stat_erc,
-    task_stat_all_in_one: task_stat_all_in_one
+    task_stat_all_in_one: task_stat_all_in_one,
+    task_stat_by_step: task_stat_by_step
 };
 
 

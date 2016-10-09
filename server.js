@@ -7,4 +7,5 @@ var app = require('./app');
 var PORT = parseInt(process.env.LEANCLOUD_APP_PORT || 3000);
 var server = app.listen(PORT, function () {
     console.log('Node app is running, port:', PORT);
+    console.log('Local host-url: http://127.0.0.1:3000/');
 });
