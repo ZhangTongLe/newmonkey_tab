@@ -74,7 +74,7 @@ function stat_product_ver_use_task_meta(product, version, callback, callback_fai
 function get_sm_records(product, callback, callback_fail) {
     var event_query = new AV.Query('StatusMap')
         .equalTo('product', product)
-        .greaterThan('createdAt', new Date(new Date() - 3600000 * 24 * 15));    // 最近半个月
+        .greaterThan('createdAt', new Date(new Date() - 3600000 * 24 * 30));    // 最近一个月
     TabUtil.find_all(event_query, function (sm_records) {
         callback(sm_records);
     }, callback_fail)
@@ -335,7 +335,7 @@ function stat_all_with_task_meta(sm_records, filter_dict, callback, callback_fai
                         })
                     }
                     for (var pos = step; pos < records.length + step - 1; pos += step) {
-                        step_start_time = records[0].createdAt;
+                        step_start_time = records[pos].createdAt;
                         end = parseInt(pos);
                         end = end > records.length ? records.length : end;
                         var step_records = records.slice(0, end);
