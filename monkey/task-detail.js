@@ -108,21 +108,24 @@ function task_stat_all_in_one(req, res, next) {
 }
 
 function task_stat_by_step(req, res, next) {
-    var req_obj = HttpUtil.get_request_body(req);
-    var extra_para = {    // for function: stat_all_with_task_meta()
-        stat_by_step: true,
-        sample_num: 15
-    };
-
-    var task_id = req_obj['task_id'];
-
-    Stat.stat_task_use_task_meta(task_id, function (stat_list) {
-        var resp = {
-            status: 'ok',
-            data: stat_list
+    try {
+        var req_obj = HttpUtil.get_request_body(req);
+        var extra_para = {    // for function: stat_all_with_task_meta()
+            stat_by_step: true,
+            sample_num: 15
         };
-        HttpUtil.resp_json(res, resp);
-    }, next, extra_para);
+
+        var task_id = req_obj['task_id'];
+        Stat.stat_task_use_task_meta(task_id, function (stat_list) {
+            var resp = {
+                status: 'ok',
+                data: stat_list
+            };
+            HttpUtil.resp_json(res, resp);
+        }, next, extra_para);
+    } catch (e) {
+        console.error(e)
+    }
 }
 
 

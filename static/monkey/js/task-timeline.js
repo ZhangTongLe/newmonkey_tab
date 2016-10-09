@@ -35,7 +35,7 @@ function load_timeline(stat_list) {
         },
         tooltip: {
             headerFormat: '<b>{series.name}</b><br />',
-            pointFormat: '{point.x} %'
+            pointFormat: '{point.y} %'
         },
         legend: {
             layout: 'vertical',

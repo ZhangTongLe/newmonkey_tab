@@ -315,48 +315,51 @@ function stat_all_with_task_meta(sm_records, filter_dict, callback, callback_fai
                 eh_query.contains('version', filter_dict.version);
 
             TabUtil.find_all(eh_query, function (records) {
-                var stat_list = [];
-                var sample_num = extra_para['sample_num'] ? extra_para['sample_num'] : 15;    // default 15.
-                var step = records.length / sample_num;
-                step = step >= 1 ? step : 1;
-                var step_start_time = null;
-                var end;
+                try {
+                    var stat_list = [];
+                    var sample_num = extra_para['sample_num'] ? extra_para['sample_num'] : 15;    // default 15.
+                    var step = records.length / sample_num;
+                    step = step >= 1 ? step : 1;
+                    var step_start_time = null;
+                    var end;
 
-                function gather_result(stat) {
-                    ['acr', 'wcr', 'ecr'].forEach(function (stat_type) {
-                        delete stat[stat_type]['cover_list'];
-                        delete stat[stat_type]['total_list'];
-                    });
+                    function gather_result(stat) {
+                        ['acr', 'wcr', 'ecr'].forEach(function (stat_type) {
+                            delete stat[stat_type]['cover_list'];
+                            delete stat[stat_type]['total_list'];
+                        });
 
-                    stat_list.push({
-                        step_start_time: step_start_time,
-                        stat: stat
-                    })
-                }
-
-                for (var pos = step; pos < records.length + step - 1; pos += step) {
-                    step_start_time = records[0].createdAt;
-                    end = parseInt(pos);
-                    end = end > records.length ? records.length : end;
-                    var step_records = records.slice(0, end);
-                    var step_meta = {activity_list: [], widget_list: [], event_list: [],
-                        get: function (key) {
-                            return this[key];
-                        }
-                    };
-                    step_records.forEach(function (r) {
-                        step_meta.activity_list.push(r.get('pre_activity'));
-                        step_meta.widget_list.push(MonkeyEvent.get_event_entity_identify(r));
-                        step_meta.event_list.push(MonkeyEvent.get_event_identify(r));
-                    });
-                    try {
-                        stat_all_with_eh_and_sm([step_meta], sm_records, sm_activity_set, gather_result, callback_fail);
-                    } catch (e) {
-                        console.error(e);
+                        stat_list.push({
+                            step_start_time: step_start_time,
+                            stat: stat
+                        })
                     }
+                    for (var pos = step; pos < records.length + step - 1; pos += step) {
+                        step_start_time = records[0].createdAt;
+                        end = parseInt(pos);
+                        end = end > records.length ? records.length : end;
+                        var step_records = records.slice(0, end);
+                        var step_meta = {activity_list: [], widget_list: [], event_list: [],
+                            get: function (key) {
+                                return this[key];
+                            }
+                        };
+                        step_records.forEach(function (r) {
+                            step_meta.activity_list.push(r.get('pre_activity'));
+                            step_meta.widget_list.push(MonkeyEvent.get_event_entity_identify(r));
+                            step_meta.event_list.push(MonkeyEvent.get_event_identify(r));
+                        });
+                        try {
+                            stat_all_with_eh_and_sm([step_meta], sm_records, sm_activity_set, gather_result, callback_fail);
+                        } catch (e) {
+                            console.error(e);
+                        }
 
+                    }
+                    callback(stat_list);
+                } catch (e) {
+                    console.error(e);
                 }
-                callback(stat_list);
             });
         } else {
             var meta_query = new AV.Query('TaskMeta');
