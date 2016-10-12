@@ -55,7 +55,7 @@ function stat_task_use_task_meta(task_id, callback, callback_fail, extra_para){
         get_sm_records(product, function (sm_records) {
             var filter_dict = {
                 task_id: task_id,
-                task_product: product,    // filter_dict 会用于表的 select 用, 不能使用 product 或者 version 作为键, 但同时需要传递产品和版本信息, 所以加了 task 前缀.
+                task_product: product,    // filter_dict 会用于表的 select 用, 不能使用 product 或者 version 作为 key, 但同时需要传递产品和版本信息, 所以加了 task 前缀.
                 task_version: version
             };
             stat_all_with_task_meta(sm_records, filter_dict, callback, callback_fail, extra_para)
@@ -361,6 +361,7 @@ function stat_all_with_task_meta(sm_records, filter_dict, callback, callback_fai
                     for (var i = 0; i < records.length; i += 1) {
                         step_start_time = records[i].createdAt;
                         if (step_start_time >= new Date(time_pos)) {
+                            step_start_time = new Date(time_pos);    // 使用 records[i].createdAt 会导致时间轴数据分布不均匀。
                             var step_records = records.slice(0, i);
                             var step_meta = {activity_list: [], widget_list: [], event_list: [],
                                 get: function (key) {
@@ -420,54 +421,62 @@ function stat_all_with_status_map(sm_records, filter_dict, callback, callback_fa
                 var stat_list = [];
                 var sample_num = extra_para['sample_num'] ? extra_para['sample_num'] : 15;    // default 15.
 
-                function gather_result(stat) {
-                    ['acr', 'wcr', 'ecr'].forEach(function (stat_type) {
-                        delete stat[stat_type]['cover_list'];
-                        delete stat[stat_type]['total_list'];
+                var version_query = new AV.Query('StatusMap');
+                if (filter_dict.product)
+                    version_query.contains('product', filter_dict.product);
+                if (filter_dict.version)
+                    version_query.contains('version', filter_dict.version);
+                // get status-map of product version.
+                TabUtil.find_all(version_query, function (records) {
+                    records.sort(function (a, b) {
+                        return a.createdAt - b.createdAt;
                     });
 
-                    stat_list.push({
-                        step_start_time: step_start_time,
-                        stat: stat
-                    })
-                }
+                    var start_time = records[0].createdAt, end_time = records[records.length - 1].createdAt;
+                    var time_step = (end_time - start_time) / sample_num;
+                    var time_pos = start_time.getTime();
+                    var step_start_time = null;
 
-                var records = sm_records;
-                records.sort(function (a, b) {
-                    return a.createdAt - b.createdAt;
-                });
-
-                var start_time = records[0].createdAt, end_time = records[records.length - 1].createdAt;
-                var time_step = (end_time - start_time) / sample_num;
-                var time_pos = start_time.getTime();
-                var step_start_time = null;
-
-                for (var i = 0; i < records.length; i += 1) {
-                    step_start_time = records[i].createdAt;
-                    // console.log(step_start_time);
-                    if (step_start_time >= new Date(time_pos)) {
-                        var step_records = records.slice(0, i);
-                        var step_meta = {activity_list: [], widget_list: [], event_list: [],
-                            get: function (key) {
-                                return this[key];
-                            }
-                        };
-                        step_records.forEach(function (r) {
-                            step_meta.activity_list.push(r.get('pre_activity'));
-                            step_meta.widget_list.push(r.get('event_entity_identify'));
-                            step_meta.event_list.push(r.get('event_identify'));
+                    function gather_result(stat) {
+                        ['acr', 'wcr', 'ecr'].forEach(function (stat_type) {
+                            delete stat[stat_type]['cover_list'];
+                            delete stat[stat_type]['total_list'];
                         });
-                        try {
-                            stat_all_with_eh_and_sm([step_meta], sm_records, sm_activity_set, gather_result, callback_fail);
-                        } catch (e) {
-                            console.error(e);
-                        }
-                        time_pos += time_step;
-                    } else {
-                        ;
+
+                        stat_list.push({
+                            step_start_time: step_start_time,
+                            stat: stat
+                        })
                     }
-                }
-                callback(stat_list);
+
+                    for (var i = 0; i < records.length; i += 1) {
+                        step_start_time = records[i].createdAt;
+                        // console.log(step_start_time);
+                        if (step_start_time >= new Date(time_pos)) {
+                            step_start_time = new Date(time_pos);    // 使用 records[i].createdAt 会导致时间轴数据分布不均匀。
+                            var step_records = records.slice(0, i);
+                            var step_meta = {activity_list: [], widget_list: [], event_list: [],
+                                get: function (key) {
+                                    return this[key];
+                                }
+                            };
+                            step_records.forEach(function (r) {
+                                step_meta.activity_list.push(r.get('pre_activity'));
+                                step_meta.widget_list.push(r.get('event_entity_identify'));
+                                step_meta.event_list.push(r.get('event_identify'));
+                            });
+                            try {
+                                stat_all_with_eh_and_sm([step_meta], sm_records, sm_activity_set, gather_result, callback_fail);
+                            } catch (e) {
+                                console.error(e);
+                            }
+                            time_pos += time_step;
+                        } else {
+                            ;
+                        }
+                    }
+                    callback(stat_list);
+                });
             } else {
                 var meta_query = new AV.Query('TaskMeta');
 

@@ -53,6 +53,10 @@ TAB_UTIL = TabUtil()
 if __name__ == "__main__":
     t = TabUtil()
     query = leancloud.Query('StatusMap')
-    query.equal_to('product', 'com.tencent.mobileqq')
+    query.does_not_exist('is_activity_changed')
     records = t.find_all(query)
-    print len(records)
+    for record in records:
+        changed = not (record.get('pre_activity') == record.get('next_activity'))
+        record.set('is_activity_changed', changed)
+        record.save()
+        print record.get('is_activity_changed')
