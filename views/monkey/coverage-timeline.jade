@@ -60,7 +60,7 @@ block append script
 
         console.log('page_name: ' + page_name);
 
-        var d = #{task_info.duration}
+        var d = #{task_info.duration};
         if (d < 0)
             $('#task_duration').text('Sorry, I can not tell you the task duration.');
         else {

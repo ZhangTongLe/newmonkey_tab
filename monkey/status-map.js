@@ -21,7 +21,6 @@ function sync_status_map(event_records) {
     }
 }
 
-
 function sync_one_event_record(r) {
     var StatusMap = AV.Object.extend('StatusMap');
     var status_map = new StatusMap();
@@ -56,7 +55,6 @@ function sync_one_event_record(r) {
     }
 }
 
-
 function reply_to_status_map_page(req, res, next) {
     var status = 0;
     var errMsg = null;
@@ -79,26 +77,6 @@ function reply_to_status_map_page(req, res, next) {
         version_list = DsUtil.list_distinct(version_list);
         when_meta_info_ok();
     });
-
-    // Disable EnumMeta, 耗费请求数过多
-    // // query product
-    // var product_query = new AV.Query('EnumMeta').equalTo('key_first', 'product').equalTo('key_second', null);
-    // TabUtil.find(product_query, function (records) {
-    //     records.forEach(function (r) {
-    //         product_list.push(r.get('value_str'));
-    //     });
-    //
-    //     // query version
-    //     var product_version_query = new AV.Query('EnumMeta').equalTo('key_first', 'product_version');
-    //     TabUtil.find(product_version_query, function (records) {
-    //         records.forEach(function (r) {
-    //             version_list.push(r.get('value_str'));
-    //         });
-    //
-    //         // finish query ...
-    //         when_meta_info_ok();
-    //     });
-    // });
 
     function when_meta_info_ok() {
         var query_sm = new AV.Query('StatusMap');

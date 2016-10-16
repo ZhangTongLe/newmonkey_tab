@@ -1,0 +1,19 @@
+extends ../../base/site-layout
+
+block append head
+    script(src='/static/monkey/js/product/product-list.js')
+
+block content
+    h3 产品列表
+    hr
+
+    #errMsg
+        if errMsg
+            pre= errMsg
+
+    div#div-table
+        div#product-list-toolbar
+            a.btn-floating.btn-large.waves-effect.waves-light.red.tooltipped(data-position="right", data-delay="50", data-tooltip="添加新产品", href='/monkey/addProduct/', target='_blank')
+                i.material-icons= 'add'
+        table#product-list-table
+

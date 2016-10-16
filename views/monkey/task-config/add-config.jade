@@ -1,0 +1,702 @@
+extends ../../base/site-layout
+
+block append head
+
+
+block content
+    h3#title 添加配置
+    hr
+
+    #errMsg
+        if errMsg
+            pre= errMsg
+
+    div
+        div.section(style="margin-top: 20px")
+            div(style="display: inline-block; margin: 0")
+                h4(style="margin: -15px 50px 0 0; font-size: 30px; display: inline-block;")= '选择产品'
+                div(style="width: 100px; display: inline-block;")
+                    a(href="{{ HOST_URL }}mobile/addProduct/", target="_blank")
+                        i.material-icons.left(style="margin-right: 5px")= 'playlist_add'
+                        | 添加产品
+                div(style="width: 100px; display: inline-block;")
+                    a(onclick="load_product_list()")
+                        i.material-icons.left(style="margin-right: 5px")= 'loop'
+                        | 刷新
+            div#filter.row
+                div.col-sm-5(style='margin-right: 50px')
+                    label(for="product", style="text-align: left; min-width: 60px; padding: 0")= '产品'
+                    select#product.select2(style="min-width: 150px", onchange="load_task_list_of_product()")
+
+                div.col-sm-5
+                    label(for="task_list", style="text-align: left; min-width: 60px; padding: 0")= '参考'
+                    select#task_list.select2(style="min-width: 150px", onchange='load_task_config_template()')
+                        option(value="", disabled, selected)= '选择-来参考已有的配置'
+        div.divider
+    html.
+        <div>
+            <div class="section">
+                <h4 class="header">基本配置</h4>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="taskName" class="validate" type="text" placeholder="NewMonkey任务名称, 同一产品最好有相同前缀">
+                        <label for="taskName">任务名</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="appname" class="validate" type="text" placeholder="如: com.tencent.mqq">
+                        <label for="appname">APP包名</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="svnPath" class="validate" type="text" placeholder="如: http://tc-svn.tencent.com/basic/basic_androidqq_rep/AndroidQQ_Lite_proj/trunk/QQLite/">
+                        <label for="svnPath">SVN路径</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="remindRTX" class="validate" type="text" placeholder="多个人用分号隔开. 如: zhangsan;tinyhua">
+                        <label for="remindRTX">RTX提醒人</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="packagePattern" class="validate" type="text" placeholder="填写安装包的标识(debug.apk, release.apk, 或其他)">
+                        <label for="packagePattern">安装包标识</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="rdmPath" class="validate" type="text" placeholder="如: http://rdm.oa.com/ci/product/0b729b17-6eb1-495b-a868-8bc6aabdc5bb/job/3608">
+                        <label for="rdmPath">RDM链接</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="rdmJobid" class="validate" type="text" placeholder="如: 3608">
+                        <label for="rdmJobid">RDM Job ID</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="workspace_id" class="validate" type="text" placeholder="TAPD 项目信息概况中的<项目ID>">
+                        <label for="workspace_id">TAPD workspace id</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="switch">
+                        <label>
+                            <span style="font-size: 16px; margin-left: 10px; margin-right: 15px; color: black">连续模式</span>关闭
+                            <input id="continue_mode" type="checkbox" checked>
+                            <span class="lever"></span>
+                            打开
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <h5 style="text-align: center">休息一下, 后面是一些选填的进阶配置 ~~~</h5>
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="parallax-container" style="width: 100%">
+            <div class="parallax"><img src="/static/public-img/background/house.jpg"></div>
+        </div>
+
+
+        <div>
+            <div class="section">
+                <h4 class="header">进阶配置</h4>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="current_owner" type="text" placeholder="如果有配svnpath，则给svn最近修改人，若没找到修改人，则直接给<当前处理人>">
+                        <label for="current_owner">当前处理人</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="version_report" type="text" placeholder="TAPD提单的大版本, 比如 6.5">
+                        <label for="version_report">发现版本</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="feature" type="text" placeholder="TAPD feature 字段, 如: MobileQQ_VIP, 用于区别同一产品的不同测试任务">
+                        <label for="feature">特性</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="priority" type="text" placeholder="灰度时可填 `urgent` (所有Crash都提紧急单), 发布后这个字段改为空">
+                        <label for="priority">优先级</label>
+                    </div>
+                </div>
+
+                <div class='col-sm-5' style='margin: 0 0 15px -15px'>
+                    <label for="product" style="text-align: left; min-width: 60px; padding: 0"> ANR是否提单到NewMonkey的tapd </label>
+                    <select id='AnrToNewMonkeyTapd' class='select2' style="min-width: 150px">
+                        <option>按手Q规则</option>
+                        <option>是</option>
+                        <option>否</option>
+                    </select>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="loginactivity" type="text" placeholder="如: com.tencent.mobileqq.activity.LoginActivity">
+                        <label for="loginactivity">需要进行登录的Activity</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="classname" type="text" placeholder="如: com.mobileqq.Login">
+                        <label for="classname">需要运行的类</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="UinGroupName" type="text" placeholder="如果一个账号不能登录多台手机，请填QTA测试账号分组名, 如：MobileQQ">
+                        <label for="UinGroupName">账户组名称</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="UIN_PWD" type="text" placeholder="如果一个账号能登录多台手机，账号密码之间空格隔开, 如: 2485992140 LaLa123">
+                        <label for="UinGroupName">账号 密码</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="userDefinedLog" type="text" placeholder="可填文件(夹)的路径，不用加sdcard路径, 用;分隔，不填为空, 如: tencent/a.txt">
+                        <label for="userDefinedLog">取自定义上传文件路径</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="monkeyoption" type="text" placeholder="如有Activity黑名单等特殊选项等, 可联系NewMonkey成员帮助配置">
+                        <label for="monkeyoption">NewMonkey 启动参数</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="monkeyoption" type="text" placeholder="如有Activity黑名单等特殊选项等, 可联系NewMonkey成员帮助配置">
+                        <label for="monkeyoption">NewMonkey 启动参数</label>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <div class="section">
+                <h4>提交</h4>
+                <div class="divider"></div>
+                <div style="margin-top: 20px">
+                    <p>
+                        <input type="checkbox" class="validate" id="svn_permission"/>
+                        <label style="color: firebrick" for="svn_permission">(请确认) 我已经给 isd_webadmin 加SVN读权限</label>
+                    </p>
+
+                    <p>
+                        <input type="checkbox" class="validate" id="RDM_TAPD_permission"/>
+                        <label style="color: firebrick" for="RDM_TAPD_permission">(请确认) 我已经给 looklukelu, janiceli, anthonytan 开通RDM及TAPD权限</label>
+                    </p>
+                </div>
+
+                <a class="waves-effect waves-light btn" style="text-align: center; width: 50%" onclick="do_submit()">提交</a>
+            </div>
+        </div>
+
+        <div class="parallax-container">
+            <div class="parallax"><img src="/static/public-img/background/bridge.jpg"></div>
+        </div>
+
+block append script
+    script.
+        var url_task_list_of_product = '/monkey/getTaskConfigs/';
+        var url_get_product_list = '/monkey/getProductList/?only_product_name=true'
+        var ulr_config_of_task_and_product = '/monkey/getTaskConfigs/';
+        var url_submit_config = '/monkey/submitTaskConfig/';
+        var url_when_submit_success = '/monkey/taskConfigList/';
+
+        var task_config_notify_empty = "-- 没有哇 --";
+        var task_config_notify_normal = "-- 选择来参考其他任务 --";
+
+
+        var form_info = {
+            'taskName': {
+                'field': 'taskName',
+                'name': '任务名',
+                "group": 'basic',
+                'required': 'required',
+                'placeholder': 'NewMonkey任务名称, 同一产品最好有相同前缀'
+            },
+            'appname': {
+                'field': 'appname',
+                'name': 'APP包名',
+                "group": 'basic',
+                'required': 'required',
+                'placeholder': '如: com.tencent.mqq'
+            },
+            "svnPath": {
+                "field": "svnPath",
+                "required": 'required',
+                "group": 'basic',
+                "placeholder": "如: http://tc-svn.tencent.com/basic/basic_androidqq_rep/AndroidQQ_Lite_proj/trunk/QQLite/",
+                "name": "SVN路径"
+            },
+            "remindRTX": {
+                "field": "remindRTX",
+                "required": 'required',
+                "group": 'basic',
+                "placeholder": "多个人用分号隔开. 如: zhangsan;tinyhua",
+                "name": "RTX提醒人"
+            },
+            "packagePattern": {
+                "field": "packagePattern",
+                "required": 'required',
+                "group": 'basic',
+                "placeholder": "填写安装包的标识(debug.apk, release.apk, 或其他)",
+                "name": "安装包标识"
+            },    // TODO: RDM 验证
+            "rdmPath": {
+                "field": "rdmPath",
+                "required": 'required',
+                "group": 'basic',
+                "placeholder": "如: http://rdm.oa.com/ci/product/0b729b17-6eb1-495b-a868-8bc6aabdc5bb/job/3608",
+                "name": "RDM链接"
+            },
+            "rdmJobid": {
+                "field": "rdmJobid",
+                "required": 'required',
+                "group": 'basic',
+                "placeholder": "如: 3608",
+                "name": "RDM Job ID"
+            },
+            "workspace_id": {
+                "field": "workspace_id",
+                "required": 'required',
+                "group": 'basic',
+                "placeholder": "TAPD 项目信息概况中的<项目ID>",
+                "name": "TAPD workspace id"
+            },
+            "continue_mode": {
+                "field": "continue_mode",
+                "required": '',
+                "group": 'basic',
+                "placeholder": "'true' 或者 'false'",
+                "name": "启用连续态",
+                "field_type": "checkbox_false"
+            },
+            "tapdPath": {
+                "field": "tapdPath",
+                "required": '',
+                "group": 'hide',
+                "placeholder": "如: http://tapd.oa.com/androidQQ/bugtrace/bugreports/my_view",
+                "name": "TAPD自动提单地址"
+            },
+            "current_owner": {
+                "field": "current_owner",
+                "required": '',
+                "group": '',
+                "placeholder": "如果有配svnpath，则给svn最近修改人，若没找到修改人，则直接给<当前处理人>",
+                "name": "当前处理人"
+            },
+            "version_report": {
+                "field": "version_report",
+                "required": '',
+                "group": '',
+                "placeholder": "TAPD提单的大版本, 比如 6.5",
+                "name": "发现版本"
+            },
+            "feature": {
+                "field": "feature",
+                "required": '',
+                "group": '',
+                "placeholder": "TAPD feature 字段, 如: MobileQQ_VIP, 用于区别同一产品的不同测试任务",
+                "name": "特性"
+            },
+            "module": {
+                "field": "module",
+                "required": '',
+                "group": 'hide',
+                "placeholder": "TAPD module 字段, 如: MTTF",
+                "name": "工具"
+            },
+            "priority": {
+                "field": "priority",
+                "required": '',
+                "group": '',
+                "placeholder": "灰度时可填 `urgent` (所有Crash都提紧急单), 发布后这个字段改为空",
+                "name": "priority"
+            },
+            "AnrToNewMonkeyTapd": {
+                "field": "AnrToNewMonkeyTapd",
+                "required": '',
+                "group": '',
+                'option_list': ["按手Q规则", "是", "否"],
+                "name": "ANR是否提单到NewMonkey的tapd",
+                "field_type": "select"
+            },
+            "AnrFocusPhone": {
+                "field": "AnrFocusPhone",
+                "required": '',
+                "group": 'hide',
+                "placeholder": "按手Q规则时填写, 如: MI 3;SCH-I939I;GT-I9508 (以英文分号;分隔)",
+                "name": "关注ANR的机型"
+            },
+            "appStartOption": {
+                "field": "appStartOption",
+                "required": '',
+                "group": 'hide',
+                "placeholder": "如：am start -n com.tencent.mobileqq/.activity.SplashActivity --ez logDBOperation true --ez autoDumpLeak true",
+                "name": "App 启动参数"
+            },
+            "MonkeyOptionForDiffPhone": {
+                "field": "MonkeyOptionForDiffPhone",
+                "group": 'hide',
+                "required": '',
+                "placeholder": "如：357070057309462=--activity2script com.tencent.mobileqq.activity.LoginActivity==-c##com.mobileqq.Login##-e##uin##896990074##-e##pwd##qqtest2014",
+                "name": "NewMonkey不同手机选项"
+            },
+            "loginactivity": {
+                "field": "loginactivity",
+                "required": '',
+                "group": '',
+                "placeholder": "如: com.tencent.mobileqq.activity.LoginActivity",
+                "name": "需要进行登录的Activity"
+            },
+            "classname": {
+                "field": "classname",
+                "required": '',
+                "group": '',
+                "placeholder": "如: com.mobileqq.Login",
+                "name": "需要运行的类"
+            },
+            "UinGroupName": {
+                "field": "UinGroupName",
+                "group": '',
+                "required": '',
+                "placeholder": "如果一个账号不能登录多台手机，请填QTA测试账号分组名, 如：MobileQQ",
+                "name": "账户组名称"
+            },
+            "UIN_PWD": {
+                "field": "UIN_PWD",
+                "required": '',
+                "group": '',
+                "placeholder": "如果一个账号能登录多台手机，账号密码之间空格隔开, 如: 2485992140 LaLa123",
+                "name": "账号 密码"
+            },
+            "userDefinedLog": {
+                "field": "userDefinedLog",
+                "required": '',
+                "group": '',
+                "placeholder": "可填文件(夹)的路径，不用加sdcard路径, 用;分隔，不填为空, 如: tencent/a.txt",
+                "name": "取自定义上传文件路径"
+            },
+            "monkeyoption": {
+                "field": "monkeyoption",
+                "required": '',
+                "group": '',
+                "placeholder": "如有Activity黑名单等特殊选项等, 可联系NewMonkey成员帮助配置",
+                "name": "NewMonkey 启动参数"
+            },
+            "crashflag": {
+                "field": "crashflag",
+                "required": '',
+                "group": 'hide',
+                "placeholder": "如果有，请填写, 如: E crash",
+                "name": "Logcat中App自定义Crash标识"
+            },
+            "LogcatCrashTypePattern": {
+                "field": "LogcatCrashTypePattern",
+                "group": 'hide',
+                "required": '',
+                "placeholder": "crashflag 如果设置，请填写，如: E crash\s*:\s*(\S*)(:\s*\S*)*",
+                "name": "Logcat中获取crash类型的正则表达式"
+            },
+            "LogcatCrashHeapInfoPattern": {
+                "field": "LogcatCrashHeapInfoPattern",
+                "group": 'hide',
+                "required": '',
+                "placeholder": "crashflag 如果设置，请填写，如：E crash\s*:\s*at\s*(\S*\s\S*)",
+                "name": "Logcat中取堆栈信息的正则表达式"
+            },
+            "svn_permission": {
+                "field": "svn_permission",
+                "required": 'required',
+                "group": '',
+                "name": "我已经给 isd_webadmin 加SVN读权限",
+                "field_type": "others"
+            },
+            "RDM_TAPD_permission": {
+                "field": "RDM_TAPD_permission",
+                "required": 'required',
+                "group": '',
+                "name": "我已经给 looklukelu, janiceli, anthonytan 开通RDM及TAPD权限",
+                "field_type": "others"
+            }
+        };
+
+        /******** Document Part Start ********/
+        function get_value_of_elem(elem) {
+            if (!elem) {
+                return '';
+            }
+            var $elem = $(elem);
+            var tag = $elem.get(0).tagName;
+            var value;
+            if (tag == 'INPUT') {
+                var type = $elem.attr('type');
+                if (type == 'checkbox') {
+                    value = $elem.is(':checked');
+                } else {
+                    value = $elem.val();
+                }
+            } else {
+                value = $elem.text();
+            }
+            return value;
+        }
+
+        function set_value_of_elem(elem, value) {
+            var $elem = $(elem);
+            if (!$elem || ! $elem.get(0)) {
+                console.log('not found elem: ' + elem + ', value: ' + value);
+                return false;
+            }
+            var tag = $elem.get(0).tagName;
+            if (tag == 'INPUT' || tag == 'SELECT') {
+                var type = $elem.attr('type');
+                if (type == 'checkbox') {
+                    if (value != undefined) {
+                        value = (value == 'checked' || value == true);
+                        $elem.prop('checked', value);
+                    }
+                } else {
+                    $elem.val(value);
+                }
+            } else {
+                $elem.text(value);
+            }
+            return true;
+        }
+
+        function load_select_list(select_id, option_list, first_disabled) {
+            var $select = $('#' + select_id);
+            $select.empty();
+            for (var i = 0; i < option_list.length; i++) {
+                var option = option_list[i];
+                if (first_disabled == true && i == 0)
+                    $select.append('<option value="" disabled selected>' + option + '</option>');
+                else
+                    $select.append('<option>' + option + '</option>');
+            }
+            $select.trigger('change.select2');
+        }
+
+        /******** Ajax Part Start ********/
+
+        function load_product_list() {
+            show_loading('div_loading');
+            $.ajax({
+                url: url_get_product_list,
+                type: "GET",
+                dataType: 'json',
+                success: function (resp) {
+                    console.log(resp);
+                    hide_loading('div_loading');
+                    if (resp.status != 'ok') {
+                        Materialize.toast(resp.data, 30000);
+                    } else {
+                        var product_list = resp.data;
+                        load_select_list('product', product_list);
+                        load_task_list_of_product('#product_list');
+                    }
+                }
+            });
+        }
+
+        function load_task_list_of_product() {
+            var productName = $('#product').val();
+            if (!productName)
+                return;
+
+            show_loading('div_loading');
+
+            $.ajax({
+                url: url_task_list_of_product,
+                type: "GET",
+                data: {
+                    product: productName,
+                    only_task_name: true
+                },
+                dataType: 'json',
+                success: function (resp) {
+                    hide_loading('div_loading');
+                    if (resp.status != 'ok') {
+                        Materialize.toast(resp.data, 30000);
+                    } else {
+                        var task_list = resp.data;
+                        var task_name_list = task_list.map(function (x) {
+                            return x['task_name'];
+                        })
+                        console.log(task_name_list);
+                        if (task_name_list.length == 0)
+                            task_name_list.unshift(task_config_notify_empty);
+                        else {
+                            task_name_list.unshift(task_config_notify_normal);
+                        }
+                        load_select_list('task_list', task_name_list, true);
+                    }
+                }
+            });
+        }
+
+
+        function load_task_config_template() {
+            var productName = $('#product').val();
+            var taskName = $('#task_list').val();
+
+            if (!taskName)
+                return;
+
+            show_loading('div_loading');
+
+            $.ajax({
+                url: ulr_config_of_task_and_product,
+                type: "GET",
+                dataType: 'json',
+                data: {
+                    'product': productName,
+                    'task_name': taskName
+                },
+                success: function (resp) {
+                    hide_loading('div_loading');
+                    if (resp.status != 'ok') {
+                        Materialize.toast(resp.data, 30000);
+                    } else if (resp.data.length == 0) {
+                        Materialize.toast('未找到配置: 产品: ' + productName + ', 任务: ' + taskName, 3000);
+                    } else {
+                        var config = resp.data[0].config;
+                        delete config['taskName'];
+                        do_clean_form();
+                        do_load_task_config(config);
+                    }
+                }
+            });
+        }
+
+        function do_clean_form() {
+            do_load_task_config({
+                "continue_mode": true,
+                "AnrToNewMonkeyTapd": true
+            });
+        }
+
+        function do_load_task_config(config) {
+            console.log(config);
+            for (var field in form_info) {
+                if (!form_info.hasOwnProperty(field))
+                    continue;
+                var is_ok = set_value_of_elem($('#' + field), config[field]);
+                if (! is_ok) {
+                    console.error('fail to set: ' + field + ', value: ' + config[field])
+                }
+            }
+        }
+
+        function get_values_of_form(form_info) {
+            var form_values = {};
+            for (var field in form_info) {
+                if (!form_info.hasOwnProperty(field))
+                    continue;
+                var elem = document.getElementById(field);
+                form_values[field] = get_value_of_elem(elem);
+            }
+            return form_values;
+        }
+
+        function do_check() {
+            var $validate = $('.validate');
+            var is_ok = true;
+            $validate.each(function (index) {
+                var id = $(this).attr('id');
+                var value = get_value_of_elem(this);
+                var field_name = $(this).siblings('label').text();
+                console.log(field_name);
+                if (value == '' || value == false) {
+                    is_ok = false;
+                    Materialize.toast('请检查或确认: ' + field_name, 3000);
+                    $('html, body').animate({
+                        scrollTop: $("#" + id).offset().top - 100
+                    }, 1000);
+                    return false;
+                }
+            });
+            return is_ok;
+        }
+
+        function do_submit() {
+            var is_ok = do_check();
+            if (!is_ok)
+                return;
+            var form_values = get_values_of_form(form_info);
+
+            form_values['override_config'] = false;
+            form_values['product'] = $('#product').val();
+            console.debug(form_values);
+
+            show_loading('div_loading');
+
+            $.ajax({
+                url: url_submit_config,
+                type: "POST",
+                async: false,
+                dataType: 'json',
+                data: {
+                    'formJsonStr': JSON.stringify(form_values)
+                },
+                success: function (resp) {
+                    console.log(resp);
+                    hide_loading('div_loading');
+                    if (resp.status != 'ok') {
+                        Materialize.toast(resp.data, 30000);
+                    } else {
+                        Materialize.toast('提交配置成功, 稍后将跳转 ~', 4000, '', function () {
+                              document.location = url_when_submit_success;
+                        });
+                    }
+                }
+            });
+            return false;
+        }
+
+        $(document).ready(function () {
+            $('.parallax').parallax();
+            $('.select2').select2({minimumResultsForSearch: 7});
+            load_product_list();
+        });

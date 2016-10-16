@@ -1,0 +1,232 @@
+extends ../../base/site-layout
+
+block append head
+
+
+block content
+    - if (title == 'Add Product')
+        h3 添加产品
+    - else if (title == 'Modify Product')
+        h3 修改产品
+    - else
+        h3 添加/修改产品
+    hr
+
+    #errMsg
+        if errMsg
+            pre= errMsg
+
+    div(style="width: 100%; display: table")
+        blockquote.pull-left.
+            温馨提示:<br>
+            1. 尽量使用下拉列表中的产品名,以保持一致: <a href="http://work.sng.local/product/common" target="_blank">点这里查看</a>.<br>
+            2. 自行输入产品名时, 产品名尽量以"(Android)"或者"(iOS)"结尾, 其中不可以包含中文括号
+
+    div.section
+        div.row
+            label(for='product_select' style="text-align: left; min-width: 60px; padding: 0")= '产品名'
+            div.col-md-12(style='margin: 0 0 15px -15px')
+                select#product_select.validate.select2(style='max-width: 40%' onchange='when_product_changed()')
+                input#product_input(type="text", style="max-width: 300px; margin: 0 0 0 40px; height: 20px; display: none")
+
+        div.row
+            label(for='platform' style="text-align: left; min-width: 60px; padding: 0")= '平台'
+            div.col-md-12(style='margin: 0 0 15px -15px')
+                select.select2#platform(style='max-width: 40%')
+                    option= 'android'
+                    option= 'ios'
+                    option= 'ipad'
+                    option= 'pc'
+
+        div.row.input-field.col.s12
+            input.validate#package(type="text", placeholder='例如: com.tencent.mobileqq')
+            label(for='package')= '包名'
+
+
+        div.row.input-field.col.s12
+            input.validate#workspace_id(type="text", placeholder='TAPD 项目信息概况中的<项目ID>, 如: 10066461')
+            label(for='workspace_id')= 'TAPD Workspace ID'
+
+        div.row.input-field.col.s12
+            input.validate#department(type="text", placeholder='例如: 社交网络质量部')
+            label(for='department')= '产品所属部门'
+
+        div.row.input-field.col.s12
+            input.validate#app_log_path(type="text", placeholder='例如: /tencent/msflogs/com/tencent/mobileqq/')
+            label(for='app_log_path')= 'app 日志路径'
+
+        div.row.input-field.col.s12.center-align
+            button.btn.waves-effect.waves-light(style='min-width: 300px', onclick='do_submit()')= '提交'
+                i.material-icons.right= 'send'
+
+
+block append script
+    script.
+        var url_get_product_list = '/monkey/getSngProductList/?only_product_name=true'
+        var url_submit_add_product = '/monkey/submitAddProduct/';
+        var url_when_submit_success = '/monkey/productList/'
+        var label_not_found_product = '没找到产品 ? 请点击 >>';
+        var label_product_hint = '-- 请先尝试从列表查找 (可搜索) --';
+        var product_values = !{product ? JSON.stringify(product) : false};
+
+        function load_form_with_values(values) {
+            var $product_select = $('#product_select'), $product_input = $('#product_input');
+            $product_select.val(values.product_name).trigger("change");
+            if ($product_select.val() != values.product_name) {
+                $product_select.val(label_not_found_product).trigger("change");
+                $product_input.val(values.product_name);
+                $product_input.show()
+            }
+            $('#platform').val(values.platform);
+            $('#package').val(values.package);
+            $('#workspace_id').val(values.workspace_id);
+            $('#department').val(values.department);
+            $('#app_log_path').val(values.app_log_path);
+        }
+
+        function gather_form_values() {
+            var values = {};
+            values.product_name = $('#product_select').val();
+            if (values.product_name == label_product_hint)
+                values.product_name = null;
+            if (! values.product_name || values.product_name == label_not_found_product) {
+                values.product_name = $('#product_input').val();
+            }
+            values.platform = $('#platform').val();
+            values['package'] = $('#package').val();
+            values.workspace_id = $('#workspace_id').val();
+            values.department = $('#department').val();
+            values.app_log_path = $('#app_log_path').val();
+            values.who_update = "#{user}";
+
+            return values;
+        }
+        
+        function load_product_list(when_ok, when_fail) {
+            show_loading('div_loading');
+            $.ajax({
+                url: url_get_product_list,
+                type: "GET",
+                dataType: 'json',
+                success: function (resp) {
+                    console.log(resp);
+                    hide_loading('div_loading');
+                    if (resp.status != 'ok') {
+                        Materialize.toast(resp.data, 30000);
+                    } else {
+                        var product_list = resp.data;
+                        product_list.unshift(label_not_found_product);
+                        product_list.unshift(label_product_hint);
+                        $('#product_select').select2({
+                            data: product_list
+                        })
+                        if (when_ok)
+                            when_ok()
+                    }
+                }
+            });
+        }
+
+        function when_product_changed() {
+            var product_name = $('#product_select').val();
+            if (product_name == label_not_found_product) {
+                $('#product_input').show(1000);
+            }
+        }
+
+        function get_value_of_elem(elem) {
+            if (!elem) {
+                return '';
+            }
+            var $elem = $(elem);
+            var tag = $elem.get(0).tagName;
+            var value;
+            if (tag == 'INPUT') {
+                var type = $elem.attr('type');
+                if (type == 'checkbox') {
+                    value = $elem.is(':checked');
+                } else {
+                    value = $elem.val();
+                }
+            } else {
+                value = $elem.text();
+            }
+            return value;
+        }
+
+        function do_check() {
+            var $validate = $('.validate');
+            var is_ok = true;
+            var values = gather_form_values();
+            var product_name = values.product_name;
+            if ($('#product_select').val() == label_not_found_product) {
+                if (product_name.indexOf('（') > -1 || product_name.indexOf('）') > -1) {
+                    Materialize.toast('填写产品时, 请使用英文标点符号 ( 或者 )', 4000);
+                    return false;
+                }
+                if (product_name.indexOf('(Android)') < 0 && product_name.indexOf('(iOS)') < 0 && product_name.indexOf('(iPad)') < 0) {
+                    Materialize.toast('请使用 (Android), (iOS) 或 (iPad) 作为产品后缀~', 4000);
+                    return false;
+                }
+            }
+
+            $validate.each(function (index) {
+                var id = $(this).attr('id');
+                var $filed_label = $(this).siblings('label')
+                if ($filed_label.length == 0) {
+                    $filed_label = $(this).parents().siblings('label');
+                }
+                var field_name = $filed_label.text();
+
+                var value = values[id];
+                if (id == 'product_select')    // product_select 的 key 被改写为了 product_name.
+                    value = values.product_name;
+
+                console.log(id + '__' + field_name + '__' + value);
+                if (value == '' || value == false || value == undefined) {
+                    is_ok = false;
+                    Materialize.toast('请检查或确认: ' + field_name, 4000);
+                    $('html, body').animate({
+                        scrollTop: $("#" + id).offset().top - 100
+                    }, 1000);
+                    return false;
+                }
+            });
+            return is_ok;
+        }
+
+        function do_submit() {
+            if (! do_check()) {
+                return false;
+            }
+            var values = gather_form_values();
+            show_loading('div_loading');
+            $.ajax({
+                url: url_submit_add_product,
+                type: "POST",
+                dataType: 'json',
+                data: {
+                    product_values: JSON.stringify(values)
+                },
+                success: function (resp) {
+                    console.log(resp);
+                    hide_loading('div_loading');
+                    if (resp.status != 'ok') {
+                        Materialize.toast(resp.data, 30000);
+                    } else {
+                        Materialize.toast('添加产品成功, 稍后将跳转 ~', 4000, '', function () {
+                            document.location = url_when_submit_success;
+                        });
+                    }
+                }
+            });
+        }
+
+        $(document).ready(function () {
+            $('.select2').select2({minimumResultsForSearch: 7});
+            load_product_list(function () {
+                if (product_values)
+                    load_form_with_values(product_values);
+            });
+        });
+

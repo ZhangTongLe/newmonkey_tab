@@ -13,7 +13,6 @@ var TabUtil = require('../lib/tab-util');
 var MonkeyEvent = require('./monkey-event');
 
 
-
 function get_records_of_task(task_id, func_when_ok, callback, error_callback){
     var event_query = new AV.Query('EventHistory');
     event_query.equalTo('task_id', task_id);

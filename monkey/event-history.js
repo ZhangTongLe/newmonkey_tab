@@ -88,7 +88,6 @@ function sync_one_event_record(r) {
                 pre.save().then(function () {
                     StatusMap.sync_one_event_record(pre);
                     TaskMeta.sync_one_event_record(pre);
-                    // EnumMeta.sync_one_event_record(pre);    // Disable EnumMeta, 耗费请求数过多
                 });
             }
         });
@@ -121,34 +120,6 @@ function reply_to_event_history_page(req, res, next) {
         device_list = DsUtil.list_distinct(device_list);
         when_meta_info_ok();
     });
-
-    // Disable EnumMeta, 耗费请求数过多
-    // // query product
-    // var product_query = new AV.Query('EnumMeta').equalTo('key_first', 'product').equalTo('key_second', null);
-    // TabUtil.find(product_query, function (records) {
-    //     records.forEach(function (r) {
-    //         product_list.push(r.get('value_str'));
-    //     });
-    //
-    //     // query version
-    //     var product_version_query = new AV.Query('EnumMeta').equalTo('key_first', 'product_version');
-    //     TabUtil.find(product_version_query, function (records) {
-    //         records.forEach(function (r) {
-    //             version_list.push(r.get('value_str'));
-    //         });
-    //
-    //         // query device
-    //         var device_query = new AV.Query('EnumMeta').equalTo('key_first', 'device');
-    //         TabUtil.find(device_query, function (records) {
-    //             records.forEach(function (r) {
-    //                 device_list.push(r.get('value_str'));
-    //             });
-    //
-    //             // finish query ...
-    //             when_meta_info_ok();
-    //         });
-    //     });
-    // });
 
     function when_meta_info_ok() {
         var query = new AV.Query('EventHistory');

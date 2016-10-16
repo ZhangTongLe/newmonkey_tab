@@ -1,0 +1,19 @@
+extends ../../base/site-layout
+
+block append head
+    script(src='/static/monkey/js/task-config/config-list.js')
+
+block content
+    h3 任务配置列表
+    hr
+
+    #errMsg
+        if errMsg
+            pre= errMsg
+
+    div#div-table
+        div#config-list-toolbar
+            a.btn-floating.btn-large.waves-effect.waves-light.red.tooltipped(data-position="right", data-delay="50", data-tooltip="添加新配置", href='/monkey/addTaskConfig/', target='_blank')
+                i.material-icons= 'add'
+        table#config-list-table
+
