@@ -106,8 +106,8 @@
       <file leaf-file-name="upload_product_info.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tests/upload_product_info.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.19642857">
-              <caret line="27" column="26" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
+            <state vertical-scroll-proportion="0.5616883">
+              <caret line="46" column="61" selection-start-line="46" selection-start-column="61" selection-end-line="46" selection-end-column="61" />
               <folding>
                 <element signature="e#25#41#0" expanded="true" />
               </folding>
@@ -1153,8 +1153,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/upload_product_info.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.19642857">
-          <caret line="27" column="26" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
+        <state vertical-scroll-proportion="0.5616883">
+          <caret line="46" column="61" selection-start-line="46" selection-start-column="61" selection-end-line="46" selection-end-column="61" />
           <folding>
             <element signature="e#25#41#0" expanded="true" />
           </folding>

@@ -2,33 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e0ac790-8425-4a9b-b228-7cf9d5bf4db1" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/public-img/background/bridge.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/public-img/background/house.jpg" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/str-util.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monkey/product/product.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/monkey/task-config/task-config.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/monkey/js/product/product-list.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/static/monkey/js/task-config/config-list.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/commit_ct_bug.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/monkey/product/add-product.jade" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/monkey/product/product-list.jade" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/monkey/task-config/add-config.jade" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/monkey/task-config/config-list.jade" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/views/monkey/task-config/modify-config.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/kangtian.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/kangtian.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_simulator/.idea/workspace.xml" afterPath="$PROJECT_DIR$/app_simulator/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/http-util.js" afterPath="$PROJECT_DIR$/lib/http-util.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/lib/tab-util.js" afterPath="$PROJECT_DIR$/lib/tab-util.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monkey/event-history.js" afterPath="$PROJECT_DIR$/monkey/event-history.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monkey/stat-event.js" afterPath="$PROJECT_DIR$/monkey/stat-event.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monkey/status-map.js" afterPath="$PROJECT_DIR$/monkey/status-map.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/monkey/task-list.js" afterPath="$PROJECT_DIR$/monkey/task-list.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/package.json" afterPath="$PROJECT_DIR$/package.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/routes/monkey.js" afterPath="$PROJECT_DIR$/routes/monkey.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/static/public-js/tiny_util.js" afterPath="$PROJECT_DIR$/static/public-js/tiny_util.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/base/site-nav-materialize.jade" afterPath="$PROJECT_DIR$/views/base/site-nav-materialize.jade" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/monkey/coverage-timeline.jade" afterPath="$PROJECT_DIR$/views/monkey/coverage-timeline.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/monkey/product/add-product.jade" afterPath="$PROJECT_DIR$/views/monkey/product/add-product.jade" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/monkey/task-config/add-config.jade" afterPath="$PROJECT_DIR$/views/monkey/task-config/add-config.jade" />
     </list>
     <ignored path="newmonkey_tab.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -94,31 +70,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="add-product.jade" pinned="false" current-in-tab="false">
+      <file leaf-file-name="add-product.jade" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/views/monkey/product/add-product.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="192" column="17" selection-start-line="192" selection-start-column="17" selection-end-line="192" selection-end-column="17" />
+            <state relative-caret-position="408">
+              <caret line="129" column="37" selection-start-line="129" selection-start-column="17" selection-end-line="129" selection-end-column="37" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="site-nav.jade" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/views/base/site-nav.jade">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="site-nav-materialize.jade" pinned="false" current-in-tab="true">
+      <file leaf-file-name="site-nav-materialize.jade" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/views/base/site-nav-materialize.jade">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="18" column="74" selection-start-line="18" selection-start-column="74" selection-end-line="18" selection-end-column="74" />
+            <state relative-caret-position="467">
+              <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -129,6 +95,16 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="227">
               <caret line="228" column="5" selection-start-line="228" selection-start-column="5" selection-end-line="228" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="add-config.jade" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/views/monkey/task-config/add-config.jade">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="34" column="19" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -215,15 +191,15 @@
         <option value="$PROJECT_DIR$/static/monkey/js/task-config/config-list.js" />
         <option value="$PROJECT_DIR$/views/monkey/task-config/config-list.jade" />
         <option value="$PROJECT_DIR$/views/monkey/product/product-list.jade" />
-        <option value="$PROJECT_DIR$/views/monkey/task-config/add-config.jade" />
         <option value="$PROJECT_DIR$/lib/tab-util.js" />
         <option value="$PROJECT_DIR$/static/monkey/js/product/product-list.js" />
         <option value="$PROJECT_DIR$/monkey/product/product.js" />
-        <option value="$PROJECT_DIR$/views/monkey/product/add-product.jade" />
         <option value="$PROJECT_DIR$/routes/monkey.js" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/monkey/task-config/task-config.js" />
         <option value="$PROJECT_DIR$/views/base/site-nav-materialize.jade" />
+        <option value="$PROJECT_DIR$/views/monkey/task-config/add-config.jade" />
+        <option value="$PROJECT_DIR$/views/monkey/product/add-product.jade" />
       </list>
     </option>
   </component>
@@ -236,8 +212,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="263" />
-    <option name="y" value="230" />
+    <option name="x" value="377" />
+    <option name="y" value="219" />
     <option name="width" value="1732" />
     <option name="height" value="1100" />
   </component>
@@ -281,6 +257,82 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="newmonkey_tab" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="newmonkey_tab" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="newmonkey_tab" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="newmonkey_tab" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="newmonkey_tab" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="monkey" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="newmonkey_tab" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="newmonkey_tab" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="monkey" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="task-config" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="newmonkey_tab" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="newmonkey_tab" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="views" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="monkey" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="product" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -544,16 +596,16 @@
       <workItem from="1475046086090" duration="7824000" />
       <workItem from="1475891117094" duration="55196000" />
       <workItem from="1476534803786" duration="1318000" />
-      <workItem from="1476537042691" duration="42044000" />
+      <workItem from="1476537042691" duration="43341000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="264536000" />
+    <option name="totallyTimeSpent" value="265833000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="263" y="230" width="1732" height="1100" extended-state="0" />
-    <editor active="false" />
+    <frame x="377" y="219" width="1732" height="1100" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22559907" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -563,7 +615,7 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41765872" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24404761" sideWeight="0.66627705" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2847222" sideWeight="0.66627705" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39880952" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -849,14 +901,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/monkey/task-config/add-config.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="449">
-          <caret line="681" column="18" selection-start-line="681" selection-start-column="18" selection-end-line="681" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/tab-util.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="454">
@@ -927,14 +971,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/views/monkey/product/add-product.jade">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="192" column="17" selection-start-line="192" selection-start-column="17" selection-end-line="192" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/monkey/product/product.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
@@ -990,8 +1026,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/views/base/site-nav-materialize.jade">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="18" column="74" selection-start-line="18" selection-start-column="74" selection-end-line="18" selection-end-column="74" />
+        <state relative-caret-position="467">
+          <caret line="41" column="0" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/monkey/task-config/add-config.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="34" column="19" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/views/monkey/product/add-product.jade">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="129" column="37" selection-start-line="129" selection-start-column="17" selection-end-line="129" selection-end-column="37" />
           <folding />
         </state>
       </provider>

@@ -131,6 +131,8 @@ block append script
             var product_name = $('#product_select').val();
             if (product_name == label_not_found_product) {
                 $('#product_input').show(1000);
+            } else {
+                $('#product_input').hide(1000);
             }
         }
 
