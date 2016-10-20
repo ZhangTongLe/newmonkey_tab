@@ -48,6 +48,14 @@ class TabUtil(object):
         d['id'] = obj.id
         return d
 
+    def merged_save(self, records, merged_fields, merged_name):
+        merged_list = []
+        for record in records:
+            field_obj = dict()
+            for field in merged_fields:
+                field_obj[field] = record[field]
+
+
 TAB_UTIL = TabUtil()
 
 if __name__ == "__main__":
