@@ -236,7 +236,6 @@ function get_task_config_with_identify(req, res, next) {
     query.include('product.product_name');
 
     TabUtil.find(query, function (records) {
-        console.log(1);
         records.forEach(function (r) {
             r.set('product_name', r.get('product').get('product_name'));
         });
@@ -250,7 +249,6 @@ function get_task_config_with_identify(req, res, next) {
                 HttpUtil.resp_json(res, {result: 'wrong', datas: 'error: ' + e.message});
             }
         }
-        console.log(2);
         var ret_obj = get_needed_config_with_identify(records, identify);
         HttpUtil.resp_json(res, {result: 'ok', datas: {
             taskConfigs: ret_obj.delta_config,

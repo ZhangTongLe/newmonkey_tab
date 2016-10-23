@@ -450,7 +450,6 @@ function stat_all_with_status_map(sm_records, filter_dict, callback, callback_fa
 
                     for (var i = 0; i < records.length; i += 1) {
                         step_start_time = records[i].createdAt;
-                        // console.log(step_start_time);
                         if (step_start_time >= new Date(time_pos)) {
                             step_start_time = new Date(time_pos);    // 使用 records[i].createdAt 会导致时间轴数据分布不均匀。
                             var step_records = records.slice(0, i);

@@ -29,7 +29,6 @@ function sync_one_event_record(r) {
         .equalTo('value_str', r.get('product'));
     TabUtil.find_delay(product_query, function (records) {
         if (records.length == 0){
-            console.log(4);
             var product_meta = new EnumMeta();
             product_meta.set('key_first', 'product');
             product_meta.set('value_str', r.get('product'));

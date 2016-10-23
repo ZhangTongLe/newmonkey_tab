@@ -12,7 +12,6 @@ var graph_type = {
 };
 
 function net_graph_upload(req, res, next) {
-    console.log('in');
     var d = {};
     if (req.body) {
         d.name = req.body['name'];
@@ -56,7 +55,6 @@ function get_graph_data(req, res, next) {
         var query = new AV.Query('NetGraph');
         query.equalTo('objectId', d.id);
         TabUtil.find(query, function (records) {
-            console.log(records.length);
             if (records.length > 0) {
                 var r = records[0];
                 var resp = {

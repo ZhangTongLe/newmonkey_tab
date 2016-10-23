@@ -22,11 +22,9 @@ function sync_event_history(use_last_time) {
 
     kv_query.equalTo('key', APP_DATA_EVENT_SYNC_TIME).find().then(function (l) {
         var last_time = l.length > 0 ? l[0].get('value_str') : undefined;
-        console.log('sync_status_map: last_time is '+last_time);
         last_time = last_time == undefined ? new Date(0): new Date(last_time);
         if (use_last_time)
             last_time = use_last_time;
-        console.log('sync_status_map: do_sync.last_time is '+last_time);
         query.greaterThan('createdAt', last_time).addDescending('createdAt');
         query.limit(G.TAB_LIMIT);
         query.find().then(function (event_records) {
@@ -173,7 +171,7 @@ function event_history_do_filter(req, res, next) {
             throw error;
         }).catch(next);
     } catch (e){
-        console.log(e);
+        console.error(e);
     }
 
 }
