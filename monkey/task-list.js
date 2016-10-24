@@ -5,6 +5,7 @@
 var AV = require('../lib/tab-login');
 var G = require('../config/global');
 var TabUtil = require('../lib/tab-util');
+var HttpUtil = require('../lib/http-util');
 
 var EnumMeta = require('./enum-meta');
 var DsUtil = require('../lib/ds_util');
@@ -36,25 +37,47 @@ function reply_to_task_list_page(req, res, next) {
     });
 
     function when_meta_info_ok() {
-        var query = new AV.Query('EventHistory');
-        query.limit(G.TAB_LIMIT);
-        TabUtil.find(query, function (results) {
-            res.render('monkey/task-list', {
-                title: 'Task List',
-                user: req.currentUser,
-                records: results,
-                product_list: product_list,
-                version_list: version_list,
-                device_list: device_list,
-                status: status,
-                errMsg: errMsg
-            });
-        }).catch(next);
+        res.render('monkey/task-list', {
+            title: 'Task List',
+            user: req.currentUser,
+            product_list: product_list,
+            version_list: version_list,
+            device_list: device_list,
+            status: status,
+            errMsg: errMsg
+        });
     }
 }
 
+function get_task_list(req, res, next) {
+    var product = null, version = null, task_id = null;
+    if (req.query) {
+        product = req.query['product'];
+        version = req.query['version'];
+        device = req.query['device'];
+    }
+
+    var query = new AV.Query('TaskMeta');
+    if (product)
+        query.equalTo('product', product);
+    if (version)
+        query.equalTo('version', version);
+    if (device)
+        query.equalTo('device', device);
+
+    query.select('product', 'version', 'device', 'task_id');
+    query.descending('createdAt');
+    TabUtil.find(query).then(function (records) {
+        HttpUtil.resp_json(res, {status: 'ok', data: records});
+    }, function (e) {
+        HttpUtil.resp_json(res, {status: 'error', data: 'error: ' + e.message});
+    });
+}
+
+
 var TaskList = {
-    reply_to_task_list_page: reply_to_task_list_page
+    reply_to_task_list_page: reply_to_task_list_page,
+    get_task_list: get_task_list
 };
 
 

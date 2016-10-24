@@ -38,6 +38,9 @@ router.post('/eventHistoryFilter/', function (req, res, next) {
 router.get('/taskList/', function (req, res, next) {
     TaskList.reply_to_task_list_page(req, res, next);
 });
+router.get('/getTaskList/', function (req, res, next) {
+    TaskList.get_task_list(req, res, next);
+});
 
 
 // statusMap part

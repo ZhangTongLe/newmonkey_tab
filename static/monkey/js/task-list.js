@@ -6,7 +6,7 @@
  */
 
 
-var url_do_filter = '/monkey/eventHistoryFilter/';
+var url_do_filter = '/monkey/getTaskList/';
 var url_task_detail = '/monkey/taskDetail?task_id=';
 var url_product_ver_detail = '/monkey/ProductVerDetail?product=';
 var table_name = 'task-list-table';
@@ -54,13 +54,12 @@ function do_filter() {
     var $table = $('#'+table_name);
     $.ajax({
         url: url_do_filter,
-        type: "POST",
+        type: "GET",
         dataType: 'json',
         data: {
             product: get_selector_val($('#product')),
             version: get_selector_val($('#version')),
             device: get_selector_val($('#device')),
-            distinct_task: true
         },
         success: function (resp) {
             console.log(resp);

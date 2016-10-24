@@ -22,9 +22,10 @@ class MonkeyRunner(object):
         self.task_id = str(datetime.datetime.now()).replace(' ', '_')
         self.app = app
         self.app.version = random.choice(['1.0.2', '6.5.8', '6.5.5', '1.0.3'])
-        self.app.version = '1.0.3'
+        self.app.version = '1.0.4'
         self.device = random.choice(['Nexus5', 'MX4Pro', 'R819T', 'SM-G7106', 'GT-I9300'])
         self.device = 'MX4Pro'
+        self.n_records_upload = 100
         self.stat_info = dict(
             stay_same_activity_count=0
         )
@@ -32,12 +33,21 @@ class MonkeyRunner(object):
 
     def start(self, event_num=100, event_cost_ms=10):
         event_list = []
+        last_event_object = None
         for seq_no in range(event_num):
             event_object = self.random_event()
             event_object['seq_no'] = seq_no
+            if last_event_object:
+                last_event_object['next_activity'] = event_object['pre_activity']
+                event_list.append(last_event_object)
+
+            last_event_object = event_object
+
             if self.do_upload_event_history:
-                self.reporter.upload_event_history(event_object=event_object)
-            event_list.append(event_object)
+                if len(event_list) >= self.n_records_upload:
+                    self.reporter.upload_event_history(event_list, merged_upload=True)
+                    event_list = []
+
             if self.show_details:
                 print '\n' + '-'*50 + '\n%s' % self.app
             time.sleep(event_cost_ms / 1000.0)
@@ -46,6 +56,8 @@ class MonkeyRunner(object):
             net_graph_data = net_graph.gen_net_graph_data_from_event_history(event_list)
             resp = net_graph.upload_to_web('%s--%s.%s' % (self.app.identify, self.app.version, self.task_id), 'net_graph', net_graph_data)
             print resp.text
+        if len(event_list) > 0:
+            self.reporter.upload_event_history(event_list, merged_upload=True)
 
     def get_random_widget(self, method='jump_when_locked'):
         if method == 'jump_when_locked':
@@ -103,5 +115,5 @@ class MonkeyRunner(object):
 
 if __name__ == '__main__':
     app = AppSMBuilder('com.tencent.mobileqq', '6.5.8', do_reload=False).gen_app()
-    monkey = MonkeyRunner(app, show_details=False)
+    monkey = MonkeyRunner(app, show_details=False, do_upload_event_history=True)
     monkey.start(event_num=300, event_cost_ms=1)

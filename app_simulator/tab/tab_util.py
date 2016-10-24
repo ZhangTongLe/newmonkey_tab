@@ -2,6 +2,8 @@
 
 import leancloud
 import datetime
+import requests
+import json
 
 from leancloud import Object
 from leancloud import Query
@@ -48,12 +50,17 @@ class TabUtil(object):
         d['id'] = obj.id
         return d
 
-    def merged_save(self, records, merged_fields, merged_name):
-        merged_list = []
-        for record in records:
-            field_obj = dict()
-            for field in merged_fields:
-                field_obj[field] = record[field]
+    def merged_save(self, records, class_name=None):
+        if len(records) == 0:
+            return
+        class_name = class_name
+        print 'merged_save: %s' % json.dumps(records, indent=4)
+        resp = requests.post('https://hi-monkey.leanapp.cn/service/SaveRecordsWithMerge', data=dict(
+            class_name=class_name,
+            record_list=json.dumps(records)
+        ))
+        print resp.text
+        return resp.text
 
 
 TAB_UTIL = TabUtil()

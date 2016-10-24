@@ -10,6 +10,10 @@ var TabBridge = require('../../service/tab-bridge');
 var request = require('request');
 
 
+// var host = 'https://hi-monkey.leanapp.cn';
+var host = 'http://127.0.0.1:3000';
+
+
 function test_save_record_with_cache() {
     var StatusMap = AV.Object.extend('StatusMap');
     var eh = new StatusMap();
@@ -18,31 +22,29 @@ function test_save_record_with_cache() {
     eh.set('version', '5.5.8');
     eh.set('is_activity_changed', true);
 
-
     for (let i = 0; i < 7; i ++) {
-        var record_json = {class_name: 'StatusMap', record: {}};
+        setTimeout(function () {
+            var record_json = {class_name: 'StatusMap', record: {}};
 
-        if (i > 3) {
-            eh.set('is_activity_changed', false);
-        }
-        for (var key in eh.attributes) {
-            if (eh.attributes.hasOwnProperty(key))
-                record_json['record'][key] = eh.attributes[key];
-        }
-
-        console.log(JSON.stringify(record_json, null, ''));
-        record_json['record'] = JSON.stringify(record_json['record']);
-        request.post(
-            {
-                url: 'http://127.0.0.1:3000/service/SaveRecordWithCache',
-                form: record_json
-            },
-            function(error, response, body){
-                if (!error && response.statusCode == 200) {
-                    console.log(body);
-                }
+            if (i > 3) {
+                eh.set('is_activity_changed', false);
             }
-        );
+            for (var key in eh.attributes) {
+                if (eh.attributes.hasOwnProperty(key))
+                    record_json['record'][key] = eh.attributes[key];
+            }
+
+            console.log(JSON.stringify(record_json, null, ''));
+            record_json['record'] = JSON.stringify(record_json['record']);
+            request.post(host + '/service/SaveRecordWithCache', {form: record_json},
+                function(error, response, body){
+                    if (!error && response.statusCode == 200) {
+                        console.log(body);
+                    }
+                }
+            );
+        }, 100 * i);
+
     }
 }
 

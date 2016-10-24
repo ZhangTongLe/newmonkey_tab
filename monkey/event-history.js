@@ -25,11 +25,12 @@ function sync_event_history(use_last_time) {
         last_time = last_time == undefined ? new Date(0): new Date(last_time);
         if (use_last_time)
             last_time = use_last_time;
+
         query.greaterThan('createdAt', last_time).addDescending('createdAt');
         query.limit(G.TAB_LIMIT);
         query.find().then(function (event_records) {
-            StatusMap.sync_status_map(event_records);
-            EnumMeta.sync_enum_meta(event_records);
+            StatusMap.sync_event_record_list(event_records);
+            TaskMeta.sync_event_record_list(event_records);
 
             // save sync time.
             var kv_query = new AV.Query('AppData');
@@ -60,36 +61,11 @@ function sync_event_history(use_last_time) {
 }
 
 
-function get_query_event_pre(task_id, seq_no, callback) {
-    var query_pre = new AV.Query('EventHistory')
-        .equalTo('task_id', task_id)
-        .lessThan('seq_no', seq_no)
-        .descending('seq_no');
-    query_pre.limit(1);
-    TabUtil.find(query_pre, function (records) {
-        if (records.length > 0){
-            callback(records[0]);
-        } else {
-            callback(null);
-        }
-    }, callback(null));
-}
-
-
 function sync_one_event_record(r) {
-    // 延后 3 秒调用, 防止并发乱序.
-    setTimeout(function (r) {
-        get_query_event_pre(r.get('task_id'), r.get('seq_no'), function (pre) {
-            if (pre){
-                pre.disableAfterHook();
-                pre.set('next_activity', r.get('pre_activity'));
-                pre.save().then(function () {
-                    StatusMap.sync_one_event_record(pre);
-                    TaskMeta.sync_one_event_record(pre);
-                });
-            }
-        });
-    }, 3000, r);
+    // 为了节省请求量, 已经将EventHistory多条记录打包为一条, 这里将其重新解包.
+    var record_list = TabUtil.unmerge_records(r);
+    StatusMap.sync_event_record_list(record_list);
+    TaskMeta.sync_event_record_list(record_list);
 }
 
 
@@ -187,7 +163,6 @@ function reply_to_sync_event_history(req, res, next) {
 
 var EventHistory = {
     sync_event_history: sync_event_history,
-    get_query_event_pre: get_query_event_pre,
     sync_one_event_record: sync_one_event_record,
     event_history_do_filter: event_history_do_filter,
     reply_to_event_history_page: reply_to_event_history_page,

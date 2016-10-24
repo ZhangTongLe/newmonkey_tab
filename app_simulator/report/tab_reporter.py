@@ -1,7 +1,8 @@
 # -*- coding: UTF-8 -*-
 
 import leancloud
-from tab.tab_util import TAB_UTIL
+import json
+from tab.tab_util import TabUtil
 
 
 class TabReporter(object):
@@ -12,8 +13,8 @@ class TabReporter(object):
                 eh.set(key, event_object[key])
             eh.save()
         else:
-            TAB_UTIL.merged_save(event_object, [
-                'event_data', 'pre_activity', 'next_activity', 'device', 'event_time', 'seq_no', 'event_name',
-                'is_tree_changed', 'is_activity_changed', 'related_activity'
-            ])
+            record_list = event_object
+            tab_util = TabUtil()
+            tab_util.merged_save(record_list, class_name='EventHistory')
+
 

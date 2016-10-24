@@ -6,6 +6,7 @@ var AV = require('../lib/tab-login');
 var G = require('../config/global');
 var HttpUtil = require('../lib/http-util');
 var TabUtil = require('../lib/tab-util');
+var TabBridge = require('../service/tab-bridge');
 var MonkeyEvent = require('./monkey-event');
 var MonkeyUtil = require('./monkey-util');
 var DsUtil = require('../lib/ds_util');
@@ -36,7 +37,7 @@ function sync_one_event_record(r) {
         status_map.set('next_activity', r.get('next_activity'));
         status_map.set('event_entity', MonkeyEvent.get_event_entity(r));
         status_map.set('is_activity_changed', status_map.get('next_activity') == status_map.get('pre_activity'));
-        TabUtil.save(status_map);
+        TabBridge.save_record_with_cache_inner(status_map);
     }
     else {
         status_map.set('next_activity', r.get('pre_activity'));    // 使用 afterSave 调用方式, 需要 seq_no 向前搜索
@@ -49,11 +50,54 @@ function sync_one_event_record(r) {
                 status_map.set('event_entity_identify', MonkeyEvent.get_event_entity_identify(event_pre));
                 status_map.set('pre_activity', event_pre.get('pre_activity'));
                 status_map.set('is_activity_changed', status_map.get('next_activity') == status_map.get('pre_activity'));
-                TabUtil.save(status_map);    // save.
+                TabBridge.save_record_with_cache_inner(status_map);
             }
         });
     }
 }
+
+
+function sync_event_record_list(record_list) {
+    try {
+        if (record_list.length == 0) {
+            return;
+        }
+
+        var StatusMap = AV.Object.extend('StatusMap');
+        record_list.forEach(function (r) {
+            var status_map = new StatusMap();
+            status_map.set('product', r.get('product'));
+            status_map.set('version', r.get('version'));
+            if (r.get('next_activity') != undefined) {
+                status_map.set('event_name', r.get('event_name'));
+                status_map.set('event_data', r.get('event_data'));
+                status_map.set('event_identify', MonkeyEvent.get_event_identify(r));
+                status_map.set('event_entity', MonkeyEvent.get_event_entity(r));
+                status_map.set('event_entity_identify', MonkeyEvent.get_event_entity_identify(r));
+                status_map.set('pre_activity', r.get('pre_activity'));
+                status_map.set('next_activity', r.get('next_activity'));
+                status_map.set('event_entity', MonkeyEvent.get_event_entity(r));
+                status_map.set('is_activity_changed', status_map.get('next_activity') == status_map.get('pre_activity'));
+                TabBridge.save_record_with_cache_inner(status_map).then(function () {
+                    console.log('StatusMap save success.');
+                });
+            }
+            else {
+                console.log('statusMap sync_event_record_list: next_activity is null or undefined.');
+                return new Promise(function(resolve, reject) {
+                    var e = new Error("EventHistory must has field: next_activity.");
+                    console.error(e);
+                    reject(e);
+                });
+            }
+        });
+    } catch (e) {
+        throw e;
+    }
+
+
+}
+
 
 function reply_to_status_map_page(req, res, next) {
     var status = 0;
@@ -119,6 +163,7 @@ function status_map_do_filter(req, res, next) {
 var StatusMap = {
     sync_status_map: sync_status_map,
     sync_one_event_record: sync_one_event_record,
+    sync_event_record_list: sync_event_record_list,
     reply_to_status_map_page: reply_to_status_map_page,
     status_map_do_filter: status_map_do_filter
 };

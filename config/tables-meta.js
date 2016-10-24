@@ -5,13 +5,18 @@
 
 var TABLES_DEFINE = {
     'View': {
+        distinct_index_fields: ['DNA', 'name'],
+        need_update_fields: [],
+        support_cache_save: true
+    },
+    'Activity': {
         distinct_index_fields: ['activity', 'path'],
         need_update_fields: ['description', 'viewId', 'isClicked', 'nextActivity', 'isActivityChanged', 'isTreeChanged', 'text'],
         support_cache_save: true
     },
     'StatusMap': {
         distinct_index_fields: ['event_identify', 'product', 'version'],
-        need_update_fields: ['is_activity_changed'],
+        need_update_fields: [],
         support_cache_save: true
     },
     'EventHistory': {
