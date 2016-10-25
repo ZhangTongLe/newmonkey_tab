@@ -66,11 +66,13 @@ function save_records_with_merge(req, res, next) {
 
 function save_record_with_cache(req, res, next) {
     var data = req.body;
-    var class_name, record;
+    var class_name, record, record_list;
 
     if (data) {
         class_name = data['class_name'];
         record = data['record'];
+        record_list = data['record_list'];
+
         if (typeof(record) == 'string') {
             try {
                 record = JSON.parse(record);
@@ -78,32 +80,67 @@ function save_record_with_cache(req, res, next) {
                 record = undefined;
             }
         }
+        if (typeof(record_list) == 'string') {
+            try {
+                record_list = JSON.parse(record_list);
+            } catch (e) {
+                record_list = undefined;
+            }
+        }
     }
 
     if (! class_name)
         return HttpUtil.resp_json(res, {status: 'error', data: 'Not found: class_name'});
-    if (! record)
-        return HttpUtil.resp_json(res, {status: 'error', data: 'Not found: record'});
+    if (! record && ! record_list)
+        return HttpUtil.resp_json(res, {status: 'error', data: 'Not found: record | record_list.'});
+
+    if (record && ! record_list) {
+        record_list = [record];
+    }
 
     var RecordObj = AV.Object.extend(class_name);
-    var r = new RecordObj();
-    for (var key in record) {
-        if (! record.hasOwnProperty(key))
-            continue;
-        r.set(key, record[key]);
-    }
-    CACHE_SYSTEM.save_record_with_cache(r).then(function (record) {
-        if (record == 'hit') {
-            console.log('cache hit, class: ' + record.className + ', time: ' + new Date());
-            return HttpUtil.resp_json(res, {status: 'ok', data: 'hit cache, do not need save/update.'});
-        } else {
-            try {
-                return HttpUtil.resp_json(res, {status: 'ok', data: record.id});
-            } catch (e) {
-                return HttpUtil.resp_json(res, {status: 'error', data: e.message});
-            }
+    var msg_list = [];
+    var err_msg_list = [];
+    var promise_list = [];
+
+    record_list.forEach(function (record) {
+        var r = new RecordObj();
+        for (var key in record) {
+            if (! record.hasOwnProperty(key))
+                continue;
+            r.set(key, record[key]);
         }
+
+        var p = CACHE_SYSTEM.save_record_with_cache(r);
+        promise_list.push(p);
     });
+
+    function return_resp() {
+        if (err_msg_list.length == 0) {
+            return HttpUtil.resp_json(res, {status: 'ok', data: msg_list});
+        } else {
+            return HttpUtil.resp_json(res, {status: 'error', data: err_msg_list.concat(msg_list)});
+        }
+    }
+
+    Promise.all(promise_list).then(function (record_list) {
+        record_list.forEach(function(record, i){
+            if (record == 'hit') {
+                msg_list.push('Index: ' + i + ', Success: ' + 'hit cache, time: ' + new Date())
+            } else {
+                try {
+                    msg_list.push('Index: ' + i + ', Success: ' + 'record.id: ' + record.id)
+                } catch (e) {
+                    err_msg_list.push('Index: ' + i + ', Error: ' + e.message)
+                }
+            }
+        });
+        return_resp();
+    }, function (e) {
+        err_msg_list.push('Index: unknown' + ', Error: ' + e.message);
+        return_resp();
+    })
+
 }
 
 
@@ -283,8 +320,6 @@ CacheSystem.prototype.save_record_with_cache = function (record) {
     } catch (e) {
         console.error(e);
     }
-
-
 };
 CacheSystem.prototype.start_sync_with_db = function () {
     if (! this.sync_timer) {

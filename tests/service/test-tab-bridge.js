@@ -48,12 +48,37 @@ function test_save_record_with_cache() {
     }
 }
 
+function test_save_records_with_cache() {
+    var StatusMap = AV.Object.extend('StatusMap');
+    var sm = new StatusMap();
+    sm.set('event_identify', '2016-10-22_20.13.07.0730');
+    sm.set('product', 'com.tencent.mobileqq');
+    sm.set('version', '5.5.8');
+    sm.set('is_activity_changed', true);
+
+    var record_list = [];
+
+    var records_json = {class_name: 'StatusMap', record_list: []};
+    for (let i = 0; i < 7; i ++) {
+        records_json.record_list.push(sm);
+    }
+    records_json['record_list'] = JSON.stringify(records_json['record_list']);
+    request.post(host + '/service/SaveRecordWithCache', {form: records_json},
+        function(error, response, body){
+            if (!error && response.statusCode == 200) {
+                console.log(body);
+            }
+        }
+    );
+}
+
 
 var TestTabBridge = {
-    test_save_record_with_cache: test_save_record_with_cache
+    test_save_record_with_cache: test_save_record_with_cache,
+    test_save_records_with_cache: test_save_records_with_cache
 };
 
 
 module.exports = TestTabBridge;
 
-test_save_record_with_cache();
+test_save_records_with_cache();

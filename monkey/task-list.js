@@ -3,12 +3,10 @@
  */
 
 var AV = require('../lib/tab-login');
-var G = require('../config/global');
 var TabUtil = require('../lib/tab-util');
 var HttpUtil = require('../lib/http-util');
-
-var EnumMeta = require('./enum-meta');
 var DsUtil = require('../lib/ds_util');
+
 
 function reply_to_task_list_page(req, res, next) {
     var status = 0;

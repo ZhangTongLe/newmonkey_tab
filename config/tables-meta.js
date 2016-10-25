@@ -4,12 +4,12 @@
 
 
 var TABLES_DEFINE = {
-    'View': {
+    'Activity': {
         distinct_index_fields: ['DNA', 'name'],
         need_update_fields: [],
         support_cache_save: true
     },
-    'Activity': {
+    'View': {
         distinct_index_fields: ['activity', 'path'],
         need_update_fields: ['description', 'viewId', 'isClicked', 'nextActivity', 'isActivityChanged', 'isTreeChanged', 'text'],
         support_cache_save: true
