@@ -5,20 +5,15 @@ import json
 
 from tab.monkey import MonkeyTab
 from models.event import MonkeyEvent
+from tab.tab_util import TabUtil
 
 
 class NetGraph(object):
     def __init__(self):
-        self.upload_url = 'http://localhost:3000/service/plotNetGraphUpload/'
+        pass
 
     def upload_to_web(self, name, graph_type, data):
-        resp = requests.post(self.upload_url, data=dict(
-            name=name,
-            graph_type=graph_type,
-            data=json.dumps(data)
-        ))
-        print resp.text
-        return resp
+        return TabUtil().upload_graph(name=name, graph_type=graph_type, data=data)
 
     def gen_net_graph_data_from_status_map(self, status_map):
         node_map = dict()

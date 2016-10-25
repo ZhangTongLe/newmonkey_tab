@@ -1,9 +1,14 @@
 /**
  * Created by kangtian on 16/10/22.
+ *
+ * TODO:
+ *     cache-save 批量保存需要优化, 现在仍然是单条 save.
  */
 
+'use strict';
 
 var AV = require('../lib/tab-login');
+var G = require('../config/global');
 var TabUtil = require('../lib/tab-util');
 var HttpUtil = require('../lib/http-util');
 var TablesMeta = require('../config/tables-meta');
@@ -11,7 +16,7 @@ var MemCache = require('../lib/mem-cache');
 var mem_cache = new MemCache();
 var md5 = require('blueimp-md5');
 
-var CACHE_SYNC_PERIOD_SEC = 60 * 5;    // 内存缓存与数据库固化存储的同步周期
+var CACHE_SYNC_PERIOD_SEC = 10;    // 内存缓存与数据库固化存储的同步周期
 
 
 function save_records_with_merge(req, res, next) {
@@ -65,102 +70,96 @@ function save_records_with_merge(req, res, next) {
 
 
 function save_record_with_cache(req, res, next) {
-    var data = req.body;
-    var class_name, record, record_list;
+    try {
+        var data = req.body;
+        var class_name, record, record_list;
 
-    if (data) {
-        class_name = data['class_name'];
-        record = data['record'];
-        record_list = data['record_list'];
+        if (data) {
+            class_name = data['class_name'];
+            record = data['record'];
+            record_list = data['record_list'];
 
-        if (typeof(record) == 'string') {
-            try {
-                record = JSON.parse(record);
-            } catch (e) {
-                record = undefined;
-            }
-        }
-        if (typeof(record_list) == 'string') {
-            try {
-                record_list = JSON.parse(record_list);
-            } catch (e) {
-                record_list = undefined;
-            }
-        }
-    }
-
-    if (! class_name)
-        return HttpUtil.resp_json(res, {status: 'error', data: 'Not found: class_name'});
-    if (! record && ! record_list)
-        return HttpUtil.resp_json(res, {status: 'error', data: 'Not found: record | record_list.'});
-
-    if (record && ! record_list) {
-        record_list = [record];
-    }
-
-    var RecordObj = AV.Object.extend(class_name);
-    var msg_list = [];
-    var err_msg_list = [];
-    var promise_list = [];
-
-    record_list.forEach(function (record) {
-        var r = new RecordObj();
-        for (var key in record) {
-            if (! record.hasOwnProperty(key))
-                continue;
-            r.set(key, record[key]);
-        }
-
-        var p = CACHE_SYSTEM.save_record_with_cache(r);
-        promise_list.push(p);
-    });
-
-    function return_resp() {
-        if (err_msg_list.length == 0) {
-            return HttpUtil.resp_json(res, {status: 'ok', data: msg_list});
-        } else {
-            return HttpUtil.resp_json(res, {status: 'error', data: err_msg_list.concat(msg_list)});
-        }
-    }
-
-    Promise.all(promise_list).then(function (record_list) {
-        record_list.forEach(function(record, i){
-            if (record == 'hit') {
-                msg_list.push('Index: ' + i + ', Success: ' + 'hit cache, time: ' + new Date())
-            } else {
+            if (typeof(record) == 'string') {
                 try {
-                    msg_list.push('Index: ' + i + ', Success: ' + 'record.id: ' + record.id)
+                    record = JSON.parse(record);
                 } catch (e) {
-                    err_msg_list.push('Index: ' + i + ', Error: ' + e.message)
+                    record = undefined;
                 }
             }
+            if (typeof(record_list) == 'string') {
+                try {
+                    record_list = JSON.parse(record_list);
+                } catch (e) {
+                    record_list = undefined;
+                }
+            }
+        }
+
+        if (! class_name)
+            return HttpUtil.resp_json(res, {status: 'error', data: 'Not found: class_name'});
+        if (! record && ! record_list)
+            return HttpUtil.resp_json(res, {status: 'error', data: 'Not found: record | record_list.'});
+
+        if (record && ! record_list) {
+            record_list = [record];
+        }
+
+        var save_check = function (record) {
+            var class_name = record.className;
+            if (class_name == 'View') {
+                if (record.get('is_activity_changed') == G.NUM_TAG_BOOL.undefined || record.get('is_tree_changed') == G.NUM_TAG_BOOL.undefined) {
+                    return false;
+                }
+            }
+            return true;
+        };
+
+        var RecordObj = AV.Object.extend(class_name);
+        var to_save_list = [];
+        record_list.forEach(function (record) {
+            console.log('record_list 1');
+            var r = new RecordObj();
+            for (var key in record) {
+                if (! record.hasOwnProperty(key))
+                    continue;
+                r.set(key, record[key]);
+            }
+            to_save_list.push(r);
         });
-        return_resp();
-    }, function (e) {
-        err_msg_list.push('Index: unknown' + ', Error: ' + e.message);
-        return_resp();
-    })
+
+        CACHE_SYSTEM.save_records_with_cache(to_save_list, save_check)
+            .then(function (result) {
+                HttpUtil.resp_json(res, result)
+            }, function (e) {
+                HttpUtil.resp_json(res, {status: 'error', data: e.stack});
+            });
+    } catch (e) {
+        HttpUtil.resp_json(res, {status: 'error', data: e.stack});
+    }
 
 }
-
 
 function CacheSystem(is_sync_with_db, sync_period_sec) {
     this.is_sync_with_db = is_sync_with_db == undefined ? true : is_sync_with_db;
     this.sync_period_sec = sync_period_sec == undefined ? CACHE_SYNC_PERIOD_SEC : sync_period_sec;
     this.sync_timer = null;
+    this.STATUS_HIT = 'hit';
+    this.STATUS_NOT_NEED_SAVE = 'not_need_save';
+    this.CHANGE_TIMES = 'change_times';
+
+    // 统计命中率
     this.stat = {
         count_total: 0,
         count_hit: 0
     };
-    this.status = 'hello';
-
+    return this;
+}
+CacheSystem.prototype.init = function () {
     if (this.is_sync_with_db) {
         this.loading_cache_from_db();
         this.start_sync_with_db();
     }
-
-    return this;
-}
+};
 CacheSystem.prototype.loading_cache_from_db = function () {
     var query = new AV.Query("MemoryCache");
     query.descending("createdAt");
@@ -183,7 +182,7 @@ CacheSystem.prototype.loading_cache_from_db = function () {
         }
     })
 };
-CacheSystem.prototype.save_cache_to_db = function () {
+CacheSystem.prototype.save_cache_to_db = function (self) {
     console.log(new Date() + " -- start save_cache_to_db.");
     if (! mem_cache.is_changed) {
         console.log(new Date() + " -- save_cache_to_db: do not changed.");
@@ -201,37 +200,48 @@ CacheSystem.prototype.save_cache_to_db = function () {
         } else {
             record = records[0];
         }
+        try {
+            var stat = this == undefined ? (self ? self.stat : {}) : this.stat;
+            console.log(JSON.stringify(stat));
+            record.set('stat', stat);
+            var cached_map = {};
+            key_list.forEach(function (key) {
+                cached_map[key] = mem_cache.get(key)
+            });
+            record.set("cached_map", cached_map);
+            TabUtil.save(record).then(function () {
+                console.log(new Date() + " -- save_cache_to_db success.");
+                mem_cache.is_changed = false;
+            })
+        } catch (e) {
+            console.error(e);
+        }
 
-        record.set('stat', this.stat);
-        var cached_map = {};
-        key_list.forEach(function (key) {
-            cached_map[key] = mem_cache.get(key)
-        });
-        record.set("cached_map", cached_map);
-        TabUtil.save(record).then(function () {
-            console.log(new Date() + " -- save_cache_to_db success.");
-            mem_cache.is_changed = false;
-        })
     });
 };
-CacheSystem.prototype.save_record_with_cache = function (record) {
+CacheSystem.prototype.save_record_with_cache = function (record, save_check) {
     try {
         if (! record)
             throw new Error("Parameter error: record is not a object.");
+
         var class_name = record.className;
         var class_config = TablesMeta.get_class_config(class_name);
         if (! class_config || class_config.support_cache_save != true) {
             throw new Error("record (class is: " + class_name + ") not support cache_save.");
         }
+
         var distinct_index_fields = TablesMeta.get_distinct_index_fields(class_name);
         var need_update_fields = TablesMeta.get_need_update_fields(class_name);
-        function get_hash_of_fields(record, fields) {
+
+        var get_hash_of_fields = function (record, fields) {
             if (!fields || fields.length == 0)
                 return undefined;
             var value_list = fields.map(function (field) {
                 var value = record.get(field);
                 if (typeof (value) == 'object') {
                     value = JSON.stringify(value);
+                } else if (value == null || value == undefined) {
+                    value = '';
                 } else {
                     value = value.toString();
                 }
@@ -239,28 +249,13 @@ CacheSystem.prototype.save_record_with_cache = function (record) {
             });
             var distinct_index_str = value_list.join(',');
             return md5(distinct_index_str);
-        }
+        };
 
-        function do_save(record) {
+        var handle_to_save = function (record) {
             return new Promise(function(resolve, reject) {
-                TabUtil.save(record).then(function (saved) {
-                    try {
-                        var this_cache_obj = {
-                            hash_distinct_index: hash_distinct_index,
-                            hash_need_update_fields: hash_need_update_fields,
-                            class_name: class_name,
-                            update_time: saved.updatedAt,
-                            object_id: saved.id
-                        };
-                        mem_cache.set(hash_distinct_index, this_cache_obj);
-                        console.log('save to mem-cache success.');
-                    } catch (e) {
-                        reject(e);
-                    }
-                    resolve(saved);
-                }, reject);
+                resolve({hash_distinct_index: hash_distinct_index, record: record});
             });
-        }
+        };
 
         var hash_distinct_index = get_hash_of_fields(record, distinct_index_fields);
         var hash_need_update_fields = get_hash_of_fields(record, need_update_fields);
@@ -272,7 +267,13 @@ CacheSystem.prototype.save_record_with_cache = function (record) {
 
         if (! cache_obj
             || cache_obj && hash_need_update_fields && cache_obj['hash_need_update_fields'] != hash_need_update_fields) {
-            // need save record.
+
+            // need save record ?
+            if (save_check) {
+                if (! save_check(record)) {
+                    return handle_to_save(this.STATUS_NOT_NEED_SAVE);
+                }
+            }
 
             // save to memory cache first.
             var to_save = null;
@@ -285,45 +286,144 @@ CacheSystem.prototype.save_record_with_cache = function (record) {
 
             if (record.id) {    // 已经存在的对象, 直接保存
                 to_save = record;
-                return do_save(to_save);
+                to_save.increment(this.CHANGE_TIMES, 1);
+                return handle_to_save(to_save);
             } else if (cache_obj && cache_obj.object_id) {
                 // 在内存缓存中记录的对象, 以相应的 objectId 直接保存
                 to_save = record;
                 to_save.id = cache_obj.object_id;
-                return do_save(to_save);
+                to_save.increment(this.CHANGE_TIMES, 1);
+                return handle_to_save(to_save);
             } else {
                 var query = new AV.Query(class_name);
                 distinct_index_fields.forEach(function (field) {
                     query.equalTo(field, record.get(field));
                 });
+                var field_change_time = this.CHANGE_TIMES;
                 return new Promise(function(resolve, reject) {
                     TabUtil.find(query).then(function (records) {
-                        if (records.length > 0) {
-                            to_save = records[0];
-                            for (var key in record.attributes) {
-                                if (record.attributes.hasOwnProperty(key))
-                                    to_save.set(key, record.get(key));
+                        try {
+                            if (records.length > 0) {
+                                to_save = records[0];
+                                to_save.increment(field_change_time, 1);
+                                for (var key in record.attributes) {
+                                    if (record.attributes.hasOwnProperty(key))
+                                        to_save.set(key, record.get(key));
+                                }
+                            } else {
+                                to_save = record;
                             }
-                        } else {
-                            to_save = record;
+                            resolve({hash_distinct_index: hash_distinct_index, record: to_save});    // same to handle_to_save().
+                        } catch (e) {
+                            reject(e);
                         }
-                        do_save(to_save).then(resolve, reject);
+
                     }, reject);
                 });
             }
         } else {
             this.stat.count_hit += 1;
-            return new Promise(function(resolve, reject) {
-                resolve('hit');
-            });
+            return handle_to_save(this.STATUS_HIT);
         }
     } catch (e) {
         console.error(e);
+        return new Promise(function(resolve, reject) {
+            reject(e);
+        });
     }
+};
+CacheSystem.prototype.save_records_with_cache = function (record_list, save_check) {
+    return new Promise(function(resolve, reject) {
+        try {
+            var msg_list = [];
+            var err_msg_list = [];
+            var promise_list = [];
+
+            if (! record_list instanceof Array) {
+                record_list = [record_list];
+            }
+
+            record_list.forEach(function (record) {
+                var p = CACHE_SYSTEM.save_record_with_cache(record, save_check);
+                promise_list.push(p);
+            });
+
+            // _to_save_info 包含了待批量保存的记录.
+            Promise.all(promise_list).then(function (_to_save_info) {
+                try {
+                    var to_save_info = [];
+                    _to_save_info.forEach(function(info, i){
+                        var record = info.record;
+                        if (record == CACHE_SYSTEM.STATUS_HIT) {
+                            msg_list.push('Index: ' + i + ', Success: ' + 'hit cache, time: ' + new Date());
+                        } else if (record == CACHE_SYSTEM.STATUS_NOT_NEED_SAVE) {
+                            msg_list.push('Index: ' + i + ', Success: ' + 'do not need save, time: ' + new Date());
+                        } else {
+                            info.index = i;    // 标记这是属于第几条数据
+                            to_save_info.push(info);
+                            msg_list.push('Index: ' + i + ', Pending: ' + 'will be saved.');
+                        }
+                    });
+                    if (to_save_info.length > 0) {
+                        var to_save_records = to_save_info.map(function (info) {
+                            return info.record;
+                        });
+                        AV.Object.saveAll(to_save_records, function (saved_records) {
+                            saved_records.forEach(function (saved, i) {
+                                try {
+                                    var hash_distinct_index = to_save_info[i].hash_distinct_index;
+                                    var cache_obj = mem_cache.get(hash_distinct_index);
+                                    cache_obj['update_time'] = saved.updatedAt;
+                                    cache_obj['object_id'] = saved.id;
+
+                                    mem_cache.set(hash_distinct_index, cache_obj);
+                                    msg_list.push('Index: ' + to_save_info[i].index + ', Success: objectId: ' + saved.id + ', time: ' + new Date());
+                                    console.log('save to mem-cache success.');
+                                    return do_return();
+                                } catch (e) {
+                                    err_msg_list.push('Index: ' + to_save_info[i].index + ', Error: ' + e.stack);
+                                    return do_return();
+                                }
+                            });
+                        }, function (e) {
+                            console.error(e);
+                            err_msg_list.push('Error: when AV.Object.saveAll(). call stack: ' + e.stack);
+                            return do_return();
+                        });
+                    } else {
+                        return do_return();
+                    }
+                } catch (e) {
+                    console.error(e);
+                    err_msg_list.push('Error: when Promise.all().then(). call stack: ' + e.stack);
+                    return do_return();
+                }
+            }, function (e) {
+                console.error(e);
+                err_msg_list.push('Index: unknown' + ', Error: ' + e.stack);
+                return do_return();
+            });
+
+            var do_return = function () {
+                if (err_msg_list.length == 0) {
+                    resolve({status: 'ok', data: msg_list});
+                } else {
+                    resolve({status: 'error', data: err_msg_list.concat(msg_list)});
+                }
+            }
+        } catch (e) {
+            console.error(e);
+            reject(e);
+        }
+    });
 };
 CacheSystem.prototype.start_sync_with_db = function () {
     if (! this.sync_timer) {
-        this.sync_timer = setInterval(this.save_cache_to_db, this.sync_period_sec * 1000);    // 定期同步.
+        this.save_cache_to_db();
+        var self = this;
+        this.sync_timer = setInterval(function(cache_system) {
+            cache_system.save_cache_to_db(cache_system);
+        }, this.sync_period_sec * 1000, self);    // 定期同步.
     }
 };
 CacheSystem.prototype.stop_sync_with_db = function () {
@@ -333,15 +433,15 @@ CacheSystem.prototype.stop_sync_with_db = function () {
     }
 };
 
-
 var CACHE_SYSTEM = new CacheSystem();
+CACHE_SYSTEM.init();
 
 
 var TabBridge = {
     save_records_with_merge: save_records_with_merge,
     save_record_with_cache: save_record_with_cache,
     save_record_with_cache_inner: function(record) {
-        return CACHE_SYSTEM.save_record_with_cache(record);
+        return CACHE_SYSTEM.save_records_with_cache(record);
     }
 };
 

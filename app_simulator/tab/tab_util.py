@@ -11,6 +11,7 @@ from leancloud import Query
 
 class TabUtil(object):
     TAB_LIMIT = 1000
+    HOST = 'https://hi-monkey.leanapp.cn'
 
     def __init__(self):
         leancloud.init("2OqGTb47B0cChAg4xyOsP5D8-9Nh9j0Va", "7sOFzdMRP1D0m6r9y5LE8aPy")
@@ -55,12 +56,21 @@ class TabUtil(object):
             return
         class_name = class_name
         print 'merged_save: %s' % json.dumps(records, indent=4)
-        resp = requests.post('https://hi-monkey.leanapp.cn/service/SaveRecordsWithMerge', data=dict(
+        resp = requests.post(self.HOST + '/service/SaveRecordsWithMerge', data=dict(
             class_name=class_name,
             record_list=json.dumps(records)
         ))
         print resp.text
         return resp.text
+
+    def upload_graph(self, name, graph_type, data):
+        resp = requests.post(self.HOST + '/service/plotNetGraphUpload/', data=dict(
+            name=name,
+            graph_type=graph_type,
+            data=json.dumps(data)
+        ))
+        print resp.text
+        return resp
 
 
 TAB_UTIL = TabUtil()

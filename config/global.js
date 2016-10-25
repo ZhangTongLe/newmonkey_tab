@@ -33,11 +33,18 @@ function is_dev() {
     return dev_user_list.indexOf(username) > -1;
 }
 
+var NUM_TAG_BOOL = {
+    true: 1,
+    false: 0,
+    undefined: -1
+};
+
 var Global = {
     HOST: 'http://localhost:3000',
     TAB_LIMIT: 1000,
     is_dev: is_dev,
-    SPLITTER: '^_^'
+    SPLITTER: '^_^',
+    NUM_TAG_BOOL: NUM_TAG_BOOL
 };
 
 

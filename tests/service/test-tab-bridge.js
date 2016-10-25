@@ -53,7 +53,7 @@ function test_save_records_with_cache() {
     var sm = new StatusMap();
     sm.set('event_identify', '2016-10-22_20.13.07.0730');
     sm.set('product', 'com.tencent.mobileqq');
-    sm.set('version', '5.5.8');
+    sm.set('version', '5.5.10');
     sm.set('is_activity_changed', true);
 
     var record_list = [];
