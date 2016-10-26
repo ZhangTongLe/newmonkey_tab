@@ -134,7 +134,7 @@ function submit_task_config(req, res, next) {
                     TabUtil.save(record, function () {
                         HttpUtil.resp_json(res, {status: 'ok', data: 'success: add task config.'});
                     }, function (e) {
-                        HttpUtil.resp_json(res, {status: 'error', data: 'error: ' + e.message});
+                        HttpUtil.resp_json(res, {status: 'error', data: 'error: ' + e.stack});
                     });
                 } else {
                     HttpUtil.resp_json(res, {status: 'error', data: 'not found product: ' + config['product']});
@@ -246,7 +246,7 @@ function get_task_config_with_identify(req, res, next) {
             try {
                 identify = JSON.parse(identify_str);
             } catch (e) {
-                HttpUtil.resp_json(res, {result: 'wrong', datas: 'error: ' + e.message});
+                HttpUtil.resp_json(res, {result: 'wrong', datas: 'error: ' + e.stack});
             }
         }
         var ret_obj = get_needed_config_with_identify(records, identify);
@@ -255,7 +255,7 @@ function get_task_config_with_identify(req, res, next) {
             identify: JSON.stringify(ret_obj.identify)
         }});
     }, function (e) {
-        HttpUtil.resp_json(res, {result: 'wrong', datas: 'error: ' + e.message});
+        HttpUtil.resp_json(res, {result: 'wrong', datas: 'error: ' + e.stack});
     });
 }
 

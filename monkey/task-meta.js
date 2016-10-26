@@ -54,39 +54,47 @@ function sync_one_event_record(r) {
 
 
 function sync_event_record_list(record_list) {
-    if (record_list.length == 0) {
-        return;
-    }
-    var r = record_list[record_list.length - 1];
-    var TaskMeta = AV.Object.extend('TaskMeta');
-    var task_meta_query = new AV.Query('TaskMeta')
-        .equalTo('task_id', r.get('task_id'));
-    TabUtil.find(task_meta_query, function (records) {
-        var task_meta;
-        if (records.length == 0){
-            task_meta = new TaskMeta();
-            task_meta.set('task_id', r.get('task_id'));
-            task_meta.set('product', r.get('product'));
-            task_meta.set('version', r.get('version'));
-            task_meta.set('device', r.get('device'));
-            task_meta.set('status', r.get('status'));
-            task_meta.set('start_time', new Date());
-            task_meta.set('last_time', new Date());
-        } else {
-            task_meta = records[0];
-            task_meta.set('status', r.get('status'));
-            task_meta.set('last_time', new Date());
+    return new Promise(function(resolve, reject) {
+        try {
+            if (record_list.length == 0) {
+                return;
+            }
+            var r = record_list[record_list.length - 1];
+            var TaskMeta = AV.Object.extend('TaskMeta');
+            var task_meta_query = new AV.Query('TaskMeta')
+                .equalTo('task_id', r.get('task_id'));
+            TabUtil.find(task_meta_query, function (records) {
+                var task_meta;
+                if (records.length == 0){
+                    task_meta = new TaskMeta();
+                    task_meta.set('task_id', r.get('task_id'));
+                    task_meta.set('product', r.get('product'));
+                    task_meta.set('version', r.get('version'));
+                    task_meta.set('device', r.get('device'));
+                    task_meta.set('status', r.get('status'));
+                    task_meta.set('start_time', new Date());
+                    task_meta.set('last_time', new Date());
+                } else {
+                    task_meta = records[0];
+                    task_meta.set('status', r.get('status'));
+                    task_meta.set('last_time', new Date());
+                }
+                record_list.forEach(function (x) {
+                    task_meta.addUnique('activity_list', x.get('pre_activity'));
+                    task_meta.addUnique('widget_list', MonkeyEvent.get_event_entity_identify(x));
+                    task_meta.addUnique('event_list', MonkeyEvent.get_event_identify(x));
+                });
+                console.log('Called by EventHistory.afterSave - finish TaskMeta');
+                TabUtil.save(task_meta, resolve, reject);
+            }, function (error) {
+                console.error(error);
+                reject(error);
+            });
+        } catch (e) {
+            reject(e);
         }
-        record_list.forEach(function (x) {
-            task_meta.addUnique('activity_list', x.get('pre_activity'));
-            task_meta.addUnique('widget_list', MonkeyEvent.get_event_entity_identify(x));
-            task_meta.addUnique('event_list', MonkeyEvent.get_event_identify(x));
-        });
-        console.log('Called by EventHistory.afterSave - finish TaskMeta');
-        TabUtil.save(task_meta);
-    }, function (error) {
-        console.error(error)
     });
+
 }
 
 var TaskMeta = {

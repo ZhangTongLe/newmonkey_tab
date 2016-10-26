@@ -25,7 +25,7 @@ class MonkeyRunner(object):
         self.app.version = '1.0.4'
         self.device = random.choice(['Nexus5', 'MX4Pro', 'R819T', 'SM-G7106', 'GT-I9300'])
         self.device = 'MX4Pro'
-        self.n_records_upload = 100
+        self.n_records_upload = 200
         self.stat_info = dict(
             stay_same_activity_count=0
         )
@@ -116,4 +116,4 @@ class MonkeyRunner(object):
 if __name__ == '__main__':
     app = AppSMBuilder('com.tencent.mobileqq', '6.5.8', do_reload=False).gen_app()
     monkey = MonkeyRunner(app, show_details=False, do_upload_event_history=True)
-    monkey.start(event_num=300, event_cost_ms=1)
+    monkey.start(event_num=500, event_cost_ms=1)

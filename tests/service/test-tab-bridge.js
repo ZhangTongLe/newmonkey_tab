@@ -15,7 +15,7 @@ var host = 'http://127.0.0.1:3000';
 
 
 function test_save_record_with_cache() {
-    var StatusMap = AV.Object.extend('StatusMap');
+    var StatusMap = AV.Object.extend('View');
     var eh = new StatusMap();
     eh.set('event_identify', '2016-10-22_20.13.07.0730');
     eh.set('product', 'com.tencent.mobileqq');
@@ -49,18 +49,24 @@ function test_save_record_with_cache() {
 }
 
 function test_save_records_with_cache() {
-    var StatusMap = AV.Object.extend('StatusMap');
-    var sm = new StatusMap();
-    sm.set('event_identify', '2016-10-22_20.13.07.0730');
-    sm.set('product', 'com.tencent.mobileqq');
-    sm.set('version', '5.5.10');
-    sm.set('is_activity_changed', true);
-
+    var View = AV.Object.extend('View');
     var record_list = [];
 
-    var records_json = {class_name: 'StatusMap', record_list: []};
-    for (let i = 0; i < 7; i ++) {
-        records_json.record_list.push(sm);
+    var records_json = {class_name: 'View', record_list: []};
+    for (let i = 0; i < 8; i ++) {
+        var v = new View();
+        v.set('product', 'randomApp');
+        v.set('version', '0.0.1');
+        v.set('activity', 'com.tencent.biz.pubaccount.AccountDetailActivity');
+        v.set('path', 'PhoneWindow$DecorView0 TopGestureLayout0 LinearLayout0 FrameLayout0 RelativeLayout0 RelativeLayout3 TextView' + i);
+        v.set('is_activity_changed', 0);
+        v.set('is_tree_changed', 1);
+        v.set('device', 'HUAWEI MT7-TL00 android 4.4.2## ##HUAWEI MT7-TL00');
+        v.set('text', '返回');
+        v.set('description', '');
+        v.set('view_id', '');
+        v.set('is_activity_changed', i);
+        records_json.record_list.push(v);
     }
     records_json['record_list'] = JSON.stringify(records_json['record_list']);
     request.post(host + '/service/SaveRecordWithCache', {form: records_json},

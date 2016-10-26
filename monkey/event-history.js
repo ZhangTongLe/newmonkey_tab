@@ -63,9 +63,24 @@ function sync_event_history(use_last_time) {
 
 function sync_one_event_record(r) {
     // 为了节省请求量, 已经将EventHistory多条记录打包为一条, 这里将其重新解包.
-    var record_list = TabUtil.unmerge_records(r);
-    StatusMap.sync_event_record_list(record_list);
-    TaskMeta.sync_event_record_list(record_list);
+    try {
+        console.log('EventHistory: start sync_one_event_record.');
+        var record_list = TabUtil.unmerge_records(r);
+        console.log('EventHistory: sync_one_event_record: unmerge_records success.');
+        StatusMap.sync_event_record_list(record_list).then(function (info) {
+            console.log('StatusMap.sync_event_record_list: info: ' + JSON.stringify(info));
+        }, function (e) {
+            console.error(e);
+        });
+        // TaskMeta.sync_event_record_list(record_list).then(function (info) {
+        //     console.log('TaskMeta.sync_event_record_list: info: ' + JSON.stringify(info));
+        // }, function (e) {
+        //     console.error(e);
+        // });
+    } catch (e) {
+        console.error(e);
+    }
+
 }
 
 

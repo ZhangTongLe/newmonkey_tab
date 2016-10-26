@@ -3,6 +3,6 @@
  */
 
 
-var EventHistory = require('../monkey/event-history');
+var EventHistory = require('../../monkey/event-history');
 EventHistory.sync_event_history(new Date(0));
 

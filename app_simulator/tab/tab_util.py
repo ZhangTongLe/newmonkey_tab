@@ -12,6 +12,7 @@ from leancloud import Query
 class TabUtil(object):
     TAB_LIMIT = 1000
     HOST = 'https://hi-monkey.leanapp.cn'
+    # HOST = 'http://127.0.0.1:3000'
 
     def __init__(self):
         leancloud.init("2OqGTb47B0cChAg4xyOsP5D8-9Nh9j0Va", "7sOFzdMRP1D0m6r9y5LE8aPy")

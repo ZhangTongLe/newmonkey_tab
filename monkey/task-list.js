@@ -68,7 +68,7 @@ function get_task_list(req, res, next) {
     TabUtil.find(query).then(function (records) {
         HttpUtil.resp_json(res, {status: 'ok', data: records});
     }, function (e) {
-        HttpUtil.resp_json(res, {status: 'error', data: 'error: ' + e.message});
+        HttpUtil.resp_json(res, {status: 'error', data: 'error: ' + e.stack});
     });
 }
 

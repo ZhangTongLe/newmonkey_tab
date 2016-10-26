@@ -49,7 +49,7 @@ function get_product_list(req, res, next) {
         }
         HttpUtil.resp_json(res, {status: 'ok', data: records});
     }, function (e) {
-        HttpUtil.resp_json(res, {status: 'error', data: 'error: ' + e.message});
+        HttpUtil.resp_json(res, {status: 'error', data: 'error: ' + e.stack});
     });
 }
 
@@ -92,7 +92,7 @@ function get_sng_product_list(req, res, next) {
         }
         HttpUtil.resp_json(res, {status: 'ok', data: product_list});
     }, function (e) {
-        HttpUtil.resp_json(res, {status: 'error', data: 'error: ' + e.message});
+        HttpUtil.resp_json(res, {status: 'error', data: 'error: ' + e.stack});
     });
 }
 
@@ -125,18 +125,18 @@ function submit_add_product(req, res, next) {
                     TabUtil.save(new_product, function () {
                         HttpUtil.resp_json(res, {status: 'ok', data: 'add product success: ' + product_values.product_name});
                     }, function (e) {
-                        HttpUtil.resp_json(res, {status: 'error', data: 'error: ' + e.message});
+                        HttpUtil.resp_json(res, {status: 'error', data: 'error: ' + e.stack});
                     })
                 }
             } catch (e) {
-                HttpUtil.resp_json(res, {status: 'error', data: 'error: ' + e.message});
+                HttpUtil.resp_json(res, {status: 'error', data: 'error: ' + e.stack});
             }
 
         }, function (e) {
-            HttpUtil.resp_json(res, {status: 'error', data: 'error: ' + e.message});
+            HttpUtil.resp_json(res, {status: 'error', data: 'error: ' + e.stack});
         })
     } catch (e) {
-        HttpUtil.resp_json(res, {status: 'error', data: 'error: ' + e.message});
+        HttpUtil.resp_json(res, {status: 'error', data: 'error: ' + e.stack});
     }
 }
 
@@ -192,7 +192,7 @@ function delete_product(req, res, next) {
             product.destroy().then(function () {
                 HttpUtil.resp_json(res, {status: 'ok', data: 'delete product success: ' + product_name});
             }, function (e) {
-                HttpUtil.resp_json(res, {status: 'error', data: 'error: ' + e.message});
+                HttpUtil.resp_json(res, {status: 'error', data: 'error: ' + e.stack});
             });
         } else {
             HttpUtil.resp_json(res, {status: 'error', data: 'not found product: ' + product_name});
