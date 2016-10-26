@@ -450,7 +450,11 @@ CacheSystem.prototype.save_records_with_cache = function (record_list, save_chec
 };
 CacheSystem.prototype.start_sync_with_db = function () {
     var self = this;
-    if (! self.sync_timer) {
+    var is_dev = G.is_dev();
+    if (is_dev) {
+        console.info('CacheSystem: In Dev, do not sync.')
+    }
+    if (! self.sync_timer && ! is_dev) {    // 开发环境不进行数据同步
         self.sync_timer = setInterval(function() {
             self.save_cache_to_db();
         }, self.sync_period_sec * 1000);    // 定期同步.

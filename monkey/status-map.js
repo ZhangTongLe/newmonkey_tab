@@ -11,6 +11,7 @@ var MonkeyEvent = require('./monkey-event');
 var MonkeyUtil = require('./monkey-util');
 var DsUtil = require('../lib/ds_util');
 
+
 function sync_status_map(event_records) {
     if (event_records.length == 0)
         return;

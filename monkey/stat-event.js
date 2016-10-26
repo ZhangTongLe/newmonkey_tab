@@ -49,7 +49,8 @@ function stat_all_in_one(task_id, callback, error_callback){
 
 
 function stat_task_use_task_meta(task_id, callback, callback_fail, extra_para){
-    new AV.Query('TaskMeta').equalTo('task_id', task_id).first().then(function (task) {
+    var query = new AV.Query('TaskMeta');
+    query.equalTo('task_id', task_id).first().then(function (task) {
         var product = task.get('product'), version = task.get('version');
         get_sm_records(product, function (sm_records) {
             var filter_dict = {
@@ -292,119 +293,136 @@ function stat_all_with_eh_and_sm(tm_records, sm_records, sm_activity_set, when_o
 
 
 function find_activity_list(filter_dict, all_activity_set, when_ok, when_fail) {
-    var product = filter_dict.product || filter_dict.task_product;
-    var version = filter_dict.version || filter_dict.task_version;
+    try {
+        var product = filter_dict.product || filter_dict.task_product;
+        var version = filter_dict.version || filter_dict.task_version;
 
-    if (product) {
-        var product_query = new AV.Query('ProductMeta');
-        product_query.equalTo('product', product);
-        product_query.descending('version');
-        TabUtil.find(product_query, function (versions) {
-            if (versions.length > 0) {
-                var l = versions[0].get('activity_list');
-                if (typeof l == 'object' && l.length > 0) {
-                    l.forEach(function (r) {
-                        all_activity_set.add(r);
-                    })
+        if (product) {
+            var product_query = new AV.Query('ProductMeta');
+            product_query.equalTo('product', product);
+            product_query.descending('version');
+            TabUtil.find(product_query, function (versions) {
+                if (versions.length > 0) {
+                    var l = versions[0].get('activity_list');
+                    if (typeof l == 'object' && l.length > 0) {
+                        l.forEach(function (r) {
+                            all_activity_set.add(r);
+                        })
+                    }
                 }
-            }
-            when_ok()
-        }, when_fail);
-    } else {
-        when_ok();
+                when_ok()
+            }, when_fail);
+        } else {
+            when_ok();
+        }
+    } catch (e) {
+        when_fail(e);
     }
+
 }
 
 
 function stat_all_with_task_meta(sm_records, filter_dict, callback, callback_fail, extra_para) {
-    var sm_activity_set = new Set();
-    extra_para = extra_para == undefined ? {} : extra_para;
+    try {
+        var sm_activity_set = new Set();
+        extra_para = extra_para == undefined ? {} : extra_para;
+        function do_stat() {
+            try {
+                if (extra_para['stat_by_step']) {
+                    var eh_query = new AV.Query('EventHistory');
 
-    function do_stat() {
-        if (extra_para['stat_by_step']) {
-            var eh_query = new AV.Query('EventHistory');
+                    if (filter_dict.task_id)
+                        eh_query.equalTo('task_id', filter_dict.task_id);
+                    if (filter_dict.product)
+                        eh_query.contains('product', filter_dict.product);
+                    if (filter_dict.version)
+                        eh_query.contains('version', filter_dict.version);
+                    eh_query.ascending('event_time');
 
-            if (filter_dict.task_id)
-                eh_query.equalTo('task_id', filter_dict.task_id);
-            if (filter_dict.product)
-                eh_query.contains('product', filter_dict.product);
-            if (filter_dict.version)
-                eh_query.contains('version', filter_dict.version);
+                    TabUtil.find_all(eh_query, function (records) {
+                        try {
+                            var stat_list = [];
+                            var sample_num = extra_para['sample_num'] ? extra_para['sample_num'] : 15;    // default 15.
 
-            TabUtil.find_all(eh_query, function (records) {
-                try {
-                    var stat_list = [];
-                    var sample_num = extra_para['sample_num'] ? extra_para['sample_num'] : 15;    // default 15.
+                            function gather_result(stat) {
+                                ['acr', 'wcr', 'ecr'].forEach(function (stat_type) {
+                                    delete stat[stat_type]['cover_list'];
+                                    delete stat[stat_type]['total_list'];
+                                });
 
-                    function gather_result(stat) {
-                        ['acr', 'wcr', 'ecr'].forEach(function (stat_type) {
-                            delete stat[stat_type]['cover_list'];
-                            delete stat[stat_type]['total_list'];
-                        });
-
-                        stat_list.push({
-                            step_start_time: step_start_time,
-                            stat: stat
-                        })
-                    }
-
-                    records.sort(function (a, b) {
-                        return a.createdAt - b.createdAt;
-                    });
-
-                    var start_time = records[0].createdAt, end_time = records[records.length - 1].createdAt;
-                    var time_step = (end_time - start_time) / sample_num;
-                    var time_pos = start_time.getTime();
-                    var step_start_time = null;
-
-                    for (var i = 0; i < records.length; i += 1) {
-                        step_start_time = records[i].createdAt;
-                        if (step_start_time >= new Date(time_pos)) {
-                            step_start_time = new Date(time_pos);    // 使用 records[i].createdAt 会导致时间轴数据分布不均匀。
-                            var step_records = records.slice(0, i);
-                            var step_meta = {activity_list: [], widget_list: [], event_list: [],
-                                get: function (key) {
-                                    return this[key];
-                                }
-                            };
-                            step_records.forEach(function (r) {
-                                step_meta.activity_list.push(r.get('pre_activity'));
-                                step_meta.widget_list.push(MonkeyEvent.get_event_entity_identify(r));
-                                step_meta.event_list.push(MonkeyEvent.get_event_identify(r));
-                            });
-                            try {
-                                stat_all_with_eh_and_sm([step_meta], sm_records, sm_activity_set, gather_result, callback_fail);
-                            } catch (e) {
-                                console.error(e);
+                                stat_list.push({
+                                    step_start_time: step_start_time,
+                                    stat: stat
+                                })
                             }
-                            time_pos += time_step;
-                        } else {
-                            ;
+
+                            var start_time = records[0].get('event_time'), end_time = records[records.length - 1].get('event_time');
+                            start_time = new Date(start_time);
+                            end_time = new Date(end_time);
+                            var time_step = (end_time - start_time) / sample_num;
+                            var time_pos = start_time.getTime();
+                            var step_start_time = null;
+
+                            for (var i = 0; i < records.length; i += 1) {
+                                step_start_time = new Date(records[i].get('event_time'));
+                                if (step_start_time >= new Date(time_pos)) {
+                                    step_start_time = new Date(time_pos);    // 使用 records[i].createdAt 会导致时间轴数据分布不均匀。
+                                    var step_records = records.slice(0, i);
+                                    var step_meta = {activity_list: [], widget_list: [], event_list: [],
+                                        get: function (key) {
+                                            return this[key];
+                                        }
+                                    };
+                                    step_records.forEach(function (r) {
+                                        step_meta.activity_list.push(r.get('pre_activity'));
+                                        step_meta.widget_list.push(MonkeyEvent.get_event_entity_identify(r));
+                                        step_meta.event_list.push(MonkeyEvent.get_event_identify(r));
+                                    });
+                                    try {
+                                        stat_all_with_eh_and_sm([step_meta], sm_records, sm_activity_set, gather_result, callback_fail);
+                                    } catch (e) {
+                                        console.error(e);
+                                        callback_fail(e);
+                                    }
+                                    time_pos += time_step;
+                                } else {
+                                    ;
+                                }
+                            }
+                            callback(stat_list);
+                        } catch (e) {
+                            console.error(e);
+                            callback_fail(e);
                         }
-                    }
-                    callback(stat_list);
-                } catch (e) {
-                    console.error(e);
+                    }, function (e) {
+                        console.error(e);
+                        callback_fail(e);
+                    });
+                } else {
+                    var meta_query = new AV.Query('TaskMeta');
+
+                    if (filter_dict.task_id)
+                        meta_query.equalTo('task_id', filter_dict.task_id);
+                    if (filter_dict.product)
+                        meta_query.contains('product', filter_dict.product);
+                    if (filter_dict.version)
+                        meta_query.contains('version', filter_dict.version);
+
+                    TabUtil.find_all(meta_query, function (meta_records) {
+                        stat_all_with_eh_and_sm(meta_records, sm_records, sm_activity_set, callback, callback_fail);
+                    });
                 }
-            });
-        } else {
-            var meta_query = new AV.Query('TaskMeta');
-
-            if (filter_dict.task_id)
-                meta_query.equalTo('task_id', filter_dict.task_id);
-            if (filter_dict.product)
-                meta_query.contains('product', filter_dict.product);
-            if (filter_dict.version)
-                meta_query.contains('version', filter_dict.version);
-
-            TabUtil.find_all(meta_query, function (meta_records) {
-                stat_all_with_eh_and_sm(meta_records, sm_records, sm_activity_set, callback, callback_fail);
-            });
+            } catch (e) {
+                console.error(e);
+                callback_fail(e);
+            }
         }
-
+        find_activity_list(filter_dict, sm_activity_set, do_stat, callback_fail);
+    } catch (e) {
+        console.error(e);
+        callback_fail(e);
     }
 
-    find_activity_list(filter_dict, sm_activity_set, do_stat, callback_fail);
 }
 
 

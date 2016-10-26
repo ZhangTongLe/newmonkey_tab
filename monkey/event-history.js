@@ -26,9 +26,9 @@ function sync_event_history(use_last_time) {
         if (use_last_time)
             last_time = use_last_time;
 
-        query.greaterThan('createdAt', last_time).addDescending('createdAt');
+        query.greaterThan('createdAt', last_time).descending('event_time');
         query.limit(G.TAB_LIMIT);
-        query.find().then(function (event_records) {
+        TabUtil.find_all(query).then(function (event_records) {
             StatusMap.sync_event_record_list(event_records);
             TaskMeta.sync_event_record_list(event_records);
 
@@ -97,7 +97,7 @@ function reply_to_event_history_page(req, res, next) {
 
     var query = new AV.Query('TaskMeta');
     query.select('product', 'version', 'device');
-    query.descending('createdAt');
+    query.descending('event_time');
     TabUtil.find(query, function (records) {
         records.forEach(function (r) {
             product_list.push(r.get('product'));
@@ -149,7 +149,7 @@ function event_history_do_filter(req, res, next) {
             query.equalTo('task_id', task_id);
         if (distinct_task)
             query.equalTo('seq_no', 0);
-        query.descending('createdAt');
+        query.descending('event_time');
 
         query.find({sessionToken: req.sessionToken});
         TabUtil.find(query, function (records) {

@@ -109,7 +109,7 @@ function task_stat_all_in_one(req, res, next) {
 
 function task_stat_by_step(req, res, next) {
     try {
-        var req_obj = HttpUtil.get_request_body(req);
+        var req_obj = req.body;
         var extra_para = {    // for function: stat_all_with_task_meta()
             stat_by_step: true,
             sample_num: 15
@@ -122,7 +122,9 @@ function task_stat_by_step(req, res, next) {
                 data: stat_list
             };
             HttpUtil.resp_json(res, resp);
-        }, next, extra_para);
+        }, function (e) {
+            console.error(e);
+        }, extra_para);
     } catch (e) {
         console.error(e)
     }
