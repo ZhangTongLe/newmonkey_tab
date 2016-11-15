@@ -1,0 +1,2170 @@
+[
+    {
+        "DNA": "com.tencent.mobileqq.activity.RegisterPhoneNumActivity##44", 
+        "name": "com.tencent.mobileqq.activity.RegisterPhoneNumActivity", 
+        "created_at": "2016-11-09 12:25:53.492000", 
+        "updated_at": "2016-11-09 12:25:53.492000", 
+        "change_times": 0, 
+        "id": "582315d15198730056b646fc"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.LoginPhoneNumActivity##38", 
+        "name": "com.tencent.mobileqq.activity.LoginPhoneNumActivity", 
+        "created_at": "2016-11-09 12:25:53.484000", 
+        "updated_at": "2016-11-09 12:25:53.484000", 
+        "change_times": 0, 
+        "id": "582315d15198730056b646fb"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.LoginActivity##47", 
+        "name": "com.tencent.mobileqq.activity.LoginActivity", 
+        "created_at": "2016-11-09 12:25:53.475000", 
+        "updated_at": "2016-11-09 12:25:53.475000", 
+        "change_times": 0, 
+        "id": "582315d15198730056b646fa"
+    }, 
+    {
+        "DNA": "PopupWindow:468a9200##6", 
+        "name": "PopupWindow:468a9200", 
+        "created_at": "2016-11-08 14:16:01.149000", 
+        "updated_at": "2016-11-08 14:16:01.149000", 
+        "change_times": 0, 
+        "id": "5821de217ce2f90045915388"
+    }, 
+    {
+        "DNA": "PopupWindow:43ad2850##6", 
+        "name": "PopupWindow:43ad2850", 
+        "created_at": "2016-11-08 14:16:01.130000", 
+        "updated_at": "2016-11-08 14:16:01.130000", 
+        "change_times": 0, 
+        "id": "5821de217ce2f90045915387"
+    }, 
+    {
+        "DNA": "cooperation.troop.TroopMemberCardProxyActivity##64", 
+        "name": "cooperation.troop.TroopMemberCardProxyActivity", 
+        "created_at": "2016-11-08 14:15:19.472000", 
+        "updated_at": "2016-11-08 14:15:19.472000", 
+        "change_times": 0, 
+        "id": "5821ddf75198730056b5deb8"
+    }, 
+    {
+        "DNA": "PopupWindow:45734288##6", 
+        "name": "PopupWindow:45734288", 
+        "created_at": "2016-11-08 14:15:19.466000", 
+        "updated_at": "2016-11-08 14:15:19.466000", 
+        "change_times": 0, 
+        "id": "5821ddf75198730056b5deb7"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.TroopMemberCardActivity##239", 
+        "name": "com.tencent.mobileqq.activity.TroopMemberCardActivity", 
+        "created_at": "2016-11-08 14:15:19.458000", 
+        "updated_at": "2016-11-08 14:15:19.458000", 
+        "change_times": 0, 
+        "id": "5821ddf75198730056b5deb6"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.SplashActivity##258", 
+        "name": "com.tencent.mobileqq.activity.SplashActivity", 
+        "created_at": "2016-11-08 14:14:38.073000", 
+        "updated_at": "2016-11-08 14:14:38.073000", 
+        "change_times": 0, 
+        "id": "5821ddce5198730056b5dea9"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.qwallet.SendHbActivity##210", 
+        "name": "com.tencent.mobileqq.activity.qwallet.SendHbActivity", 
+        "created_at": "2016-11-08 14:14:38.064000", 
+        "updated_at": "2016-11-08 14:14:38.064000", 
+        "change_times": 0, 
+        "id": "5821ddce5198730056b5dea8"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.QQBrowserActivity##62", 
+        "name": "com.tencent.mobileqq.activity.QQBrowserActivity", 
+        "created_at": "2016-11-08 14:13:56.063000", 
+        "updated_at": "2016-11-08 14:13:56.063000", 
+        "change_times": 0, 
+        "id": "5821dda4d4f0d7005178924e"
+    }, 
+    {
+        "DNA": "com.tencent.av.ui.AVActivity##130", 
+        "name": "com.tencent.av.ui.AVActivity", 
+        "created_at": "2016-11-08 14:10:09.141000", 
+        "updated_at": "2016-11-08 14:10:09.141000", 
+        "change_times": 0, 
+        "id": "5821dcc17ce2f9004591530c"
+    }, 
+    {
+        "DNA": "com.tencent.biz.qqstory.takevideo.EditPicActivity##58", 
+        "name": "com.tencent.biz.qqstory.takevideo.EditPicActivity", 
+        "created_at": "2016-11-08 14:09:26.574000", 
+        "updated_at": "2016-11-08 14:09:26.574000", 
+        "change_times": 0, 
+        "id": "5821dc965198730056b5ddf4"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.camera.QQCameraActivity##15", 
+        "name": "com.tencent.mobileqq.camera.QQCameraActivity", 
+        "created_at": "2016-11-08 14:08:43.969000", 
+        "updated_at": "2016-11-08 14:08:43.969000", 
+        "change_times": 0, 
+        "id": "5821dc6b7ce2f90045915211"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity##529", 
+        "name": "com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity", 
+        "created_at": "2016-11-08 14:08:43.946000", 
+        "updated_at": "2016-11-08 14:08:43.946000", 
+        "change_times": 0, 
+        "id": "5821dc6b7ce2f90045915210"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.ChatActivity##181", 
+        "name": "com.tencent.mobileqq.activity.ChatActivity", 
+        "created_at": "2016-11-08 14:07:18.856000", 
+        "updated_at": "2016-11-08 14:07:18.856000", 
+        "change_times": 0, 
+        "id": "5821dc167ce2f900459151f1"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.dating.MsgBoxListActivity##157", 
+        "name": "com.tencent.mobileqq.dating.MsgBoxListActivity", 
+        "created_at": "2016-11-08 14:07:18.845000", 
+        "updated_at": "2016-11-08 14:07:18.845000", 
+        "change_times": 0, 
+        "id": "5821dc167ce2f900459151f0"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.FriendProfileCardActivity##48", 
+        "name": "com.tencent.mobileqq.activity.FriendProfileCardActivity", 
+        "created_at": "2016-11-08 14:05:13.851000", 
+        "updated_at": "2016-11-08 14:05:13.851000", 
+        "change_times": 0, 
+        "id": "5821db99d4f0d700517891e1"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.ChatSettingForTroop##213", 
+        "name": "com.tencent.mobileqq.activity.ChatSettingForTroop", 
+        "created_at": "2016-11-08 14:04:32.146000", 
+        "updated_at": "2016-11-08 14:04:32.146000", 
+        "change_times": 0, 
+        "id": "5821db70d4f0d700517891d8"
+    }, 
+    {
+        "DNA": "com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity##777", 
+        "name": "com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity", 
+        "created_at": "2016-11-08 14:03:50.572000", 
+        "updated_at": "2016-11-08 14:03:50.572000", 
+        "change_times": 0, 
+        "id": "5821db46d4f0d700517891cb"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.SplashActivity##97", 
+        "name": "com.tencent.mobileqq.activity.SplashActivity", 
+        "created_at": "2016-11-08 14:03:50.564000", 
+        "updated_at": "2016-11-08 14:03:50.564000", 
+        "change_times": 0, 
+        "id": "5821db46d4f0d700517891ca"
+    }, 
+    {
+        "DNA": "com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity##263", 
+        "name": "com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity", 
+        "created_at": "2016-11-08 14:03:50.556000", 
+        "updated_at": "2016-11-08 14:03:50.556000", 
+        "change_times": 0, 
+        "id": "5821db46d4f0d700517891c9"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.ForwardRecentActivity##32", 
+        "name": "com.tencent.mobileqq.activity.ForwardRecentActivity", 
+        "created_at": "2016-11-08 14:00:54.400000", 
+        "updated_at": "2016-11-08 14:00:54.400000", 
+        "change_times": 0, 
+        "id": "5821da967ce2f90045915151"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity##79", 
+        "name": "com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity", 
+        "created_at": "2016-11-08 14:00:21.036000", 
+        "updated_at": "2016-11-08 14:00:21.036000", 
+        "change_times": 0, 
+        "id": "5821da757ce2f9004591513a"
+    }, 
+    {
+        "DNA": "com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity##217", 
+        "name": "com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity", 
+        "created_at": "2016-11-08 14:00:21.027000", 
+        "updated_at": "2016-11-08 14:00:21.027000", 
+        "change_times": 0, 
+        "id": "5821da757ce2f90045915139"
+    }, 
+    {
+        "DNA": "com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantActivity##407", 
+        "name": "com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantActivity", 
+        "created_at": "2016-11-08 14:00:12.791000", 
+        "updated_at": "2016-11-08 14:00:12.791000", 
+        "change_times": 0, 
+        "id": "5821da6c7ce2f90045915133"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.ChatActivity##255", 
+        "name": "com.tencent.mobileqq.activity.ChatActivity", 
+        "created_at": "2016-11-08 14:00:12.783000", 
+        "updated_at": "2016-11-08 14:00:12.783000", 
+        "change_times": 0, 
+        "id": "5821da6c7ce2f90045915132"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.SplashActivity##374", 
+        "name": "com.tencent.mobileqq.activity.SplashActivity", 
+        "created_at": "2016-11-08 14:00:12.774000", 
+        "updated_at": "2016-11-08 14:00:12.774000", 
+        "change_times": 0, 
+        "id": "5821da6c7ce2f90045915130"
+    }, 
+    {
+        "DNA": "cooperation.qzone.QzoneGPUPluginProxyActivity##147", 
+        "name": "cooperation.qzone.QzoneGPUPluginProxyActivity", 
+        "created_at": "2016-11-08 13:40:47.763000", 
+        "updated_at": "2016-11-08 13:40:47.763000", 
+        "change_times": 0, 
+        "id": "5821d5df7ce2f90045914fa6"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity##194", 
+        "name": "com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity", 
+        "created_at": "2016-11-08 13:34:09.454000", 
+        "updated_at": "2016-11-08 13:34:09.454000", 
+        "change_times": 0, 
+        "id": "5821d4517ce2f90045914ef7"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.FriendProfileCardActivity##287", 
+        "name": "com.tencent.mobileqq.activity.FriendProfileCardActivity", 
+        "created_at": "2016-11-08 13:32:46.332000", 
+        "updated_at": "2016-11-08 13:32:46.332000", 
+        "change_times": 0, 
+        "id": "5821d3fe7ce2f90045914ed1"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.SplashActivity##409", 
+        "name": "com.tencent.mobileqq.activity.SplashActivity", 
+        "created_at": "2016-11-08 13:30:00.152000", 
+        "updated_at": "2016-11-08 13:30:00.152000", 
+        "change_times": 0, 
+        "id": "5821d358d4f0d700517890e4"
+    }, 
+    {
+        "DNA": "com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity##283", 
+        "name": "com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity", 
+        "created_at": "2016-11-08 13:30:00.141000", 
+        "updated_at": "2016-11-08 13:30:00.141000", 
+        "change_times": 0, 
+        "id": "5821d358d4f0d700517890e3"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.SplashActivity##359", 
+        "name": "com.tencent.mobileqq.activity.SplashActivity", 
+        "created_at": "2016-11-08 13:28:08.749000", 
+        "updated_at": "2016-11-08 13:28:08.749000", 
+        "change_times": 0, 
+        "id": "5821d2e8ae67b8005885c9b3"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.photo.PhotoListActivity##97", 
+        "name": "com.tencent.mobileqq.activity.photo.PhotoListActivity", 
+        "created_at": "2016-11-08 13:24:55.020000", 
+        "updated_at": "2016-11-08 13:24:55.020000", 
+        "change_times": 0, 
+        "id": "5821d227d4f0d700517890c6"
+    }, 
+    {
+        "DNA": "PopupWindow:43915088##22", 
+        "name": "PopupWindow:43915088", 
+        "created_at": "2016-11-08 13:14:55.757000", 
+        "updated_at": "2016-11-08 13:14:55.757000", 
+        "change_times": 0, 
+        "id": "5821cfcf5198730056b5d9aa"
+    }, 
+    {
+        "DNA": "PopupWindow:4673f208##22", 
+        "name": "PopupWindow:4673f208", 
+        "created_at": "2016-11-08 13:01:53.768000", 
+        "updated_at": "2016-11-08 13:01:53.768000", 
+        "change_times": 0, 
+        "id": "5821ccc15198730056b5d8aa"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.ForwardRecentActivity##41", 
+        "name": "com.tencent.mobileqq.activity.ForwardRecentActivity", 
+        "created_at": "2016-11-08 12:57:05.382000", 
+        "updated_at": "2016-11-08 12:57:05.382000", 
+        "change_times": 0, 
+        "id": "5821cba1ae67b8005885c8c4"
+    }, 
+    {
+        "DNA": "PopupWindow:45974950##6", 
+        "name": "PopupWindow:45974950", 
+        "created_at": "2016-11-08 12:34:25.179000", 
+        "updated_at": "2016-11-08 12:34:25.179000", 
+        "change_times": 0, 
+        "id": "5821c6515198730056b5d615"
+    }, 
+    {
+        "DNA": "com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity##124", 
+        "name": "com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderActivity", 
+        "created_at": "2016-11-08 11:50:24.275000", 
+        "updated_at": "2016-11-08 11:50:24.275000", 
+        "change_times": 0, 
+        "id": "5821bc005198730056b5d182"
+    }, 
+    {
+        "DNA": "PopupWindow:44374760##6", 
+        "name": "PopupWindow:44374760", 
+        "created_at": "2016-11-08 11:29:27.568000", 
+        "updated_at": "2016-11-08 11:29:27.568000", 
+        "change_times": 0, 
+        "id": "5821b7177ce2f900459143b6"
+    }, 
+    {
+        "DNA": "PopupWindow:45e170b0##6", 
+        "name": "PopupWindow:45e170b0", 
+        "created_at": "2016-11-08 10:25:20.707000", 
+        "updated_at": "2016-11-08 10:25:20.707000", 
+        "change_times": 0, 
+        "id": "5821a810ae67b8005885c260"
+    }, 
+    {
+        "DNA": "com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantActivity##209", 
+        "name": "com.tencent.biz.pubaccount.ecshopassit.EcShopAssistantActivity", 
+        "created_at": "2016-11-08 09:22:34.060000", 
+        "updated_at": "2016-11-08 09:22:34.060000", 
+        "change_times": 0, 
+        "id": "5821995aae67b8005885bdcf"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity##21", 
+        "name": "com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity", 
+        "created_at": "2016-11-08 09:21:32.699000", 
+        "updated_at": "2016-11-08 09:21:32.699000", 
+        "change_times": 0, 
+        "id": "5821991c7ce2f9004591390d"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.ChatHistory##39", 
+        "name": "com.tencent.mobileqq.activity.ChatHistory", 
+        "created_at": "2016-11-08 09:21:32.690000", 
+        "updated_at": "2016-11-08 09:21:32.690000", 
+        "change_times": 0, 
+        "id": "5821991c7ce2f9004591390c"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.filemanager.activity.FMActivity##193", 
+        "name": "com.tencent.mobileqq.filemanager.activity.FMActivity", 
+        "created_at": "2016-11-08 09:21:32.664000", 
+        "updated_at": "2016-11-08 09:21:32.664000", 
+        "change_times": 0, 
+        "id": "5821991c7ce2f9004591390b"
+    }, 
+    {
+        "DNA": "PopupWindow:4531e680##6", 
+        "name": "PopupWindow:4531e680", 
+        "created_at": "2016-11-08 09:14:11.067000", 
+        "updated_at": "2016-11-08 09:14:11.067000", 
+        "change_times": 0, 
+        "id": "58219763d4f0d70051788083"
+    }, 
+    {
+        "DNA": "PopupWindow:45c10448##6", 
+        "name": "PopupWindow:45c10448", 
+        "created_at": "2016-11-08 09:14:11.060000", 
+        "updated_at": "2016-11-08 09:14:11.060000", 
+        "change_times": 0, 
+        "id": "58219763d4f0d70051788082"
+    }, 
+    {
+        "DNA": "cooperation.qqindividuality.QQIndividualityProxyActivity##31", 
+        "name": "cooperation.qqindividuality.QQIndividualityProxyActivity", 
+        "created_at": "2016-11-08 09:09:06.711000", 
+        "updated_at": "2016-11-08 09:09:06.711000", 
+        "change_times": 0, 
+        "id": "58219632ae67b8005885bd55"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.FriendProfileCardActivity##327", 
+        "name": "com.tencent.mobileqq.activity.FriendProfileCardActivity", 
+        "created_at": "2016-11-08 09:09:06.656000", 
+        "updated_at": "2016-11-08 09:09:06.656000", 
+        "change_times": 0, 
+        "id": "58219632ae67b8005885bd54"
+    }, 
+    {
+        "DNA": "PopupWindow:453573f8##22", 
+        "name": "PopupWindow:453573f8", 
+        "created_at": "2016-11-08 08:56:22.617000", 
+        "updated_at": "2016-11-08 08:56:22.617000", 
+        "change_times": 0, 
+        "id": "58219336ae67b8005885bd26"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.selectmember.SelectMemberActivity##159", 
+        "name": "com.tencent.mobileqq.activity.selectmember.SelectMemberActivity", 
+        "created_at": "2016-11-08 08:27:59.066000", 
+        "updated_at": "2016-11-08 08:27:59.066000", 
+        "change_times": 0, 
+        "id": "58218c8f5198730056b5c01a"
+    }, 
+    {
+        "DNA": "com.tencent.biz.pubaccount.PublicAccountBrowser##72", 
+        "name": "com.tencent.biz.pubaccount.PublicAccountBrowser", 
+        "created_at": "2016-11-08 08:27:59.059000", 
+        "updated_at": "2016-11-08 08:27:59.059000", 
+        "change_times": 0, 
+        "id": "58218c8f5198730056b5c019"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.filemanager.fileviewer.TroopFileDetailBrowserActivity##96", 
+        "name": "com.tencent.mobileqq.filemanager.fileviewer.TroopFileDetailBrowserActivity", 
+        "created_at": "2016-11-08 08:27:59.052000", 
+        "updated_at": "2016-11-08 08:27:59.052000", 
+        "change_times": 0, 
+        "id": "58218c8f5198730056b5c018"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.AddFriendActivity##57", 
+        "name": "com.tencent.mobileqq.activity.AddFriendActivity", 
+        "created_at": "2016-11-08 08:27:59.045000", 
+        "updated_at": "2016-11-08 08:27:59.045000", 
+        "change_times": 0, 
+        "id": "58218c8f5198730056b5c017"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity##47", 
+        "name": "com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity", 
+        "created_at": "2016-11-08 08:27:59.038000", 
+        "updated_at": "2016-11-08 08:27:59.038000", 
+        "change_times": 0, 
+        "id": "58218c8f5198730056b5c016"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.VisitorsActivity##175", 
+        "name": "com.tencent.mobileqq.activity.VisitorsActivity", 
+        "created_at": "2016-11-08 08:27:59.030000", 
+        "updated_at": "2016-11-08 08:27:59.030000", 
+        "change_times": 0, 
+        "id": "58218c8f5198730056b5c015"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.FriendProfileCardActivity##46", 
+        "name": "com.tencent.mobileqq.activity.FriendProfileCardActivity", 
+        "created_at": "2016-11-08 08:27:59.024000", 
+        "updated_at": "2016-11-08 08:27:59.024000", 
+        "change_times": 0, 
+        "id": "58218c8f5198730056b5c014"
+    }, 
+    {
+        "DNA": "cooperation.qzone.QzoneTransWithKeyboardPluginProxyActivity##176", 
+        "name": "cooperation.qzone.QzoneTransWithKeyboardPluginProxyActivity", 
+        "created_at": "2016-11-08 08:27:59.017000", 
+        "updated_at": "2016-11-08 08:27:59.017000", 
+        "change_times": 0, 
+        "id": "58218c8f5198730056b5c013"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.ChatActivity##302", 
+        "name": "com.tencent.mobileqq.activity.ChatActivity", 
+        "created_at": "2016-11-08 08:27:59.011000", 
+        "updated_at": "2016-11-08 08:27:59.011000", 
+        "change_times": 0, 
+        "id": "58218c8f5198730056b5c012"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.SplashActivity##481", 
+        "name": "com.tencent.mobileqq.activity.SplashActivity", 
+        "created_at": "2016-11-08 08:27:59.004000", 
+        "updated_at": "2016-11-08 08:27:59.004000", 
+        "change_times": 0, 
+        "id": "58218c8f5198730056b5c011"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.filemanager.activity.FMActivity##195", 
+        "name": "com.tencent.mobileqq.filemanager.activity.FMActivity", 
+        "created_at": "2016-11-08 08:27:58.995000", 
+        "updated_at": "2016-11-08 08:27:58.995000", 
+        "change_times": 0, 
+        "id": "58218c8e5198730056b5c010"
+    }, 
+    {
+        "DNA": "com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity##117", 
+        "name": "com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity", 
+        "created_at": "2016-11-08 08:27:58.988000", 
+        "updated_at": "2016-11-08 08:27:58.988000", 
+        "change_times": 0, 
+        "id": "58218c8e5198730056b5c00f"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.ChatSettingForTroop##343", 
+        "name": "com.tencent.mobileqq.activity.ChatSettingForTroop", 
+        "created_at": "2016-11-08 07:53:57.026000", 
+        "updated_at": "2016-11-08 07:53:57.026000", 
+        "change_times": 0, 
+        "id": "58218495d4f0d70051787afa"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.troop.activity.NearbyTroopsLocationActivity##117", 
+        "name": "com.tencent.mobileqq.troop.activity.NearbyTroopsLocationActivity", 
+        "created_at": "2016-11-08 07:53:56.997000", 
+        "updated_at": "2016-11-08 07:53:56.997000", 
+        "change_times": 0, 
+        "id": "58218494d4f0d70051787af9"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.troop.activity.NearbyTroopsLocationActivity##306", 
+        "name": "com.tencent.mobileqq.troop.activity.NearbyTroopsLocationActivity", 
+        "created_at": "2016-11-08 07:51:38.272000", 
+        "updated_at": "2016-11-08 07:51:38.272000", 
+        "change_times": 0, 
+        "id": "5821840a7ce2f90045913655"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.ChatSettingForTroop##176", 
+        "name": "com.tencent.mobileqq.activity.ChatSettingForTroop", 
+        "created_at": "2016-11-08 07:51:38.264000", 
+        "updated_at": "2016-11-08 07:51:38.264000", 
+        "change_times": 0, 
+        "id": "5821840a7ce2f90045913654"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.TroopMemberCardActivity##300", 
+        "name": "com.tencent.mobileqq.activity.TroopMemberCardActivity", 
+        "created_at": "2016-11-08 07:48:58.773000", 
+        "updated_at": "2016-11-08 07:48:58.773000", 
+        "change_times": 0, 
+        "id": "5821836aae67b8005885ba21"
+    }, 
+    {
+        "DNA": "cooperation.qzone.QzoneGPUPluginProxyActivity##309", 
+        "name": "cooperation.qzone.QzoneGPUPluginProxyActivity", 
+        "created_at": "2016-11-08 07:48:58.763000", 
+        "updated_at": "2016-11-08 07:48:58.763000", 
+        "change_times": 0, 
+        "id": "5821836aae67b8005885ba20"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.FriendProfileCardActivity##298", 
+        "name": "com.tencent.mobileqq.activity.FriendProfileCardActivity", 
+        "created_at": "2016-11-08 07:48:58.742000", 
+        "updated_at": "2016-11-08 07:48:58.742000", 
+        "change_times": 0, 
+        "id": "5821836aae67b8005885ba1f"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.AddFriendVerifyActivity##65", 
+        "name": "com.tencent.mobileqq.activity.AddFriendVerifyActivity", 
+        "created_at": "2016-11-08 07:36:52.948000", 
+        "updated_at": "2016-11-08 07:36:52.948000", 
+        "change_times": 0, 
+        "id": "58218094d4f0d700517878ec"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.TroopMemberCardActivity##232", 
+        "name": "com.tencent.mobileqq.activity.TroopMemberCardActivity", 
+        "created_at": "2016-11-08 07:36:20.853000", 
+        "updated_at": "2016-11-08 07:36:20.853000", 
+        "change_times": 0, 
+        "id": "582180745198730056b5bb93"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.SplashActivity##168", 
+        "name": "com.tencent.mobileqq.activity.SplashActivity", 
+        "created_at": "2016-11-08 07:35:49.352000", 
+        "updated_at": "2016-11-08 07:35:49.352000", 
+        "change_times": 0, 
+        "id": "58218055d4f0d700517878d1"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.LikeSettingActivity##42", 
+        "name": "com.tencent.mobileqq.activity.LikeSettingActivity", 
+        "created_at": "2016-11-08 05:54:36.029000", 
+        "updated_at": "2016-11-08 05:54:36.029000", 
+        "change_times": 0, 
+        "id": "5821689c7ce2f90045912fd5"
+    }, 
+    {
+        "DNA": "PopupWindow:477bd968##22", 
+        "name": "PopupWindow:477bd968", 
+        "created_at": "2016-11-08 05:38:19.025000", 
+        "updated_at": "2016-11-08 05:38:19.025000", 
+        "change_times": 0, 
+        "id": "582164cbae67b8005885b251"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity##56", 
+        "name": "com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity", 
+        "created_at": "2016-11-08 05:38:18.999000", 
+        "updated_at": "2016-11-08 05:38:18.999000", 
+        "change_times": 0, 
+        "id": "582164caae67b8005885b250"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.SubAccountUgActivity##62", 
+        "name": "com.tencent.mobileqq.activity.SubAccountUgActivity", 
+        "created_at": "2016-11-08 05:36:58.122000", 
+        "updated_at": "2016-11-08 05:36:58.122000", 
+        "change_times": 0, 
+        "id": "5821647a5198730056b5aef6"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity##269", 
+        "name": "com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity", 
+        "created_at": "2016-11-08 05:35:07.390000", 
+        "updated_at": "2016-11-08 05:35:07.390000", 
+        "change_times": 0, 
+        "id": "5821640b7ce2f90045912ee9"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.InterestSwitchEditActivity##42", 
+        "name": "com.tencent.mobileqq.activity.InterestSwitchEditActivity", 
+        "created_at": "2016-11-08 05:33:23.152000", 
+        "updated_at": "2016-11-08 05:33:23.152000", 
+        "change_times": 0, 
+        "id": "582163a3ae67b8005885b206"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity##42", 
+        "name": "com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity", 
+        "created_at": "2016-11-08 05:32:47.529000", 
+        "updated_at": "2016-11-08 05:32:47.529000", 
+        "change_times": 0, 
+        "id": "5821637f7ce2f90045912ebb"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.filemanager.activity.fileassistant.QfileFileAssistantActivity##78", 
+        "name": "com.tencent.mobileqq.filemanager.activity.fileassistant.QfileFileAssistantActivity", 
+        "created_at": "2016-11-08 05:32:14.722000", 
+        "updated_at": "2016-11-08 05:32:14.722000", 
+        "change_times": 0, 
+        "id": "5821635ed4f0d70051786b91"
+    }, 
+    {
+        "DNA": "PopupWindow:44241fe0##18", 
+        "name": "PopupWindow:44241fe0", 
+        "created_at": "2016-11-08 05:27:11.602000", 
+        "updated_at": "2016-11-08 05:27:11.602000", 
+        "change_times": 0, 
+        "id": "5821622f5198730056b5ac9a"
+    }, 
+    {
+        "DNA": "PopupWindow:45420c88##22", 
+        "name": "PopupWindow:45420c88", 
+        "created_at": "2016-11-08 05:05:59.521000", 
+        "updated_at": "2016-11-08 05:05:59.521000", 
+        "change_times": 0, 
+        "id": "58215d375198730056b5a4a8"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity##108", 
+        "name": "com.tencent.mobileqq.conditionsearch.ConditionSearchFriendActivity", 
+        "created_at": "2016-11-08 05:03:03.915000", 
+        "updated_at": "2016-11-08 05:03:03.915000", 
+        "change_times": 0, 
+        "id": "58215c87ae67b8005885acef"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.AddRequestActivity##140", 
+        "name": "com.tencent.mobileqq.activity.AddRequestActivity", 
+        "created_at": "2016-11-08 05:02:27.620000", 
+        "updated_at": "2016-11-08 05:02:27.620000", 
+        "change_times": 0, 
+        "id": "58215c63d4f0d700517864f6"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.SubLoginActivity##84", 
+        "name": "com.tencent.mobileqq.activity.SubLoginActivity", 
+        "created_at": "2016-11-08 04:47:54.037000", 
+        "updated_at": "2016-11-08 04:47:54.037000", 
+        "change_times": 0, 
+        "id": "582158fa5198730056b5a2e2"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.SubAccountUgActivity##39", 
+        "name": "com.tencent.mobileqq.activity.SubAccountUgActivity", 
+        "created_at": "2016-11-08 04:47:54.030000", 
+        "updated_at": "2016-11-08 04:47:54.030000", 
+        "change_times": 0, 
+        "id": "582158fa5198730056b5a2e1"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.AssociatedAccountActivity##82", 
+        "name": "com.tencent.mobileqq.activity.AssociatedAccountActivity", 
+        "created_at": "2016-11-08 04:47:07.635000", 
+        "updated_at": "2016-11-08 04:47:07.635000", 
+        "change_times": 0, 
+        "id": "582158cbae67b8005885ac66"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.AddFriendVerifyActivity##76", 
+        "name": "com.tencent.mobileqq.activity.AddFriendVerifyActivity", 
+        "created_at": "2016-11-08 04:46:35.283000", 
+        "updated_at": "2016-11-08 04:46:35.283000", 
+        "change_times": 0, 
+        "id": "582158abd4f0d7005178639b"
+    }, 
+    {
+        "DNA": "cooperation.qzone.QzonePicturePluginProxyActivity##49", 
+        "name": "cooperation.qzone.QzonePicturePluginProxyActivity", 
+        "created_at": "2016-11-08 04:46:35.275000", 
+        "updated_at": "2016-11-08 04:46:35.275000", 
+        "change_times": 0, 
+        "id": "582158abd4f0d70051786399"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.TroopMemberCardActivity##314", 
+        "name": "com.tencent.mobileqq.activity.TroopMemberCardActivity", 
+        "created_at": "2016-11-08 04:46:35.255000", 
+        "updated_at": "2016-11-08 04:46:35.255000", 
+        "change_times": 0, 
+        "id": "582158ab7ce2f9004591285d"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.troop.activity.TroopBarPublishActivity##130", 
+        "name": "com.tencent.mobileqq.troop.activity.TroopBarPublishActivity", 
+        "created_at": "2016-11-08 04:46:35.248000", 
+        "updated_at": "2016-11-08 04:46:35.248000", 
+        "change_times": 0, 
+        "id": "582158ab7ce2f9004591285c"
+    }, 
+    {
+        "DNA": "com.tencent.biz.qqstory.pgc.QQStoryContentActivity##210", 
+        "name": "com.tencent.biz.qqstory.pgc.QQStoryContentActivity", 
+        "created_at": "2016-11-08 04:46:35.241000", 
+        "updated_at": "2016-11-08 04:46:35.241000", 
+        "change_times": 0, 
+        "id": "582158ab7ce2f9004591285b"
+    }, 
+    {
+        "DNA": "cooperation.qwallet.plugin.QWalletPluginProxyActivity##104", 
+        "name": "cooperation.qwallet.plugin.QWalletPluginProxyActivity", 
+        "created_at": "2016-11-08 04:46:35.234000", 
+        "updated_at": "2016-11-08 04:46:35.234000", 
+        "change_times": 0, 
+        "id": "582158ab7ce2f9004591285a"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.GroupManagerActivity##10", 
+        "name": "com.tencent.mobileqq.activity.GroupManagerActivity", 
+        "created_at": "2016-11-08 04:46:35.227000", 
+        "updated_at": "2016-11-08 04:46:35.227000", 
+        "change_times": 0, 
+        "id": "582158ab7ce2f90045912859"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.TroopMemberListActivity##81", 
+        "name": "com.tencent.mobileqq.activity.TroopMemberListActivity", 
+        "created_at": "2016-11-08 04:46:35.220000", 
+        "updated_at": "2016-11-08 04:46:35.220000", 
+        "change_times": 0, 
+        "id": "582158ab7ce2f90045912858"
+    }, 
+    {
+        "DNA": "com.tencent.biz.qqstory.takevideo.NewStoryTakeVideoActivity##24", 
+        "name": "com.tencent.biz.qqstory.takevideo.NewStoryTakeVideoActivity", 
+        "created_at": "2016-11-08 04:46:35.213000", 
+        "updated_at": "2016-11-08 04:46:35.213000", 
+        "change_times": 0, 
+        "id": "582158ab7ce2f90045912857"
+    }, 
+    {
+        "DNA": "cooperation.qzone.QzoneTransWithKeyboardPluginProxyActivity##307", 
+        "name": "cooperation.qzone.QzoneTransWithKeyboardPluginProxyActivity", 
+        "created_at": "2016-11-08 04:46:35.205000", 
+        "updated_at": "2016-11-08 04:46:35.205000", 
+        "change_times": 0, 
+        "id": "582158ab7ce2f90045912856"
+    }, 
+    {
+        "DNA": "com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity##252", 
+        "name": "com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity", 
+        "created_at": "2016-11-08 04:46:35.198000", 
+        "updated_at": "2016-11-08 04:46:35.198000", 
+        "change_times": 0, 
+        "id": "582158ab7ce2f90045912855"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.SplashActivity##105", 
+        "name": "com.tencent.mobileqq.activity.SplashActivity", 
+        "created_at": "2016-11-08 04:46:35.190000", 
+        "updated_at": "2016-11-08 04:46:35.190000", 
+        "change_times": 0, 
+        "id": "582158ab7ce2f90045912854"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.ForwardRecentActivity##14", 
+        "name": "com.tencent.mobileqq.activity.ForwardRecentActivity", 
+        "created_at": "2016-11-08 04:46:35.182000", 
+        "updated_at": "2016-11-08 04:46:35.182000", 
+        "change_times": 0, 
+        "id": "582158ab7ce2f90045912853"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.filemanager.fileviewer.TroopFileDetailBrowserActivity##42", 
+        "name": "com.tencent.mobileqq.filemanager.fileviewer.TroopFileDetailBrowserActivity", 
+        "created_at": "2016-11-08 04:46:35.174000", 
+        "updated_at": "2016-11-08 04:46:35.174000", 
+        "change_times": 0, 
+        "id": "582158ab7ce2f90045912852"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.QQBrowserActivity##99", 
+        "name": "com.tencent.mobileqq.activity.QQBrowserActivity", 
+        "created_at": "2016-11-08 04:46:35.165000", 
+        "updated_at": "2016-11-08 04:46:35.165000", 
+        "change_times": 0, 
+        "id": "582158ab7ce2f90045912851"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.NearbyActivity##222", 
+        "name": "com.tencent.mobileqq.activity.NearbyActivity", 
+        "created_at": "2016-11-08 04:46:35.154000", 
+        "updated_at": "2016-11-08 04:46:35.154000", 
+        "change_times": 0, 
+        "id": "582158ab7ce2f90045912850"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.filemanager.activity.FMActivity##315", 
+        "name": "com.tencent.mobileqq.filemanager.activity.FMActivity", 
+        "created_at": "2016-11-08 04:46:35.143000", 
+        "updated_at": "2016-11-08 04:46:35.143000", 
+        "change_times": 0, 
+        "id": "582158ab7ce2f9004591284f"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.ChatSettingForTroop##204", 
+        "name": "com.tencent.mobileqq.activity.ChatSettingForTroop", 
+        "created_at": "2016-11-08 04:46:35.132000", 
+        "updated_at": "2016-11-08 04:46:35.132000", 
+        "change_times": 0, 
+        "id": "582158ab7ce2f9004591284e"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.selectmember.SelectMemberActivity##166", 
+        "name": "com.tencent.mobileqq.activity.selectmember.SelectMemberActivity", 
+        "created_at": "2016-11-08 04:46:35.123000", 
+        "updated_at": "2016-11-08 04:46:35.123000", 
+        "change_times": 0, 
+        "id": "582158ab7ce2f9004591284d"
+    }, 
+    {
+        "DNA": "cooperation.qqindividuality.QQIndividualityProxyActivity##35", 
+        "name": "cooperation.qqindividuality.QQIndividualityProxyActivity", 
+        "created_at": "2016-11-08 04:46:35.115000", 
+        "updated_at": "2016-11-08 04:46:35.115000", 
+        "change_times": 0, 
+        "id": "582158ab7ce2f9004591284c"
+    }, 
+    {
+        "DNA": "cooperation.troop.TroopFileProxyActivity##171", 
+        "name": "cooperation.troop.TroopFileProxyActivity", 
+        "created_at": "2016-11-08 04:46:35.108000", 
+        "updated_at": "2016-11-08 04:46:35.108000", 
+        "change_times": 0, 
+        "id": "582158ab7ce2f9004591284b"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.ChatActivity##153", 
+        "name": "com.tencent.mobileqq.activity.ChatActivity", 
+        "created_at": "2016-11-08 04:46:35.101000", 
+        "updated_at": "2016-11-08 04:46:35.101000", 
+        "change_times": 0, 
+        "id": "582158ab7ce2f9004591284a"
+    }, 
+    {
+        "DNA": "com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity##468", 
+        "name": "com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity", 
+        "created_at": "2016-11-08 04:46:35.090000", 
+        "updated_at": "2016-11-08 04:46:35.090000", 
+        "change_times": 0, 
+        "id": "582158ab7ce2f90045912849"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.phone.BindNumberActivity##64", 
+        "name": "com.tencent.mobileqq.activity.phone.BindNumberActivity", 
+        "created_at": "2016-11-08 02:40:32.557000", 
+        "updated_at": "2016-11-08 02:40:32.557000", 
+        "change_times": 0, 
+        "id": "58213b20d4f0d70051785879"
+    }, 
+    {
+        "DNA": "PopupWindow:45c834d8##6", 
+        "name": "PopupWindow:45c834d8", 
+        "created_at": "2016-11-08 02:37:54.702000", 
+        "updated_at": "2016-11-08 02:37:54.702000", 
+        "change_times": 0, 
+        "id": "58213a82ae67b8005885a6b1"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity##33", 
+        "name": "com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity", 
+        "created_at": "2016-11-08 02:33:34.034000", 
+        "updated_at": "2016-11-08 02:33:34.034000", 
+        "change_times": 0, 
+        "id": "5821397ed4f0d70051785584"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.ChatSettingForTroop##183", 
+        "name": "com.tencent.mobileqq.activity.ChatSettingForTroop", 
+        "created_at": "2016-11-08 02:32:17.477000", 
+        "updated_at": "2016-11-08 02:32:17.477000", 
+        "change_times": 0, 
+        "id": "58213931ae67b8005885a648"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.phone.PhoneFrameActivity##57", 
+        "name": "com.tencent.mobileqq.activity.phone.PhoneFrameActivity", 
+        "created_at": "2016-11-08 02:29:22.102000", 
+        "updated_at": "2016-11-08 02:29:22.102000", 
+        "change_times": 0, 
+        "id": "58213882d4f0d700517854dc"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.filemanager.activity.FMActivity##124", 
+        "name": "com.tencent.mobileqq.filemanager.activity.FMActivity", 
+        "created_at": "2016-11-08 02:25:13.775000", 
+        "updated_at": "2016-11-08 02:25:13.775000", 
+        "change_times": 0, 
+        "id": "58213789ae67b8005885a5eb"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.filemanager.activity.FilePreviewActivity##48", 
+        "name": "com.tencent.mobileqq.filemanager.activity.FilePreviewActivity", 
+        "created_at": "2016-11-08 02:24:40.091000", 
+        "updated_at": "2016-11-08 02:24:40.091000", 
+        "change_times": 0, 
+        "id": "582137685198730056b595a1"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.ForwardRecentActivity##91", 
+        "name": "com.tencent.mobileqq.activity.ForwardRecentActivity", 
+        "created_at": "2016-11-08 02:23:26.331000", 
+        "updated_at": "2016-11-08 02:23:26.331000", 
+        "change_times": 0, 
+        "id": "5821371ed4f0d7005178541a"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.filemanager.fileviewer.TroopFileDetailBrowserActivity##52", 
+        "name": "com.tencent.mobileqq.filemanager.fileviewer.TroopFileDetailBrowserActivity", 
+        "created_at": "2016-11-08 02:22:53.783000", 
+        "updated_at": "2016-11-08 02:22:53.783000", 
+        "change_times": 0, 
+        "id": "582136fd5198730056b59581"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.SplashActivity##178", 
+        "name": "com.tencent.mobileqq.activity.SplashActivity", 
+        "created_at": "2016-11-08 02:22:21.820000", 
+        "updated_at": "2016-11-08 02:22:21.820000", 
+        "change_times": 0, 
+        "id": "582136ddae67b8005885a5b1"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.FriendProfileCardActivity##337", 
+        "name": "com.tencent.mobileqq.activity.FriendProfileCardActivity", 
+        "created_at": "2016-11-08 02:22:21.812000", 
+        "updated_at": "2016-11-08 02:22:21.812000", 
+        "change_times": 0, 
+        "id": "582136ddae67b8005885a5b0"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.TroopMemberCardActivity##257", 
+        "name": "com.tencent.mobileqq.activity.TroopMemberCardActivity", 
+        "created_at": "2016-11-08 02:22:21.804000", 
+        "updated_at": "2016-11-08 02:22:21.804000", 
+        "change_times": 0, 
+        "id": "582136ddae67b8005885a5af"
+    }, 
+    {
+        "DNA": "cooperation.qqindividuality.QQIndividualityProxyActivity##64", 
+        "name": "cooperation.qqindividuality.QQIndividualityProxyActivity", 
+        "created_at": "2016-11-08 02:22:21.796000", 
+        "updated_at": "2016-11-08 02:22:21.796000", 
+        "change_times": 0, 
+        "id": "582136ddae67b8005885a5ae"
+    }, 
+    {
+        "DNA": "PopupWindow:43ca8b68##29", 
+        "name": "PopupWindow:43ca8b68", 
+        "created_at": "2016-11-08 02:21:44.927000", 
+        "updated_at": "2016-11-08 02:21:44.927000", 
+        "change_times": 0, 
+        "id": "582136b87ce2f9004591210c"
+    }, 
+    {
+        "DNA": "cooperation.qzone.QzoneTransWithKeyboardPluginProxyActivity##46", 
+        "name": "cooperation.qzone.QzoneTransWithKeyboardPluginProxyActivity", 
+        "created_at": "2016-11-08 02:21:44.919000", 
+        "updated_at": "2016-11-08 02:21:44.919000", 
+        "change_times": 0, 
+        "id": "582136b87ce2f9004591210b"
+    }, 
+    {
+        "DNA": "cooperation.qzone.QzoneGPUPluginProxyActivity##337", 
+        "name": "cooperation.qzone.QzoneGPUPluginProxyActivity", 
+        "created_at": "2016-11-08 02:21:12.709000", 
+        "updated_at": "2016-11-08 02:21:12.709000", 
+        "change_times": 0, 
+        "id": "582136985198730056b59553"
+    }, 
+    {
+        "DNA": "com.tencent.biz.qqstory.storyHome.QQStoryMainActivity##75", 
+        "name": "com.tencent.biz.qqstory.storyHome.QQStoryMainActivity", 
+        "created_at": "2016-11-07 14:35:58.454000", 
+        "updated_at": "2016-11-07 14:35:58.454000", 
+        "change_times": 0, 
+        "id": "5820914eae67b80058859272"
+    }, 
+    {
+        "DNA": "com.tencent.biz.qqstory.takevideo.NewStoryTakeVideoActivity##14", 
+        "name": "com.tencent.biz.qqstory.takevideo.NewStoryTakeVideoActivity", 
+        "created_at": "2016-11-07 14:35:58.446000", 
+        "updated_at": "2016-11-07 14:35:58.446000", 
+        "change_times": 0, 
+        "id": "5820914eae67b80058859271"
+    }, 
+    {
+        "DNA": "PopupWindow:43a60958##12", 
+        "name": "PopupWindow:43a60958", 
+        "created_at": "2016-11-07 14:32:44.259000", 
+        "updated_at": "2016-11-07 14:32:44.259000", 
+        "change_times": 0, 
+        "id": "5820908c7ce2f90045910ba1"
+    }, 
+    {
+        "DNA": "com.tencent.biz.qqstory.pgc.QQStoryContentActivity##15", 
+        "name": "com.tencent.biz.qqstory.pgc.QQStoryContentActivity", 
+        "created_at": "2016-11-07 14:24:41.927000", 
+        "updated_at": "2016-11-07 14:24:41.927000", 
+        "change_times": 0, 
+        "id": "58208ea9ae67b800588591f5"
+    }, 
+    {
+        "DNA": "com.tencent.biz.qqstory.pgc.QQStoryDiscoverActivity##158", 
+        "name": "com.tencent.biz.qqstory.pgc.QQStoryDiscoverActivity", 
+        "created_at": "2016-11-07 14:24:41.917000", 
+        "updated_at": "2016-11-07 14:24:41.917000", 
+        "change_times": 0, 
+        "id": "58208ea9ae67b800588591f4"
+    }, 
+    {
+        "DNA": "cooperation.qzone.QzoneFeedsPluginProxyActivity##165", 
+        "name": "cooperation.qzone.QzoneFeedsPluginProxyActivity", 
+        "created_at": "2016-11-07 14:23:29.972000", 
+        "updated_at": "2016-11-07 14:23:29.972000", 
+        "change_times": 0, 
+        "id": "58208e61d4f0d70051781933"
+    }, 
+    {
+        "DNA": "com.tencent.gamecenter.activities.GameCenterActivity##57", 
+        "name": "com.tencent.gamecenter.activities.GameCenterActivity", 
+        "created_at": "2016-11-07 14:22:17.919000", 
+        "updated_at": "2016-11-07 14:22:17.919000", 
+        "change_times": 0, 
+        "id": "58208e197ce2f90045910b14"
+    }, 
+    {
+        "DNA": "PopupWindow:445978d8##22", 
+        "name": "PopupWindow:445978d8", 
+        "created_at": "2016-11-07 14:17:55.309000", 
+        "updated_at": "2016-11-07 14:17:55.309000", 
+        "change_times": 0, 
+        "id": "58208d135198730056b55c4b"
+    }, 
+    {
+        "DNA": "com.tencent.biz.lebasearch.SearchActivity##117", 
+        "name": "com.tencent.biz.lebasearch.SearchActivity", 
+        "created_at": "2016-11-07 14:17:23.081000", 
+        "updated_at": "2016-11-07 14:17:23.081000", 
+        "change_times": 0, 
+        "id": "58208cf3ae67b8005885915f"
+    }, 
+    {
+        "DNA": "PopupWindow:4488a8f0##15", 
+        "name": "PopupWindow:4488a8f0", 
+        "created_at": "2016-11-07 14:10:42.448000", 
+        "updated_at": "2016-11-07 14:10:42.448000", 
+        "change_times": 0, 
+        "id": "58208b62ae67b800588590e4"
+    }, 
+    {
+        "DNA": "PopupWindow:44888338##18", 
+        "name": "PopupWindow:44888338", 
+        "created_at": "2016-11-07 14:10:42.430000", 
+        "updated_at": "2016-11-07 14:10:42.430000", 
+        "change_times": 0, 
+        "id": "58208b62ae67b800588590e3"
+    }, 
+    {
+        "DNA": "PopupWindow:43dac450##15", 
+        "name": "PopupWindow:43dac450", 
+        "created_at": "2016-11-07 14:09:16.439000", 
+        "updated_at": "2016-11-07 14:09:16.439000", 
+        "change_times": 0, 
+        "id": "58208b0cd4f0d7005178176e"
+    }, 
+    {
+        "DNA": "PopupWindow:443210a0##18", 
+        "name": "PopupWindow:443210a0", 
+        "created_at": "2016-11-07 14:09:16.431000", 
+        "updated_at": "2016-11-07 14:09:16.431000", 
+        "change_times": 0, 
+        "id": "58208b0cd4f0d7005178176d"
+    }, 
+    {
+        "DNA": "PopupWindow:448f9c38##18", 
+        "name": "PopupWindow:448f9c38", 
+        "created_at": "2016-11-07 14:07:44.311000", 
+        "updated_at": "2016-11-07 14:09:16.423000", 
+        "change_times": 1, 
+        "id": "58208ab07ce2f90045910a08"
+    }, 
+    {
+        "DNA": "PopupWindow:458b7430##18", 
+        "name": "PopupWindow:458b7430", 
+        "created_at": "2016-11-07 14:07:44.302000", 
+        "updated_at": "2016-11-07 14:09:16.414000", 
+        "change_times": 1, 
+        "id": "58208ab07ce2f90045910a07"
+    }, 
+    {
+        "DNA": "PopupWindow:44352a80##18", 
+        "name": "PopupWindow:44352a80", 
+        "created_at": "2016-11-07 14:07:44.283000", 
+        "updated_at": "2016-11-07 14:09:16.405000", 
+        "change_times": 1, 
+        "id": "58208ab07ce2f90045910a06"
+    }, 
+    {
+        "DNA": "PopupWindow:45d66578##18", 
+        "name": "PopupWindow:45d66578", 
+        "created_at": "2016-11-07 14:07:44.271000", 
+        "updated_at": "2016-11-07 14:09:16.397000", 
+        "change_times": 1, 
+        "id": "58208ab07ce2f90045910a05"
+    }, 
+    {
+        "DNA": "PopupWindow:44665a10##18", 
+        "name": "PopupWindow:44665a10", 
+        "created_at": "2016-11-07 14:07:44.254000", 
+        "updated_at": "2016-11-07 14:09:16.386000", 
+        "change_times": 1, 
+        "id": "58208ab07ce2f90045910a04"
+    }, 
+    {
+        "DNA": "PopupWindow:446a6be8##18", 
+        "name": "PopupWindow:446a6be8", 
+        "created_at": "2016-11-07 14:07:44.241000", 
+        "updated_at": "2016-11-07 14:09:16.378000", 
+        "change_times": 1, 
+        "id": "58208ab07ce2f90045910a03"
+    }, 
+    {
+        "DNA": "PopupWindow:44325900##18", 
+        "name": "PopupWindow:44325900", 
+        "created_at": "2016-11-07 14:05:57.493000", 
+        "updated_at": "2016-11-07 14:09:16.369000", 
+        "change_times": 1, 
+        "id": "58208a45ae67b800588590ac"
+    }, 
+    {
+        "DNA": "PopupWindow:448cb4c8##15", 
+        "name": "PopupWindow:448cb4c8", 
+        "created_at": "2016-11-07 14:05:57.484000", 
+        "updated_at": "2016-11-07 14:09:16.360000", 
+        "change_times": 1, 
+        "id": "58208a45ae67b800588590ab"
+    }, 
+    {
+        "DNA": "PopupWindow:45219908##18", 
+        "name": "PopupWindow:45219908", 
+        "created_at": "2016-11-07 13:57:22.662000", 
+        "updated_at": "2016-11-07 13:57:22.662000", 
+        "change_times": 0, 
+        "id": "58208842d4f0d700517815ce"
+    }, 
+    {
+        "DNA": "PopupWindow:454ea0d8##18", 
+        "name": "PopupWindow:454ea0d8", 
+        "created_at": "2016-11-07 13:57:22.655000", 
+        "updated_at": "2016-11-07 13:57:22.655000", 
+        "change_times": 0, 
+        "id": "58208842d4f0d700517815cd"
+    }, 
+    {
+        "DNA": "PopupWindow:452bec00##18", 
+        "name": "PopupWindow:452bec00", 
+        "created_at": "2016-11-07 13:57:22.648000", 
+        "updated_at": "2016-11-07 13:57:22.648000", 
+        "change_times": 0, 
+        "id": "58208842d4f0d700517815cc"
+    }, 
+    {
+        "DNA": "PopupWindow:45e22440##18", 
+        "name": "PopupWindow:45e22440", 
+        "created_at": "2016-11-07 13:57:22.641000", 
+        "updated_at": "2016-11-07 13:57:22.641000", 
+        "change_times": 0, 
+        "id": "58208842d4f0d700517815cb"
+    }, 
+    {
+        "DNA": "PopupWindow:438dc820##18", 
+        "name": "PopupWindow:438dc820", 
+        "created_at": "2016-11-07 13:57:22.632000", 
+        "updated_at": "2016-11-07 13:57:22.632000", 
+        "change_times": 0, 
+        "id": "58208842d4f0d700517815ca"
+    }, 
+    {
+        "DNA": "PopupWindow:4529e338##18", 
+        "name": "PopupWindow:4529e338", 
+        "created_at": "2016-11-07 13:55:33.054000", 
+        "updated_at": "2016-11-07 13:55:33.054000", 
+        "change_times": 0, 
+        "id": "582087d55198730056b559eb"
+    }, 
+    {
+        "DNA": "PopupWindow:450308a8##18", 
+        "name": "PopupWindow:450308a8", 
+        "created_at": "2016-11-07 13:55:33.047000", 
+        "updated_at": "2016-11-07 13:55:33.047000", 
+        "change_times": 0, 
+        "id": "582087d55198730056b559ea"
+    }, 
+    {
+        "DNA": "PopupWindow:45fcbda0##18", 
+        "name": "PopupWindow:45fcbda0", 
+        "created_at": "2016-11-07 13:55:33.037000", 
+        "updated_at": "2016-11-07 13:55:33.037000", 
+        "change_times": 0, 
+        "id": "582087d55198730056b559e9"
+    }, 
+    {
+        "DNA": "PopupWindow:43dac908##18", 
+        "name": "PopupWindow:43dac908", 
+        "created_at": "2016-11-07 13:54:05.398000", 
+        "updated_at": "2016-11-07 13:54:05.398000", 
+        "change_times": 0, 
+        "id": "5820877d7ce2f90045910926"
+    }, 
+    {
+        "DNA": "PopupWindow:45a877c0##18", 
+        "name": "PopupWindow:45a877c0", 
+        "created_at": "2016-11-07 13:51:01.052000", 
+        "updated_at": "2016-11-07 13:51:01.052000", 
+        "change_times": 0, 
+        "id": "582086c5d4f0d70051781549"
+    }, 
+    {
+        "DNA": "PopupWindow:4416ab78##18", 
+        "name": "PopupWindow:4416ab78", 
+        "created_at": "2016-11-07 13:51:01.041000", 
+        "updated_at": "2016-11-07 13:51:01.041000", 
+        "change_times": 0, 
+        "id": "582086c5d4f0d70051781548"
+    }, 
+    {
+        "DNA": "PopupWindow:45badd10##18", 
+        "name": "PopupWindow:45badd10", 
+        "created_at": "2016-11-07 13:49:50.467000", 
+        "updated_at": "2016-11-07 13:49:50.467000", 
+        "change_times": 0, 
+        "id": "5820867e5198730056b5594a"
+    }, 
+    {
+        "DNA": "PopupWindow:45366ba0##18", 
+        "name": "PopupWindow:45366ba0", 
+        "created_at": "2016-11-07 13:48:29.451000", 
+        "updated_at": "2016-11-07 13:48:29.451000", 
+        "change_times": 0, 
+        "id": "5820862d7ce2f900459108da"
+    }, 
+    {
+        "DNA": "PopupWindow:463835b8##18", 
+        "name": "PopupWindow:463835b8", 
+        "created_at": "2016-11-07 13:46:53.321000", 
+        "updated_at": "2016-11-07 13:46:53.321000", 
+        "change_times": 0, 
+        "id": "582085cd5198730056b558fd"
+    }, 
+    {
+        "DNA": "PopupWindow:453d45c0##15", 
+        "name": "PopupWindow:453d45c0", 
+        "created_at": "2016-11-07 13:45:41.262000", 
+        "updated_at": "2016-11-07 13:45:41.262000", 
+        "change_times": 0, 
+        "id": "582085857ce2f900459108a1"
+    }, 
+    {
+        "DNA": "PopupWindow:45e216c0##18", 
+        "name": "PopupWindow:45e216c0", 
+        "created_at": "2016-11-07 13:44:08.486000", 
+        "updated_at": "2016-11-07 13:44:08.486000", 
+        "change_times": 0, 
+        "id": "582085287ce2f9004591088e"
+    }, 
+    {
+        "DNA": "PopupWindow:4502ae28##18", 
+        "name": "PopupWindow:4502ae28", 
+        "created_at": "2016-11-07 13:44:08.471000", 
+        "updated_at": "2016-11-07 13:44:08.471000", 
+        "change_times": 0, 
+        "id": "582085287ce2f9004591088d"
+    }, 
+    {
+        "DNA": "PopupWindow:46592848##18", 
+        "name": "PopupWindow:46592848", 
+        "created_at": "2016-11-07 13:42:32.466000", 
+        "updated_at": "2016-11-07 13:42:32.466000", 
+        "change_times": 0, 
+        "id": "582084c85198730056b5585d"
+    }, 
+    {
+        "DNA": "PopupWindow:45c20328##18", 
+        "name": "PopupWindow:45c20328", 
+        "created_at": "2016-11-07 13:42:32.458000", 
+        "updated_at": "2016-11-07 13:42:32.458000", 
+        "change_times": 0, 
+        "id": "582084c85198730056b5585c"
+    }, 
+    {
+        "DNA": "PopupWindow:43cacbf8##18", 
+        "name": "PopupWindow:43cacbf8", 
+        "created_at": "2016-11-07 13:41:21.451000", 
+        "updated_at": "2016-11-07 13:41:21.451000", 
+        "change_times": 0, 
+        "id": "58208481d4f0d7005178139a"
+    }, 
+    {
+        "DNA": "PopupWindow:460b2eb0##18", 
+        "name": "PopupWindow:460b2eb0", 
+        "created_at": "2016-11-07 13:41:21.429000", 
+        "updated_at": "2016-11-07 13:41:21.429000", 
+        "change_times": 0, 
+        "id": "58208481d4f0d70051781399"
+    }, 
+    {
+        "DNA": "PopupWindow:44d52868##18", 
+        "name": "PopupWindow:44d52868", 
+        "created_at": "2016-11-07 13:38:37.388000", 
+        "updated_at": "2016-11-07 13:38:37.388000", 
+        "change_times": 0, 
+        "id": "582083ddd4f0d70051781335"
+    }, 
+    {
+        "DNA": "PopupWindow:44a1a438##18", 
+        "name": "PopupWindow:44a1a438", 
+        "created_at": "2016-11-07 13:37:02.061000", 
+        "updated_at": "2016-11-07 13:37:02.061000", 
+        "change_times": 0, 
+        "id": "5820837e7ce2f900459107cd"
+    }, 
+    {
+        "DNA": "PopupWindow:45b2fd58##6", 
+        "name": "PopupWindow:45b2fd58", 
+        "created_at": "2016-11-07 13:30:12.869000", 
+        "updated_at": "2016-11-07 13:30:12.869000", 
+        "change_times": 0, 
+        "id": "582081e47ce2f90045910753"
+    }, 
+    {
+        "DNA": "PopupWindow:47b805b0##6", 
+        "name": "PopupWindow:47b805b0", 
+        "created_at": "2016-11-07 13:29:10.967000", 
+        "updated_at": "2016-11-07 13:29:10.967000", 
+        "change_times": 0, 
+        "id": "582081a67ce2f90045910737"
+    }, 
+    {
+        "DNA": "cooperation.qzone.QzoneTransWithKeyboardPluginProxyActivity##107", 
+        "name": "cooperation.qzone.QzoneTransWithKeyboardPluginProxyActivity", 
+        "created_at": "2016-11-07 13:29:10.942000", 
+        "updated_at": "2016-11-07 13:29:10.942000", 
+        "change_times": 0, 
+        "id": "582081a67ce2f90045910736"
+    }, 
+    {
+        "DNA": "PopupWindow:45645258##18", 
+        "name": "PopupWindow:45645258", 
+        "created_at": "2016-11-07 13:29:10.921000", 
+        "updated_at": "2016-11-07 13:29:10.921000", 
+        "change_times": 0, 
+        "id": "582081a67ce2f90045910735"
+    }, 
+    {
+        "DNA": "PopupWindow:44d12358##18", 
+        "name": "PopupWindow:44d12358", 
+        "created_at": "2016-11-07 13:26:08.049000", 
+        "updated_at": "2016-11-07 13:26:08.049000", 
+        "change_times": 0, 
+        "id": "582080f0d4f0d7005178111c"
+    }, 
+    {
+        "DNA": "PopupWindow:45e8fcf0##18", 
+        "name": "PopupWindow:45e8fcf0", 
+        "created_at": "2016-11-07 13:26:08.040000", 
+        "updated_at": "2016-11-07 13:26:08.040000", 
+        "change_times": 0, 
+        "id": "582080f0d4f0d7005178111b"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.vas.ChatBackgroundMarketActivity##57", 
+        "name": "com.tencent.mobileqq.vas.ChatBackgroundMarketActivity", 
+        "created_at": "2016-11-07 13:23:12.588000", 
+        "updated_at": "2016-11-07 13:23:12.588000", 
+        "change_times": 0, 
+        "id": "582080405198730056b55591"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.troop.activity.NearbyTroopsLocationActivity##96", 
+        "name": "com.tencent.mobileqq.troop.activity.NearbyTroopsLocationActivity", 
+        "created_at": "2016-11-07 13:21:39.164000", 
+        "updated_at": "2016-11-07 13:21:39.164000", 
+        "change_times": 0, 
+        "id": "58207fe3ae67b80058858be0"
+    }, 
+    {
+        "DNA": "PopupWindow:45d67820##3", 
+        "name": "PopupWindow:45d67820", 
+        "created_at": "2016-11-07 13:10:09.733000", 
+        "updated_at": "2016-11-07 13:10:09.733000", 
+        "change_times": 0, 
+        "id": "58207d31d4f0d70051780e89"
+    }, 
+    {
+        "DNA": "PopupWindow:461cee68##3", 
+        "name": "PopupWindow:461cee68", 
+        "created_at": "2016-11-07 13:10:09.721000", 
+        "updated_at": "2016-11-07 13:10:09.721000", 
+        "change_times": 0, 
+        "id": "58207d31d4f0d70051780e88"
+    }, 
+    {
+        "DNA": "PopupWindow:45a7d4d8##6", 
+        "name": "PopupWindow:45a7d4d8", 
+        "created_at": "2016-11-07 13:08:57.582000", 
+        "updated_at": "2016-11-07 13:08:57.582000", 
+        "change_times": 0, 
+        "id": "58207ce97ce2f90045910542"
+    }, 
+    {
+        "DNA": "cooperation.qzone.QzonePicturePluginProxyActivity##11", 
+        "name": "cooperation.qzone.QzonePicturePluginProxyActivity", 
+        "created_at": "2016-11-07 13:07:43.736000", 
+        "updated_at": "2016-11-07 13:07:43.736000", 
+        "change_times": 0, 
+        "id": "58207c9fae67b80058858a5d"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.troop.activity.TroopAdminList##81", 
+        "name": "com.tencent.mobileqq.troop.activity.TroopAdminList", 
+        "created_at": "2016-11-07 13:02:55.371000", 
+        "updated_at": "2016-11-07 13:02:55.371000", 
+        "change_times": 0, 
+        "id": "58207b7f5198730056b55270"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.SearchTroopListActivity##197", 
+        "name": "com.tencent.mobileqq.activity.SearchTroopListActivity", 
+        "created_at": "2016-11-07 13:01:49.464000", 
+        "updated_at": "2016-11-07 13:01:49.464000", 
+        "change_times": 0, 
+        "id": "58207b3d5198730056b5523b"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.ChatHistory##92", 
+        "name": "com.tencent.mobileqq.activity.ChatHistory", 
+        "created_at": "2016-11-07 13:00:36.494000", 
+        "updated_at": "2016-11-07 13:00:36.494000", 
+        "change_times": 0, 
+        "id": "58207af4d4f0d70051780c68"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.AddFriendActivity##10", 
+        "name": "com.tencent.mobileqq.activity.AddFriendActivity", 
+        "created_at": "2016-11-07 13:00:36.484000", 
+        "updated_at": "2016-11-07 13:00:36.484000", 
+        "change_times": 0, 
+        "id": "58207af4d4f0d70051780c67"
+    }, 
+    {
+        "DNA": "cooperation.groupvideo.GVideoSmallScreenDialog##14", 
+        "name": "cooperation.groupvideo.GVideoSmallScreenDialog", 
+        "created_at": "2016-11-07 12:59:23.057000", 
+        "updated_at": "2016-11-07 12:59:23.057000", 
+        "change_times": 0, 
+        "id": "58207aab5198730056b551a8"
+    }, 
+    {
+        "DNA": "cooperation.groupvideo.GVideoProxyActivity##163", 
+        "name": "cooperation.groupvideo.GVideoProxyActivity", 
+        "created_at": "2016-11-07 12:58:10.396000", 
+        "updated_at": "2016-11-07 12:58:10.396000", 
+        "change_times": 0, 
+        "id": "58207a627ce2f90045910346"
+    }, 
+    {
+        "DNA": "PopupWindow:446fc1c8##6", 
+        "name": "PopupWindow:446fc1c8", 
+        "created_at": "2016-11-07 12:56:56.135000", 
+        "updated_at": "2016-11-07 12:56:56.135000", 
+        "change_times": 0, 
+        "id": "58207a18ae67b80058858806"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.ChatSettingActivity##78", 
+        "name": "com.tencent.mobileqq.activity.ChatSettingActivity", 
+        "created_at": "2016-11-07 12:55:56.467000", 
+        "updated_at": "2016-11-07 12:55:56.467000", 
+        "change_times": 0, 
+        "id": "582079dc7ce2f900459102fa"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.troop.activity.NearbyMemberActivity##19", 
+        "name": "com.tencent.mobileqq.troop.activity.NearbyMemberActivity", 
+        "created_at": "2016-11-07 12:53:12.470000", 
+        "updated_at": "2016-11-07 12:53:12.470000", 
+        "change_times": 0, 
+        "id": "58207938ae67b800588587c7"
+    }, 
+    {
+        "DNA": "PopupWindow:470cfca8##15", 
+        "name": "PopupWindow:470cfca8", 
+        "created_at": "2016-11-07 12:32:58.890000", 
+        "updated_at": "2016-11-07 12:32:58.890000", 
+        "change_times": 0, 
+        "id": "5820747ad4f0d70051780733"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.olympic.activity.ScanTorchActivity##62", 
+        "name": "com.tencent.mobileqq.olympic.activity.ScanTorchActivity", 
+        "created_at": "2016-11-07 12:32:15.359000", 
+        "updated_at": "2016-11-07 12:32:15.359000", 
+        "change_times": 0, 
+        "id": "5820744fd4f0d7005178070d"
+    }, 
+    {
+        "DNA": "PopupWindow:46eb5520##15", 
+        "name": "PopupWindow:46eb5520", 
+        "created_at": "2016-11-07 12:27:28.371000", 
+        "updated_at": "2016-11-07 12:27:28.371000", 
+        "change_times": 0, 
+        "id": "582073305198730056b54cdb"
+    }, 
+    {
+        "DNA": "PopupWindow:473295f0##6", 
+        "name": "PopupWindow:473295f0", 
+        "created_at": "2016-11-07 12:24:45.872000", 
+        "updated_at": "2016-11-07 12:24:45.872000", 
+        "change_times": 0, 
+        "id": "5820728d5198730056b54c8e"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.phone.BindNumberActivity##87", 
+        "name": "com.tencent.mobileqq.activity.phone.BindNumberActivity", 
+        "created_at": "2016-11-07 12:24:08.079000", 
+        "updated_at": "2016-11-07 12:24:08.079000", 
+        "change_times": 0, 
+        "id": "582072687ce2f9004590ffc1"
+    }, 
+    {
+        "DNA": "com.tencent.biz.qrcode.activity.ScannerActivity##38", 
+        "name": "com.tencent.biz.qrcode.activity.ScannerActivity", 
+        "created_at": "2016-11-07 12:23:28.658000", 
+        "updated_at": "2016-11-07 12:23:28.658000", 
+        "change_times": 0, 
+        "id": "582072407ce2f9004590ffab"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity##269", 
+        "name": "com.tencent.mobileqq.activity.contact.addcontact.AddContactsActivity", 
+        "created_at": "2016-11-07 12:23:28.649000", 
+        "updated_at": "2016-11-07 12:23:28.649000", 
+        "change_times": 0, 
+        "id": "582072407ce2f9004590ffaa"
+    }, 
+    {
+        "DNA": "PopupWindow:45f7a250##6", 
+        "name": "PopupWindow:45f7a250", 
+        "created_at": "2016-11-07 12:22:09.370000", 
+        "updated_at": "2016-11-07 12:22:09.370000", 
+        "change_times": 0, 
+        "id": "582071f17ce2f9004590ffa3"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.ProfileCardMoreActivity##56", 
+        "name": "com.tencent.mobileqq.activity.ProfileCardMoreActivity", 
+        "created_at": "2016-11-07 12:22:09.362000", 
+        "updated_at": "2016-11-07 12:22:09.362000", 
+        "change_times": 0, 
+        "id": "582071f17ce2f9004590ffa2"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.vas.AvatarPendantMarketActivity##57", 
+        "name": "com.tencent.mobileqq.vas.AvatarPendantMarketActivity", 
+        "created_at": "2016-11-07 12:20:13.574000", 
+        "updated_at": "2016-11-07 12:20:13.574000", 
+        "change_times": 0, 
+        "id": "5820717dd4f0d7005178050a"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity##162", 
+        "name": "com.tencent.mobileqq.activity.contact.newfriend.NewFriendActivity", 
+        "created_at": "2016-11-07 12:20:13.566000", 
+        "updated_at": "2016-11-07 12:20:13.566000", 
+        "change_times": 0, 
+        "id": "5820717dd4f0d70051780509"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.LebaEnabledPluginsActivity##70", 
+        "name": "com.tencent.mobileqq.activity.LebaEnabledPluginsActivity", 
+        "created_at": "2016-11-07 12:18:58.886000", 
+        "updated_at": "2016-11-07 12:18:58.886000", 
+        "change_times": 0, 
+        "id": "58207132d4f0d700517804e9"
+    }, 
+    {
+        "DNA": "com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity##58", 
+        "name": "com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity", 
+        "created_at": "2016-11-07 12:18:58.879000", 
+        "updated_at": "2016-11-07 12:18:58.879000", 
+        "change_times": 0, 
+        "id": "58207132d4f0d700517804e8"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.QQTranslucentBrowserActivity##41", 
+        "name": "com.tencent.mobileqq.activity.QQTranslucentBrowserActivity", 
+        "created_at": "2016-11-07 12:14:32.837000", 
+        "updated_at": "2016-11-07 12:14:32.837000", 
+        "change_times": 0, 
+        "id": "58207028ae67b80058858439"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.ForwardFriendListActivity##46", 
+        "name": "com.tencent.mobileqq.activity.ForwardFriendListActivity", 
+        "created_at": "2016-11-07 12:12:48.257000", 
+        "updated_at": "2016-11-07 12:12:48.257000", 
+        "change_times": 0, 
+        "id": "58206fc05198730056b54b27"
+    }, 
+    {
+        "DNA": "PopupWindow:47a90568##6", 
+        "name": "PopupWindow:47a90568", 
+        "created_at": "2016-11-07 12:12:11.167000", 
+        "updated_at": "2016-11-07 12:12:11.167000", 
+        "change_times": 0, 
+        "id": "58206f9b7ce2f9004590ff04"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.GroupManagerActivity##78", 
+        "name": "com.tencent.mobileqq.activity.GroupManagerActivity", 
+        "created_at": "2016-11-07 12:12:11.158000", 
+        "updated_at": "2016-11-07 12:12:11.158000", 
+        "change_times": 0, 
+        "id": "58206f9b7ce2f9004590ff03"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.AutoRemarkActivity##81", 
+        "name": "com.tencent.mobileqq.activity.AutoRemarkActivity", 
+        "created_at": "2016-11-07 12:10:23.563000", 
+        "updated_at": "2016-11-07 12:10:23.563000", 
+        "change_times": 0, 
+        "id": "58206f2f5198730056b54a43"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.AddFriendVerifyActivity##49", 
+        "name": "com.tencent.mobileqq.activity.AddFriendVerifyActivity", 
+        "created_at": "2016-11-07 12:09:37.450000", 
+        "updated_at": "2016-11-07 12:09:37.450000", 
+        "change_times": 0, 
+        "id": "58206f017ce2f9004590fec0"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity##70", 
+        "name": "com.tencent.mobileqq.troop.activity.TroopBarPublishLocationSelectActivity", 
+        "created_at": "2016-11-07 12:07:51.382000", 
+        "updated_at": "2016-11-07 12:07:51.382000", 
+        "change_times": 0, 
+        "id": "58206e975198730056b549c1"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.troop.activity.TroopBarPublishActivity##39", 
+        "name": "com.tencent.mobileqq.troop.activity.TroopBarPublishActivity", 
+        "created_at": "2016-11-07 12:07:51.375000", 
+        "updated_at": "2016-11-07 12:07:51.375000", 
+        "change_times": 0, 
+        "id": "58206e975198730056b549c0"
+    }, 
+    {
+        "DNA": "PopupWindow:47b49c60##6", 
+        "name": "PopupWindow:47b49c60", 
+        "created_at": "2016-11-07 12:07:17.728000", 
+        "updated_at": "2016-11-07 12:07:17.728000", 
+        "change_times": 0, 
+        "id": "58206e757ce2f9004590fe89"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.VisitorsActivity##99", 
+        "name": "com.tencent.mobileqq.activity.VisitorsActivity", 
+        "created_at": "2016-11-07 12:06:07.262000", 
+        "updated_at": "2016-11-07 12:06:07.262000", 
+        "change_times": 0, 
+        "id": "58206e2fd4f0d700517800ce"
+    }, 
+    {
+        "DNA": "cooperation.qwallet.plugin.QWalletPluginProxyActivity##108", 
+        "name": "cooperation.qwallet.plugin.QWalletPluginProxyActivity", 
+        "created_at": "2016-11-07 12:04:59.448000", 
+        "updated_at": "2016-11-07 12:04:59.448000", 
+        "change_times": 0, 
+        "id": "58206deb7ce2f9004590fd41"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity##89", 
+        "name": "com.tencent.mobileqq.activity.contact.troop.ShowExternalTroopListActivity", 
+        "created_at": "2016-11-07 12:02:12.103000", 
+        "updated_at": "2016-11-07 12:02:12.103000", 
+        "change_times": 0, 
+        "id": "58206d44d4f0d7005177ffc9"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.search.activity.GroupSearchActivity##97", 
+        "name": "com.tencent.mobileqq.search.activity.GroupSearchActivity", 
+        "created_at": "2016-11-07 12:00:57.518000", 
+        "updated_at": "2016-11-07 12:00:57.518000", 
+        "change_times": 0, 
+        "id": "58206cf9ae67b80058858121"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.FriendProfileCardActivity##378", 
+        "name": "com.tencent.mobileqq.activity.FriendProfileCardActivity", 
+        "created_at": "2016-11-07 12:00:25.274000", 
+        "updated_at": "2016-11-07 12:00:25.274000", 
+        "change_times": 0, 
+        "id": "58206cd95198730056b548d0"
+    }, 
+    {
+        "DNA": "cooperation.qzone.share.QZoneShareActivity##467", 
+        "name": "cooperation.qzone.share.QZoneShareActivity", 
+        "created_at": "2016-11-07 12:00:25.266000", 
+        "updated_at": "2016-11-07 12:00:25.266000", 
+        "change_times": 0, 
+        "id": "58206cd95198730056b548cf"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity##116", 
+        "name": "com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity", 
+        "created_at": "2016-11-07 12:00:25.259000", 
+        "updated_at": "2016-11-07 12:00:25.259000", 
+        "change_times": 0, 
+        "id": "58206cd95198730056b548ce"
+    }, 
+    {
+        "DNA": "com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity##483", 
+        "name": "com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity", 
+        "created_at": "2016-11-07 12:00:25.251000", 
+        "updated_at": "2016-11-07 12:00:25.251000", 
+        "change_times": 0, 
+        "id": "58206cd95198730056b548cd"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.QQBrowserActivity##46", 
+        "name": "com.tencent.mobileqq.activity.QQBrowserActivity", 
+        "created_at": "2016-11-07 12:00:25.244000", 
+        "updated_at": "2016-11-07 12:00:25.244000", 
+        "change_times": 0, 
+        "id": "58206cd95198730056b548cc"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity##67", 
+        "name": "com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity", 
+        "created_at": "2016-11-07 12:00:25.236000", 
+        "updated_at": "2016-11-07 12:00:25.236000", 
+        "change_times": 0, 
+        "id": "58206cd95198730056b548cb"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.ChatActivity##259", 
+        "name": "com.tencent.mobileqq.activity.ChatActivity", 
+        "created_at": "2016-11-07 12:00:25.229000", 
+        "updated_at": "2016-11-07 12:00:25.229000", 
+        "change_times": 0, 
+        "id": "58206cd95198730056b548ca"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.selectmember.SelectMemberActivity##148", 
+        "name": "com.tencent.mobileqq.activity.selectmember.SelectMemberActivity", 
+        "created_at": "2016-11-07 12:00:25.222000", 
+        "updated_at": "2016-11-07 12:00:25.222000", 
+        "change_times": 0, 
+        "id": "58206cd95198730056b548c9"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.SplashActivity##252", 
+        "name": "com.tencent.mobileqq.activity.SplashActivity", 
+        "created_at": "2016-11-07 12:00:25.214000", 
+        "updated_at": "2016-11-07 12:00:25.214000", 
+        "change_times": 0, 
+        "id": "58206cd95198730056b548c8"
+    }, 
+    {
+        "DNA": "com.tencent.biz.qqstory.takevideo.EditPicActivity##48", 
+        "name": "com.tencent.biz.qqstory.takevideo.EditPicActivity", 
+        "created_at": "2016-11-07 12:00:25.207000", 
+        "updated_at": "2016-11-07 12:00:25.207000", 
+        "change_times": 0, 
+        "id": "58206cd95198730056b548c7"
+    }, 
+    {
+        "DNA": "cooperation.qzone.QzoneGPUPluginProxyActivity##78", 
+        "name": "cooperation.qzone.QzoneGPUPluginProxyActivity", 
+        "created_at": "2016-11-07 12:00:25.200000", 
+        "updated_at": "2016-11-07 12:00:25.200000", 
+        "change_times": 0, 
+        "id": "58206cd95198730056b548c6"
+    }, 
+    {
+        "DNA": "com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity##202", 
+        "name": "com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity", 
+        "created_at": "2016-11-07 12:00:25.193000", 
+        "updated_at": "2016-11-07 12:00:25.193000", 
+        "change_times": 0, 
+        "id": "58206cd95198730056b548c5"
+    }, 
+    {
+        "DNA": "com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity##301", 
+        "name": "com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity", 
+        "created_at": "2016-11-07 12:00:25.184000", 
+        "updated_at": "2016-11-07 12:00:25.184000", 
+        "change_times": 0, 
+        "id": "58206cd95198730056b548c4"
+    }, 
+    {
+        "DNA": "cooperation.qzone.QzoneGPUPluginProxyActivity##373", 
+        "name": "cooperation.qzone.QzoneGPUPluginProxyActivity", 
+        "created_at": "2016-11-07 11:41:07.858000", 
+        "updated_at": "2016-11-07 11:41:07.858000", 
+        "change_times": 0, 
+        "id": "582068537ce2f9004590fc9f"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.FriendProfileCardActivity##436", 
+        "name": "com.tencent.mobileqq.activity.FriendProfileCardActivity", 
+        "created_at": "2016-11-07 11:41:07.848000", 
+        "updated_at": "2016-11-07 11:41:07.848000", 
+        "change_times": 0, 
+        "id": "582068537ce2f9004590fc9e"
+    }, 
+    {
+        "DNA": "PopupWindow:4518dd48##15", 
+        "name": "PopupWindow:4518dd48", 
+        "created_at": "2016-11-07 11:37:12.949000", 
+        "updated_at": "2016-11-07 11:37:12.949000", 
+        "change_times": 0, 
+        "id": "582067687ce2f9004590fc2f"
+    }, 
+    {
+        "DNA": "com.tencent.biz.pubaccount.PublicAccountBrowser##94", 
+        "name": "com.tencent.biz.pubaccount.PublicAccountBrowser", 
+        "created_at": "2016-11-07 11:24:27.960000", 
+        "updated_at": "2016-11-07 11:24:27.960000", 
+        "change_times": 0, 
+        "id": "5820646bae67b80058858012"
+    }, 
+    {
+        "DNA": "com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity##57", 
+        "name": "com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyArticleDetailActivity", 
+        "created_at": "2016-11-07 11:21:38.482000", 
+        "updated_at": "2016-11-07 11:21:38.482000", 
+        "change_times": 0, 
+        "id": "582063c2ae67b80058857fde"
+    }, 
+    {
+        "DNA": "com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity##196", 
+        "name": "com.tencent.biz.pubaccount.readinjoy.video.VideoFeedsPlayActivity", 
+        "created_at": "2016-11-07 11:21:38.455000", 
+        "updated_at": "2016-11-07 11:21:38.455000", 
+        "change_times": 0, 
+        "id": "582063c2ae67b80058857fdd"
+    }, 
+    {
+        "DNA": "com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity##121", 
+        "name": "com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyChannelActivity", 
+        "created_at": "2016-11-07 11:20:31.259000", 
+        "updated_at": "2016-11-07 11:20:31.259000", 
+        "change_times": 0, 
+        "id": "5820637f7ce2f9004590fb5d"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity##91", 
+        "name": "com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity", 
+        "created_at": "2016-11-07 11:20:31.250000", 
+        "updated_at": "2016-11-07 11:20:31.250000", 
+        "change_times": 0, 
+        "id": "5820637f7ce2f9004590fb5c"
+    }, 
+    {
+        "DNA": "com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity##494", 
+        "name": "com.tencent.biz.pubaccount.readinjoy.activity.ReadInJoyFeedsActivity", 
+        "created_at": "2016-11-07 11:20:31.241000", 
+        "updated_at": "2016-11-07 11:20:31.241000", 
+        "change_times": 0, 
+        "id": "5820637f7ce2f9004590fb5b"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.NearbyActivity##148", 
+        "name": "com.tencent.mobileqq.activity.NearbyActivity", 
+        "created_at": "2016-11-07 11:19:59.057000", 
+        "updated_at": "2016-11-07 11:19:59.057000", 
+        "change_times": 0, 
+        "id": "5820635f7ce2f9004590fb52"
+    }, 
+    {
+        "DNA": "cooperation.troop.TroopFileProxyActivity##113", 
+        "name": "cooperation.troop.TroopFileProxyActivity", 
+        "created_at": "2016-11-07 11:19:59.048000", 
+        "updated_at": "2016-11-07 11:19:59.048000", 
+        "change_times": 0, 
+        "id": "5820635f7ce2f9004590fb51"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.ChatSettingForTroop##305", 
+        "name": "com.tencent.mobileqq.activity.ChatSettingForTroop", 
+        "created_at": "2016-11-07 11:19:59.039000", 
+        "updated_at": "2016-11-07 11:19:59.039000", 
+        "change_times": 0, 
+        "id": "5820635f7ce2f9004590fb50"
+    }, 
+    {
+        "DNA": "com.tencent.biz.qqstory.takevideo.EditPicActivity##31", 
+        "name": "com.tencent.biz.qqstory.takevideo.EditPicActivity", 
+        "created_at": "2016-11-07 11:19:59.031000", 
+        "updated_at": "2016-11-07 11:19:59.031000", 
+        "change_times": 0, 
+        "id": "5820635f7ce2f9004590fb4f"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.TroopPrivateSettingActivity##14", 
+        "name": "com.tencent.mobileqq.activity.TroopPrivateSettingActivity", 
+        "created_at": "2016-11-07 11:19:59.023000", 
+        "updated_at": "2016-11-07 11:19:59.023000", 
+        "change_times": 0, 
+        "id": "5820635f7ce2f9004590fb4e"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.TroopMemberCardActivity##205", 
+        "name": "com.tencent.mobileqq.activity.TroopMemberCardActivity", 
+        "created_at": "2016-11-07 11:19:59.015000", 
+        "updated_at": "2016-11-07 11:19:59.015000", 
+        "change_times": 0, 
+        "id": "5820635f7ce2f9004590fb4d"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity##20", 
+        "name": "com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity", 
+        "created_at": "2016-11-07 11:19:59.007000", 
+        "updated_at": "2016-11-07 11:19:59.007000", 
+        "change_times": 0, 
+        "id": "5820635f7ce2f9004590fb4c"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.QQBrowserActivity##74", 
+        "name": "com.tencent.mobileqq.activity.QQBrowserActivity", 
+        "created_at": "2016-11-07 11:19:58.999000", 
+        "updated_at": "2016-11-07 11:19:58.999000", 
+        "change_times": 0, 
+        "id": "5820635e7ce2f9004590fb4b"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity##40", 
+        "name": "com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity", 
+        "created_at": "2016-11-07 11:19:58.990000", 
+        "updated_at": "2016-11-07 11:19:58.990000", 
+        "change_times": 0, 
+        "id": "5820635e7ce2f9004590fb4a"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.ChatActivity##290", 
+        "name": "com.tencent.mobileqq.activity.ChatActivity", 
+        "created_at": "2016-11-07 11:19:58.982000", 
+        "updated_at": "2016-11-07 11:19:58.982000", 
+        "change_times": 0, 
+        "id": "5820635e7ce2f9004590fb49"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.selectmember.SelectMemberActivity##124", 
+        "name": "com.tencent.mobileqq.activity.selectmember.SelectMemberActivity", 
+        "created_at": "2016-11-07 11:19:58.975000", 
+        "updated_at": "2016-11-07 11:19:58.975000", 
+        "change_times": 0, 
+        "id": "5820635e7ce2f9004590fb48"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.SplashActivity##209", 
+        "name": "com.tencent.mobileqq.activity.SplashActivity", 
+        "created_at": "2016-11-07 11:19:58.967000", 
+        "updated_at": "2016-11-07 11:19:58.967000", 
+        "change_times": 0, 
+        "id": "5820635e7ce2f9004590fb47"
+    }, 
+    {
+        "DNA": "PopupWindow:44ad37f8##9", 
+        "name": "PopupWindow:44ad37f8", 
+        "created_at": "2016-11-07 11:12:08.073000", 
+        "updated_at": "2016-11-07 11:12:08.073000", 
+        "change_times": 0, 
+        "id": "582061887ce2f9004590fb05"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.troop.activity.TroopAssistantFeedsActivity##63", 
+        "name": "com.tencent.mobileqq.troop.activity.TroopAssistantFeedsActivity", 
+        "created_at": "2016-11-07 11:12:08.059000", 
+        "updated_at": "2016-11-07 11:12:08.059000", 
+        "change_times": 0, 
+        "id": "582061887ce2f9004590fb04"
+    }, 
+    {
+        "DNA": "PopupWindow:448d39a0##9", 
+        "name": "PopupWindow:448d39a0", 
+        "created_at": "2016-11-07 11:12:08.046000", 
+        "updated_at": "2016-11-07 11:12:08.046000", 
+        "change_times": 0, 
+        "id": "582061887ce2f9004590fb03"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.filemanager.fileviewer.TroopFileDetailBrowserActivity##59", 
+        "name": "com.tencent.mobileqq.filemanager.fileviewer.TroopFileDetailBrowserActivity", 
+        "created_at": "2016-11-07 11:10:53.625000", 
+        "updated_at": "2016-11-07 11:10:53.625000", 
+        "change_times": 0, 
+        "id": "5820613d7ce2f9004590fac0"
+    }, 
+    {
+        "DNA": "\u63d0\u793a\uff1a##24", 
+        "name": "\u63d0\u793a\uff1a", 
+        "created_at": "2016-11-07 11:10:53.608000", 
+        "updated_at": "2016-11-07 11:10:53.608000", 
+        "change_times": 0, 
+        "id": "5820613d7ce2f9004590fabf"
+    }, 
+    {
+        "DNA": "com.tencent.biz.qqstory.takevideo.EditPicActivity##86", 
+        "name": "com.tencent.biz.qqstory.takevideo.EditPicActivity", 
+        "created_at": "2016-11-07 09:59:45.368000", 
+        "updated_at": "2016-11-07 09:59:45.368000", 
+        "change_times": 0, 
+        "id": "58205091ae67b80058857be6"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.TroopPrivateSettingActivity##44", 
+        "name": "com.tencent.mobileqq.activity.TroopPrivateSettingActivity", 
+        "created_at": "2016-11-07 09:58:34.136000", 
+        "updated_at": "2016-11-07 09:58:34.136000", 
+        "change_times": 0, 
+        "id": "5820504aae67b80058857bd8"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.selectmember.SelectMemberActivity##125", 
+        "name": "com.tencent.mobileqq.activity.selectmember.SelectMemberActivity", 
+        "created_at": "2016-11-07 09:55:36.852000", 
+        "updated_at": "2016-11-07 09:55:36.852000", 
+        "change_times": 0, 
+        "id": "58204f98d4f0d7005177f332"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.contact.troop.TroopActivity##129", 
+        "name": "com.tencent.mobileqq.activity.contact.troop.TroopActivity", 
+        "created_at": "2016-11-07 09:55:36.844000", 
+        "updated_at": "2016-11-07 09:55:36.844000", 
+        "change_times": 0, 
+        "id": "58204f98d4f0d7005177f331"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.troop.activity.TroopTagViewActivity##57", 
+        "name": "com.tencent.mobileqq.troop.activity.TroopTagViewActivity", 
+        "created_at": "2016-11-07 09:53:49.767000", 
+        "updated_at": "2016-11-07 09:53:49.767000", 
+        "change_times": 0, 
+        "id": "58204f2d5198730056b53c4b"
+    }, 
+    {
+        "DNA": "cooperation.troop.TroopFileProxyActivity##42", 
+        "name": "cooperation.troop.TroopFileProxyActivity", 
+        "created_at": "2016-11-07 09:52:41.069000", 
+        "updated_at": "2016-11-07 09:52:41.069000", 
+        "change_times": 0, 
+        "id": "58204ee9ae67b80058857b95"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.ChatSettingForTroop##287", 
+        "name": "com.tencent.mobileqq.activity.ChatSettingForTroop", 
+        "created_at": "2016-11-07 09:52:06.888000", 
+        "updated_at": "2016-11-07 09:52:06.888000", 
+        "change_times": 0, 
+        "id": "58204ec67ce2f9004590f64c"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity##155", 
+        "name": "com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity", 
+        "created_at": "2016-11-07 09:48:49.495000", 
+        "updated_at": "2016-11-07 09:48:49.495000", 
+        "change_times": 0, 
+        "id": "58204e017ce2f9004590f605"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity##176", 
+        "name": "com.tencent.mobileqq.filemanager.activity.FMLocalFileActivity", 
+        "created_at": "2016-11-07 09:48:49.486000", 
+        "updated_at": "2016-11-07 09:48:49.486000", 
+        "change_times": 0, 
+        "id": "58204e017ce2f9004590f604"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.filemanager.activity.FMActivity##137", 
+        "name": "com.tencent.mobileqq.filemanager.activity.FMActivity", 
+        "created_at": "2016-11-07 09:48:16.432000", 
+        "updated_at": "2016-11-07 09:48:16.432000", 
+        "change_times": 0, 
+        "id": "58204de0d4f0d7005177f246"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity##70", 
+        "name": "com.tencent.mobileqq.activity.richmedia.NewFlowCameraActivity", 
+        "created_at": "2016-11-07 09:47:44.004000", 
+        "updated_at": "2016-11-07 09:47:44.004000", 
+        "change_times": 0, 
+        "id": "58204dc0d4f0d7005177f237"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.TroopMemberCardActivity##171", 
+        "name": "com.tencent.mobileqq.activity.TroopMemberCardActivity", 
+        "created_at": "2016-11-07 09:47:10.655000", 
+        "updated_at": "2016-11-07 09:47:10.655000", 
+        "change_times": 0, 
+        "id": "58204d9eae67b80058857b15"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.ChatActivity##177", 
+        "name": "com.tencent.mobileqq.activity.ChatActivity", 
+        "created_at": "2016-11-07 09:47:10.646000", 
+        "updated_at": "2016-11-07 09:47:10.646000", 
+        "change_times": 0, 
+        "id": "58204d9eae67b80058857b14"
+    }, 
+    {
+        "DNA": "com.tencent.mobileqq.activity.NearbyActivity##214", 
+        "name": "com.tencent.mobileqq.activity.NearbyActivity", 
+        "created_at": "2016-11-07 09:46:37.866000", 
+        "updated_at": "2016-11-07 09:46:37.866000", 
+        "change_times": 0, 
+        "id": "58204d7dae67b80058857b09"
+    }
+]

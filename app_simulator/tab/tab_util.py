@@ -74,15 +74,23 @@ class TabUtil(object):
         return resp
 
 
+class JSONEncoderWithTime(json.JSONEncoder):
+    def default(self, obj):
+        if isinstance(obj, datetime.datetime):
+            return obj.strftime('%Y-%m-%d %H:%M:%S.%f')
+        # Let the base class default method raise the TypeError
+        return json.JSONEncoder.default(self, obj)
+
+
 TAB_UTIL = TabUtil()
+
 
 if __name__ == "__main__":
     t = TabUtil()
-    query = leancloud.Query('StatusMap')
-    query.does_not_exist('is_activity_changed')
+    table = 'View'
+    query = leancloud.Query(table)
     records = t.find_all(query)
-    for record in records:
-        changed = not (record.get('pre_activity') == record.get('next_activity'))
-        record.set('is_activity_changed', changed)
-        record.save()
-        print record.get('is_activity_changed')
+    record_list = [t.tab_obj2dict(record) for record in records]
+    with open(table+'.txt', 'wb') as fp:
+        json.dump(record_list, fp, cls=JSONEncoderWithTime, indent=4)
+

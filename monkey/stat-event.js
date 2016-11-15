@@ -331,6 +331,7 @@ function stat_all_with_task_meta(sm_records, filter_dict, callback, callback_fai
                 if (extra_para['stat_by_step']) {
                     var eh_query = new AV.Query('EventHistory');
 
+                    console.log('stat_all_with_task_meta: filter_dict: ' + JSON.stringify(filter_dict));
                     if (filter_dict.task_id)
                         eh_query.equalTo('task_id', filter_dict.task_id);
                     if (filter_dict.product)
@@ -339,7 +340,9 @@ function stat_all_with_task_meta(sm_records, filter_dict, callback, callback_fai
                         eh_query.contains('version', filter_dict.version);
                     eh_query.ascending('event_time');
 
+                    console.log('stat_all_with_task_meta: find all start.');
                     TabUtil.find_all(eh_query, function (records) {
+                        console.log('stat_all_with_task_meta: find all ok.');
                         try {
                             var stat_list = [];
                             var sample_num = extra_para['sample_num'] ? extra_para['sample_num'] : 15;    // default 15.

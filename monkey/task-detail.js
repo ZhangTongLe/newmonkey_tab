@@ -94,6 +94,7 @@ function task_stat_all_in_one(req, res, next) {
     if (req.body) {
         task_id = req.body['task_id'];
     }
+    console.log('task_stat_all_in_one: task_id: ' + task_id);
     Stat.stat_task_use_task_meta(task_id, function (stat) {
         var resp = {
             status: 'ok',

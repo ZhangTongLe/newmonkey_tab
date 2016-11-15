@@ -3,6 +3,7 @@
  */
 
 var AV = require('../lib/tab-login');
+var G = require('../config/global');
 var HttpUtil = require('../lib/http-util');
 var TabUtil = require('../lib/tab-util');
 var MonkeyEvent = require('./monkey-event');
@@ -24,6 +25,7 @@ function event_history_do_filter(req, res, next) {
         query.equalTo('device', device);
     if (task_id)
         query.equalTo('task_id', task_id);
+    query.limit(G.get_limit_for_merged());
 
     TabUtil.find(query, function (records) {
         records.forEach(function (r, index, records) {
@@ -72,6 +74,8 @@ function get_activity_event_net_info(product, version, task_id, callback_ok, cal
         query.equalTo('version', version);
     if (task_id)
         query.equalTo('task_id', task_id);
+    query.limit(G.get_limit_for_merged());
+
     TabUtil.find_all(query, function (records) {
         var node_map = {};
         var node_index = 0;

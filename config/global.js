@@ -42,6 +42,11 @@ var NUM_TAG_BOOL = {
 var Global = {
     HOST: 'http://localhost:3000',
     TAB_LIMIT: 1000,
+    TAB_USE_MERGE: true,
+    TAB_LIMIT_MERGE: 100,
+    get_limit_for_merged: function () {
+        return Global.TAB_USE_MERGE ? Global.TAB_LIMIT_MERGE : Global.TAB_LIMIT;
+    },
     is_dev: is_dev,
     SPLITTER: '^_^',
     NUM_TAG_BOOL: NUM_TAG_BOOL

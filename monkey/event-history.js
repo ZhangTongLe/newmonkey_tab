@@ -72,11 +72,11 @@ function sync_one_event_record(r) {
         }, function (e) {
             console.error(e);
         });
-        // TaskMeta.sync_event_record_list(record_list).then(function (info) {
-        //     console.log('TaskMeta.sync_event_record_list: info: ' + JSON.stringify(info));
-        // }, function (e) {
-        //     console.error(e);
-        // });
+        TaskMeta.sync_event_record_list(record_list).then(function (info) {
+            console.log('TaskMeta.sync_event_record_list: info: ' + JSON.stringify(info));
+        }, function (e) {
+            console.error(e);
+        });
     } catch (e) {
         console.error(e);
     }
@@ -112,7 +112,7 @@ function reply_to_event_history_page(req, res, next) {
 
     function when_meta_info_ok() {
         var query = new AV.Query('EventHistory');
-        query.limit(G.TAB_LIMIT);
+        query.limit(G.get_limit_for_merged());
         TabUtil.find(query, function (results) {
             res.render('monkey/event-history', {
                 title: 'Event History',
@@ -150,6 +150,7 @@ function event_history_do_filter(req, res, next) {
         if (distinct_task)
             query.equalTo('seq_no', 0);
         query.descending('event_time');
+        query.limit(G.get_limit_for_merged());
 
         query.find({sessionToken: req.sessionToken});
         TabUtil.find(query, function (records) {
