@@ -104,6 +104,7 @@ class MonkeyRunner(object):
             event_data=event_data,
             pre_activity=pre_activity,
             next_activity='',
+            is_back=False
         ))
         event_object['event_time'] = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S.%f")
         event_object['product'] = self.app.identify
@@ -114,6 +115,7 @@ class MonkeyRunner(object):
 
 
 if __name__ == '__main__':
-    app = AppSMBuilder('com.tencent.mobileqq', '6.5.8', do_reload=False).gen_app()
+    # app = AppSMBuilder('com.tencent.mobileqq', '6.5.8', do_reload=False).gen_app()
+    app = AppRandomBuilder().gen_app()
     monkey = MonkeyRunner(app, show_details=False, do_upload_event_history=True)
-    monkey.start(event_num=500, event_cost_ms=1)
+    monkey.start(event_num=300, event_cost_ms=1)

@@ -20,7 +20,7 @@ var TABLES_DEFINE = {
         support_cache_save: true
     },
     'EventHistory': {
-        merge_fields: ['pre_activity', 'next_activity', 'event_data', 'device', 'event_time', 'seq_no', 'event_name', 'is_tree_changed', 'is_activity_changed', 'related_activity'],
+        merge_fields: ['pre_activity', 'next_activity', 'event_data', 'device', 'event_time', 'seq_no', 'event_name', 'is_tree_changed', 'is_activity_changed', 'related_activity', 'is_back'],
         common_fields: ['product', 'version', 'task_id'],
         support_merge_fields: true
     }

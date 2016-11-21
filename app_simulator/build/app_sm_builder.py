@@ -47,7 +47,7 @@ class AppSMBuilder(object):
                 index += 1
             app.add(a)
 
-        print json.dumps(app_info['Application Error: com.tencent.mobileqq'], indent=4)
+        # print json.dumps(app_info['Application Error: com.tencent.mobileqq'], indent=4)
 
         for activity_id in app_info:
             activity = app.find(activity_id)

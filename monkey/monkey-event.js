@@ -26,7 +26,7 @@ function get_event_entity(event_record) {
 function get_event_entity_identify(event_record) {
     var identify;
     var event_data = event_record.get('event_data');
-    if (event_data['event_name'] == EventType.CLICK){
+    if (event_data['event_name'] == EventType.CLICK) {
         identify = event_data['event_entity']['identify'];
     } else {
         identify = '';

@@ -2403,8 +2403,8 @@ for item in l:
     print activity
     if len(result) > 130:
         break
-    # if activity.startswith('com.tencent.mobileqq.'):
-    result.append(activity)
+    if activity.startswith('com.tencent.mobileqq.'):
+        result.append(activity)
 result = list(set(result))
 
 print '-' * 30
