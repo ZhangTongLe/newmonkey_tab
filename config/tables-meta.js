@@ -11,7 +11,7 @@ var TABLES_DEFINE = {
     },
     'View': {
         distinct_index_fields: ['product', 'version', 'activity', 'path'],
-        need_update_fields: ['description', 'view_id', 'next_activity', 'is_activity_changed', 'is_tree_changed', 'text'],
+        need_update_fields: ['next_activity', 'is_activity_changed', 'is_tree_changed'],
         support_cache_save: true
     },
     'StatusMap': {

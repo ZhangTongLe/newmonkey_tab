@@ -152,7 +152,6 @@ function save_record_with_cache(req, res, next) {
     } catch (e) {
         HttpUtil.resp_json(res, {status: 'error', data: e.stack});
     }
-
 }
 
 function CacheSystem(is_sync_with_db, sync_period_sec) {
