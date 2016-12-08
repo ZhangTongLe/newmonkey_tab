@@ -21,64 +21,68 @@ var CACHE_SYNC_PERIOD_SEC = 60 * 10;    // 内存缓存与数据库固化存储�
 
 
 function save_records_with_merge(req, res, next) {
-    var data = req.body;
-    var class_name, fields_to_merge, fields_common, record_list;
+    try {
+        var data = req.body;
+        var class_name, fields_to_merge, fields_common, record_list;
 
-    if (data) {
-        class_name = data['class_name'];
-        fields_to_merge = data['merge_fields'];
-        fields_common = data['common_fields'];
-        record_list = data['record_list'];
-        if (typeof(record_list) == 'string') {
-            try {
-                record_list = JSON.parse(record_list);
-            } catch (e) {
-                record_list = undefined;
+        if (data) {
+            class_name = data['class_name'];
+            fields_to_merge = data['merge_fields'];
+            fields_common = data['common_fields'];
+            record_list = data['record_list'];
+            if (typeof(record_list) == 'string') {
+                try {
+                    record_list = JSON.parse(record_list);
+                } catch (e) {
+                    record_list = undefined;
+                }
             }
         }
-    }
 
-    if (! class_name) {
-        HttpUtil.resp_json(res, {status: 'error', data: 'Not found: class_name'});
-    }
-
-    if (! DsUtil.is_type(record_list, 'Array')) {
-        HttpUtil.resp_json(res, {status: 'error', data: 'Filed record_list must be: list'});
-    }
-
-    console.info('save_records_with_merge: class name: ' + class_name);
-    console.info('save_records_with_merge: record_list' + JSON.stringify(record_list));
-
-    var record_obj_list = record_list.map(function (x) {
-        var RecordObj = AV.Object.extend(class_name);
-        var record = new RecordObj();
-        for (var key in x) {
-            if (! x.hasOwnProperty(key))
-                continue;
-            record.set(key, x[key]);
+        if (! class_name) {
+            HttpUtil.resp_json(res, {status: 'error', data: 'Not found: class_name'});
         }
-        return record;
-    });
 
-    fields_to_merge = fields_to_merge || TablesMeta.get_merge_fields(class_name);    // 得到默认的合并字段列表.
-    fields_common = fields_common || TablesMeta.get_common_fields(class_name);    // 得到默认的公共字段列表.
-    TabUtil.save_records_with_merge(record_obj_list, fields_to_merge, fields_common).then(function () {
-        if (! data['merge_fields'] || ! data['common_fields']) {
-            var msg = 'Success, ';
-            if (! data['merge_fields'])
-                msg += ', but you not given field: merge_fields, we use default setting: [' + fields_to_merge.join(', ') + ']';
-            if (! data['common_fields'])
-                msg += ', but you not given field: common_fields, we use default setting: [' + fields_common.join(', ') + '].';
-            HttpUtil.resp_json(res, {
-                status: 'ok',
-                data: msg
-            });
-        } else {
-            HttpUtil.resp_json(res, {status: 'ok', data: 'Success, saved num: ' + record_obj_list.length});
+        if (! DsUtil.is_type(record_list, 'Array')) {
+            HttpUtil.resp_json(res, {status: 'error', data: 'Filed record_list must be: list'});
         }
-    }, function (e) {
-        HttpUtil.resp_json(res, {status: 'error', data: 'Error: here is the call stack: ' + e.stack});
-    });
+
+        console.info('save_records_with_merge: class name: ' + class_name);
+        console.info('save_records_with_merge: record_list' + JSON.stringify(record_list));
+
+        var record_obj_list = record_list.map(function (x) {
+            var RecordObj = AV.Object.extend(class_name);
+            var record = new RecordObj();
+            for (var key in x) {
+                if (! x.hasOwnProperty(key))
+                    continue;
+                record.set(key, x[key]);
+            }
+            return record;
+        });
+
+        fields_to_merge = fields_to_merge || TablesMeta.get_merge_fields(class_name);    // 得到默认的合并字段列表.
+        fields_common = fields_common || TablesMeta.get_common_fields(class_name);    // 得到默认的公共字段列表.
+        TabUtil.save_records_with_merge(record_obj_list, fields_to_merge, fields_common).then(function () {
+            if (! data['merge_fields'] || ! data['common_fields']) {
+                var msg = 'Success, ';
+                if (! data['merge_fields'])
+                    msg += ', but you not given field: merge_fields, we use default setting: [' + fields_to_merge.join(', ') + ']';
+                if (! data['common_fields'])
+                    msg += ', but you not given field: common_fields, we use default setting: [' + fields_common.join(', ') + '].';
+                HttpUtil.resp_json(res, {
+                    status: 'ok',
+                    data: msg
+                });
+            } else {
+                HttpUtil.resp_json(res, {status: 'ok', data: 'Success, saved num: ' + record_obj_list.length});
+            }
+        }, function (e) {
+            HttpUtil.resp_json(res, {status: 'error', data: 'Error: here is the call stack: ' + e.stack});
+        });
+    } catch (e) {
+        HttpUtil.resp_json(res, {status: 'error', data: 'unknown error: ' + e.stack});
+    }
 }
 
 

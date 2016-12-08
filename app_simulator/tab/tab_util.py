@@ -11,11 +11,13 @@ from leancloud import Query
 
 class TabUtil(object):
     TAB_LIMIT = 1000
-    HOST = 'https://hi-monkey.leanapp.cn'
+    # HOST = 'https://hi-monkey.leanapp.cn'
+    HOST = 'https://hi-monkey2.leanapp.cn'
     # HOST = 'http://127.0.0.1:3000'
 
     def __init__(self):
-        leancloud.init("2OqGTb47B0cChAg4xyOsP5D8-9Nh9j0Va", "7sOFzdMRP1D0m6r9y5LE8aPy")
+        # leancloud.init("2OqGTb47B0cChAg4xyOsP5D8-9Nh9j0Va", "7sOFzdMRP1D0m6r9y5LE8aPy")
+        leancloud.init("xQueKuu5xH3fx206aeXetNkl-9Nh9j0Va", "VRQ3cF9B7uPwO6nEP0TbD7cP")
         self.try_times = 3
         self.max_fetch = 100000
 

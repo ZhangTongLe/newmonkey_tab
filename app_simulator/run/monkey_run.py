@@ -25,13 +25,14 @@ class MonkeyRunner(object):
         self.app.version = '1.0.4'
         self.device = random.choice(['Nexus5', 'MX4Pro', 'R819T', 'SM-G7106', 'GT-I9300'])
         self.device = 'MX4Pro'
-        self.n_records_upload = 200
+        self.n_records_upload = 50
         self.stat_info = dict(
             stay_same_activity_count=0
         )
         self.reporter = TabReporter()
 
     def start(self, event_num=100, event_cost_ms=10):
+        merged_upload = False
         event_list = []
         last_event_object = None
         for seq_no in range(event_num):
@@ -45,7 +46,7 @@ class MonkeyRunner(object):
 
             if self.do_upload_event_history:
                 if len(event_list) >= self.n_records_upload:
-                    self.reporter.upload_event_history(event_list, merged_upload=True)
+                    self.reporter.upload_event_history(event_list, merged_upload=merged_upload)
                     event_list = []
 
             if self.show_details:
@@ -57,7 +58,7 @@ class MonkeyRunner(object):
             resp = net_graph.upload_to_web('%s--%s.%s' % (self.app.identify, self.app.version, self.task_id), 'net_graph', net_graph_data)
             print resp.text
         if len(event_list) > 0:
-            self.reporter.upload_event_history(event_list, merged_upload=True)
+            self.reporter.upload_event_history(event_list, merged_upload=merged_upload)
 
     def get_random_widget(self, method='jump_when_locked'):
         if method == 'jump_when_locked':
