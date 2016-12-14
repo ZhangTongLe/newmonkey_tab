@@ -3,6 +3,7 @@
 import leancloud
 import json
 import csv
+import traceback
 
 from tab.tab_util import TAB_UTIL
 
@@ -17,17 +18,20 @@ def upload_product_info():
         product_list = json.load(fp)
 
         for p in product_list:
-            product = productInfo()
-            product.set('product_name', p['productName'])
-            product.set('package', p['packageName'])
-            product.set('platform', p['platform_id'])
-            product.set('workspace_id', p['tapdBugCommitWorkSpaceId'])
-            product.set('who_update', p['whoUpdate'])
-            product.set('department', p['department'])
-            product.set('app_log_path', p['appLogPath'])
-            product.save()
-            product_id_to_obj_id[p['id']] = product.id
-            print 'ok ~ %s' % product
+            try:
+                product = productInfo()
+                product.set('product_name', p['productName'])
+                product.set('package', p['packageName'])
+                product.set('platform', p['platform_id'])
+                product.set('workspace_id', p['tapdBugCommitWorkSpaceId'])
+                product.set('who_update', p['whoUpdate'])
+                product.set('department', p['department'])
+                product.set('app_log_path', p['appLogPath'])
+                product.save()
+                product_id_to_obj_id[p['id']] = product.id
+                print 'ok ~ %s' % product
+            except:
+                print "save product: %s\nproduct: %s" % (traceback.format_exc(), p)
 
     with open('/Users/kangtian/Downloads/monkey_product_task_config.json', 'rb') as fp:
         product_config_list = json.load(fp)
