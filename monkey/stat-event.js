@@ -514,6 +514,7 @@ function stat_all_with_status_map(sm_records, filter_dict, callback, callback_fa
             }
         } catch (e) {
             console.error(e);
+            callback_fail(e);
         }
     }
 }
