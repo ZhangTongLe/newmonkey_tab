@@ -99,6 +99,17 @@ block content
                     </div>
                 </div>
 
+                <div class="row col-sm-12">
+                      <div class="switch">
+                          <label>
+                              <span style="font-size: 16px; margin-right: 15px; color: black">后台数据上报</span>关闭
+                              <input id="report_data" type="checkbox">
+                              <span class="lever"></span>
+                              打开
+                          </label>
+                      </div>
+                </div>
+
 
                 <div class="row col-sm-12">
                     <h5 style="text-align: center">🌺 后面是一些不常修改的配置 ~~~</h5>
@@ -211,7 +222,7 @@ block append script
     script.
         var url_task_list_of_product = '/monkey/getTaskConfigs/';
         var ulr_config_of_task_and_product = '/monkey/getTaskConfigs/';
-        var url_submit_config = '/monkey/taskConfigList/';
+        var url_submit_config = '/monkey/submitTaskConfig/';
         var url_when_submit_success = '/monkey/taskConfigList/';
 
         var task_config_notify_empty = "-- 没有哇 --";
@@ -281,6 +292,14 @@ block append script
                 "group": 'basic',
                 "placeholder": "'true' 或者 'false'",
                 "name": "启用连续态",
+                "field_type": "checkbox_false"
+            },
+            "report_data": {
+                "field": "report_data",
+                "required": '',
+                "group": 'basic',
+                "placeholder": "'true' 或者 'false'",
+                "name": "后台数据上报",
                 "field_type": "checkbox_false"
             },
             "tapdPath": {
@@ -606,6 +625,7 @@ block append script
                     continue;
                 var elem = document.getElementById(field);
                 form_values[field] = get_value_of_elem(elem);
+                console.log(field + '__' + get_value_of_elem(elem));
             }
             return form_values;
         }
@@ -637,7 +657,7 @@ block append script
             var form_values = get_values_of_form(form_info);
 
             form_values['override_config'] = false;
-            form_values['product'] = $('#product').val();
+            form_values['product'] = $('#product').text();
             console.debug(form_values);
 
             show_loading('div_loading');

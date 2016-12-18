@@ -96,8 +96,19 @@ block content
                 <div class="row">
                     <div class="switch">
                         <label>
-                            <span style="font-size: 16px; margin-left: 10px; margin-right: 15px; color: black">连续模式</span>关闭
+                            <span style="font-size: 16px; margin-left: 10px; margin-right: 15px; color: black;">连续模式</span>关闭
                             <input id="continue_mode" type="checkbox" checked>
+                            <span class="lever"></span>
+                            打开
+                        </label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="switch">
+                        <label>
+                            <span style="font-size: 16px; margin-left: 10px; margin-right: 15px; color: black" style="width: 100px">后台数据上报</span>关闭
+                            <input id="report_data" type="checkbox">
                             <span class="lever"></span>
                             打开
                         </label>
@@ -302,6 +313,14 @@ block append script
                 "group": 'basic',
                 "placeholder": "'true' 或者 'false'",
                 "name": "启用连续态",
+                "field_type": "checkbox_true"
+            },
+            "report_data": {
+                "field": "report_data",
+                "required": '',
+                "group": 'basic',
+                "placeholder": "'true' 或者 'false'",
+                "name": "后台数据上报",
                 "field_type": "checkbox_false"
             },
             "tapdPath": {

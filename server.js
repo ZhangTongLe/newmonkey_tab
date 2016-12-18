@@ -1,6 +1,14 @@
 var AV = require('./lib/tab-login');
 var app = require('./app');
 
+var TestObject = AV.Object.extend('TestObject');
+var testObject = new TestObject();
+testObject.set();
+testObject.save().then(function(object) {
+    console.log('LeanCloud Rocks!');
+}, function (e) {
+    console.log(e);
+});
 
 // 端口一定要从环境变量 `LEANCLOUD_APP_PORT` 中获取。
 // LeanEngine 运行时会分配端口并赋值到该变量。

@@ -49,7 +49,7 @@ function stat_all_in_one(task_id, callback, error_callback){
 
 
 function stat_task_use_task_meta(task_id, callback, callback_fail, extra_para){
-    var query = new AV.Query('TaskMeta');
+    var query = new AV.Query('TaskMeta');    // TODO: 减少 query 请求, url 附上 product.
     query.equalTo('task_id', task_id).first().then(function (task) {
         var product = task.get('product'), version = task.get('version');
         get_sm_records(product, function (sm_records) {
@@ -326,6 +326,7 @@ function stat_all_with_task_meta(sm_records, filter_dict, callback, callback_fai
     try {
         var sm_activity_set = new Set();
         extra_para = extra_para == undefined ? {} : extra_para;
+
         function do_stat() {
             try {
                 if (extra_para['stat_by_step']) {
@@ -420,6 +421,7 @@ function stat_all_with_task_meta(sm_records, filter_dict, callback, callback_fai
                 callback_fail(e);
             }
         }
+        // sm_activity_set 这里先将当前任务的所有 activity 算进去.
         find_activity_list(filter_dict, sm_activity_set, do_stat, callback_fail);
     } catch (e) {
         console.error(e);

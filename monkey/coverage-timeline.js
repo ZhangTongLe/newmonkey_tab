@@ -22,7 +22,6 @@ function reply_to_coverage_timeline_page(req, res, next) {
 
     task_info.duration = -1;
     if (task_info.task_id) {
-        var TaskMeta = AV.Object.extend('TaskMeta');
         var task_meta_query = new AV.Query('TaskMeta')
             .equalTo('task_id', task_info.task_id);
         TabUtil.find(task_meta_query, function (records) {
