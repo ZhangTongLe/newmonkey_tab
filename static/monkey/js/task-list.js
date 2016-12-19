@@ -12,13 +12,16 @@ var url_product_ver_detail = '/monkey/ProductVerDetail?product=';
 var table_name = 'task-list-table';
 
 function init_table(){
-    var $table = $('#'+table_name);
+    var $table = $('#'+table_name);         // table哪里来的？？？
     $table.bootstrapTable('destroy');
     var columns = [
         {field: 'task_id', title: '任务ID'},
         {field: 'product', title: '产品'},
         {field: 'version', title: 'App版本', sortable: true},
-        {field: 'device', title: '设备'}
+        {field: 'device', title: '设备'},
+        {field: 'start_time',title: '起始时间'},
+        {field: 'last_time',title: '结束时间'},
+        {field: 'costtime', title: '耗时'}
     ];
 
     $table.bootstrapTable({
@@ -33,12 +36,20 @@ function init_table(){
 
 }
 
-
 function table_load($table, records) {
     for(var i = 0; i < records.length; i ++){
-        var r = records[i];
+        var r = records[i];                     // records中的数据为对象，r相当于指向对象的指针，所以对r操作也就改变了records中数据的值
         r.task_id = '<a target="_blank" href="'+ url_task_detail+r.task_id +'">'+ r.task_id +'</a>';
         r.version = '<a target="_blank" href="'+ url_product_ver_detail+r.product+'&version='+r.version +'">'+ r.version +'</a>';
+
+        t1 = new Date(r.start_time.iso);     //把格式化的日期数据转化为Date类型的数据然后再进行处理
+        t2 = new Date(r.last_time.iso);
+        r.start_time = r.start_time.iso;
+        r.last_time = r.last_time.iso;
+        // console.log(typeof(t2-t1));
+
+        r.costtime = (t2 - t1)/1000 + ' s';
+        // r.costtime = (r.last_time - r.start_time)/1000 + ' s';
     }
     $table.bootstrapTable('load', records);
 }

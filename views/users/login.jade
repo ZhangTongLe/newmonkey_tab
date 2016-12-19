@@ -1,5 +1,8 @@
 extends ../base/site-layout
 
+block append head
+    script(src='/static/monkey/js/login.js')
+
 block content
     h1= title
 
@@ -10,10 +13,10 @@ block content
     form.form-horizontal(action='/users/login', method='POST')
         .form-group
             label.col-sm-2.control-label 用户名
-            .col-sm-10: input(type='input', name='username')
+            .col-sm-10: input(type='input', id='username')
         .form-group
             label.col-sm-2.control-label 密码
-            .col-sm-10: input(type='password', name='password')
+            .col-sm-10: input(type='password', id='password')
         .col-sm-offset-2.col-sm-10
-            input.btn.btn-default(type='submit', value='登录')
-            a.btn.btn-default(href="/users/register") 注册
+            a.btn.btn-default(onclick='post_message()') 登录
+            a.btn.btn-default(style="margin-left: 30px" href="/users/register") 注册

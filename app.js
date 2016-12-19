@@ -5,12 +5,13 @@
 var G = require('./config/global');
 var express = require('express');
 var logger = require('morgan');
+var Verify = require('./verify');
 
 var path = require('path');
 var bodyParser = require('body-parser');
 var methodOverride = require('method-override');
 var AV = require('leanengine');
-
+var cookieParser = require('cookie-parser');
 
 var app = express();
 
@@ -18,7 +19,10 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use('/static', express.static('static'));
+app.use(cookieParser());
+// app.set('jwtTokenSecret','YUAN_SECRET_STRING');         //设置jwt机制的jwtTokenSecret变量，为后续的token验证做准备
+
+app.use('/static', express.static('static'));           //指定静态文件目录
 
 // debug, show access. after static to not show static.
 console.log('IS_DEV: ' + G.is_dev());
@@ -35,7 +39,6 @@ app.use(AV.Cloud.CookieSession({secret: '05XgTktKPMkU', maxAge: 3600000, fetchUs
 // 强制使用 https
 app.enable('trust proxy');
 app.use(AV.Cloud.HttpsRedirect());
-
 app.use(methodOverride('_method'));
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: '50mb', extended: false}));
@@ -46,16 +49,22 @@ var monkey = require('./routes/monkey');
 var site = require('./routes/site');
 var service = require('./routes/service');
 
+
 app.use('/users', users);
+
+app.use('*', function (req, res, next) {      // 参考express路由路径匹配
+    Verify.verify_token(req, res, next);
+});
+
 app.use('/monkey', monkey);
 app.use('/site', site);
 app.use('/service', service);
 
-
 app.get('/', function (req, res) {
-    res.redirect('/monkey');
+    res.redirect('/monkey');               // 重定向到／monkey
 });
 
+// 下面的代码是错误处理模块，执行上面的中间键之后就不会跳到下面的代码中了
 // 如果任何路由都没匹配到，则认为 404
 // 生成一个异常让后面的 err handler 捕获
 app.use(function (req, res, next) {

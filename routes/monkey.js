@@ -157,4 +157,5 @@ router.get('/deleteProduct/', function (req, res, next) {
     Product.delete_product(req, res, next);
 });
 
+
 module.exports = router;
