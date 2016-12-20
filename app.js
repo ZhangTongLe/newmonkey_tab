@@ -5,7 +5,7 @@
 var G = require('./config/global');
 var express = require('express');
 var logger = require('morgan');
-var Verify = require('./verify');
+var Verify = require('./monkey/verify');
 
 var path = require('path');
 var bodyParser = require('body-parser');
