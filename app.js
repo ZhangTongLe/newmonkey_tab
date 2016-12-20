@@ -53,6 +53,7 @@ var service = require('./routes/service');
 app.use('/users', users);
 
 app.use(function (req, res, next) {
+    console.log("access: " + req.originalUrl);
     for (var i = 0; i < G.NOT_VERIFY_URI_PATTERN.length; i ++) {
         if (req.originalUrl.indexOf(G.NOT_VERIFY_URI_PATTERN[i]) > -1) {
             next();     // 对于客户端使用 CGI, 跳过鉴权
