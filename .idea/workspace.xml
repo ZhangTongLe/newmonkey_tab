@@ -6,8 +6,11 @@
 <<<<<<< Updated upstream
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/server.js" afterPath="$PROJECT_DIR$/server.js" />
 =======
+<<<<<<< Updated upstream
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app_simulator/.idea/workspace.xml" afterPath="$PROJECT_DIR$/app_simulator/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/views/monkey/task-config/modify-config.jade" afterPath="$PROJECT_DIR$/views/monkey/task-config/modify-config.jade" />
+=======
+>>>>>>> Stashed changes
 >>>>>>> Stashed changes
     </list>
     <ignored path="newmonkey_tab.iws" />
@@ -37,6 +40,10 @@
 <<<<<<< Updated upstream
             <state relative-caret-position="180">
               <caret line="12" column="12" lean-forward="true" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
+=======
+            <state relative-caret-position="165">
+              <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+>>>>>>> Stashed changes
               <folding />
             </state>
           </provider>
@@ -45,8 +52,13 @@
       <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
             <state relative-caret-position="780">
               <caret line="52" column="21" lean-forward="false" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="21" />
+=======
+            <state relative-caret-position="510">
+              <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+>>>>>>> Stashed changes
               <folding />
             </state>
           </provider>
@@ -386,6 +398,7 @@
       <workItem from="1482199365563" duration="222000" />
       <workItem from="1482200316336" duration="387000" />
       <workItem from="1482201274248" duration="129000" />
+<<<<<<< Updated upstream
       <workItem from="1482203448978" duration="98000" />
       <workItem from="1482210649771" duration="17000" />
       <workItem from="1482210875642" duration="3000" />
@@ -393,7 +406,15 @@
       <workItem from="1482212016447" duration="2000" />
       <workItem from="1482212133604" duration="25000" />
 =======
+<<<<<<< Updated upstream
       <workItem from="1481819130067" duration="15939000" />
+=======
+      <workItem from="1482210884865" duration="5000" />
+      <workItem from="1482212203239" duration="2000" />
+      <workItem from="1482214462509" duration="3000" />
+      <workItem from="1482214505226" duration="4000" />
+      <workItem from="1482214826373" duration="1000" />
+>>>>>>> Stashed changes
 >>>>>>> Stashed changes
     </task>
     <servers />
@@ -402,14 +423,22 @@
 <<<<<<< Updated upstream
     <option name="totallyTimeSpent" value="419833000" />
 =======
+<<<<<<< Updated upstream
     <option name="totallyTimeSpent" value="424102000" />
+=======
+    <option name="totallyTimeSpent" value="419695000" />
+>>>>>>> Stashed changes
 >>>>>>> Stashed changes
   </component>
   <component name="ToolWindowManager">
     <frame x="654" y="116" width="1782" height="1059" extended-state="0" />
     <editor active="true" />
     <layout>
+<<<<<<< Updated upstream
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21408291" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+=======
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21465077" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> Stashed changes
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2847222" sideWeight="0.4441847" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
@@ -825,12 +854,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< Updated upstream
         <state relative-caret-position="780">
           <caret line="52" column="21" lean-forward="false" selection-start-line="52" selection-start-column="21" selection-end-line="52" selection-end-column="21" />
+=======
+        <state relative-caret-position="510">
+          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+>>>>>>> Stashed changes
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< Updated upstream
     <entry file="file://$PROJECT_DIR$/routes/users.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -869,8 +904,15 @@
         <state relative-caret-position="180">
           <caret line="12" column="12" lean-forward="true" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
 =======
+<<<<<<< Updated upstream
         <state relative-caret-position="165">
           <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+=======
+    <entry file="file://$PROJECT_DIR$/server.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="0" lean-forward="false" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+>>>>>>> Stashed changes
 >>>>>>> Stashed changes
           <folding />
         </state>
