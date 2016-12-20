@@ -52,12 +52,11 @@ var service = require('./routes/service');
 
 app.use('/users', users);
 
-app.use('*', function (req, res, next) {      // 参考express路由路径匹配
-    var uri = req.originalUrl;
-    for (var i = 0; i < len(G.NOT_VERIFY_URI_PATTERN); i ++) {
-        if (uri.startsWith(G.NOT_VERIFY_URI_PATTERN[i])) {
-            next();     // 对于上报CGI, 跳过鉴权
-            break
+app.use(function (req, res, next) {
+    for (var i = 0; i < G.NOT_VERIFY_URI_PATTERN.length; i ++) {
+        if (req.originalUrl.indexOf(G.NOT_VERIFY_URI_PATTERN[i]) > -1) {
+            next();     // 对于客户端使用 CGI, 跳过鉴权
+            return
         }
     }
     Verify.verify_token(req, res, next);

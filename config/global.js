@@ -39,7 +39,7 @@ var NUM_TAG_BOOL = {
     undefined: -1
 };
 
-var NOT_VERIFY_URI_PATTERN = ['/service/SaveRecordsWithMerge', '/service/SaveRecordWithCache'];
+var NOT_VERIFY_URI_PATTERN = ['/service/SaveRecordsWithMerge', '/service/SaveRecordWithCache', '/monkey/getTaskConfigsWithIdentify'];
 
 var Global = {
     HOST: 'http://localhost:3000',
