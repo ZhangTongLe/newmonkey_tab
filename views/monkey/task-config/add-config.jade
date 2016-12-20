@@ -481,7 +481,7 @@ block append script
             var $elem = $(elem);
             var tag = $elem.get(0).tagName;
             var value;
-            if (tag == 'INPUT') {
+            if (tag == 'INPUT' || tag == 'SELECT') {
                 var type = $elem.attr('type');
                 if (type == 'checkbox') {
                     value = $elem.is(':checked');
