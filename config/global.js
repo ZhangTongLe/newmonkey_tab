@@ -39,6 +39,8 @@ var NUM_TAG_BOOL = {
     undefined: -1
 };
 
+var NOT_VERIFY_URI_PATTERN = ['/service/SaveRecordsWithMerge', '/service/SaveRecordWithCache'];
+
 var Global = {
     HOST: 'http://localhost:3000',
     TAB_LIMIT: 1000,
@@ -49,7 +51,8 @@ var Global = {
     },
     is_dev: is_dev,
     SPLITTER: '^_^',
-    NUM_TAG_BOOL: NUM_TAG_BOOL
+    NUM_TAG_BOOL: NUM_TAG_BOOL,
+    NOT_VERIFY_URI_PATTERN: NOT_VERIFY_URI_PATTERN
 };
 
 

@@ -7,8 +7,6 @@ var jwt = require('jwt-simple');
 
 function verify_token(req, res, next){
     var token = req.cookies['access_token'];
-    // console.log('token: ' + token);
-
     if (token) {
         var decoded = jwt.decode(token, 'yuan');
         if (decoded == 'monkeylogin') {
@@ -17,9 +15,7 @@ function verify_token(req, res, next){
             res.redirect('/users/login');
         }
     } else {
-        // console.log('else: ' + token);
         res.redirect('/users/login');
-        // console.log('aa');
     }
 }
 

@@ -9,5 +9,3 @@ var server = app.listen(PORT, function () {
     console.log('Node app is running, port:', PORT);
     console.log('Local host-url: http://127.0.0.1:3000/');
 });
-
-/////aadadad

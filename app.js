@@ -53,6 +53,12 @@ var service = require('./routes/service');
 app.use('/users', users);
 
 app.use('*', function (req, res, next) {      // 参考express路由路径匹配
+    var uri = req.originalUrl;
+    G.NOT_VERIFY_URI_PATTERN.forEach(function (pattern) {
+        if (uri.startsWith(pattern)) {
+            next();     // 对于上报CGI, 跳过鉴权
+        }
+    });
     Verify.verify_token(req, res, next);
 });
 
