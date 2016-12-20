@@ -54,11 +54,12 @@ app.use('/users', users);
 
 app.use('*', function (req, res, next) {      // 参考express路由路径匹配
     var uri = req.originalUrl;
-    G.NOT_VERIFY_URI_PATTERN.forEach(function (pattern) {
-        if (uri.startsWith(pattern)) {
+    for (var i = 0; i < len(G.NOT_VERIFY_URI_PATTERN); i ++) {
+        if (uri.startsWith(G.NOT_VERIFY_URI_PATTERN[i])) {
             next();     // 对于上报CGI, 跳过鉴权
+            break
         }
-    });
+    }
     Verify.verify_token(req, res, next);
 });
 
@@ -70,7 +71,7 @@ app.get('/', function (req, res) {
     res.redirect('/monkey');               // 重定向到／monkey
 });
 
-// 下面的代码是错误处理模块，执行上面的中间键之后就不会跳到下面的代码中了
+// 下面的代码是错误处理模块，执行上面的中间件之后就不会跳到下面的代码中了
 // 如果任何路由都没匹配到，则认为 404
 // 生成一个异常让后面的 err handler 捕获
 app.use(function (req, res, next) {

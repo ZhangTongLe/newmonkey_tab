@@ -29,7 +29,7 @@ function is_dev() {
         username = '';
     else
         username = os.userInfo().username;
-    var dev_user_list = ['kangtian'];
+    var dev_user_list = ['kangtian', 'yuan'];
     return dev_user_list.indexOf(username) > -1;
 }
 
