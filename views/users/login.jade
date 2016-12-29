@@ -13,10 +13,10 @@ block content
     form.form-horizontal(action='/users/login', method='POST')
         .form-group
             label.col-sm-2.control-label 用户名
-            .col-sm-10: input(type='input', id='username')
+            .col-sm-10: input(type='input', id='username', style="border-style: solid; border-width: 1px; width: 150px; height: 20px")
         .form-group
             label.col-sm-2.control-label 密码
-            .col-sm-10: input(type='password', id='password')
+            .col-sm-10: input(type='password', id='password', style="border-style: solid; border-width: 1px; width: 149px; height: 20px")
         .col-sm-offset-2.col-sm-10
             a.btn.btn-default(onclick='post_message()') 登录
             a.btn.btn-default(style="margin-left: 30px" href="/users/register") 注册

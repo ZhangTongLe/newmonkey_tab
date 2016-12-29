@@ -135,7 +135,7 @@ function stat_acr_with_events(sm_records, event_records, callback) {
 
     if (callback != undefined){
         var total_num = sm_activity_set.size;
-        total_num = total_num >= cover_num ? total_num : cover_num;
+        total_num = total_num >= cover_num ? total_num : cover_num;         //修改
         var coverage_rate = total_num == 0 ? 0.0 : cover_num / parseFloat(total_num);
         var acr_res = {
             coverage_rate: coverage_rate, total_num: total_num, cover_num: cover_num,
@@ -291,6 +291,59 @@ function stat_all_with_eh_and_sm(tm_records, sm_records, sm_activity_set, when_o
     }
 }
 
+function stat_all_with_eh_and_sm_2(tm_records, sm_activity_set, sm_widget_set, sm_event_set,  extra_para, when_ok, when_fail) {
+    var activity_list = [], widget_list = [], event_list = [];
+    // var sm_widget_set = new Set();
+    // var sm_event_set = new Set();
+
+    if (tm_records.length > 0){
+        console.log('tm_records length is %d', tm_records.length);
+        console.log(typeof(tm_records));
+        if (extra_para['stat_by_step']){
+            tm_records.forEach(function (r) {
+                activity_list = activity_list.concat(r.get('activity_list'));
+                widget_list = widget_list.concat(r.get('widget_list'));
+                event_list = event_list.concat(r.get('event_list'));
+            });
+        } else {
+            tm_records.forEach(function (r) {
+                activity_list.push(r.get('pre_activity'));
+                widget_list.push(MonkeyEvent.get_event_entity_identify(r));
+                event_list.push(MonkeyEvent.get_event_identify(r));
+            });
+        }
+        activity_list = DsUtil.list_distinct(activity_list);
+        widget_list = DsUtil.list_distinct(widget_list);
+        event_list = DsUtil.list_distinct(event_list);
+
+        console.log('activity_list length is %d', activity_list.length);
+        console.log(activity_list[0]);
+
+        var func_stat = function (cover_num, all_num, cover_list, total_list) {
+            var total_num_value = all_num > cover_num ? all_num : cover_num;
+            return {
+                coverage_rate: total_num_value == 0 ? 0.0 : cover_num / parseFloat(total_num_value),
+                cover_num: cover_num,
+                all_num: all_num,
+                total_num: total_num_value,
+                cover_list: cover_list,
+                total_list: total_list
+            };
+        };
+
+        var stat = {
+            acr: func_stat(activity_list.length, sm_activity_set.size, activity_list, DsUtil.set2list(sm_activity_set)),
+            wcr: func_stat(widget_list.length, sm_widget_set.size, widget_list, DsUtil.set2list(sm_widget_set)),
+            ecr: func_stat(event_list.length, sm_event_set.size, event_list, DsUtil.set2list(sm_event_set))
+        };
+
+        when_ok(stat);
+    } else {
+        var e = new Error('error at stat_all_with_eh_and_sm, task-mata not ready');
+        console.error(e);
+        when_fail(e);
+    }
+}
 
 function find_activity_list(filter_dict, all_activity_set, when_ok, when_fail) {
     try {
@@ -298,9 +351,10 @@ function find_activity_list(filter_dict, all_activity_set, when_ok, when_fail) {
         var version = filter_dict.version || filter_dict.task_version;
 
         if (product) {
-            var product_query = new AV.Query('ProductMeta');
+            var product_query = new AV.Query('ProductMeta');          // 为什么要从productmeta中取数据
             product_query.equalTo('product', product);
             product_query.descending('version');
+            console.log(product_query);
             TabUtil.find(product_query, function (versions) {
                 if (versions.length > 0) {
                     var l = versions[0].get('activity_list');
@@ -325,6 +379,8 @@ function find_activity_list(filter_dict, all_activity_set, when_ok, when_fail) {
 function stat_all_with_task_meta(sm_records, filter_dict, callback, callback_fail, extra_para) {
     try {
         var sm_activity_set = new Set();
+        var sm_widget_set = new Set();
+        var sm_event_set = new Set();
         extra_para = extra_para == undefined ? {} : extra_para;
 
         function do_stat() {
@@ -343,6 +399,19 @@ function stat_all_with_task_meta(sm_records, filter_dict, callback, callback_fai
 
                     console.log('stat_all_with_task_meta: find all start.');
                     TabUtil.find_all(eh_query, function (records) {
+                        records.forEach(function (r) {
+                            sm_activity_set.add(r.get('pre_activity'));
+                            sm_activity_set.add(r.get('next_activity'));
+                            sm_widget_set.add(MonkeyEvent.get_event_entity_identify(r));
+                            sm_event_set.add(MonkeyEvent.get_event_identify(r));
+                        });
+                        sm_records.forEach(function (s) {                    // 循环语句
+                            sm_activity_set.add(s.get('pre_activity'));
+                            sm_activity_set.add(s.get('next_activity'));
+                            sm_widget_set.add(s.get('event_entity_identify'));
+                            sm_event_set.add(s.get('event_identify'));
+                        });
+                        console.log('B页面 sm_activity_set length is %d', sm_activity_set.size);
                         console.log('stat_all_with_task_meta: find all ok.');
                         try {
                             var stat_list = [];
@@ -366,10 +435,14 @@ function stat_all_with_task_meta(sm_records, filter_dict, callback, callback_fai
                             var time_step = (end_time - start_time) / sample_num;
                             var time_pos = start_time.getTime();
                             var step_start_time = null;
+                            // var flag = 0;
 
                             for (var i = 0; i < records.length; i += 1) {
                                 step_start_time = new Date(records[i].get('event_time'));
                                 if (step_start_time >= new Date(time_pos)) {
+                                    // if (flag == 0){
+                                    //     flag = 1;
+                                    // }
                                     step_start_time = new Date(time_pos);    // 使用 records[i].createdAt 会导致时间轴数据分布不均匀。
                                     var step_records = records.slice(0, i);
                                     var step_meta = {activity_list: [], widget_list: [], event_list: [],
@@ -383,7 +456,9 @@ function stat_all_with_task_meta(sm_records, filter_dict, callback, callback_fai
                                         step_meta.event_list.push(MonkeyEvent.get_event_identify(r));
                                     });
                                     try {
-                                        stat_all_with_eh_and_sm([step_meta], sm_records, sm_activity_set, gather_result, callback_fail);
+
+                                        stat_all_with_eh_and_sm_2([step_meta], sm_activity_set, sm_widget_set, sm_event_set, extra_para, gather_result, callback_fail);
+
                                     } catch (e) {
                                         console.error(e);
                                         callback_fail(e);
@@ -403,17 +478,39 @@ function stat_all_with_task_meta(sm_records, filter_dict, callback, callback_fai
                         callback_fail(e);
                     });
                 } else {
-                    var meta_query = new AV.Query('TaskMeta');
 
+                    var eh_query = new AV.Query('EventHistory');
                     if (filter_dict.task_id)
-                        meta_query.equalTo('task_id', filter_dict.task_id);
+                        eh_query.equalTo('task_id', filter_dict.task_id);
                     if (filter_dict.product)
-                        meta_query.contains('product', filter_dict.product);
+                        eh_query.contains('product', filter_dict.product);
                     if (filter_dict.version)
-                        meta_query.contains('version', filter_dict.version);
+                        eh_query.contains('version', filter_dict.version);
+                    eh_query.ascending('event_time');
 
-                    TabUtil.find_all(meta_query, function (meta_records) {
-                        stat_all_with_eh_and_sm(meta_records, sm_records, sm_activity_set, callback, callback_fail);
+                    TabUtil.find_all(eh_query, function (records) {
+                        console.log('records length is %d', records.length);
+                        records.forEach(function (r) {
+                            sm_activity_set.add(r.get('pre_activity'));
+                            sm_activity_set.add(r.get('next_activity'));
+                            sm_widget_set.add(MonkeyEvent.get_event_entity_identify(r));
+                            sm_event_set.add(MonkeyEvent.get_event_identify(r));
+                        });
+                        sm_records.forEach(function (s) {                    // 循环语句
+                            sm_activity_set.add(s.get('pre_activity'));
+                            sm_activity_set.add(s.get('next_activity'));
+                            sm_widget_set.add(s.get('event_entity_identify'));
+                            sm_event_set.add(s.get('event_identify'));
+                        });
+                        console.log('sm_activity_set length is %d', sm_activity_set.size);
+                        console.log('in stat_all_with_eh_and_sm_2');                 // 进入下面方法的log
+                        try {
+                            stat_all_with_eh_and_sm_2(records, sm_activity_set, sm_widget_set, sm_event_set, extra_para, callback, callback_fail);
+                        } catch (e) {
+                            console.error(e);
+                            callback_fail(e);
+                        }
+
                     });
                 }
             } catch (e) {
