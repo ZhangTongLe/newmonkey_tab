@@ -398,7 +398,7 @@ function stat_all_with_task_meta(sm_records, filter_dict, callback, callback_fai
                     eh_query.ascending('event_time');
 
                     console.log('stat_all_with_task_meta: find all start.');
-                    TabUtil.find_all(eh_query, function (records) {
+                    TabUtil.find_all(eh_query, function (records) {                // find_all两个作用：1.自动解压每个eventhistory的meger字段 2.把每个eventhistory的meger字段的解压结果进行合并，组成records队列
                         records.forEach(function (r) {
                             sm_activity_set.add(r.get('pre_activity'));
                             sm_activity_set.add(r.get('next_activity'));
