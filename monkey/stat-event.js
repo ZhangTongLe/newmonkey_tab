@@ -8,6 +8,7 @@
  */
 
 var AV = require('../lib/tab-login');
+// var G = require('../config/global');
 var DsUtil = require('../lib/ds_util');
 var TabUtil = require('../lib/tab-util');
 var MonkeyEvent = require('./monkey-event');
@@ -396,6 +397,7 @@ function stat_all_with_task_meta(sm_records, filter_dict, callback, callback_fai
                     if (filter_dict.version)
                         eh_query.contains('version', filter_dict.version);
                     eh_query.ascending('event_time');
+                    // eh_query.limit(G.get_limit_for_merged());    // 可通过limit来限制一次读取的记录数
 
                     console.log('stat_all_with_task_meta: find all start.');
                     TabUtil.find_all(eh_query, function (records) {                // find_all两个作用：1.自动解压每个eventhistory的meger字段 2.把每个eventhistory的meger字段的解压结果进行合并，组成records队列
@@ -487,6 +489,7 @@ function stat_all_with_task_meta(sm_records, filter_dict, callback, callback_fai
                     if (filter_dict.version)
                         eh_query.contains('version', filter_dict.version);
                     eh_query.ascending('event_time');
+                    // eh_query.limit(G.get_limit_for_merged());    // 可通过limit来限制一次读取的记录数
 
                     TabUtil.find_all(eh_query, function (records) {
                         console.log('records length is %d', records.length);
